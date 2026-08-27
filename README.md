@@ -3,10 +3,15 @@
 Statický web pro **pronájem tanečního sálu** v Paláci Rytířská,
 Rytířská 536/29, Praha 1 — Staré Město.
 
-Obchodní model: studio **nemá vlastní kurzy ani lektory**. Pronajímá dva sály
-po hodinách tanečním školám, lektorům a jednotlivcům; lektora si nájemce
-přivádí sám. Partnerské školy web propaguje — první z nich je
+Pozice: **komunitní prostor k pronájmu po hodinách.** Dva sály otevřené
+tanečním školám, lektorům a komunitám, které se scházejí kolem tance —
+program, jméno i lektor jsou vždycky nájemcovy. Sál patří tomu, kdo v něm
+právě učí. Partnerské školy web propaguje; první z nich je
 [Simply the West](https://www.simplythewest.cz/).
+
+Texty jsou psané **pozitivně** — web nikde netvrdí, čím studio *není*.
+Kdyby se copy dál rozšiřovalo, držte se téhle linky: prostor, komunita,
+„sál patří tomu, kdo v něm právě učí“.
 
 ---
 
@@ -38,7 +43,7 @@ assets/js/rozvrh.js   rozvrhový modul — obsazenost, ceny, výběr hodin
 assets/js/site.js     hlavička, mobilní menu, animace při scrollu
 assets/img/           fotografie a loga
 
-mockupy/index.html    přehled čtyř návrhů se náhledy
+mockupy/index.html    přehled čtyř návrhů s náhledy
 mockupy/b-sgraffito.html
 mockupy/c-provoz.html
 mockupy/d-salon.html  tři alternativní návrhy úvodní stránky
@@ -60,6 +65,11 @@ Každá varianta je samostatná úvodní stránka se **stejným obsahem a stejn�
 | **B** | Sgraffito | vápno `#EFEAE0`, škrábanec `#2E2A26`, železitá `#8C3B2E`, okr `#B98A2E` | Alegreya · Karla · Alegreya Sans SC | Oblouk a škrábaný pás |
 | **C** | Provoz | papír `#F6F6F3`, ink `#16171A`, ultramarín `#1F3BEE` | Archivo Expanded · IBM Plex Sans · JetBrains Mono | Počet volných hodin místo hlavní fotky |
 | **D** | Salon | noc `#171009`, krém `#F4EDE1`, wolfram `#D9A248` | Newsreader · Instrument Sans | Plovoucí lišta „najít termín“ |
+
+Mezi variantami se přepíná **lištou v horní části stránky** (`Návrh A / B / C / D`).
+Je to jen pomůcka pro výběr — před spuštěním stačí smazat blok `.vsw`
+z `index.html` a třídu `has-vsw` z jeho `<body>`; u variant B/C/D blok
+`nav.ribbon`. Nic jiného na ní nezávisí.
 
 Návrh **A** vychází z toho, že dům byl spořitelna a že se prodává *čas* —
 proto rytá číslice, účetní linky a mosazné šrafování přes obsazené hodiny.

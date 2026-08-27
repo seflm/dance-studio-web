@@ -36,8 +36,22 @@
   .rec { display: inline-block; align-self: start; padding: 3px 9px; border: 1px solid var(--brass); font-family: var(--ff-mono); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--brass-lit); }
 </style>
 </head>
-<body>
+<body class="has-vsw">
 <a class="skip" href="#main">Přeskočit na obsah</a>
+
+<nav class="vsw" aria-label="Návrhy webu">
+  <div class="wrap vsw__in">
+    <span class="vsw__lbl">Návrh</span>
+    <ul class="vsw__list">
+        <li><a class="vsw__i" href="../index.html"><b>A</b><span class="vsw__nm">Trezor</span></a></li>
+        <li><a class="vsw__i" href="../mockupy/b-sgraffito.html"><b>B</b><span class="vsw__nm">Sgraffito</span></a></li>
+        <li><a class="vsw__i" href="../mockupy/c-provoz.html"><b>C</b><span class="vsw__nm">Provoz</span></a></li>
+        <li><a class="vsw__i" href="../mockupy/d-salon.html"><b>D</b><span class="vsw__nm">Salon</span></a></li>
+    </ul>
+    <a class="vsw__all" href="../mockupy/index.html" aria-current="page">Porovnat všechny <span aria-hidden="true">↗</span></a>
+  </div>
+</nav>
+
 
 <header class="hdr" data-stuck="true">
   <div class="wrap hdr__in">
@@ -86,8 +100,7 @@
           </div>
           <p class="prose">
             Dům byl spořitelna, tak si stránka bere její jazyk: rytá číslice,
-            účetní linky, mosazné šrafování přes obsazené hodiny. Tmavá paleta
-            odpovídá tomu, jak sál skutečně vypadá — nesnaží se ho rozsvítit.
+            účetní linky, mosazné šrafování přes obsazené hodiny. Tmavá paleta odpovídá tomu, jak sál skutečně vypadá.
           </p>
           <dl class="pick__meta">
             <div><dt>Písmo</dt><dd>Bodoni Moda · Archivo · IBM&nbsp;Plex&nbsp;Mono</dd></div>

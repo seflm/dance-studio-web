@@ -15,8 +15,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body>
+<body class="has-vsw">
 <a class="skip" href="#main">Přeskočit na obsah</a>
+
+<nav class="vsw" aria-label="Návrhy webu">
+  <div class="wrap vsw__in">
+    <span class="vsw__lbl">Návrh</span>
+    <ul class="vsw__list">
+        <li><a class="vsw__i" href="index.html" aria-current="page"><b>A</b><span class="vsw__nm">Trezor</span></a></li>
+        <li><a class="vsw__i" href="mockupy/b-sgraffito.html"><b>B</b><span class="vsw__nm">Sgraffito</span></a></li>
+        <li><a class="vsw__i" href="mockupy/c-provoz.html"><b>C</b><span class="vsw__nm">Provoz</span></a></li>
+        <li><a class="vsw__i" href="mockupy/d-salon.html"><b>D</b><span class="vsw__nm">Salon</span></a></li>
+    </ul>
+    <a class="vsw__all" href="mockupy/index.html">Porovnat všechny <span aria-hidden="true">↗</span></a>
+  </div>
+</nav>
+
 
 <div class="rail" aria-hidden="true"><span>Rytířská 536/29 · Praha 1 · Staré Město</span></div>
 
@@ -137,8 +151,8 @@
           <label class="field">
             <span>Kdo lekci povede <em>*</em></span>
             <input type="text" name="teacher" required placeholder="Jméno lektora">
-            <small>Výuku nezajišťujeme. U každé rezervace potřebujeme vědět,
-              kdo v sále odpovídá za lekci — může to být i vy sami.</small>
+            <small>Lekci vede váš lektor. U každé rezervace potřebujeme vědět,
+              kdo za ni v sále odpovídá — může to být i vy sami.</small>
           </label>
 
           <div class="form__row form__row--2">
@@ -221,7 +235,7 @@
         <h2 class="display h2">Hodiny jsou pro vás zablokované.</h2>
         <p class="lede mt-s">
           Ozveme se do dvanácti hodin na e-mail, který jste zadali,
-          a potvrdíme termín. Do té doby hodiny nikomu jinému nenabídneme.
+          a potvrdíme termín. Do té doby jsou hodiny jen vaše.
         </p>
 
         <dl class="kv">
@@ -269,7 +283,7 @@
           <li><dt>Provoz</dt><dd>denně 7:00–22:00<small>Po 22:00 sál nepůjčujeme — v domě se pracuje i bydlí.</small></dd></li>
           <li><dt>Storno</dt><dd>bezplatně do 48 hodin<small>Později hodinu účtujeme, ale zkusíme ji nabídnout dál.</small></dd></li>
           <li><dt>Obuv</dt><dd>čistá taneční obuv, přezutí na místě</dd></li>
-          <li><dt>Lektor</dt><dd>vlastní<small>Výuku nezajišťujeme a do obsahu lekcí nezasahujeme.</small></dd></li>
+          <li><dt>Lektor</dt><dd>váš<small>Lekci vede váš člověk, obsah je celý ve vaší režii.</small></dd></li>
           <li><dt>Komerční focení</dt><dd>zvláštní tarif — napište nám</dd></li>
         </ul>
       </div>
@@ -311,7 +325,7 @@
       </a>
       <p class="prose mt-m" style="font-size:.88rem">
         Klenutý sál k pronájmu po hodinách v Paláci Rytířská.
-        Bez vlastních kurzů, bez vlastních lektorů.
+        Domov pro taneční školy, lektory a komunity.
       </p>
     </div>
     <div>

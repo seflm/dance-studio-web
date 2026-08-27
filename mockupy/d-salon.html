@@ -247,11 +247,34 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
 .f a, .f address { font-size: .9rem; font-style: normal; line-height: 1.85; }
 .f a:hover { color: var(--tung); }
 .f__base { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 34px; padding-top: 20px; border-top: 1px solid rgba(244,237,225,.12); font-size: .76rem; color: #7d7061; }
+
+/* variant switcher — review scaffolding, delete before launch */
+.ribbon { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 14px; }
+.ribbon__lbl { font-size: .7rem; letter-spacing: .2em; color: #7d7061; }
+.ribbon__set { display: flex; flex-wrap: wrap; gap: 3px; }
+.ribbon__i {
+  padding: 4px 12px; border: 1px solid transparent; border-radius: 999px;
+  font-size: .78rem; letter-spacing: .04em; text-transform: none; color: #b6a795;
+  transition: color .18s var(--ease), border-color .18s var(--ease), background .18s var(--ease);
+}
+.ribbon__i b { font-weight: 600; }
+.ribbon__i:hover { color: var(--cream); border-color: rgba(244,237,225,.3); }
+.ribbon__i.is-on { background: var(--tung); border-color: var(--tung); color: var(--night); }
+.ribbon__all { margin-left: auto; font-size: .74rem; letter-spacing: .08em; color: var(--tung); border-bottom: 1px solid currentColor; }
 </style>
 </head>
 <body>
 
-<div class="ribbon">Varianta D — Salon · <a href="index.html">zpět na přehled variant</a></div>
+<nav class="ribbon" aria-label="Návrhy webu">
+  <span class="ribbon__lbl">Návrh</span>
+  <span class="ribbon__set">
+    <a class="ribbon__i" href="../index.html"><b>A</b> Trezor</a>
+    <a class="ribbon__i" href="b-sgraffito.html"><b>B</b> Sgraffito</a>
+    <a class="ribbon__i" href="c-provoz.html"><b>C</b> Provoz</a>
+    <span class="ribbon__i is-on" aria-current="page"><b>D</b> Salon</span>
+  </span>
+  <a class="ribbon__all" href="index.html">Porovnat všechny <span aria-hidden="true">↗</span></a>
+</nav>
 
 <section class="hero">
   <div class="hero__bg" aria-hidden="true">
@@ -279,8 +302,8 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
     <h1 class="d h1">Sál pod klenbou. <em>Po hodinách.</em></h1>
     <p class="lede hero__lede">
       122 m² tanečního parketu v suterénu bývalé Městské spořitelny pražské.
-      Nemáme vlastní kurzy ani lektory — sál pronajímáme školám, lektorům
-      a jednotlivcům.
+      Prostor pro taneční školy, lektory a komunity — přinesete lidi
+      a program, my dodáme sál, ve kterém se dobře tančí.
     </p>
   </div>
 
@@ -335,16 +358,15 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
       </figure>
       <div>
         <span class="tag tag--l">Kdo jsme</span>
-        <h2 class="d h2" style="margin-top:12px">Nejsme taneční škola. <em>Jsme sál.</em></h2>
+        <h2 class="d h2" style="margin-top:12px">Prostor pro komunitu, <em>která tančí.</em></h2>
         <p class="p" style="margin-top:18px">
-          Studio 29 provozuje dva prostory v Paláci Rytířská a pronajímá je
-          po hodinách těm, kdo učí. Nevypisujeme vlastní kurzy, nemáme vlastní
-          lektory a nekonkurujeme školám, které u nás učí.
+          Studio 29 provozuje dva sály v Paláci Rytířská a otevírá je těm,
+          kdo učí, zkoušejí a scházejí se kolem tance. Sál patří tomu, kdo
+          v něm právě učí — program, jméno i lidé zůstávají vaši.
         </p>
         <p class="p">
           Za sál ručíme my: čistá podlaha, funkční ozvučení, teplo v zimě
-          a kód, který funguje. Za obsah lekce ručí lektor, kterého si
-          přivedete.
+          a kód, který funguje. Za lekci ručí lektor, který ji vede.
         </p>
         <div class="acts acts--l">
           <a class="btn btn--l" href="#partneri">Chci u vás učit</a>
@@ -385,7 +407,7 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
   <section class="night">
     <div class="wrap quote">
       <figure>
-        <blockquote class="d">Nemáme vlastní kurzy. <em>To je celý náš model.</em></blockquote>
+        <blockquote class="d">Sál patří tomu, <em>kdo v něm právě učí.</em></blockquote>
         <figcaption>Taneční studio 29</figcaption>
       </figure>
     </div>
@@ -481,7 +503,7 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
       <a class="mk" href="#" aria-label="Taneční studio 29"><b>Studio 29</b><span>Rytířská · Praha 1</span></a>
       <p style="margin-top:16px;font-size:.9rem">
         Klenutý sál k pronájmu po hodinách v Paláci Rytířská.
-        Bez vlastních kurzů, bez vlastních lektorů.
+        Domov pro taneční školy, lektory a komunity.
       </p>
     </div>
     <div>
