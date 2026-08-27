@@ -54,15 +54,14 @@
   /* the hero chip: what is actually free in the big hall today */
   var chip = document.querySelector("[data-chip]");
   if (chip && window.Rozvrh) {
-    var free = window.Rozvrh.nextFreeToday("velky");
-    var dot = chip.querySelector(".dot");
+    var R = window.Rozvrh;
+    var free = R.nextFreeBlock("velky", 7);
     var txt = chip.querySelector("[data-chip-text]");
     if (free) {
-      txt.innerHTML = "Velký sál — dnes volno <b>" + window.Rozvrh.hhmm(free.from) +
-                      "–" + window.Rozvrh.hhmm(free.to) + "</b>";
+      txt.innerHTML = "Velký sál — nejbližší volno <b>" + free.when + " " +
+                      R.hhmm(free.from) + "–" + R.hhmm(free.to) + "</b>";
     } else {
-      if (dot) dot.classList.add("dot--off");
-      txt.innerHTML = "Velký sál — dnes už obsazeno, <b>zkuste zítra</b>";
+      txt.innerHTML = "Velký sál — <b>napište si o termín</b>";
     }
   }
 })();

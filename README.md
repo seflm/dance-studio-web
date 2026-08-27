@@ -43,17 +43,18 @@ assets/js/rozvrh.js   rozvrhový modul — obsazenost, ceny, výběr hodin
 assets/js/site.js     hlavička, mobilní menu, animace při scrollu
 assets/img/           fotografie a loga
 
-mockupy/index.html    přehled čtyř návrhů s náhledy
+mockupy/index.html    přehled pěti návrhů s náhledy
 mockupy/b-sgraffito.html
 mockupy/c-provoz.html
-mockupy/d-salon.html  tři alternativní návrhy úvodní stránky
+mockupy/d-salon.html
+mockupy/e-atelier.html  čtyři alternativní návrhy úvodní stránky
 
 context/              zadání — fotky z inzerátu, referenční návrhy, logo partnera
 ```
 
 ---
 
-## Čtyři návrhy
+## Pět návrhů
 
 Každá varianta je samostatná úvodní stránka se **stejným obsahem a stejnými
 čísly**. Liší se paletou, typografií a kompozicí. Přehled a náhledy jsou na
@@ -65,15 +66,18 @@ Každá varianta je samostatná úvodní stránka se **stejným obsahem a stejn�
 | **B** | Sgraffito | vápno `#EFEAE0`, škrábanec `#2E2A26`, železitá `#8C3B2E`, okr `#B98A2E` | Alegreya · Karla · Alegreya Sans SC | Oblouk a škrábaný pás |
 | **C** | Provoz | papír `#F6F6F3`, ink `#16171A`, ultramarín `#1F3BEE` | Archivo Expanded · IBM Plex Sans · JetBrains Mono | Počet volných hodin místo hlavní fotky |
 | **D** | Salon | noc `#171009`, krém `#F4EDE1`, wolfram `#D9A248` | Newsreader · Instrument Sans | Plovoucí lišta „najít termín“ |
+| **E** | Ateliér | krém `#FDFBF7`, taupe `#E6DFD5`, espresso `#1A1817`, zlatá `#C5A880` | Cormorant Garamond · Plus Jakarta Sans | Zlatě orámované tlačítko, program týdne s detailem při najetí |
 
-Mezi variantami se přepíná **lištou v horní části stránky** (`Návrh A / B / C / D`).
+Mezi variantami se přepíná **lištou v horní části stránky** (`Návrh A – E`).
 Je to jen pomůcka pro výběr — před spuštěním stačí smazat blok `.vsw`
-z `index.html` a třídu `has-vsw` z jeho `<body>`; u variant B/C/D blok
+z `index.html` a třídu `has-vsw` z jeho `<body>`; u variant B–E blok
 `nav.ribbon`. Nic jiného na ní nezávisí.
 
 Návrh **A** vychází z toho, že dům byl spořitelna a že se prodává *čas* —
 proto rytá číslice, účetní linky a mosazné šrafování přes obsazené hodiny.
-Návrh **D** je nejblíž referenčním ukázkám ze zadání.
+Návrh **D** je nejblíž referenčním ukázkám ze zadání. Návrh **E** vznikl
+na zadanou paletu a typografii; jediný má na telefonu spodní rezervační
+lištu a v hero sekci počítá s krátkou video smyčkou místo fotografie.
 
 Rozvrhový modul, ceník i texty jsou nezávislé na vzhledu — dají se přenést do
 kterékoli varianty.

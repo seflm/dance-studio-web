@@ -33,6 +33,11 @@
   .pick__meta dt { flex: 0 0 84px; font-family: var(--ff-mono); font-size: .64rem; letter-spacing: .11em; text-transform: uppercase; color: var(--brass); padding-top: .25em; }
   .pick__meta dd { color: color-mix(in srgb, var(--limestone) 78%, transparent); }
   .pick__acts { display: flex; flex-wrap: wrap; gap: 10px; }
+  /* the odd one out spans the row and lies on its side */
+  @media (min-width: 900px) {
+    .pick--wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
+    .pick--wide .pick__fig { border-bottom: 0; border-right: 1px solid var(--rule); }
+  }
   .rec { display: inline-block; align-self: start; padding: 3px 9px; border: 1px solid var(--brass); font-family: var(--ff-mono); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--brass-lit); }
 </style>
 </head>
@@ -47,6 +52,7 @@
         <li><a class="vsw__i" href="../mockupy/b-sgraffito.html"><b>B</b><span class="vsw__nm">Sgraffito</span></a></li>
         <li><a class="vsw__i" href="../mockupy/c-provoz.html"><b>C</b><span class="vsw__nm">Provoz</span></a></li>
         <li><a class="vsw__i" href="../mockupy/d-salon.html"><b>D</b><span class="vsw__nm">Salon</span></a></li>
+        <li><a class="vsw__i" href="../mockupy/e-atelier.html"><b>E</b><span class="vsw__nm">Ateliér</span></a></li>
     </ul>
     <a class="vsw__all" href="../mockupy/index.html" aria-current="page">Porovnat všechny <span aria-hidden="true">↗</span></a>
   </div>
@@ -70,7 +76,7 @@
 <main id="main">
   <section class="wrap phead">
     <span class="eyebrow">Návrhy · Rytířská 29</span>
-    <h1 class="display h1 mt-s">Čtyři směry, jeden sál.</h1>
+    <h1 class="display h1 mt-s">Pět směrů, jeden sál.</h1>
     <p class="lede">
       Každá varianta je samostatná úvodní stránka se stejným obsahem
       a stejnými čísly — liší se paletou, typografií i kompozicí. Varianta A je
@@ -80,7 +86,7 @@
     <p class="mock mt-m">
       <span aria-hidden="true">◆</span>
       <span><b>Data v návrzích jsou živá.</b> Volné hodiny, ceny i vyhledávání
-      termínu počítá ve všech čtyřech variantách stejný rozvrhový modul.</span>
+      termínu počítá ve všech pěti variantách stejný rozvrhový modul.</span>
     </p>
   </section>
 
@@ -192,6 +198,33 @@
         </div>
       </article>
 
+
+      <article class="pick pick--wide">
+        <figure class="pick__fig">
+          <img src="../assets/img/mockupy/e-atelier.webp" alt="Náhled varianty E — Ateliér: tmavé hero s klenutým sálem, krémové stránky a zlatý rámeček tlačítka" loading="lazy" width="900" height="612">
+          <span class="pick__letter">E</span>
+        </figure>
+        <div class="pick__bd">
+          <h2 class="display h3">Ateliér</h2>
+          <div class="pick__sw" aria-hidden="true">
+            <i style="background:#fdfbf7"></i><i style="background:#e6dfd5"></i><i style="background:#1a1817"></i><i style="background:#c5a880"></i>
+          </div>
+          <p class="prose">
+            Editoriální a prostorný — butikový hotel potkává uměleckou akademii.
+            Jediný tmavý pás nahoře, pak teplé neutrální papíry až dolů. Zlatá
+            se objevuje jen tam, kam sáhne ruka: na tlačítku, na lince pod
+            citátem, na termínu, na který najedete myší.
+          </p>
+          <dl class="pick__meta">
+            <div><dt>Písmo</dt><dd>Cormorant Garamond · Plus&nbsp;Jakarta&nbsp;Sans</dd></div>
+            <div><dt>Nosný prvek</dt><dd>Zlatě orámované tlačítko a program týdne, který detail vydá až při najetí</dd></div>
+            <div><dt>Silné v</dt><dd>eleganci — nejvíc ze všech variant vypadá jako adresa, do které se chodí</dd></div>
+          </dl>
+          <div class="pick__acts">
+            <a class="btn" href="e-atelier.html">Otevřít návrh <span class="btn__arw">→</span></a>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 

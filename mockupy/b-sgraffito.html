@@ -238,6 +238,7 @@ footer.foot address { font-style: normal; font-size: .9rem; color: var(--soft); 
     <span class="ribbon__i is-on" aria-current="page"><b>B</b> Sgraffito</span>
     <a class="ribbon__i" href="c-provoz.html"><b>C</b> Provoz</a>
     <a class="ribbon__i" href="d-salon.html"><b>D</b> Salon</a>
+    <a class="ribbon__i" href="e-atelier.html"><b>E</b> Ateliér</a>
   </span>
   <a class="ribbon__all" href="index.html">Porovnat všechny <span aria-hidden="true">↗</span></a>
 </nav>
@@ -437,12 +438,13 @@ footer.foot address { font-style: normal; font-size: .9rem; color: var(--soft); 
   var el = document.querySelector("[data-avail]");
   if (!el || !window.Rozvrh) return;
   var R = window.Rozvrh;
-  var free = R.nextFreeToday("velky");
+  var free = R.nextFreeBlock("velky", 7);
   var out = R.outlook("velky", 7);
   var week = out.reduce(function (s, d) { return s + d.free; }, 0);
   el.innerHTML = (free
-      ? "Velký sál — dnes volno <b>" + R.hhmm(free.from) + "–" + R.hhmm(free.to) + "</b>"
-      : "Velký sál — dnes už obsazeno")
+      ? "Velký sál — nejbližší volno <b>" + free.when + " " +
+        R.hhmm(free.from) + "–" + R.hhmm(free.to) + "</b>"
+      : "Velký sál — napište si o termín")
     + '<span aria-hidden="true">·</span>'
     + "nejbližších 7 dní <b>" + week + " volných hodin</b>";
 })();

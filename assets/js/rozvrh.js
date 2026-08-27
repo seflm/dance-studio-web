@@ -419,6 +419,31 @@
     this.el.sum.textContent = czk(s.total);
   };
 
+  /* The next free block from now on, looking several days ahead, so a page can
+     always say when the hall IS free instead of when it is not. */
+  function nextFreeBlock(hallId, daysAhead) {
+    var now = new Date();
+    for (var i = 0; i <= (daysAhead === undefined ? 7 : daysAhead); i++) {
+      var d = addDays(startOfDay(now), i);
+      var occ = dayOccupancy(hallId, d);
+      var start = i === 0 ? Math.max(STUDIO.openFrom, now.getHours() + 1) : STUDIO.openFrom;
+      var from = null, to = null;
+      for (var h = start; h < STUDIO.openTo; h++) {
+        if (occ[h]) { if (from !== null) break; continue; }
+        if (from === null) from = h;
+        to = h + 1;
+      }
+      if (from !== null) {
+        return {
+          date: d, iso: iso(d), from: from, to: to,
+          when: i === 0 ? "dnes" : i === 1 ? "zítra"
+                : DAYS[(d.getDay() + 6) % 7] + " " + d.getDate() + ". " + (d.getMonth() + 1) + "."
+        };
+      }
+    }
+    return null;
+  }
+
   /* --- next free block today, for the hero's status chip ----------------- */
   function nextFreeToday(hallId) {
     var now = new Date();
@@ -471,6 +496,7 @@
     DAYS: DAYS,
     create: function (root, opts) { return new Rozvrh(root, opts); },
     nextFreeToday: nextFreeToday,
+    nextFreeBlock: nextFreeBlock,
     freeHoursOn: freeHoursOn,
     outlook: outlook,
     occupancyOn: dayOccupancy,
