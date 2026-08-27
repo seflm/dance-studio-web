@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Čtyři návrhy webu — Taneční studio 29</title>
+<meta name="description" content="Čtyři návrhy úvodní stránky pro Taneční studio 29, Rytířská 29, Praha 1. Trezor, Sgraffito, Provoz a Salon.">
+<meta name="theme-color" content="#101317">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  /* This page is scaffolding for choosing a direction, not part of the site. */
+  .picks { display: grid; gap: clamp(22px, 3vw, 40px); }
+  @media (min-width: 900px) { .picks { grid-template-columns: repeat(2, 1fr); } }
+  .pick { display: flex; flex-direction: column; border: 1px solid var(--rule); background: var(--ink-2); }
+  .pick__fig { position: relative; border-bottom: 1px solid var(--rule); overflow: hidden; }
+  .pick__fig img { width: 100%; display: block; transition: transform .7s var(--ease); }
+  .pick:hover .pick__fig img { transform: scale(1.02); }
+  .pick__letter {
+    position: absolute; top: 0; left: 0;
+    display: grid; place-items: center;
+    width: 46px; height: 46px;
+    background: var(--brass); color: var(--ink);
+    font-family: var(--ff-display); font-size: 1.5rem; line-height: 1;
+  }
+  .pick__bd { display: flex; flex-direction: column; flex: 1; gap: 14px; padding: clamp(20px, 2.4vw, 30px); }
+  .pick__sw { display: flex; gap: 6px; }
+  .pick__sw i { width: 22px; height: 22px; border: 1px solid rgba(255,255,255,.14); }
+  .pick__meta { display: grid; gap: 0; margin-top: auto; }
+  .pick__meta div { display: flex; gap: 14px; padding: 9px 0; border-top: 1px solid var(--rule); font-size: .84rem; }
+  .pick__meta dt { flex: 0 0 84px; font-family: var(--ff-mono); font-size: .64rem; letter-spacing: .11em; text-transform: uppercase; color: var(--brass); padding-top: .25em; }
+  .pick__meta dd { color: color-mix(in srgb, var(--limestone) 78%, transparent); }
+  .pick__acts { display: flex; flex-wrap: wrap; gap: 10px; }
+  .rec { display: inline-block; align-self: start; padding: 3px 9px; border: 1px solid var(--brass); font-family: var(--ff-mono); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: var(--brass-lit); }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Přeskočit na obsah</a>
+
+<header class="hdr" data-stuck="true">
+  <div class="wrap hdr__in">
+    <a class="mark" href="../index.html" aria-label="Taneční studio 29 — domů">
+      <span class="mark__txt">Taneční<br>studio</span>
+      <span class="mark__no">29</span>
+    </a>
+    <nav class="nav" aria-label="Navigace">
+      <a href="../index.html">Hotový web</a>
+      <a href="../rezervace.html">Rezervace</a>
+    </nav>
+    <a class="btn btn--quiet" href="../index.html">Zpět na web <span class="btn__arw">→</span></a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="wrap phead">
+    <span class="eyebrow">Návrhy · Rytířská 29</span>
+    <h1 class="display h1 mt-s">Čtyři směry, jeden sál.</h1>
+    <p class="lede">
+      Každá varianta je samostatná úvodní stránka se stejným obsahem
+      a stejnými čísly — liší se paletou, typografií i kompozicí. Varianta A je
+      dotažená do celého webu včetně rezervačního systému. Kterákoli z ostatních
+      se dá dotáhnout stejně.
+    </p>
+    <p class="mock mt-m">
+      <span aria-hidden="true">◆</span>
+      <span><b>Data v návrzích jsou živá.</b> Volné hodiny, ceny i vyhledávání
+      termínu počítá ve všech čtyřech variantách stejný rozvrhový modul.</span>
+    </p>
+  </section>
+
+  <section class="wrap band--s">
+    <div class="picks">
+
+      <article class="pick">
+        <figure class="pick__fig">
+          <img src="../assets/img/mockupy/a-trezor.webp" alt="Náhled varianty A — Trezor: tmavá stránka s klenutým sálem, mosazné akcenty" loading="lazy" width="900" height="612">
+          <span class="pick__letter">A</span>
+        </figure>
+        <div class="pick__bd">
+          <span class="rec">Doporučuji · dotažena celá</span>
+          <h2 class="display h3">Trezor</h2>
+          <div class="pick__sw" aria-hidden="true">
+            <i style="background:#101317"></i><i style="background:#e7e0d2"></i><i style="background:#b08d3f"></i><i style="background:#4e6b60"></i>
+          </div>
+          <p class="prose">
+            Dům byl spořitelna, tak si stránka bere její jazyk: rytá číslice,
+            účetní linky, mosazné šrafování přes obsazené hodiny. Tmavá paleta
+            odpovídá tomu, jak sál skutečně vypadá — nesnaží se ho rozsvítit.
+          </p>
+          <dl class="pick__meta">
+            <div><dt>Písmo</dt><dd>Bodoni Moda · Archivo · IBM&nbsp;Plex&nbsp;Mono</dd></div>
+            <div><dt>Nosný prvek</dt><dd>Rozvrh jako účetní kniha — klikací mřížka hodin</dd></div>
+            <div><dt>Silné v</dt><dd>prestiži pro banku i důvěře u lektorů</dd></div>
+          </dl>
+          <div class="pick__acts">
+            <a class="btn btn--solid" href="../index.html">Otevřít celý web <span class="btn__arw">→</span></a>
+            <a class="btn btn--quiet" href="../rezervace.html">Rezervace</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="pick">
+        <figure class="pick__fig">
+          <img src="../assets/img/mockupy/b-sgraffito.webp" alt="Náhled varianty B — Sgraffito: světlá vápenná stránka, klenutý rám fotografie" loading="lazy" width="900" height="612">
+          <span class="pick__letter">B</span>
+        </figure>
+        <div class="pick__bd">
+          <h2 class="display h3">Sgraffito</h2>
+          <div class="pick__sw" aria-hidden="true">
+            <i style="background:#efeae0"></i><i style="background:#2e2a26"></i><i style="background:#8c3b2e"></i><i style="background:#b98a2e"></i>
+          </div>
+          <p class="prose">
+            Antonín Wiehl, který palác postavil, byl mistrem sgraffita. Světlá
+            vápenná omítka, proškrabávané pásy místo ornamentu a všechno
+            důležité zaklenuté do oblouku — stejného, jaký má sál i okna domu.
+          </p>
+          <dl class="pick__meta">
+            <div><dt>Písmo</dt><dd>Alegreya · Karla · Alegreya&nbsp;Sans&nbsp;SC</dd></div>
+            <div><dt>Nosný prvek</dt><dd>Oblouk a škrábaný pás jako dělič sekcí</dd></div>
+            <div><dt>Silné v</dt><dd>vřelosti — nejlíp přitáhne běžné tanečníky</dd></div>
+          </dl>
+          <div class="pick__acts">
+            <a class="btn" href="b-sgraffito.html">Otevřít návrh <span class="btn__arw">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="pick">
+        <figure class="pick__fig">
+          <img src="../assets/img/mockupy/c-provoz.webp" alt="Náhled varianty C — Provoz: bílá stránka, velké modré číslo a pruhy volných hodin" loading="lazy" width="900" height="612">
+          <span class="pick__letter">C</span>
+        </figure>
+        <div class="pick__bd">
+          <h2 class="display h3">Provoz</h2>
+          <div class="pick__sw" aria-hidden="true">
+            <i style="background:#f6f6f3"></i><i style="background:#16171a"></i><i style="background:#1f3bee"></i><i style="background:#d5d5cf"></i>
+          </div>
+          <p class="prose">
+            Nejodvážnější z návrhů: nahoře není žádná fotografie, jen počet
+            volných hodin a týden, ve kterém leží. Stránka stojí na mřížce,
+            kterou neschovává. Fotky přijdou později, malé a odbarvené.
+          </p>
+          <dl class="pick__meta">
+            <div><dt>Písmo</dt><dd>Archivo Expanded · IBM&nbsp;Plex&nbsp;Sans · JetBrains&nbsp;Mono</dd></div>
+            <div><dt>Nosný prvek</dt><dd>Počet volných hodin a pruhy dnů místo hlavní fotky</dd></div>
+            <div><dt>Silné v</dt><dd>rychlosti rozhodnutí — lektor za dvě sekundy ví, co je volné</dd></div>
+          </dl>
+          <div class="pick__acts">
+            <a class="btn" href="c-provoz.html">Otevřít návrh <span class="btn__arw">→</span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="pick">
+        <figure class="pick__fig">
+          <img src="../assets/img/mockupy/d-salon.webp" alt="Náhled varianty D — Salon: teplá večerní fotografie sálu s plovoucím vyhledávačem termínu" loading="lazy" width="900" height="612">
+          <span class="pick__letter">D</span>
+        </figure>
+        <div class="pick__bd">
+          <h2 class="display h3">Salon</h2>
+          <div class="pick__sw" aria-hidden="true">
+            <i style="background:#171009"></i><i style="background:#f4ede1"></i><i style="background:#d9a248"></i><i style="background:#a08e78"></i>
+          </div>
+          <p class="prose">
+            Vaše referenční ukázky, dotažené do konce: celoplošná fotografie,
+            plovoucí vyhledávač termínu a serif s pravou kurzivou na akcenty.
+            Teplá paleta je vzorkovaná z bodových světel v sále, ne ze šablony.
+          </p>
+          <dl class="pick__meta">
+            <div><dt>Písmo</dt><dd>Newsreader · Instrument Sans</dd></div>
+            <div><dt>Nosný prvek</dt><dd>Plovoucí lišta „najít termín“ — funkční dotaz na rozvrh</dd></div>
+            <div><dt>Silné v</dt><dd>bezpečné volbě — nejblíž tomu, co jste poslali</dd></div>
+          </dl>
+          <div class="pick__acts">
+            <a class="btn" href="d-salon.html">Otevřít návrh <span class="btn__arw">→</span></a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="band band--ruled band--raised">
+    <div class="wrap split">
+      <div>
+        <div class="shead">
+          <div class="shead__top"><span class="eyebrow">Jak dál</span><hr></div>
+          <h2 class="display h2">Vyberte směr, dotáhnu ho.</h2>
+        </div>
+        <div class="prose">
+          <p>
+            Rozvrhový modul, ceník i texty jsou už napsané a nezávislé na
+            vzhledu — přenesou se do kterékoli varianty. Změna směru znamená
+            přepsat paletu, písmo a kompozici, ne obsah.
+          </p>
+          <p>
+            Klidně si vyberte i po částech: hero z jedné varianty, rozvrh
+            z druhé.
+          </p>
+        </div>
+      </div>
+      <div class="stamp">
+        <b>Co ještě chybí</b>
+        Skutečné fotky sálu po úpravách · pravý e-mail a telefon ·
+        vložená mapa · rozhodnutí o názvu studia · potvrzení ceníku ·
+        souhlas partnerských škol s uvedením loga
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap ftr__base">
+    <p>© 2026 Taneční studio 29 — návrhy webu</p>
+    <p>Rytířská 536/29, Praha 1</p>
+    <p><a href="../index.html">Zpět na web</a></p>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+</body>
+</html>
