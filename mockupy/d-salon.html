@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Varianta D — Salon · Taneční studio 29</title>
-<meta name="description" content="Návrh D: večerní teplá paleta, celoplošná fotografie a plovoucí vyhledávač termínů. Taneční studio 29, Rytířská 29, Praha 1.">
+<meta name="description" content="Návrh D: večerní teplá paleta, celoplošná fotografie a plovoucí vyhledávač termínů. Taneční sál k pronájmu po hodinách v centru Prahy.">
 <meta name="theme-color" content="#171009">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -218,15 +218,50 @@ table.t .best { color: var(--tung-d); font-weight: 600; }
 .step p { margin-top: 8px; font-size: .88rem; color: rgba(244,237,225,.72); }
 
 /* partners */
-.pcard { display: grid; gap: clamp(22px,3vw,40px); align-items: center; padding: clamp(22px,3vw,36px); border-radius: var(--r); background: var(--cream); }
-@media (min-width: 780px) { .pcard { grid-template-columns: 132px 1fr; } }
-.pcard img { width: 132px; border-radius: 10px; }
-.logos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 26px; background: var(--cream2); border-radius: var(--r); overflow: hidden; }
-@media (min-width: 640px) { .logos { grid-template-columns: repeat(5, 1fr); } }
-.logos li { display: grid; place-items: center; min-height: 100px; padding: 18px; background: var(--cream); }
-.logos img { max-height: 38px; width: auto; filter: invert(1); opacity: .74; transition: opacity .24s var(--ease); }
-.logos a:hover img { opacity: 1; }
-.logos span { font-size: .66rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #a89a86; text-align: center; line-height: 1.5; }
+/* what the sál is used for, as a ruled index */
+.uses { margin-top: clamp(22px, 3vw, 32px); max-width: 34rem; border-top: 1px solid rgba(244,237,225,.14); }
+.uses li { display: flex; gap: 12px; padding: 11px 0; border-bottom: 1px solid rgba(244,237,225,.14); font-size: .92rem; color: rgba(244,237,225,.82); }
+.uses li::before { content: "—"; color: var(--tung); }
+
+/* partner carousel — the logo row is its navigation */
+.car { margin-top: clamp(34px, 4vw, 56px); }
+.car__view { overflow: hidden; }
+.car__track { display: flex; transition: transform .8s var(--ease); }
+@media (prefers-reduced-motion: reduce) { .car__track { transition: none; } }
+.car__slide { flex: 0 0 100%; min-width: 0; padding-inline: 2px; }
+.pslide { display: grid; justify-items: center; text-align: center; gap: 20px; max-width: 620px; margin-inline: auto; }
+.pslide__logo { display: grid; place-items: center; min-height: 92px; }
+.pslide__logo img { max-height: 72px; width: auto; }
+.pslide .h3 { color: var(--cream); }
+.pslide p { max-width: 52ch; color: rgba(244,237,225,.8); }
+.pslide__mark { display: grid; place-items: center; min-height: 92px; color: rgba(244,237,225,.3); }
+.pslide__facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 30px; }
+.pslide__facts > div { display: grid; gap: 2px; }
+.pslide__facts dt { font-size: .6rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--tung); }
+.pslide__facts dd { font-size: .88rem; color: rgba(244,237,225,.86); }
+
+.slots {
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+  gap: clamp(18px, 4vw, 52px);
+  margin-top: clamp(34px, 4vw, 54px);
+  padding-top: clamp(24px, 3vw, 36px);
+  border-top: 1px solid rgba(244,237,225,.14);
+}
+.slot {
+  display: grid; justify-items: center; gap: 9px;
+  padding: 8px 6px 4px;
+  border: 0; background: none; font: inherit; cursor: pointer;
+  opacity: .46;
+  transition: opacity .5s var(--ease), transform .5s var(--ease);
+}
+.slot:hover, .slot:focus-visible { opacity: .72; transform: translateY(-2px); outline: none; }
+.slot[aria-current="true"] { opacity: 1; }
+.slot__fig { display: grid; place-items: center; height: 38px; }
+.slot__fig img { max-height: 32px; width: auto; }
+.slot__lbl { font-size: .58rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--dim); }
+.slot[aria-current="true"] .slot__lbl { color: var(--cream); }
+.slot__rule { width: 24px; height: 1px; background: rgba(244,237,225,.24); transition: background .5s var(--ease), width .5s var(--ease); }
+.slot[aria-current="true"] .slot__rule { background: var(--tung); width: 40px; }
 
 .note { margin-top: 22px; padding: 14px 16px; border-radius: 10px; background: rgba(217,162,72,.1); border: 1px solid rgba(217,162,72,.3); font-size: .86rem; }
 
@@ -286,9 +321,10 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
     <div class="wrap top__in">
       <a class="mk" href="#" aria-label="Taneční studio 29">
         <b>Studio 29</b>
-        <span>Rytířská · Praha 1</span>
+        <span>Taneční sál · Praha</span>
       </a>
       <nav aria-label="Hlavní navigace">
+        <a href="#filozofie">Filozofie</a>
         <a href="#saly">Sály</a>
         <a href="#cenik">Ceník</a>
         <a href="#jak">Jak to funguje</a>
@@ -299,12 +335,12 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
   </header>
 
   <div class="wrap hero__in">
-    <span class="tag tag--l">Palác Rytířská · Staré Město</span>
-    <h1 class="d h1">Sál pod klenbou. <em>Po hodinách.</em></h1>
+    <span class="tag tag--l">Historický palác v centru Prahy</span>
+    <h1 class="d h1">Sál pro tanec. <em>Po hodinách.</em></h1>
     <p class="lede hero__lede">
-      122 m² tanečního parketu v suterénu bývalé Městské spořitelny pražské.
-      Prostor pro taneční školy, lektory a komunity — přinesete lidi
-      a program, my dodáme sál, ve kterém se dobře tančí.
+      122 m² tanečního parketu v centru Prahy. Prostor pro taneční školy,
+      lektory a komunity — přinesete lidi a program, my dodáme sál,
+      ve kterém se dobře tančí.
     </p>
   </div>
 
@@ -352,23 +388,36 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
     </div>
   </section>
 
-  <section class="night">
+  <section class="night" id="filozofie">
     <div class="wrap two two--r">
       <figure class="shot">
-        <img src="../assets/img/hall-vault.webp" alt="Valená klenba sálu s odhaleným rozvodem vzduchotechniky" width="1500" height="770">
+        <img src="../assets/img/hall-vault.webp" alt="Sál — bodové osvětlení na liště nad parketem" width="1500" height="770">
       </figure>
       <div>
-        <span class="tag tag--l">Kdo jsme</span>
-        <h2 class="d h2" style="margin-top:12px">Prostor pro komunitu, <em>která tančí.</em></h2>
+        <span class="tag tag--l">Filozofie</span>
+        <h2 class="d h2" style="margin-top:12px">Prostor, který <em>unese víc než tanec.</em></h2>
         <p class="p" style="margin-top:18px">
-          Studio 29 provozuje dva sály v Paláci Rytířská a otevírá je těm,
-          kdo učí, zkoušejí a scházejí se kolem tance. Sál patří tomu, kdo
-          v něm právě učí — program, jméno i lidé zůstávají vaši.
+          Otevřeli jsme sál pro tanec — a rychle se ukázalo, že místo, kde se dá
+          volně hýbat a přitom slyšet vlastní hudbu, je v centru Prahy vzácnější,
+          než by člověk čekal.
         </p>
         <p class="p">
-          Za sál ručíme my: čistá podlaha, funkční ozvučení, teplo v zimě
-          a kód, který funguje. Za lekci ručí lektor, který ji vede.
+          Chodí k nám taneční školy s pravidelnými kurzy, páry na soukromé lekce
+          i soubory před vystoupením. Stejně dobře prostor funguje pro workshopy,
+          focení, firemní večery nebo setkání komunit, které jinde nemají kam.
         </p>
+        <p class="p">
+          Nepřidělujeme sálu jediné použití. Dáváme mu podlahu, světlo, zvuk
+          a klid — a co se v něm bude dít, necháváme na vás.
+        </p>
+        <ul class="uses">
+          <li><span>Taneční kurzy a lekce</span></li>
+          <li><span>Zkoušky a příprava na vystoupení</span></li>
+          <li><span>Workshopy a intenzivy</span></li>
+          <li><span>Focení a video</span></li>
+          <li><span>Firemní a komunitní setkání</span></li>
+          <li><span>Malá vystoupení a party</span></li>
+        </ul>
         <div class="acts acts--l">
           <a class="btn btn--l" href="#partneri">Chci u vás učit</a>
         </div>
@@ -379,13 +428,13 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
   <section id="saly">
     <div class="wrap">
       <span class="tag">Sály</span>
-      <h2 class="d h2" style="margin-top:12px">Dva prostory, <em>jedna klenba.</em></h2>
+      <h2 class="d h2" style="margin-top:12px">Dva prostory, <em>jedno místo.</em></h2>
       <div class="halls">
         <article class="hall">
-          <img src="../assets/img/hall-portrait.webp" alt="Velký sál — souvislý parket pod valenou klenbou" width="1100" height="1386">
+          <img src="../assets/img/hall-portrait.webp" alt="Velký sál — souvislý parket bez sloupů" width="1100" height="1386">
           <div class="hall__bd">
             <h3 class="d h3">Velký sál</h3>
-            <p>Souvislý parket bez sloupů, klenba 3,4 m ve vrcholu, mobilní zrcadlová stěna a bodová světla na liště.</p>
+            <p>Souvislý parket bez jediného sloupu, světlá výška 3,4 m, mobilní zrcadlová stěna a bodová světla na liště.</p>
             <p class="hall__mt"><span>122 m²</span><span>30 tanečníků v páru</span><span>od 590 Kč/h</span></p>
           </div>
         </article>
@@ -398,21 +447,11 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
           </div>
         </article>
       </div>
-      <p class="note">
-        <b>Sál otevíráme po dokončení úprav.</b> Fotografie jsou ze současného
-        stavu prostoru, technický popis odpovídá projektu.
-      </p>
+      
     </div>
   </section>
 
-  <section class="night">
-    <div class="wrap quote">
-      <figure>
-        <blockquote class="d">Sál patří tomu, <em>kdo v něm právě učí.</em></blockquote>
-        <figcaption>Taneční studio 29</figcaption>
-      </figure>
-    </div>
-  </section>
+  
 
   <section id="jak" class="night" style="padding-top:0">
     <div class="wrap">
@@ -421,7 +460,7 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
       <ol class="steps">
         <li class="step"><b>01</b><h3 class="d h3">Vyberete hodiny</h3><p>V rozvrhu kliknete na volné bloky. Minimum je jedna hodina.</p></li>
         <li class="step"><b>02</b><h3 class="d h3">Potvrdíme do 12 hodin</h3><p>Ozveme se e-mailem, u dlouhodobých rezervací přiložíme smlouvu.</p></li>
-        <li class="step"><b>03</b><h3 class="d h3">Dostanete kód</h3><p>Samostatný vstup z Rytířské. Kód platí jen ve vašich hodinách.</p></li>
+        <li class="step"><b>03</b><h3 class="d h3">Dostanete kód</h3><p>Samostatný vstup z ulice. Kód platí jen ve vašich hodinách.</p></li>
         <li class="step"><b>04</b><h3 class="d h3">Platíte odebrané hodiny</h3><p>Předem převodem, partnerským školám souhrnně na konci měsíce.</p></li>
       </ol>
     </div>
@@ -431,10 +470,7 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
     <div class="wrap">
       <span class="tag">Ceník</span>
       <h2 class="d h2" style="margin-top:12px">Cena za hodinu, <em>nic navíc.</em></h2>
-      <p class="lede" style="margin-top:16px">
-        Žádné členství, žádný poplatek za rezervaci. Semestrální sazba platí
-        od deseti týdnů se stejným termínem.
-      </p>
+      
       <table class="t">
         <thead>
           <tr>
@@ -458,33 +494,17 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
     <div class="wrap">
       <span class="tag tag--l">S kým pracujeme</span>
       <h2 class="d h2" style="margin-top:12px">Školy, <em>které u nás učí.</em></h2>
-      <div class="pcard" style="margin-top:32px">
-        <img src="../assets/img/partner-simplythewest.webp" alt="Logo Simply the West" width="360" height="360">
-        <div>
-          <span class="tag">První partnerská škola</span>
-          <h3 class="d h3" style="margin-top:8px;color:var(--night)">Simply the West</h3>
-          <p class="p" style="margin-top:10px">
-            Taneční škola Jiřího Švarce a Miriam Zedníčkové, zaměřená na West
-            Coast Swing. Kurzy od úplných začátečníků po pokročilé, workshopy
-            s hostujícími lektory a pravidelné taneční party.
-          </p>
-          <p style="margin-top:16px"><a class="btn btn--o" href="https://www.simplythewest.cz/" target="_blank" rel="noopener">simplythewest.cz ↗</a></p>
-        </div>
+      <div class="car" data-car aria-roledescription="carousel" aria-label="Partnerské školy">
+        <div class="car__view"><div class="car__track" data-car-track></div></div>
+        <ul class="slots" data-car-nav></ul>
       </div>
-      <ul class="logos">
-        <li><a href="https://www.simplythewest.cz/" target="_blank" rel="noopener"><img src="../assets/img/partner-simplythewest-mono.png" alt="Simply the West" width="749" height="300"></a></li>
-        <li><span>Volné místo<br>pro školu</span></li>
-        <li><span>Volné místo<br>pro školu</span></li>
-        <li><span>Volné místo<br>pro školu</span></li>
-        <li><span>Volné místo<br>pro školu</span></li>
-      </ul>
     </div>
   </section>
 
   <section class="cta">
-    <img src="../assets/img/facade-arch.webp" alt="" width="1560" height="1180">
+    <img src="../assets/img/hall-floor.webp" alt="" width="1400" height="681">
     <div class="wrap">
-      <span class="tag tag--l">Rytířská 29 · Praha 1</span>
+      <span class="tag tag--l">Centrum Prahy</span>
       <h2 class="d h2" style="margin-top:12px">Přijďte si sál <em>osobně projít.</em></h2>
       <p class="lede">
         Ukážeme prostor, podlahu i vstup. Trvá to dvacet minut
@@ -501,9 +521,9 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
 <footer class="f">
   <div class="wrap f__in">
     <div>
-      <a class="mk" href="#" aria-label="Taneční studio 29"><b>Studio 29</b><span>Rytířská · Praha 1</span></a>
+      <a class="mk" href="#" aria-label="Taneční studio 29"><b>Studio 29</b><span>Taneční sál · Praha</span></a>
       <p style="margin-top:16px;font-size:.9rem">
-        Klenutý sál k pronájmu po hodinách v Paláci Rytířská.
+        Taneční sál v centru Prahy k pronájmu po hodinách.
         Domov pro taneční školy, lektory a komunity.
       </p>
     </div>
@@ -526,14 +546,14 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
     <div>
       <h4>Kde nás najdete</h4>
       <address>
-        Rytířská 536/29<br>110 00 Praha 1 — Staré Město<br>
+        Karolíny Světlé 301/8<br>110 00 Praha 1<br>
         rezervace@studio29.cz<br>+420 XXX XXX XXX
       </address>
     </div>
   </div>
   <div class="wrap f__base">
     <p>© 2026 Taneční studio 29</p>
-    <p>Nezávislý nájemce prostoru v Paláci Rytířská</p>
+    <p>Nezávislý nájemce prostoru</p>
   </div>
 </footer>
 
@@ -619,6 +639,89 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
     out.innerHTML = "<b>" + name + " je volný</b> " + R.longDate(date) + ", " +
       R.hhmm(from) + "–" + R.hhmm(from + len) + " · " + R.czk(price);
   });
+})();
+
+/* Partner carousel — one real school in the middle, the open places say so.
+   The logo row doubles as the navigation. */
+(function () {
+  var MARK = '<svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true">' +
+    '<circle cx="26" cy="26" r="25" stroke="currentColor"/>' +
+    '<path d="M26 17v18M17 26h18" stroke="currentColor"/></svg>';
+  var SMALL = '<svg width="26" height="26" viewBox="0 0 52 52" fill="none" aria-hidden="true">' +
+    '<circle cx="26" cy="26" r="25" stroke="currentColor" stroke-width="2"/>' +
+    '<path d="M26 17v18M17 26h18" stroke="currentColor" stroke-width="2"/></svg>';
+
+  var SLIDES = [
+    { open: true, nav: "Volné místo", title: "Pravidelný kurz",
+      body: "Místo pro školu, která chce držený termín každý týden po celý semestr. Sazba klesá od desátého týdne." },
+    { open: true, nav: "Volné místo", title: "Workshopy a intenzivy",
+      body: "Pro lektory, kteří vozí hosty a potřebují víkendový blok. Sál se dá vzít na celý den i na dvě hodiny." },
+    { open: false, nav: "Simply the West", title: "Simply the West",
+      logo: "../assets/img/partner-simplythewest-mono.png",
+      eyebrow: "První partnerská škola",
+      body: "Taneční škola Jiřího Švarce a Miriam Zedníčkové, zaměřená na West Coast Swing — moderní párový tanec postavený na improvizaci a vedení. Kurzy od úplných začátečníků po pokročilé, workshopy s hostujícími lektory a pravidelné taneční party.",
+      facts: [["Tanec", "West Coast Swing"], ["Úrovně", "od začátečníků po pokročilé"], ["Lektoři", "Jiří Švarc, Miriam Zedníčková"]],
+      link: "https://www.simplythewest.cz/", linkLabel: "simplythewest.cz ↗" },
+    { open: true, nav: "Volné místo", title: "Zkoušky a soubory",
+      body: "Pro soubory, které se chystají na vystoupení a potřebují prostor bez publika a bez spěchu." },
+    { open: true, nav: "Volné místo", title: "Komunitní setkání",
+      body: "Pro skupiny, které se scházejí kolem pohybu a jinde pro sebe nenajdou místo. Ozvěte se, domluvíme se." }
+  ];
+
+  var car = document.querySelector("[data-car]");
+  if (!car) return;
+  var track = car.querySelector("[data-car-track]");
+  var nav = car.querySelector("[data-car-nav]");
+
+  track.innerHTML = SLIDES.map(function (s, i) {
+    var inner = s.open
+      ? '<div class="pslide__mark">' + MARK + '</div>' +
+        '<span class="tag">Volné místo pro partnera</span>' +
+        '<h3 class="d h3">' + s.title + '</h3>' +
+        '<p>' + s.body + '</p>' +
+        '<p><a class="btn btn--gl" href="#finder">Napsat nám</a></p>'
+      : '<div class="pslide__logo"><img src="' + s.logo + '" alt="Logo Simply the West" width="749" height="300"></div>' +
+        '<span class="tag tag--l">' + s.eyebrow + '</span>' +
+        '<h3 class="d h3">' + s.title + '</h3>' +
+        '<p>' + s.body + '</p>' +
+        '<dl class="pslide__facts">' + s.facts.map(function (f) {
+          return '<div><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>';
+        }).join("") + '</dl>' +
+        '<p><a class="btn btn--gl" href="' + s.link + '" target="_blank" rel="noopener">' + s.linkLabel + '</a></p>';
+    return '<div class="car__slide" role="group" aria-roledescription="slide" aria-label="' +
+           (i + 1) + ' z ' + SLIDES.length + '"><div class="pslide">' + inner + '</div></div>';
+  }).join("");
+
+  nav.innerHTML = SLIDES.map(function (s, i) {
+    var fig = s.open
+      ? '<span class="slot__fig" aria-hidden="true">' + SMALL + '</span>'
+      : '<span class="slot__fig"><img src="' + s.logo + '" alt="" width="749" height="300"></span>';
+    return '<li><button class="slot" type="button" data-go="' + i + '">' + fig +
+      '<span class="slot__rule" aria-hidden="true"></span>' +
+      '<span class="slot__lbl">' + s.nav + '</span></button></li>';
+  }).join("");
+
+  var slides = track.querySelectorAll(".car__slide");
+  var dots = nav.querySelectorAll(".slot");
+
+  function go(i) {
+    var n = SLIDES.length;
+    i = (i % n + n) % n;
+    track.style.transform = "translateX(" + (-i * 100) + "%)";
+    slides.forEach(function (el, k) {
+      el.setAttribute("aria-hidden", String(k !== i));
+      el.querySelectorAll("a").forEach(function (a) { a.tabIndex = k === i ? 0 : -1; });
+    });
+    dots.forEach(function (el, k) { el.setAttribute("aria-current", String(k === i)); });
+  }
+  dots.forEach(function (el, i) { el.addEventListener("click", function () { go(i); }); });
+  nav.addEventListener("keydown", function (e) {
+    var cur = [].indexOf.call(dots, document.activeElement);
+    if (cur < 0) return;
+    if (e.key === "ArrowRight") { e.preventDefault(); var n1 = (cur + 1) % dots.length; dots[n1].focus(); go(n1); }
+    if (e.key === "ArrowLeft")  { e.preventDefault(); var n2 = (cur - 1 + dots.length) % dots.length; dots[n2].focus(); go(n2); }
+  });
+  go(2);
 })();
 </script>
 </body>

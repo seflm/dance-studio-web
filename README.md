@@ -66,7 +66,7 @@ Každá varianta je samostatná úvodní stránka se **stejným obsahem a stejn�
 | **B** | Sgraffito | vápno `#EFEAE0`, škrábanec `#2E2A26`, železitá `#8C3B2E`, okr `#B98A2E` | Alegreya · Karla · Alegreya Sans SC | Oblouk a škrábaný pás |
 | **C** | Provoz | papír `#F6F6F3`, ink `#16171A`, ultramarín `#1F3BEE` | Archivo Expanded · IBM Plex Sans · JetBrains Mono | Počet volných hodin místo hlavní fotky |
 | **D** | Salon | noc `#171009`, krém `#F4EDE1`, wolfram `#D9A248` | Newsreader · Instrument Sans | Plovoucí lišta „najít termín“ |
-| **E** | Ateliér | krém `#FDFBF7`, taupe `#E6DFD5`, espresso `#1A1817`, zlatá `#C5A880` | Cormorant Garamond · Plus Jakarta Sans | Zlatě orámované tlačítko, program týdne s detailem při najetí |
+| **E** | Ateliér | krém `#FDFBF7`, taupe `#E6DFD5`, espresso `#1A1817`, zlatá `#C5A880` | Cormorant Garamond · Plus Jakarta Sans | Rezervační lišta přes okraj hero sekce, kolotoč partnerů |
 
 Mezi variantami se přepíná **lištou v horní části stránky** (`Návrh A – E`).
 Je to jen pomůcka pro výběr — před spuštěním stačí smazat blok `.vsw`
@@ -76,8 +76,15 @@ z `index.html` a třídu `has-vsw` z jeho `<body>`; u variant B–E blok
 Návrh **A** vychází z toho, že dům byl spořitelna a že se prodává *čas* —
 proto rytá číslice, účetní linky a mosazné šrafování přes obsazené hodiny.
 Návrh **D** je nejblíž referenčním ukázkám ze zadání. Návrh **E** vznikl
-na zadanou paletu a typografii; jediný má na telefonu spodní rezervační
-lištu a v hero sekci počítá s krátkou video smyčkou místo fotografie.
+na zadanou paletu a typografii; má na telefonu spodní rezervační lištu
+a v hero sekci počítá s krátkou video smyčkou místo fotografie.
+
+**Návrhy D a E jsou o krok dál** podle připomínek z revize: nezmiňují klenbu
+ani konkrétní adresu, mají sekci *Filozofie* místo dřívějšího „kdo jsme“,
+a partnerské školy v nich běží jako **kolotoč**, jehož navigací je řada log.
+Simply the West je uprostřed, zbývající místa jsou volná a říkají to.
+Návrhy A, B a C zatím zůstávají v původní podobě — adresu i klenbu
+zmiňují dál.
 
 Rozvrhový modul, ceník i texty jsou nezávislé na vzhledu — dají se přenést do
 kterékoli varianty.
@@ -135,6 +142,7 @@ Web se ukazuje bance, takže tohle je potřeba mít oddělené.
 | Co | Kde | Pozn. |
 |---|---|---|
 | Název „Taneční studio 29“ | všude | rozhodnutí ještě nepadlo |
+| Adresa „Karolíny Světlé 301/8“ | zápatí D a E | **zástupná** — skutečnou adresu na přání neuvádíme |
 | Ceny 590 / 790 / 640 Kč atd. | ceníkové tabulky, `rozvrh.js` | orientační, na webu označené jako orientační |
 | Světlá výška 3,4 m | `prostory.html`, `index.html` | odhad z fotky |
 | Podlaha, zrcadla, ozvučení, rekuperace, šatna | `prostory.html` | popis odpovídá *projektu*, ne současnému stavu |

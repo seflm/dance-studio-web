@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Varianta E — Ateliér · Taneční studio 29</title>
-<meta name="description" content="Návrh E: editoriální, prostorný a povýšený — butikový hotel potkává uměleckou akademii. Taneční studio 29, Rytířská 29, Praha 1.">
+<meta name="description" content="Návrh E: editoriální, prostorný a povýšený — butikový hotel potkává uměleckou akademii. Taneční sál k pronájmu po hodinách v centru Prahy.">
 <meta name="theme-color" content="#1A1817">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,18 +13,18 @@
 /* ==========================================================================
    VARIANTA E — "Ateliér"
    Editorial, spacious, elevated: a boutique hotel that happens to be an arts
-   academy. A single full-bleed espresso hero, then warm neutral paper the
-   whole way down, with gold used only where a hand would touch the page.
+   academy. One full-bleed espresso hero, then warm neutral paper the whole
+   way down, with gold used only where a hand would touch the page.
    ========================================================================== */
 :root {
   --cream:    #fdfbf7;
   --taupe:    #e6dfd5;
-  --taupe-dp: #d5cabb;   /* rules and dividers, derived from the taupe */
+  --taupe-dp: #d5cabb;
   --espresso: #1a1817;
-  --espresso-2:#26221f;  /* raised surfaces on the dark bands */
+  --espresso-2:#26221f;
   --gold:     #c5a880;
   --gold-lit: #dcc4a0;
-  --ink-soft: #4a443e;   /* body copy — softer than the display colour */
+  --ink-soft: #4a443e;
   --ink-mute: #8a8177;
 
   --ff-d: "Cormorant Garamond", Georgia, serif;
@@ -32,7 +32,7 @@
 
   --gut:  clamp(22px, 5.5vw, 76px);
   --wrap: 1180px;
-  --band: clamp(84px, 11vw, 184px);   /* the whitespace is the design */
+  --band: clamp(84px, 11vw, 184px);
   --ease: cubic-bezier(.22, .61, .36, 1);
   --ease-o: cubic-bezier(.16, 1, .3, 1);
 }
@@ -88,7 +88,7 @@ section { padding-block: var(--band); }
 .on-dark { color: rgba(253, 251, 247, .74); }
 .on-dark .d, .on-dark .h1, .on-dark .h2, .on-dark .h3 { color: var(--cream); }
 
-/* --- buttons: the gold outline is the one recurring gesture -------------- */
+/* --- buttons ------------------------------------------------------------- */
 .btn {
   position: relative;
   display: inline-flex;
@@ -107,7 +107,6 @@ section { padding-block: var(--band); }
   overflow: hidden;
   transition: color .45s var(--ease-o), border-color .45s var(--ease-o);
 }
-/* the fill wipes up from the baseline rather than snapping on */
 .btn::before {
   content: "";
   position: absolute;
@@ -126,11 +125,8 @@ section { padding-block: var(--band); }
 .btn--dark { color: var(--espresso); }
 .btn--dark:hover { color: var(--cream); }
 .btn--dark::before { background: var(--espresso); }
-@media (prefers-reduced-motion: reduce) {
-  .btn::before { transition: none; }
-}
+@media (prefers-reduced-motion: reduce) { .btn::before { transition: none; } }
 
-/* a quiet link whose rule draws in from the left */
 .ln {
   position: relative;
   display: inline-block;
@@ -186,11 +182,7 @@ section { padding-block: var(--band); }
 .ribbon__all { margin-left: auto; font-size: .68rem; letter-spacing: .12em; color: var(--gold); border-bottom: 1px solid currentColor; }
 
 /* --- header -------------------------------------------------------------- */
-.hdr {
-  position: absolute;
-  inset: 44px 0 auto;
-  z-index: 20;
-}
+.hdr { position: absolute; inset: 44px 0 auto; z-index: 20; }
 .hdr__in { display: flex; align-items: center; gap: 18px; min-height: 84px; }
 .mk { display: grid; gap: 3px; }
 .mk b {
@@ -204,24 +196,18 @@ section { padding-block: var(--band); }
 .mk span { font-size: .58rem; font-weight: 500; letter-spacing: .34em; text-transform: uppercase; color: var(--gold); }
 .nav { display: none; margin-left: auto; gap: clamp(20px, 2.6vw, 42px); }
 @media (min-width: 980px) { .nav { display: flex; align-items: center; } }
-.nav a {
-  font-size: .82rem;
-  font-weight: 300;
-  letter-spacing: .1em;
-  color: rgba(253,251,247,.78);
-  transition: color .3s var(--ease);
-}
+.nav a { font-size: .82rem; font-weight: 300; letter-spacing: .1em; color: rgba(253,251,247,.78); transition: color .3s var(--ease); }
 .nav a:hover { color: var(--gold-lit); }
 .hdr .btn { margin-left: auto; padding: 12px 22px; }
 @media (min-width: 980px) { .hdr .btn { margin-left: 0; } }
 
-/* --- hero: the one full-bleed dark band ---------------------------------- */
+/* --- hero ---------------------------------------------------------------- */
 .hero {
   position: relative;
   display: grid;
   align-items: end;
   min-height: min(100svh, 940px);
-  padding-block: 190px var(--band);
+  padding-block: 190px clamp(60px, 8vw, 120px);
   background: var(--espresso);
   isolation: isolate;
   overflow: hidden;
@@ -241,21 +227,20 @@ section { padding-block: var(--band); }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to top, var(--espresso) 3%, rgba(26,24,23,.72) 34%, rgba(26,24,23,.24) 76%),
+    linear-gradient(to top, var(--espresso) 3%, rgba(26,24,23,.74) 36%, rgba(26,24,23,.24) 78%),
     linear-gradient(94deg, rgba(26,24,23,.86) 6%, rgba(26,24,23,.4) 46%, transparent 76%);
 }
 .hero .eyebrow { margin-bottom: clamp(22px, 3vw, 34px); }
-.hero .h1 { max-width: 15ch; }
+.hero .h1 { max-width: 14ch; }
 .hero__lede { margin-top: clamp(24px, 3vw, 36px); }
 .hero__acts { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; margin-top: clamp(32px, 4vw, 48px); }
 
-/* the live line, hung on a gold hairline at the foot of the hero */
 .hero__foot {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   gap: 8px 20px;
-  margin-top: clamp(44px, 6vw, 84px);
+  margin-top: clamp(34px, 4.5vw, 60px);
   padding-top: 22px;
   border-top: 1px solid rgba(197,168,128,.38);
   font-size: .82rem;
@@ -264,122 +249,84 @@ section { padding-block: var(--band); }
 .hero__foot b { font-weight: 500; color: var(--gold-lit); }
 .hero__foot .sep { color: rgba(253,251,247,.3); }
 
-/* page-load: the hero settles in one orchestrated move */
 .rise { opacity: 0; transform: translateY(18px); animation: rise .95s var(--ease-o) forwards; }
 .rise--1 { animation-delay: .08s; }
-.rise--2 { animation-delay: .2s; }
-.rise--3 { animation-delay: .32s; }
-.rise--4 { animation-delay: .44s; }
-.rise--5 { animation-delay: .56s; }
+.rise--2 { animation-delay: .18s; }
+.rise--3 { animation-delay: .28s; }
+.rise--4 { animation-delay: .38s; }
+.rise--5 { animation-delay: .48s; }
+.rise--6 { animation-delay: .6s; }
 @keyframes rise { to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .rise { opacity: 1; transform: none; animation: none; } }
 
-/* --- editorial intro: deliberately off-balance --------------------------- */
-.intro { background: var(--taupe); }
-.intro__grid { display: grid; gap: clamp(36px, 5vw, 90px); }
-@media (min-width: 900px) {
-  .intro__grid { grid-template-columns: 1.15fr .85fr; align-items: start; }
-  /* the quote hangs above the prose, the prose drops below its own top line */
-  .intro__body { padding-top: clamp(50px, 8vw, 130px); }
-}
-.pull { position: relative; }
-.pull blockquote {
-  font-family: var(--ff-d);
-  font-weight: 300;
-  font-size: clamp(2.2rem, 4.6vw, 4rem);
-  line-height: 1.08;
-  letter-spacing: -.016em;
-  color: var(--espresso);
-  text-wrap: balance;
-}
-.pull blockquote em { font-style: italic; color: var(--gold); }
-.pull__mark {
-  font-family: var(--ff-d);
-  font-size: clamp(4rem, 8vw, 7rem);
-  line-height: .6;
-  color: var(--gold);
-  opacity: .5;
-}
-.pull figcaption { margin-top: clamp(26px, 3vw, 40px); }
-
-/* --- programme: an editorial grid, not a deck of cards ------------------ */
-.prog {
-  display: grid;
-  gap: 0;
-  margin-top: clamp(40px, 5vw, 68px);
-  border-top: 1px solid var(--taupe-dp);
-}
-@media (min-width: 700px)  { .prog { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1040px) { .prog { grid-template-columns: repeat(3, 1fr); } }
-
-.prog__i {
+/* --- reservation bar: the one thing you can touch before scrolling ------- */
+.resbar {
   position: relative;
-  display: block;
-  padding: clamp(24px, 2.6vw, 34px) clamp(20px, 2.2vw, 30px) clamp(24px, 2.6vw, 34px) 0;
-  /* buttons carry a UA border that would draw a blocky cell grid */
-  border: 0;
-  border-bottom: 1px solid var(--taupe-dp);
-  background: transparent;
-  text-align: left;
-  font: inherit;
-  color: inherit;
-  cursor: pointer;
-  transition: background .5s var(--ease-o), box-shadow .5s var(--ease-o), padding-left .5s var(--ease-o);
-}
-@media (min-width: 700px) { .prog__i { padding-right: clamp(28px, 3vw, 46px); } }
-/* the hairline that lights up gold, and the glow, are the whole interaction */
-.prog__i::before {
-  content: "";
-  position: absolute;
-  inset: -1px auto -1px 0;
-  width: 1px;
-  background: var(--gold);
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform .55s var(--ease-o);
-}
-.prog__i:hover, .prog__i:focus-visible {
+  z-index: 5;
+  width: min(100% - var(--gut) * 2, var(--wrap));
+  margin: 0 auto calc(clamp(46px, 6vw, 76px) * -1);
+  display: grid;
+  gap: 1px;
+  padding: 8px;
   background: var(--cream);
-  padding-left: 22px;
-  box-shadow: 0 0 0 1px rgba(197,168,128,.3), 0 18px 44px -28px rgba(26,24,23,.42);
-  outline: none;
+  box-shadow: 0 30px 70px -26px rgba(26,24,23,.62);
 }
-.prog__i:hover::before, .prog__i:focus-visible::before { transform: scaleY(1); }
-
-.prog__day { display: block; font-size: .68rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-mute); }
-.prog__t {
-  display: block;
-  margin-top: 12px;
+@media (min-width: 940px) { .resbar { grid-template-columns: 1.25fr 1fr .8fr .8fr auto; align-items: center; } }
+.fld { display: grid; gap: 2px; padding: 12px 20px; border-right: 1px solid var(--taupe); }
+@media (max-width: 939px) { .fld { border-right: 0; border-bottom: 1px solid var(--taupe); } }
+.resbar > .fld:last-of-type { border-right: 0; }
+.fld > span { font-size: .6rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+.fld select {
+  appearance: none;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
   font-family: var(--ff-d);
-  font-size: clamp(1.7rem, 2.4vw, 2.3rem);
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -.01em;
+  font-size: 1.28rem;
+  font-weight: 400;
   color: var(--espresso);
-  font-variant-numeric: tabular-nums;
+  cursor: pointer;
 }
-.prog__w { display: block; margin-top: 10px; font-size: .92rem; color: var(--ink-soft); }
-/* the detail line is held back until you show interest */
-.prog__d {
-  display: block;
-  margin-top: 0;
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  font-size: .78rem;
-  letter-spacing: .06em;
-  color: var(--gold);
-  transition: max-height .55s var(--ease-o), opacity .45s var(--ease-o), margin-top .55s var(--ease-o);
+.fld select:focus { outline: none; }
+.fld:focus-within > span { color: var(--espresso); }
+.resbar .btn { justify-content: center; margin: 4px; color: var(--espresso); border-color: var(--espresso); }
+.resbar .btn::before { background: var(--espresso); }
+.resbar .btn:hover { color: var(--cream); }
+.resbar__out {
+  grid-column: 1 / -1;
+  margin: 4px 4px 2px;
+  padding: 14px 20px;
+  background: var(--taupe);
+  font-size: .92rem;
+  color: var(--espresso);
 }
-.prog__i:hover .prog__d, .prog__i:focus-visible .prog__d { max-height: 3rem; opacity: 1; margin-top: 12px; }
-@media (prefers-reduced-motion: reduce) {
-  .prog__d { max-height: 3rem; opacity: 1; margin-top: 12px; transition: none; }
-  .prog__i { transition: none; }
-}
-.prog__free { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 20px; padding: clamp(24px,2.6vw,34px) 0; border-bottom: 1px solid var(--taupe-dp); }
-.prog__free b { font-family: var(--ff-d); font-size: 2rem; font-weight: 400; color: var(--espresso); }
+.resbar__out[hidden] { display: none; }
+.resbar__out b { font-weight: 600; color: #8a6a3a; }
+.resbar__out.is-no { background: #f0e3da; }
 
-/* --- halls: two large editorial figures --------------------------------- */
+/* --- philosophy ---------------------------------------------------------- */
+.philo { background: var(--taupe); }
+.philo__grid { display: grid; gap: clamp(38px, 5vw, 96px); }
+@media (min-width: 960px) { .philo__grid { grid-template-columns: 1.05fr .95fr; align-items: start; } }
+.philo__lead .h2 { margin-top: 18px; }
+.philo__lead .p { margin-top: clamp(24px, 3vw, 36px); }
+/* the list of uses, set as a ruled index rather than a bulleted list */
+.uses { border-top: 1px solid var(--taupe-dp); }
+@media (min-width: 960px) { .uses { margin-top: clamp(14px, 3vw, 46px); } }
+.uses li {
+  display: grid;
+  grid-template-columns: 2.6rem 1fr;
+  gap: 4px 18px;
+  align-items: baseline;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--taupe-dp);
+}
+.uses__n { font-family: var(--ff-d); font-size: 1.05rem; color: var(--gold); font-variant-numeric: tabular-nums; }
+.uses__t { font-family: var(--ff-d); font-size: clamp(1.32rem, 1.7vw, 1.6rem); color: var(--espresso); line-height: 1.2; }
+.uses__d { grid-column: 2; font-size: .88rem; color: var(--ink-soft); }
+
+/* --- halls --------------------------------------------------------------- */
 .hall { display: grid; gap: clamp(30px, 4vw, 72px); align-items: center; }
 @media (min-width: 900px) { .hall { grid-template-columns: 1.1fr .9fr; } }
 @media (min-width: 900px) { .hall--flip > figure { order: 2; } }
@@ -404,33 +351,61 @@ section { padding-block: var(--band); }
   letter-spacing: .04em;
 }
 .spec { margin-top: clamp(22px, 2.6vw, 34px); border-top: 1px solid var(--taupe-dp); }
-.spec > div {
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--taupe-dp);
-  font-size: .88rem;
-}
+.spec > div { display: flex; justify-content: space-between; gap: 18px; padding: 12px 0; border-bottom: 1px solid var(--taupe-dp); font-size: .88rem; }
 .spec dt { color: var(--ink-mute); }
 .spec dd { text-align: right; color: var(--espresso); }
 
-/* --- partner showcase ---------------------------------------------------- */
-.partner { display: grid; gap: clamp(28px, 4vw, 64px); align-items: center; }
-@media (min-width: 860px) { .partner { grid-template-columns: 196px 1fr; align-items: start; } }
-.partner__logo { overflow: hidden; border: 1px solid var(--taupe-dp); }
-.partner__logo img { width: 100%; }
-.partner__facts { margin-top: clamp(22px, 2.6vw, 32px); display: grid; gap: 0; }
-.partner__facts > div { display: grid; gap: 2px; padding: 11px 0; border-top: 1px solid var(--taupe-dp); }
-.partner__facts dt { font-size: .64rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
-.partner__facts dd { font-size: .92rem; color: var(--ink-soft); }
+/* --- partner carousel ---------------------------------------------------- */
+.car { margin-top: clamp(40px, 5vw, 68px); }
+.car__view { overflow: hidden; }
+.car__track { display: flex; transition: transform .8s var(--ease-o); }
+@media (prefers-reduced-motion: reduce) { .car__track { transition: none; } }
+.car__slide { flex: 0 0 100%; min-width: 0; padding-inline: 2px; }
 
-.slots { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: clamp(34px,4vw,54px); background: var(--taupe-dp); border: 1px solid var(--taupe-dp); }
-@media (min-width: 720px) { .slots { grid-template-columns: repeat(5, 1fr); } }
-.slots li { display: grid; place-items: center; min-height: 112px; padding: 22px; background: var(--cream); }
-.slots img { max-height: 40px; width: auto; filter: invert(1); opacity: .72; transition: opacity .4s var(--ease); }
-.slots a:hover img { opacity: 1; }
-.slots span { font-size: .62rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-mute); text-align: center; line-height: 1.7; }
+/* each slide is centred, the way a plate is centred on a table */
+.pcard { display: grid; justify-items: center; text-align: center; gap: 22px; max-width: 640px; margin-inline: auto; }
+.pcard__logo { display: grid; place-items: center; min-height: 96px; }
+.pcard__logo img { max-height: 76px; width: auto; filter: invert(1); opacity: .88; }
+.pcard .h3 { margin-top: 4px; }
+.pcard .p { max-width: 52ch; }
+.pcard__facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 34px; margin-top: 6px; }
+.pcard__facts > div { display: grid; gap: 2px; }
+.pcard__facts dt { font-size: .6rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+.pcard__facts dd { font-size: .9rem; color: var(--ink-soft); }
+.pcard__mark { display: grid; place-items: center; min-height: 96px; color: var(--taupe-dp); }
+
+/* the slot row is the carousel's navigation — no cell outlines */
+.slots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(18px, 4vw, 56px);
+  margin-top: clamp(40px, 5vw, 64px);
+  padding-top: clamp(28px, 3vw, 40px);
+  border-top: 1px solid var(--taupe-dp);
+}
+.slot {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 10px 6px 6px;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  opacity: .46;
+  filter: grayscale(1);
+  transition: opacity .5s var(--ease-o), filter .5s var(--ease-o), transform .5s var(--ease-o);
+}
+.slot:hover, .slot:focus-visible { opacity: .72; transform: translateY(-2px); outline: none; }
+.slot[aria-current="true"] { opacity: 1; filter: none; }
+.slot__fig { display: grid; place-items: center; height: 40px; }
+.slot__fig img { max-height: 34px; width: auto; filter: invert(1); }
+.slot__lbl { font-size: .58rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-mute); }
+.slot[aria-current="true"] .slot__lbl { color: var(--espresso); }
+.slot__rule { width: 26px; height: 1px; background: var(--taupe-dp); transition: background .5s var(--ease-o), width .5s var(--ease-o); }
+.slot[aria-current="true"] .slot__rule { background: var(--gold); width: 42px; }
 
 /* --- tariff -------------------------------------------------------------- */
 .tariff { width: 100%; border-collapse: collapse; margin-top: clamp(30px, 4vw, 52px); }
@@ -444,7 +419,7 @@ section { padding-block: var(--band); }
 .tariff td { font-size: 1.02rem; font-variant-numeric: tabular-nums; color: var(--espresso); }
 .tariff .best { color: var(--gold); }
 
-/* --- dark closing band --------------------------------------------------- */
+/* --- closing ------------------------------------------------------------- */
 .close { position: relative; background: var(--espresso); isolation: isolate; overflow: hidden; text-align: center; }
 .close img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; filter: saturate(.5) brightness(.5); }
 .close::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(rgba(26,24,23,.86), rgba(26,24,23,.93)); }
@@ -461,7 +436,7 @@ section { padding-block: var(--band); }
 .ftr a:hover { color: var(--gold-lit); }
 .ftr__base { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: clamp(40px,5vw,72px); padding-top: 22px; border-top: 1px solid rgba(253,251,247,.12); font-size: .74rem; letter-spacing: .06em; color: #6f665c; }
 
-/* --- the understated booking bar, phones only --------------------------- */
+/* --- mobile booking dock ------------------------------------------------- */
 .dock {
   position: fixed;
   inset: auto 0 0;
@@ -483,7 +458,7 @@ section { padding-block: var(--band); }
 .dock .btn { flex: 0 0 auto; margin-left: auto; padding: 11px 18px; font-size: .68rem; letter-spacing: .12em; }
 @media (prefers-reduced-motion: reduce) { .dock { transition: none; } }
 
-/* --- reveal on scroll ---------------------------------------------------- */
+/* --- reveal -------------------------------------------------------------- */
 .rv { opacity: 0; transform: translateY(22px); transition: opacity .9s var(--ease-o), transform .9s var(--ease-o); }
 .rv[data-in="true"] { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } }
@@ -514,15 +489,15 @@ section { padding-block: var(--band); }
   <div class="wrap hdr__in">
     <a class="mk" href="#" aria-label="Taneční studio 29">
       <b>Studio 29</b>
-      <span>Rytířská · Praha 1</span>
+      <span>Taneční sál · Praha</span>
     </a>
     <nav class="nav" aria-label="Hlavní navigace">
-      <a href="#tyden">Týden v sále</a>
+      <a href="#filozofie">Filozofie</a>
       <a href="#saly">Sály</a>
       <a href="#partneri">Partneři</a>
       <a href="#cenik">Ceník</a>
     </nav>
-    <a class="btn" href="#cenik">Rezervovat</a>
+    <a class="btn" href="#rezervace">Rezervovat</a>
   </div>
 </header>
 
@@ -537,14 +512,14 @@ section { padding-block: var(--band); }
       <img src="../assets/img/hall-hero.webp" alt="" width="1590" height="960">
     </div>
     <div class="wrap">
-      <span class="eyebrow rise rise--1">Palác Rytířská — Praha 1, Staré Město</span>
-      <h1 class="d h1 rise rise--2">Sál pod klenbou. <em>Po hodinách.</em></h1>
+      <span class="eyebrow rise rise--1">Historický palác v centru Prahy</span>
+      <h1 class="d h1 rise rise--2">Sál pro tanec. <em>Po hodinách.</em></h1>
       <p class="lede rise rise--3">
-        122 m² tanečního parketu v suterénu bývalé Městské spořitelny pražské.
-        Prostor pro taneční školy, lektory a komunity, které chtějí mít kde růst.
+        122 m² tanečního parketu v centru Prahy. Prostor pro taneční školy,
+        lektory a komunity, které chtějí mít kde růst.
       </p>
       <div class="hero__acts rise rise--4">
-        <a class="btn" href="#tyden">Zobrazit volné hodiny <span class="btn__arw" aria-hidden="true">→</span></a>
+        <a class="btn" href="#filozofie">Poznat studio <span class="btn__arw" aria-hidden="true">→</span></a>
         <a class="ln ln--gold" href="#saly">Prohlédnout sály</a>
       </div>
       <p class="hero__foot rise rise--5" data-live>
@@ -553,74 +528,119 @@ section { padding-block: var(--band); }
     </div>
   </section>
 
-  <!-- EDITORIAL INTRO -->
-  <section class="intro">
-    <div class="wrap intro__grid">
-      <figure class="pull rv">
-        <span class="pull__mark" aria-hidden="true">“</span>
-        <blockquote>Sál patří tomu, <em>kdo v něm právě učí.</em></blockquote>
-        <figcaption><span class="eyebrow eyebrow--mute">Taneční studio 29</span></figcaption>
-      </figure>
+  <!-- the reservation bar, straddling the hero's edge -->
+  <form class="resbar rise rise--6" id="rezervace" data-res>
+    <label class="fld">
+      <span>Sál</span>
+      <select name="hall" data-f-hall>
+        <option value="velky">Velký sál — 122 m²</option>
+        <option value="maly">Malý sál — 20 m²</option>
+        <option value="oba">Oba sály — 142 m²</option>
+      </select>
+    </label>
+    <label class="fld">
+      <span>Datum</span>
+      <select name="date" data-f-date></select>
+    </label>
+    <label class="fld">
+      <span>Od</span>
+      <select name="from" data-f-from></select>
+    </label>
+    <label class="fld">
+      <span>Hodin</span>
+      <select name="len" data-f-len>
+        <option value="1">1 hodina</option>
+        <option value="2" selected>2 hodiny</option>
+        <option value="3">3 hodiny</option>
+        <option value="4">4 hodiny</option>
+      </select>
+    </label>
+    <button class="btn" type="submit">Najít termín</button>
+    <p class="resbar__out" data-res-out hidden role="status"></p>
+  </form>
 
-      <div class="intro__body rv">
-        <span class="eyebrow">Kdo jsme</span>
-        <p class="p" style="margin-top:22px">
-          Studio 29 provozuje dva sály v Paláci Rytířská a otevírá je těm, kdo
-          učí, zkoušejí a scházejí se kolem tance. Program, jméno na dveřích
-          i lidé, kteří přijdou, zůstávají vaši.
+  <!-- PHILOSOPHY -->
+  <section class="philo" id="filozofie">
+    <div class="wrap philo__grid">
+      <div class="philo__lead rv">
+        <span class="eyebrow">Filozofie</span>
+        <h2 class="d h2">Prostor, který <em>unese víc než tanec.</em></h2>
+        <p class="p">
+          Otevřeli jsme sál pro tanec — a rychle se ukázalo, že místo, kde se dá
+          volně hýbat a přitom slyšet vlastní hudbu, je v centru Prahy vzácnější,
+          než by člověk čekal.
         </p>
         <p class="p">
-          Za sál ručíme my: čistá podlaha, funkční ozvučení, teplo v zimě
-          a kód, který funguje. Za lekci ručí lektor, který ji vede.
+          Chodí k nám taneční školy s pravidelnými kurzy, páry na soukromé lekce
+          i soubory, které se chystají na vystoupení. Stejně dobře ale prostor
+          funguje pro workshopy, focení, firemní večery nebo setkání komunit,
+          které jinde nemají kam.
         </p>
         <p class="p">
-          Kolem pravidelného termínu se komunita drží sama. Naše práce je dát
-          jí adresu, do které se lidem chce vracet.
-        </p>
-        <p style="margin-top:30px"><a class="ln" href="#partneri">Chcete u nás učit</a></p>
-        <p class="note">
-          <b>Ukázka.</b> V hero sekci poběží krátká smyčka ze sálu — teď je
-          na jejím místě fotografie. Obsazené hodiny níž jsou vygenerované.
+          Nepřidělujeme sálu jediné použití. Dáváme mu podlahu, světlo, zvuk
+          a klid — a co se v něm bude dít, necháváme na vás. Kolem pravidelného
+          termínu se komunita drží sama; naše práce je dát jí místo, do kterého
+          se lidem chce vracet.
         </p>
       </div>
-    </div>
-  </section>
 
-  <!-- PROGRAMME — the schedule showcase -->
-  <section id="tyden">
-    <div class="wrap">
-      <span class="eyebrow rv">Týden v sále</span>
-      <h2 class="d h2 rv" style="margin-top:16px;max-width:16ch">Co se u nás <em>právě děje.</em></h2>
-      <p class="lede rv" style="margin-top:22px">
-        Nejbližší programy partnerských škol a lektorů. Najeďte na termín
-        a uvidíte detail — zbytek týdne je volný a čeká na vás.
-      </p>
-      <div class="prog rv" data-prog></div>
+      <ol class="uses rv" aria-label="K čemu sál slouží">
+        <li>
+          <span class="uses__n">01</span>
+          <span class="uses__t">Taneční kurzy a lekce</span>
+          <span class="uses__d">Pravidelné kurzy škol, soukromé i párové lekce.</span>
+        </li>
+        <li>
+          <span class="uses__n">02</span>
+          <span class="uses__t">Zkoušky a příprava na vystoupení</span>
+          <span class="uses__d">Soubory, sóla, generálky před soutěží nebo přehlídkou.</span>
+        </li>
+        <li>
+          <span class="uses__n">03</span>
+          <span class="uses__t">Workshopy a intenzivy</span>
+          <span class="uses__d">Víkendové bloky s hostujícími lektory, otevřené hodiny.</span>
+        </li>
+        <li>
+          <span class="uses__n">04</span>
+          <span class="uses__t">Focení a video</span>
+          <span class="uses__d">Tichý prostor s regulovatelným světlem a bez denního svitu.</span>
+        </li>
+        <li>
+          <span class="uses__n">05</span>
+          <span class="uses__t">Firemní a komunitní setkání</span>
+          <span class="uses__d">Večery, tréninky, menší akce pro lidi, kteří se chtějí hýbat.</span>
+        </li>
+        <li>
+          <span class="uses__n">06</span>
+          <span class="uses__t">Malá vystoupení a party</span>
+          <span class="uses__d">Sociální večery, ukázkové hodiny, uzavřené oslavy.</span>
+        </li>
+      </ol>
     </div>
   </section>
 
   <!-- HALLS -->
-  <section id="saly" style="background:var(--taupe)">
+  <section id="saly">
     <div class="wrap">
       <span class="eyebrow rv">Sály</span>
-      <h2 class="d h2 rv" style="margin-top:16px;max-width:14ch">Dva prostory, <em>jedna klenba.</em></h2>
+      <h2 class="d h2 rv" style="margin-top:16px;max-width:14ch">Dva prostory, <em>jedno místo.</em></h2>
 
       <div class="hall rv" style="margin-top:clamp(44px,5vw,80px)">
         <figure>
-          <img src="../assets/img/hall-hero.webp" alt="Velký sál — valená klenba a souvislý parket" width="1590" height="960">
+          <img src="../assets/img/hall-hero.webp" alt="Velký sál — souvislý parket a bodové osvětlení na liště" width="1590" height="960">
           <figcaption class="hall__no">I — Velký sál</figcaption>
         </figure>
         <div>
           <h3 class="d h3">Velký sál</h3>
           <p class="p" style="margin-top:16px">
-            Valená klenba po celé délce sálu, souvislý parket bez sloupů, bodové
-            osvětlení na liště po obou stranách. Suterén znamená, že světlo
-            i hlasitost máte celé ve svých rukou.
+            Souvislý parket bez jediného sloupu, bodové osvětlení na liště po
+            obou stranách. Sál je pod úrovní ulice, takže světlo i hlasitost
+            máte celé ve svých rukou.
           </p>
           <dl class="spec">
             <div><dt>Plocha</dt><dd>122 m²</dd></div>
             <div><dt>Kapacita</dt><dd>30 tanečníků v páru</dd></div>
-            <div><dt>Světlá výška</dt><dd>3,4 m ve vrcholu klenby</dd></div>
+            <div><dt>Světlá výška</dt><dd>3,4 m</dd></div>
             <div><dt>Podlaha</dt><dd>vinyl na plovoucím roštu</dd></div>
             <div><dt>Ozvučení</dt><dd>2× monitor · BT / jack / XLR</dd></div>
           </dl>
@@ -646,63 +666,29 @@ section { padding-block: var(--band); }
           </dl>
         </div>
       </div>
-
-      <p class="note rv">
-        <b>Sál otevíráme po dokončení úprav.</b> Fotografie jsou ze současného
-        stavu prostoru, technický popis odpovídá projektu.
-      </p>
     </div>
   </section>
 
-  <!-- PARTNER -->
-  <section id="partneri">
+  <!-- PARTNERS — carousel, its own logo row as the navigation -->
+  <section id="partneri" style="background:var(--taupe)">
     <div class="wrap">
       <span class="eyebrow rv">S kým pracujeme</span>
       <h2 class="d h2 rv" style="margin-top:16px;max-width:15ch">Školy, <em>které u nás učí.</em></h2>
 
-      <div class="partner rv" style="margin-top:clamp(40px,5vw,72px)">
-        <div class="partner__logo">
-          <img src="../assets/img/partner-simplythewest.webp" alt="Logo taneční školy Simply the West" width="360" height="360">
+      <div class="car rv" data-car aria-roledescription="carousel" aria-label="Partnerské školy">
+        <div class="car__view">
+          <div class="car__track" data-car-track></div>
         </div>
-        <div>
-          <span class="eyebrow">První partnerská škola</span>
-          <h3 class="d h3" style="margin-top:12px;font-size:clamp(1.9rem,2.8vw,2.6rem)">Simply the West</h3>
-          <p class="p" style="margin-top:16px">
-            Taneční škola Jiřího Švarce a Miriam Zedníčkové, zaměřená na
-            West Coast Swing — moderní párový tanec postavený na improvizaci
-            a vedení. Kurzy od úplných začátečníků po pokročilé, workshopy
-            s hostujícími lektory a pravidelné taneční party.
-          </p>
-          <dl class="partner__facts">
-            <div><dt>Tanec</dt><dd>West Coast Swing</dd></div>
-            <div><dt>Úrovně</dt><dd>od začátečníků po pokročilé</dd></div>
-            <div><dt>Lektoři</dt><dd>Jiří Švarc, Miriam Zedníčková</dd></div>
-          </dl>
-          <p style="margin-top:26px">
-            <a class="ln ln--gold" href="https://www.simplythewest.cz/" target="_blank" rel="noopener">simplythewest.cz ↗</a>
-          </p>
-        </div>
+        <ul class="slots" data-car-nav></ul>
       </div>
-
-      <ul class="slots rv">
-        <li><a href="https://www.simplythewest.cz/" target="_blank" rel="noopener" aria-label="Simply the West"><img src="../assets/img/partner-simplythewest-mono.png" alt="Simply the West" width="749" height="300"></a></li>
-        <li><span>Volné místo<br>pro školu</span></li>
-        <li><span>Volné místo<br>pro školu</span></li>
-        <li><span>Volné místo<br>pro školu</span></li>
-        <li><span>Volné místo<br>pro školu</span></li>
-      </ul>
     </div>
   </section>
 
   <!-- TARIFF -->
-  <section id="cenik" style="background:var(--taupe)">
+  <section id="cenik">
     <div class="wrap">
       <span class="eyebrow rv">Ceník</span>
       <h2 class="d h2 rv" style="margin-top:16px;max-width:16ch">Cena za hodinu, <em>nic navíc.</em></h2>
-      <p class="lede rv" style="margin-top:22px">
-        Žádné členství, žádný poplatek za rezervaci. Semestrální sazba platí
-        od deseti týdnů se stejným termínem.
-      </p>
       <table class="tariff rv">
         <thead>
           <tr>
@@ -724,16 +710,16 @@ section { padding-block: var(--band); }
 
   <!-- CLOSING -->
   <section class="close on-dark">
-    <img src="../assets/img/facade-arch.webp" alt="" width="1560" height="1180">
+    <img src="../assets/img/hall-floor.webp" alt="" width="1400" height="681">
     <div class="wrap">
-      <span class="eyebrow rv">Rytířská 29 · Praha 1</span>
+      <span class="eyebrow rv">Centrum Prahy</span>
       <h2 class="d h2 rv" style="margin-top:16px">Přijďte si sál <em>osobně projít.</em></h2>
       <p class="lede rv" style="margin-top:22px">
         Ukážeme prostor, podlahu i vstup. Trvá to dvacet minut
         a nic vás to nezavazuje.
       </p>
       <div class="hero__acts rv">
-        <a class="btn" href="#tyden">Rezervovat hodiny <span class="btn__arw" aria-hidden="true">→</span></a>
+        <a class="btn" href="#rezervace">Rezervovat hodiny <span class="btn__arw" aria-hidden="true">→</span></a>
         <a class="ln ln--gold" href="#saly">Domluvit prohlídku</a>
       </div>
     </div>
@@ -743,16 +729,16 @@ section { padding-block: var(--band); }
 <footer class="ftr">
   <div class="wrap ftr__grid">
     <div>
-      <a class="mk" href="#" aria-label="Taneční studio 29"><b>Studio 29</b><span>Rytířská · Praha 1</span></a>
+      <a class="mk" href="#" aria-label="Taneční studio 29"><b>Studio 29</b><span>Taneční sál · Praha</span></a>
       <p style="margin-top:20px;font-size:.9rem;max-width:34ch">
-        Klenutý sál v Paláci Rytířská k pronájmu po hodinách.
+        Taneční sál v centru Prahy k pronájmu po hodinách.
         Domov pro taneční školy, lektory a komunity.
       </p>
     </div>
     <div>
       <h4>Studio</h4>
       <ul>
-        <li><a href="#tyden">Týden v sále</a></li>
+        <li><a href="#filozofie">Filozofie</a></li>
         <li><a href="#saly">Sály</a></li>
         <li><a href="#cenik">Ceník</a></li>
         <li><a href="#partneri">Partneři</a></li>
@@ -768,34 +754,31 @@ section { padding-block: var(--band); }
     <div>
       <h4>Kde nás najdete</h4>
       <address>
-        Rytířská 536/29<br>110 00 Praha 1 — Staré Město<br>
+        Karolíny Světlé 301/8<br>110 00 Praha 1<br>
         rezervace@studio29.cz<br>+420 XXX XXX XXX
       </address>
     </div>
   </div>
   <div class="wrap ftr__base">
     <p>© 2026 Taneční studio 29</p>
-    <p>Nezávislý nájemce prostoru v Paláci Rytířská</p>
+    <p>Nezávislý nájemce prostoru</p>
   </div>
 </footer>
 
-<!-- the booking bar, phones only -->
 <div class="dock" data-dock>
   <p class="dock__txt" data-dock-txt><b>Velký sál</b>Zjišťuji volné hodiny…</p>
-  <a class="btn" href="#cenik">Rezervovat</a>
+  <a class="btn" href="#rezervace">Rezervovat</a>
 </div>
 
 <script src="../assets/js/rozvrh.js"></script>
 <script>
-/* Variant E reads the same schedule module as every other design. */
 (function () {
   var R = window.Rozvrh;
   if (!R) return;
   var OPEN = R.STUDIO.openFrom, CLOSE = R.STUDIO.openTo;
 
   /* --- hero line + mobile dock ------------------------------------------ */
-  var out = R.outlook("velky", 7);
-  var freeWeek = out.reduce(function (s, d) { return s + d.free; }, 0);
+  var freeWeek = R.outlook("velky", 7).reduce(function (s, d) { return s + d.free; }, 0);
   var next = R.nextFreeBlock("velky", 7);
 
   var live = document.querySelector("[data-live]");
@@ -809,64 +792,175 @@ section { padding-block: var(--band); }
       '<span class="sep" aria-hidden="true">/</span>' +
       "provoz 7:00–22:00";
   }
-
   var dockTxt = document.querySelector("[data-dock-txt]");
   if (dockTxt) {
     dockTxt.innerHTML = "<b>Velký sál</b>" +
       (next ? "Volno " + next.when + " " + R.hhmm(next.from) + "–" + R.hhmm(next.to)
             : freeWeek + " volných hodin tento týden");
   }
-  /* the dock slides up once the hero is behind you, so it never competes with it */
   var dock = document.querySelector("[data-dock]");
   var hero = document.querySelector(".hero");
   if (dock && hero && "IntersectionObserver" in window) {
     new IntersectionObserver(function (es) {
       dock.dataset.in = String(!es[0].isIntersecting);
     }, { threshold: 0, rootMargin: "-70% 0px 0px 0px" }).observe(hero);
-  } else if (dock) {
-    dock.dataset.in = "true";
+  } else if (dock) { dock.dataset.in = "true"; }
+
+  /* --- reservation bar: a real query against the schedule module --------- */
+  var form = document.querySelector("[data-res]");
+  if (form) {
+    var hallEl = form.querySelector("[data-f-hall]");
+    var dateEl = form.querySelector("[data-f-date]");
+    var fromEl = form.querySelector("[data-f-from]");
+    var lenEl  = form.querySelector("[data-f-len]");
+    var out    = form.querySelector("[data-res-out]");
+    var today  = new Date();
+
+    for (var h = OPEN; h < CLOSE; h++) {
+      var o = document.createElement("option");
+      o.value = h; o.textContent = R.hhmm(h);
+      if (h === 19) o.selected = true;      // the hour every school asks for first
+      fromEl.appendChild(o);
+    }
+    for (var i = 0; i < 21; i++) {
+      var dd = R.addDays(today, i);
+      var op = document.createElement("option");
+      op.value = R.iso(dd);
+      op.textContent = (i === 0 ? "Dnes" : i === 1 ? "Zítra" : R.DAYS[(dd.getDay() + 6) % 7]) +
+                       " " + dd.getDate() + ". " + (dd.getMonth() + 1) + ".";
+      dateEl.appendChild(op);
+    }
+
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var hall = hallEl.value;
+      var date = new Date(dateEl.value + "T00:00:00");
+      if (isNaN(date)) return;
+      var from = Number(fromEl.value), len = Number(lenEl.value);
+      var occ = R.occupancyOn(hall, date);
+      var name = R.STUDIO.halls[hall].name;
+
+      var clash = null, price = 0;
+      for (var k = 0; k < len; k++) {
+        var hh = from + k;
+        if (hh >= CLOSE) { clash = "close"; break; }
+        if (occ[hh]) { clash = R.hhmm(hh); break; }
+        price += R.hourPrice(hall, date, hh);
+      }
+
+      out.hidden = false;
+      out.classList.toggle("is-no", Boolean(clash));
+
+      if (clash === "close") {
+        out.innerHTML = "<b>Zavíráme ve 22:00.</b> " + name + " si od " +
+          R.hhmm(from) + " můžete vzít na " + (CLOSE - from) + " h.";
+        return;
+      }
+      if (clash) {
+        /* offer the run closest to what was asked, in either direction */
+        var alt = null, best = Infinity;
+        for (var s = OPEN; s + len <= CLOSE; s++) {
+          var ok = true;
+          for (var j = 0; j < len; j++) if (occ[s + j]) { ok = false; break; }
+          if (!ok) continue;
+          if (Math.abs(s - from) < best) { best = Math.abs(s - from); alt = s; }
+        }
+        out.innerHTML = "<b>V ten čas je obsazeno</b> (od " + clash + "). " +
+          (alt !== null ? name + " je volný " + R.hhmm(alt) + "–" + R.hhmm(alt + len) + "."
+                        : "Ten den už " + len + " h v řadě nenajdeme — zkuste jiný.");
+        return;
+      }
+      out.innerHTML = "<b>" + name + " je volný</b> " + R.longDate(date) + ", " +
+        R.hhmm(from) + "–" + R.hhmm(from + len) + " · " + R.czk(price);
+    });
   }
 
-  /* --- programme: contiguous booked blocks across the coming week -------- */
-  var prog = document.querySelector("[data-prog]");
-  if (prog) {
-    var blocks = [];
-    for (var i = 0; i < 7 && blocks.length < 6; i++) {
-      var d = R.addDays(new Date(), i);
-      ["velky", "maly"].forEach(function (hall) {
-        var occ = R.occupancyOn(hall, d);
-        var h = OPEN;
-        while (h < CLOSE) {
-          if (!occ[h]) { h++; continue; }
-          var use = occ[h], from = h;
-          while (h < CLOSE && occ[h] === use) h++;
-          blocks.push({
-            date: d, hall: hall, use: use, from: from, to: h,
-            hours: h - from,
-            price: (function () {
-              var t = 0;
-              for (var k = from; k < h; k++) t += R.hourPrice(hall, d, k);
-              return t;
-            })()
-          });
-        }
-      });
-    }
-    blocks.sort(function (a, b) { return a.date - b.date || a.from - b.from; });
-    blocks = blocks.slice(0, 6);
+  /* --- partner carousel --------------------------------------------------
+     One real partner sits in the middle; the remaining places are open and
+     say so. The logo row doubles as the navigation. */
+  var MARK = '<svg class="pcard__svg" width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true">' +
+    '<circle cx="26" cy="26" r="25" stroke="currentColor"/>' +
+    '<path d="M26 17v18M17 26h18" stroke="currentColor"/></svg>';
+  var SMALLMARK = '<svg width="26" height="26" viewBox="0 0 52 52" fill="none" aria-hidden="true">' +
+    '<circle cx="26" cy="26" r="25" stroke="currentColor" stroke-width="2"/>' +
+    '<path d="M26 17v18M17 26h18" stroke="currentColor" stroke-width="2"/></svg>';
 
-    prog.innerHTML = blocks.map(function (b) {
-      var day = R.longDate(b.date);
-      return '<button class="prog__i" type="button">' +
-        '<span class="prog__day">' + day + '</span>' +
-        '<span class="prog__t">' + R.hhmm(b.from) + " — " + R.hhmm(b.to) + '</span>' +
-        '<span class="prog__w">' + b.use + " · " + R.STUDIO.halls[b.hall].name + '</span>' +
-        '<span class="prog__d">' + b.hours + " h · " + R.czk(b.price) +
-          " · " + (R.isPeak(b.date, b.from) ? "špička" : "mimo špičku") + '</span>' +
-      '</button>';
-    }).join("") +
-    '<p class="prog__free"><b>' + freeWeek + '</b> volných hodin v nejbližších sedmi dnech ' +
-    '<a class="ln ln--gold" href="#cenik">Rezervovat termín</a></p>';
+  var SLIDES = [
+    { open: true, nav: "Volné místo", title: "Pravidelný kurz",
+      body: "Místo pro školu, která chce držený termín každý týden po celý semestr. Sazba klesá od desátého týdne." },
+    { open: true, nav: "Volné místo", title: "Workshopy a intenzivy",
+      body: "Pro lektory, kteří vozí hosty a potřebují víkendový blok. Sál se dá vzít na celý den i na dvě hodiny." },
+    { open: false, nav: "Simply the West", title: "Simply the West",
+      logo: "../assets/img/partner-simplythewest-mono.png",
+      body: "Taneční škola Jiřího Švarce a Miriam Zedníčkové, zaměřená na West Coast Swing — moderní párový tanec postavený na improvizaci a vedení. Kurzy od úplných začátečníků po pokročilé, workshopy s hostujícími lektory a pravidelné taneční party.",
+      eyebrow: "První partnerská škola",
+      facts: [["Tanec", "West Coast Swing"], ["Úrovně", "od začátečníků po pokročilé"], ["Lektoři", "Jiří Švarc, Miriam Zedníčková"]],
+      link: "https://www.simplythewest.cz/", linkLabel: "simplythewest.cz ↗" },
+    { open: true, nav: "Volné místo", title: "Zkoušky a soubory",
+      body: "Pro soubory, které se chystají na vystoupení a potřebují prostor bez publika, zrcadel a spěchu." },
+    { open: true, nav: "Volné místo", title: "Komunitní setkání",
+      body: "Pro skupiny, které se scházejí kolem pohybu a jinde pro sebe nenajdou místo. Ozvěte se, domluvíme se." }
+  ];
+
+  var car = document.querySelector("[data-car]");
+  if (car) {
+    var track = car.querySelector("[data-car-track]");
+    var nav = car.querySelector("[data-car-nav]");
+
+    track.innerHTML = SLIDES.map(function (s, i) {
+      var inner;
+      if (s.open) {
+        inner =
+          '<div class="pcard__mark">' + MARK + '</div>' +
+          '<span class="eyebrow eyebrow--mute">Volné místo pro partnera</span>' +
+          '<h3 class="d h3">' + s.title + '</h3>' +
+          '<p class="p">' + s.body + '</p>' +
+          '<p><a class="ln ln--gold" href="#rezervace">Napsat nám</a></p>';
+      } else {
+        inner =
+          '<div class="pcard__logo"><img src="' + s.logo + '" alt="Logo Simply the West" width="749" height="300"></div>' +
+          '<span class="eyebrow">' + s.eyebrow + '</span>' +
+          '<h3 class="d h3">' + s.title + '</h3>' +
+          '<p class="p">' + s.body + '</p>' +
+          '<dl class="pcard__facts">' + s.facts.map(function (f) {
+            return '<div><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>';
+          }).join("") + '</dl>' +
+          '<p><a class="ln ln--gold" href="' + s.link + '" target="_blank" rel="noopener">' + s.linkLabel + '</a></p>';
+      }
+      return '<div class="car__slide" role="group" aria-roledescription="slide" ' +
+             'aria-label="' + (i + 1) + ' z ' + SLIDES.length + '"><div class="pcard">' + inner + '</div></div>';
+    }).join("");
+
+    nav.innerHTML = SLIDES.map(function (s, i) {
+      var fig = s.open
+        ? '<span class="slot__fig" aria-hidden="true">' + SMALLMARK + '</span>'
+        : '<span class="slot__fig"><img src="' + s.logo + '" alt="" width="749" height="300"></span>';
+      return '<li><button class="slot" type="button" data-go="' + i + '">' +
+        fig + '<span class="slot__rule" aria-hidden="true"></span>' +
+        '<span class="slot__lbl">' + s.nav + '</span></button></li>';
+    }).join("");
+
+    var slides = track.querySelectorAll(".car__slide");
+    var dots = nav.querySelectorAll(".slot");
+
+    function go(i) {
+      var n = SLIDES.length;
+      i = (i % n + n) % n;
+      track.style.transform = "translateX(" + (-i * 100) + "%)";
+      slides.forEach(function (el, k) {
+        el.setAttribute("aria-hidden", String(k !== i));
+        el.querySelectorAll("a").forEach(function (a) { a.tabIndex = k === i ? 0 : -1; });
+      });
+      dots.forEach(function (el, k) { el.setAttribute("aria-current", String(k === i)); });
+    }
+    dots.forEach(function (el, i) { el.addEventListener("click", function () { go(i); }); });
+    nav.addEventListener("keydown", function (e) {
+      var cur = [].indexOf.call(dots, document.activeElement);
+      if (cur < 0) return;
+      if (e.key === "ArrowRight") { e.preventDefault(); dots[(cur + 1) % dots.length].focus(); go((cur + 1) % dots.length); }
+      if (e.key === "ArrowLeft")  { e.preventDefault(); dots[(cur - 1 + dots.length) % dots.length].focus(); go((cur - 1 + dots.length) % dots.length); }
+    });
+    go(2);   // open on the school that is actually here
   }
 
   /* --- reveal ------------------------------------------------------------ */
