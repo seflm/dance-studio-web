@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Varianta B — Sgraffito · Taneční studio Takt</title>
-<meta name="description" content="Návrh B: světlá vápenná omítka, sgraffitové pásy a klenuté oblouky. Taneční studio Takt, Rytířská 29, Praha 1.">
+<meta name="description" content="Návrh B: světlá vápenná omítka, sgraffitové pásy a obloukové rámy. Taneční studio Takt, Praha.">
 <meta name="theme-color" content="#EFEAE0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -229,6 +229,19 @@ footer.foot address { font-style: normal; font-size: .9rem; color: var(--soft); 
 .ribbon__i:hover { color: var(--lime); border-color: rgba(239,234,224,.32); }
 .ribbon__i.is-on { background: var(--iron); border-color: var(--iron); color: var(--lime); }
 .ribbon__all { margin-left: auto; font-size: .76rem; letter-spacing: .1em; color: var(--ochre); border-bottom: 1px solid currentColor; }
+
+/* the headline names several uses, one at a time */
+.rot {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  text-align: left;
+  color: var(--iron);
+  transition: width .5s var(--ease);
+}
+.rot__w { display: inline-block; transition: opacity .38s var(--ease), transform .38s var(--ease); }
+.rot__w[data-out="true"] { opacity: 0; transform: translateY(-.2em); }
+@media (prefers-reduced-motion: reduce) { .rot, .rot__w { transition: none; } }
 </style>
 </head>
 <body>
@@ -255,7 +268,7 @@ footer.foot address { font-style: normal; font-size: .9rem; color: var(--soft); 
       <a href="#saly">Sály</a>
       <a href="#cenik">Rozvrh a ceny</a>
       <a href="#partneri">Partneři</a>
-      <a href="#dum">Dům</a>
+      
     </nav>
   </div>
 </header>
@@ -265,10 +278,10 @@ footer.foot address { font-style: normal; font-size: .9rem; color: var(--soft); 
 <main>
   <section class="hero">
     <div class="wrap">
-      <span class="sc">Rytířská 29 · Praha 1 — Staré Město</span>
-      <h1 class="d h1">Sál pod klenbou,<br><em>pronájem po hodinách.</em></h1>
+      <span class="sc">Taneční sál k pronájmu · Praha</span>
+      <h1 class="d h1">Prostory pro <span class="rot" data-rot><span class="rot__w" data-rot-word>tanec</span></span></h1>
       <p class="lede">
-        122 m² tanečního parketu v suterénu bývalé Městské spořitelny pražské.
+        122 m² tanečního parketu v Praze.
         Prostor pro taneční školy, lektory a komunity, které chtějí mít kde růst.
       </p>
       <p class="avail" data-avail><b>Zjišťuji volné hodiny…</b></p>
@@ -277,8 +290,8 @@ footer.foot address { font-style: normal; font-size: .9rem; color: var(--soft); 
         <a class="btn" href="#saly">Prohlédnout sály</a>
       </div>
       <figure class="archfig">
-        <img src="../assets/img/hall-hero.webp" alt="Velký sál — valená klenba, tmavá podlaha, bodové osvětlení na liště" width="1590" height="960">
-        <figcaption>Velký sál · 122 m² · valená klenba po celé délce</figcaption>
+        <img src="../assets/img/hall-hero.webp" alt="Velký sál — tmavá podlaha a bodové osvětlení na liště" width="1590" height="960">
+        <figcaption>Velký sál · 122 m² · souvislý parket po celé délce</figcaption>
       </figure>
     </div>
   </section>
@@ -286,12 +299,12 @@ footer.foot address { font-style: normal; font-size: .9rem; color: var(--soft); 
   <section id="saly">
     <div class="wrap">
       <span class="sc">Sály</span>
-      <h2 class="d h2">Dva prostory, jedna klenba.</h2>
+      <h2 class="d h2">Dva prostory, jedno místo.</h2>
       <ul class="cards cards--3">
         <li class="card">
           <span class="card__big">122 m²</span>
           <h3 class="d h3">Velký sál</h3>
-          <p>Souvislý parket bez sloupů, klenba 3,4 m ve vrcholu, mobilní zrcadlová stěna. Až 30 tanečníků v páru.</p>
+          <p>Souvislý parket bez jediného sloupu, světlá výška 3,4 m, mobilní zrcadlová stěna. Až 30 tanečníků v páru.</p>
         </li>
         <li class="card">
           <span class="card__big">20 m²</span>
@@ -314,7 +327,7 @@ footer.foot address { font-style: normal; font-size: .9rem; color: var(--soft); 
       <span class="sc">Kdo jsme</span>
       <h2 class="d h2">Prostor pro komunitu,<br>která tančí.</h2>
       <p class="p sub">
-        Studio Takt provozuje dva sály v Paláci Rytířská a otevírá je těm,
+        Studio Takt provozuje dva sály v Praze a otevírá je těm,
         kdo učí, zkoušejí a scházejí se kolem tance. Sál patří tomu, kdo
         v něm právě učí — program, jméno i lidé zůstávají vaši.
       </p>
@@ -335,7 +348,7 @@ footer.foot address { font-style: normal; font-size: .9rem; color: var(--soft); 
       <ol class="cards cards--4">
         <li class="card"><span class="card__n">01</span><h3 class="d h3">Vyberete hodiny</h3><p>V rozvrhu kliknete na volné bloky. Minimum je jedna hodina.</p></li>
         <li class="card"><span class="card__n">02</span><h3 class="d h3">Potvrdíme do 12 h</h3><p>Ozveme se e-mailem, u dlouhodobých rezervací přiložíme smlouvu.</p></li>
-        <li class="card"><span class="card__n">03</span><h3 class="d h3">Dostanete kód</h3><p>Samostatný vstup z Rytířské. Kód platí jen ve vašich hodinách.</p></li>
+        <li class="card"><span class="card__n">03</span><h3 class="d h3">Dostanete kód</h3><p>Samostatný vstup z ulice. Kód platí jen ve vašich hodinách.</p></li>
         <li class="card"><span class="card__n">04</span><h3 class="d h3">Platíte hodiny</h3><p>Předem převodem, partnerským školám souhrnně na konci měsíce.</p></li>
       </ol>
     </div>
@@ -392,48 +405,24 @@ footer.foot address { font-style: normal; font-size: .9rem; color: var(--soft); 
     </div>
   </section>
 
-  <section id="dum">
-    <div class="wrap house">
-      <div>
-        <span class="sc">Dům</span>
-        <h2 class="d h2">Městská spořitelna pražská, 1892.</h2>
-        <p class="p sub">
-          Palác na Rytířské postavili v letech 1892–1894 architekti Antonín
-          Wiehl a Osvald Polívka. Novorenesanční fasádu zdobí sochařská výzdoba
-          Bohuslava Schnircha, Stanislava Suchardy a Bernarda Otty Seelinga.
-        </p>
-        <p class="p">
-          Wiehl byl mistrem sgraffita — techniky, kdy se tmavá omítka
-          proškrabává až na světlou vápennou vrstvu pod ní. Tenhle návrh si
-          z ní bere svůj jediný ornament.
-        </p>
-        <p class="note">
-          Taneční studio Takt je nezávislý nájemce prostoru. Není součástí banky,
-          která v domě sídlí, ani s ní není nijak propojeno.
-        </p>
-      </div>
-      <figure>
-        <img src="../assets/img/facade-portrait.webp" alt="Novorenesanční fasáda Paláce Rytířská s bosovaným kvádrováním" width="1200" height="1531">
-      </figure>
-    </div>
-  </section>
 </main>
 
 <footer class="foot">
   <div class="wrap">
     <a class="mark" href="#" aria-label="Taneční studio Takt"><span>Taneční studio</span><b>Takt</b></a>
     <nav aria-label="Navigace v zápatí">
-      <a href="#saly">Sály</a><a href="#cenik">Rozvrh a ceny</a><a href="#partneri">Partneři</a><a href="#dum">Dům</a>
+      <a href="#saly">Sály</a><a href="#cenik">Rozvrh a ceny</a><a href="#partneri">Partneři</a>
     </nav>
     <address>
-      Rytířská 536/29, 110 00 Praha 1 — Staré Město<br>
+      Karolíny Světlé 301/8, 110 00 Praha 1<br>
       rezervace@studiotakt.cz · +420 XXX XXX XXX
     </address>
-    <p class="base">© 2026 Taneční studio Takt · nezávislý nájemce prostoru v Paláci Rytířská</p>
+    <p class="base">© 2026 Taneční studio Takt</p>
   </div>
 </footer>
 
 <script src="../assets/js/rozvrh.js"></script>
+<script src="../assets/js/rotator.js"></script>
 <script>
 /* Live availability, read from the same schedule engine the built site uses. */
 (function () {

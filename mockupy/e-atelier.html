@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Varianta E — Ateliér · Taneční studio Takt</title>
-<meta name="description" content="Návrh E: editoriální, prostorný a povýšený — butikový hotel potkává uměleckou akademii. Taneční sál k pronájmu po hodinách v centru Prahy.">
+<meta name="description" content="Návrh E: editoriální, prostorný a povýšený — butikový hotel potkává uměleckou akademii. Taneční sál k pronájmu po hodinách v Praze.">
 <meta name="theme-color" content="#1A1817">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -494,6 +494,19 @@ section { padding-block: var(--band); }
 
 .skip { position: absolute; top: 0; left: 12px; z-index: 100; padding: 12px 20px; background: var(--gold); color: var(--espresso); font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; transform: translateY(-100%); transition: transform .3s var(--ease); }
 .skip:focus { transform: translateY(12px); }
+
+/* the headline names several uses, one at a time */
+.rot {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  text-align: left;
+  color: var(--gold);
+  transition: width .5s var(--ease-o);
+}
+.rot__w { display: inline-block; transition: opacity .38s var(--ease-o), transform .38s var(--ease-o); }
+.rot__w[data-out="true"] { opacity: 0; transform: translateY(-.2em); }
+@media (prefers-reduced-motion: reduce) { .rot, .rot__w { transition: none; } }
 </style>
 </head>
 <body>
@@ -538,10 +551,10 @@ section { padding-block: var(--band); }
       <img src="../assets/img/hall-hero.webp" alt="" width="1590" height="960">
     </div>
     <div class="wrap">
-      <span class="eyebrow rise rise--1">Historický palác v centru Prahy</span>
-      <h1 class="d h1 rise rise--2">Sál pro tanec. <em>Po hodinách.</em></h1>
+      <span class="eyebrow rise rise--1">Taneční sál k pronájmu · Praha</span>
+      <h1 class="d h1 rise rise--2">Prostory pro <span class="rot" data-rot><span class="rot__w" data-rot-word>tanec</span></span></h1>
       <p class="lede rise rise--3">
-        122 m² tanečního parketu v centru Prahy. Prostor pro taneční školy,
+        122 m² tanečního parketu v Praze. Prostor pro taneční školy,
         lektory a komunity, které chtějí mít kde růst.
       </p>
             <div class="hero__acts rise rise--4">
@@ -593,9 +606,10 @@ section { padding-block: var(--band); }
         <span class="eyebrow">Filozofie</span>
         <h2 class="d h2">Prostor, který <em>unese víc než tanec.</em></h2>
         <p class="p">
-          Otevřeli jsme sál pro tanec — a rychle se ukázalo, že místo, kde se dá
-          volně hýbat a přitom slyšet vlastní hudbu, je v centru Prahy vzácnější,
-          než by člověk čekal.
+          Nejvíc nás baví, když kolem pravidelného termínu vznikne parta. Lidé,
+          kteří by se jinak nepotkali, se najednou vidí každý týden ve stejnou
+          hodinu — a po pár měsících spolu chodí i jinam. Tomu chceme dávat
+          prostor: tanec je záminka, spojovat lidi je smysl.
         </p>
         <p class="p">
           Chodí k nám taneční školy s pravidelnými kurzy, páry na soukromé lekce
@@ -605,9 +619,7 @@ section { padding-block: var(--band); }
         </p>
         <p class="p">
           Nepřidělujeme sálu jediné použití. Dáváme mu podlahu, světlo, zvuk
-          a klid — a co se v něm bude dít, necháváme na vás. Kolem pravidelného
-          termínu se komunita drží sama; naše práce je dát jí místo, do kterého
-          se lidem chce vracet.
+          a klid — a co se v něm bude dít, necháváme na vás.
         </p>
       </div>
 
@@ -702,6 +714,10 @@ section { padding-block: var(--band); }
             <span class="eyebrow rv" style="text-align:center">S kým pracujeme</span>
       <h2 class="d h2 rv" style="margin-top:16px;max-width:15ch;margin-inline:auto;text-align:center">Školy, <em>které u nás učí.</em></h2>
 
+      <p class="note rv" style="text-align:center;border-left:0;border-top:1px solid var(--taupe-dp);max-width:60ch;margin-inline:auto">
+        <b>Ukázka.</b> Kromě Simply the West jsou loga zástupná — ukazují, jak
+        bude sekce vypadat s pěti partnerskými školami.
+      </p>
       <div class="car rv" data-car aria-roledescription="carousel" aria-label="Partnerské školy">
         <div class="car__view">
           <div class="car__track" data-car-track></div>
@@ -739,7 +755,7 @@ section { padding-block: var(--band); }
   <section class="close on-dark">
     <img src="../assets/img/hall-floor.webp" alt="" width="1400" height="681">
     <div class="wrap">
-      <span class="eyebrow rv">Centrum Prahy</span>
+      
       <h2 class="d h2 rv" style="margin-top:16px">Přijďte si sál <em>osobně projít.</em></h2>
       <p class="lede rv" style="margin-top:22px">
         Ukážeme prostor, podlahu i vstup. Trvá to dvacet minut
@@ -758,7 +774,7 @@ section { padding-block: var(--band); }
     <div>
       <a class="mk" href="#" aria-label="Taneční studio Takt"><b>Studio Takt</b><span>Taneční sál · Praha</span></a>
       <p style="margin-top:20px;font-size:.9rem;max-width:34ch">
-        Taneční sál v centru Prahy k pronájmu po hodinách.
+        Taneční sál v Praze k pronájmu po hodinách.
         Domov pro taneční školy, lektory a komunity.
       </p>
     </div>
@@ -788,7 +804,7 @@ section { padding-block: var(--band); }
   </div>
   <div class="wrap ftr__base">
     <p>© 2026 Taneční studio Takt</p>
-    <p>Nezávislý nájemce prostoru</p>
+    
   </div>
 </footer>
 
@@ -798,6 +814,7 @@ section { padding-block: var(--band); }
 </div>
 
 <script src="../assets/js/rozvrh.js"></script>
+<script src="../assets/js/rotator.js"></script>
 <script>
 (function () {
   var R = window.Rozvrh;
@@ -957,20 +974,17 @@ section { padding-block: var(--band); }
     '<path d="M26 17v18M17 26h18" stroke="currentColor" stroke-width="2"/></svg>';
 
   var SLIDES = [
-    { open: true, nav: "Volné místo", title: "Pravidelný kurz",
-      body: "Místo pro školu, která chce držený termín každý týden po celý semestr. Sazba klesá od desátého týdne." },
-    { open: true, nav: "Volné místo", title: "Workshopy a intenzivy",
-      body: "Pro lektory, kteří vozí hosty a potřebují víkendový blok. Sál se dá vzít na celý den i na dvě hodiny." },
-    { open: false, nav: "Simply the West", title: "Simply the West",
-      logo: "../assets/img/partner-simplythewest-mono.png",
+    { nav: "Puls", title: "Puls", logo: "../assets/img/partners/puls.svg",
+      body: "Taneční studio zaměřené na latinskoamerické tance a sociální večery. Kurzy pro dospělé a pravidelné páteční party." },
+    { nav: "Krok", title: "Krok", logo: "../assets/img/partners/krok.svg",
+      body: "Škola společenského tance pro dospělé — od úplných základů po pokročilé, s důrazem na vedení a držení." },
+    { nav: "Simply the West", title: "Simply the West", logo: "../assets/img/partner-simplythewest-mono.png",
       body: "Taneční škola Jiřího Švarce a Miriam Zedníčkové, zaměřená na West Coast Swing — moderní párový tanec postavený na improvizaci a vedení. Kurzy od úplných začátečníků po pokročilé, workshopy s hostujícími lektory a pravidelné taneční party.",
-      eyebrow: "První partnerská škola",
-      facts: [["Tanec", "West Coast Swing"], ["Úrovně", "od začátečníků po pokročilé"], ["Lektoři", "Jiří Švarc, Miriam Zedníčková"]],
       link: "https://www.simplythewest.cz/", linkLabel: "simplythewest.cz ↗" },
-    { open: true, nav: "Volné místo", title: "Zkoušky a soubory",
-      body: "Pro soubory, které se chystají na vystoupení a potřebují prostor bez publika, zrcadel a spěchu." },
-    { open: true, nav: "Volné místo", title: "Komunitní setkání",
-      body: "Pro skupiny, které se scházejí kolem pohybu a jinde pro sebe nenajdou místo. Ozvěte se, domluvíme se." }
+    { nav: "Rytmus", title: "Rytmus", logo: "../assets/img/partners/rytmus.svg",
+      body: "Kurzy pro děti a mládež — moderna, street a základy jevištního pohybu. Vystoupení dvakrát ročně." },
+    { nav: "Vlna", title: "Vlna", logo: "../assets/img/partners/vlna.svg",
+      body: "Contemporary a improvizace. Otevřené hodiny, na které se nemusíte hlásit dopředu, a víkendové intenzivy." }
   ];
 
   var car = document.querySelector("[data-car]");
@@ -979,32 +993,19 @@ section { padding-block: var(--band); }
     var nav = car.querySelector("[data-car-nav]");
 
     track.innerHTML = SLIDES.map(function (s, i) {
-      var inner;
-      if (s.open) {
-        inner =
-          '<div class="pcard__mark">' + MARK + '</div>' +
-          '<span class="eyebrow eyebrow--mute">Volné místo pro partnera</span>' +
-          '<h3 class="d h3">' + s.title + '</h3>' +
-          '<p class="p">' + s.body + '</p>' +
-          '<p><a class="ln ln--gold" href="#rezervace">Napsat nám</a></p>';
-      } else {
-        inner =
-          '<div class="pcard__logo"><img src="' + s.logo + '" alt="Logo Simply the West" width="749" height="300"></div>' +
-          '<span class="eyebrow">' + s.eyebrow + '</span>' +
-          '<p class="p">' + s.body + '</p>' +
-          '<dl class="pcard__facts">' + s.facts.map(function (f) {
-            return '<div><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>';
-          }).join("") + '</dl>' +
-          '<p><a class="ln ln--gold" href="' + s.link + '" target="_blank" rel="noopener">' + s.linkLabel + '</a></p>';
-      }
+            var inner =
+        '<div class="pcard__logo"><img src="' + s.logo + '" alt="Logo ' + s.title + '" width="300" height="120" loading="lazy"></div>' +
+        '<span class="eyebrow">Partnerská škola</span>' +
+        '<p class="p">' + s.body + '</p>' +
+        (s.link
+          ? '<p><a class="ln ln--gold" href="' + s.link + '" target="_blank" rel="noopener">' + s.linkLabel + '</a></p>'
+          : '<p><a class="ln ln--gold" href="#rezervace">Zjistit víc</a></p>');
       return '<div class="car__slide" role="group" aria-roledescription="slide" ' +
              'aria-label="' + (i + 1) + ' z ' + SLIDES.length + '"><div class="pcard">' + inner + '</div></div>';
     }).join("");
 
-    nav.innerHTML = SLIDES.map(function (s, i) {
-      var fig = s.open
-        ? '<span class="slot__fig" aria-hidden="true">' + SMALLMARK + '</span>'
-        : '<span class="slot__fig"><img src="' + s.logo + '" alt="" width="749" height="300"></span>';
+        nav.innerHTML = SLIDES.map(function (s, i) {
+      var fig = '<span class="slot__fig"><img src="' + s.logo + '" alt="" width="300" height="120" loading="lazy"></span>';
       return '<li><button class="slot" type="button" data-go="' + i + '">' +
         fig + '<span class="slot__rule" aria-hidden="true"></span>' +
         '<span class="slot__lbl">' + s.nav + '</span></button></li>';

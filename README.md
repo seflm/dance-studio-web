@@ -79,13 +79,20 @@ Návrh **D** je nejblíž referenčním ukázkám ze zadání. Návrh **E** vzni
 na zadanou paletu a typografii; má na telefonu spodní rezervační lištu
 a v hero sekci počítá s krátkou video smyčkou místo fotografie.
 
-**Návrhy D a E jsou o krok dál** podle připomínek z revize: nezmiňují klenbu
-ani konkrétní adresu, mají sekci *Filozofie* místo dřívějšího „kdo jsme“,
-a partnerské školy v nich běží jako **kolotoč**, jehož navigací je řada log.
-Simply the West je uprostřed, zbývající místa jsou volná a říkají to.
-Hero sekce u obou vyplní celou výšku okna a rezervační lišta je uvnitř ní;
-u varianty E se pod lištou dá rozbalit týdenní rozvrh. Návrhy A, B a C
-zatím zůstávají v původní podobě — adresu i klenbu zmiňují dál.
+**Společné pro všechny návrhy** po poslední revizi:
+
+- Titulek je **„Prostory pro …“** a poslední slovo se střídá (tanec, zkoušky,
+  workshopy, komunitu, focení, setkání). Animaci obstarává
+  `assets/js/rotator.js`; při `prefers-reduced-motion` se nehýbe.
+- **Žádná konkrétní adresa ani zmínka o klenbě.** Web mluví o Praze, ne
+  o ulici. Sekce o historii domu jsou pryč ze všech variant, stejně jako
+  věta o nezávislém nájemci.
+- Partnerské školy: bez „první“, bez tabulky faktů, s **černobílým logem**.
+
+**Návrhy D a E jsou nejdál:** mají sekci *Filozofie*, partnerské školy běží
+jako **kolotoč** s řadou log jako navigací (Simply the West uprostřed),
+hero vyplní celou výšku okna, rezervační lišta je uvnitř něj a pod ní se dá
+rozbalit **týdenní rozvrh**. Pole „Do“ je koncový čas, ne počet hodin.
 
 **Kontrast akcentů.** Zlatá `#C5A880` (E) a `#D9A248` (D) měly na světlém
 podkladu poměr kolem 2 : 1, což je pod hranicí čitelnosti. Na světlých
@@ -133,11 +140,6 @@ Web se ukazuje bance, takže tohle je potřeba mít oddělené.
 
 **Doložitelné a pravdivé**
 
-- Adresa Rytířská 536/29, Praha 1 — Staré Město.
-- Dům: **Městská spořitelna pražská**, postavená 1892–1894 podle návrhu
-  **Antonína Wiehla** a **Osvalda Polívky**; sochařská výzdoba Bohuslav
-  Schnirch, Stanislav Sucharda, Bernard Otto Seeling.
-  ([Wikipedie](https://cs.wikipedia.org/wiki/M%C4%9Bstsk%C3%A1_spo%C5%99itelna_pra%C5%BEsk%C3%A1_v_Ryt%C3%AD%C5%99sk%C3%A9_ulici))
 - Plochy sálů 122 m² a 20 m² — ze zadání.
 - **Simply the West**: taneční škola Jiřího Švarce a Miriam Zedníčkové,
   West Coast Swing, Praha. Logo je z `context/`.
@@ -149,7 +151,8 @@ Web se ukazuje bance, takže tohle je potřeba mít oddělené.
 | Co | Kde | Pozn. |
 |---|---|---|
 | Název „Taneční studio Takt“ | všude | **návrh** — „Studio 29“ bylo obsazené; ověřte doménu a ochrannou známku |
-| Adresa „Karolíny Světlé 301/8“ | zápatí D a E | **zástupná** — skutečnou adresu na přání neuvádíme |
+| Loga Puls, Krok, Rytmus, Vlna | kolotoč partnerů v D a E | **vymyšlené školy** — ukazují jen, jak bude sekce vypadat plná. Na stránce je to napsané. |
+| Adresa „Karolíny Světlé 301/8“ | zápatí všech stránek, `kontakt.html` | **zástupná** — skutečnou adresu na přání neuvádíme |
 | Ceny 590 / 790 / 640 Kč atd. | ceníkové tabulky, `rozvrh.js` | orientační, na webu označené jako orientační |
 | Světlá výška 3,4 m | `prostory.html`, `index.html` | odhad z fotky |
 | Podlaha, zrcadla, ozvučení, rekuperace, šatna | `prostory.html` | popis odpovídá *projektu*, ne současnému stavu |
@@ -159,17 +162,19 @@ Web se ukazuje bance, takže tohle je potřeba mít oddělené.
 | `rezervace@studiotakt.cz`, `+420 XXX XXX XXX` | zápatí, `kontakt.html` | zástupné |
 | Doba chůze od Můstku / tramvají | `kontakt.html` | odhad |
 
-Na webu je to přiznané dvěma způsoby: poznámka **„Sál otevíráme po dokončení
-úprav“** u technického popisu a šedé rámečky **„Ukázka“** u rezervace,
-kontaktního formuláře a mapy.
+Na webu je to přiznané: šedé rámečky **„Ukázka“** u rezervace, kontaktního
+formuláře, mapy a u řady partnerských log.
+
+**Adresa se na webu neuvádí.** Skutečné umístění zůstává mimo web na vaše
+přání — stránky mluví jen o Praze a zápatí nese zástupnou adresu.
 
 ---
 
 ## Právní / etické poznámky
 
-- V zápatí a u sekce o domě je uvedeno, že **Studio Takt je nezávislý nájemce
-  a s bankou sídlící v domě není nijak propojeno.** Nechte to tam — fotka
-  fasády nese vytesaný nápis a logo banky ve výloze.
+- Sekce o historii domu i věta o nezávislém nájemci jsou z webu pryč. Kdyby
+  se adresa někdy zveřejnila, vraťte i upozornění, že studio s bankou
+  sídlící v domě nijak nesouvisí.
 - Fotografie mají **odstřižené vodoznaky inzertního serveru**. Pro veřejný web
   je potřeba mít k nim práva, nebo si nechat nafotit vlastní.
 - Logo Simply the West je použité v barevné i **jednobarevné (výseková) verzi**

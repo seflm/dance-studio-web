@@ -1146,3 +1146,16 @@ body.has-vsw { --vsw-h: 40px; }
 .has-vsw .phead { padding-top: calc(clamp(116px, 12vw, 168px) + var(--vsw-h)); }
 .has-vsw [id] { scroll-margin-top: calc(92px + var(--vsw-h)); }
 .has-vsw .skip:focus { transform: translateY(calc(var(--vsw-h) + 8px)); }
+
+/* the headline names several uses, one at a time */
+.rot {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  text-align: left;
+  color: var(--brass-lit);
+  transition: width .5s var(--ease);
+}
+.rot__w { display: inline-block; transition: opacity .38s var(--ease), transform .38s var(--ease); }
+.rot__w[data-out="true"] { opacity: 0; transform: translateY(-.2em); }
+@media (prefers-reduced-motion: reduce) { .rot, .rot__w { transition: none; } }

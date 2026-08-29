@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Varianta C — Provoz · Taneční studio Takt</title>
-<meta name="description" content="Návrh C: sál jako provozní nástroj. Rozvrh místo hlavní fotky, odhalená mřížka, hustá typografie. Taneční studio Takt, Rytířská 29, Praha 1.">
+<meta name="description" content="Návrh C: sál jako provozní nástroj. Rozvrh místo hlavní fotky, odhalená mřížka, hustá typografie. Taneční studio Takt, Praha.">
 <meta name="theme-color" content="#F6F6F3">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -260,6 +260,19 @@ footer.f { position: relative; z-index: 1; border-top: 1px solid var(--ink); }
 .ribbon__i.is-on { background: var(--signal); border-color: var(--signal); color: #fff; }
 .ribbon__i.is-on b { color: #fff; }
 .ribbon__all { margin-left: auto; font-size: .64rem; letter-spacing: .1em; color: #9fb0ff; border-bottom: 1px solid currentColor; }
+
+/* the headline names several uses, one at a time */
+.rot {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  text-align: left;
+  color: var(--signal);
+  transition: width .5s var(--ease);
+}
+.rot__w { display: inline-block; transition: opacity .38s var(--ease), transform .38s var(--ease); }
+.rot__w[data-out="true"] { opacity: 0; transform: translateY(-.2em); }
+@media (prefers-reduced-motion: reduce) { .rot, .rot__w { transition: none; } }
 </style>
 </head>
 <body>
@@ -280,14 +293,14 @@ footer.f { position: relative; z-index: 1; border-top: 1px solid var(--ink); }
 <header class="top">
   <div class="wrap top__in">
     <a class="mk" href="#" aria-label="Taneční studio Takt">
-      <b>TAKT</b><span>Rytířská 29</span>
+      <b>TAKT</b><span>Praha</span>
     </a>
     <nav aria-label="Hlavní navigace">
       <a href="#saly">Sály</a>
       <a href="#cenik">Ceník</a>
       <a href="#provoz">Provoz</a>
       <a href="#partneri">Partneři</a>
-      <a href="#dum">Dům</a>
+      
     </nav>
     <a class="btn" href="#rozvrh">Rezervovat →</a>
   </div>
@@ -299,9 +312,9 @@ footer.f { position: relative; z-index: 1; border-top: 1px solid var(--ink); }
     <div class="wrap hero__grid">
       <div>
         <span class="tag tag--sig">Sál k pronájmu po hodinách · Praha 1</span>
-        <h1 class="d h1">Volné<br>hodiny</h1>
+        <h1 class="d h1">Prostory pro <span class="rot" data-rot><span class="rot__w" data-rot-word>tanec</span></span></h1>
         <p class="lede">
-          122 m² tanečního parketu v klenutém suterénu Paláce Rytířská.
+          122 m² tanečního parketu v Praze.
           Prostor pro taneční školy, lektory a komunity.
           Pronajímáme čas v sále, program je váš.
         </p>
@@ -327,7 +340,7 @@ footer.f { position: relative; z-index: 1; border-top: 1px solid var(--ink); }
       <div><dt class="tag">Velký sál</dt><dd>122 m²</dd></div>
       <div><dt class="tag">Malý sál</dt><dd>20 m²</dd></div>
       <div><dt class="tag">Kapacita</dt><dd>30 <small>tanečníků v páru</small></dd></div>
-      <div><dt class="tag">Od metra Můstek</dt><dd>3 <small>minuty</small></dd></div>
+      <div><dt class="tag">Od metra Florenc</dt><dd>3 <small>minuty</small></dd></div>
     </dl>
   </div>
 
@@ -337,7 +350,7 @@ footer.f { position: relative; z-index: 1; border-top: 1px solid var(--ink); }
       <div class="two">
         <div>
           <p class="p">
-            Studio Takt provozuje dva sály v Paláci Rytířská a otevírá je těm,
+            Studio Takt provozuje dva sály v Praze a otevírá je těm,
             kdo učí, zkoušejí a scházejí se kolem tance. Sál patří tomu,
             kdo v něm právě učí — program, jméno i lidé zůstávají vaši.
           </p>
@@ -358,11 +371,11 @@ footer.f { position: relative; z-index: 1; border-top: 1px solid var(--ink); }
 
   <section id="saly">
     <div class="wrap">
-      <div class="shd"><span class="tag">Sály</span><h2 class="d h2">Dva prostory, jedna klenba</h2></div>
+      <div class="shd"><span class="tag">Sály</span><h2 class="d h2">Dva prostory, jedno místo</h2></div>
       <div class="two">
         <article class="hall">
           <figure>
-            <img src="../assets/img/hall-hero.webp" alt="Velký sál — valená klenba, souvislý parket" width="1590" height="960">
+            <img src="../assets/img/hall-hero.webp" alt="Velký sál — souvislý parket bez sloupů" width="1590" height="960">
           </figure>
           <h3 class="d h3">Velký sál</h3>
           <dl class="kv" style="margin-top:12px">
@@ -377,7 +390,7 @@ footer.f { position: relative; z-index: 1; border-top: 1px solid var(--ink); }
         </article>
         <article class="hall">
           <figure>
-            <img src="../assets/img/hall-vault.webp" alt="Detail klenby a vzduchotechniky" width="1500" height="770">
+            <img src="../assets/img/hall-vault.webp" alt="Detail stropu a vzduchotechniky" width="1500" height="770">
           </figure>
           <h3 class="d h3">Malý sál</h3>
           <dl class="kv" style="margin-top:12px">
@@ -432,7 +445,7 @@ footer.f { position: relative; z-index: 1; border-top: 1px solid var(--ink); }
       <ol class="ops">
         <li><span class="ops__n">01</span><h3 class="d h3">Vyberete hodiny</h3><p>V rozvrhu kliknete na volné bloky. Minimum je jedna hodina, u semestrálních rezervací držíme stejný termín každý týden.</p></li>
         <li><span class="ops__n">02</span><h3 class="d h3">Potvrdíme do 12 hodin</h3><p>Ozveme se e-mailem. U dlouhodobých rezervací posíláme smlouvu na jednu stránku a zálohovou fakturu.</p></li>
-        <li><span class="ops__n">03</span><h3 class="d h3">Dostanete kód</h3><p>Samostatný vstup z Rytířské do suterénu. Kód platí patnáct minut před vaší hodinou a patnáct po ní.</p></li>
+        <li><span class="ops__n">03</span><h3 class="d h3">Dostanete kód</h3><p>Samostatný vstup z ulice. Kód platí patnáct minut před vaší hodinou a patnáct po ní.</p></li>
         <li><span class="ops__n">04</span><h3 class="d h3">Platíte odebrané hodiny</h3><p>Předem převodem. Partnerským školám fakturujeme souhrnně na konci měsíce.</p></li>
       </ol>
     </div>
@@ -464,40 +477,14 @@ footer.f { position: relative; z-index: 1; border-top: 1px solid var(--ink); }
     </div>
   </section>
 
-  <section id="dum">
-    <div class="wrap">
-      <div class="shd"><span class="tag">Dům</span><h2 class="d h2">Městská spořitelna pražská, 1892</h2></div>
-      <div class="two two--wide house">
-        <div>
-          <p class="p">
-            Palác na Rytířské postavili v letech 1892–1894 architekti Antonín
-            Wiehl a Osvald Polívka jako Městskou spořitelnu pražskou.
-            Novorenesanční fasádu zdobí sochařská výzdoba Bohuslava Schnircha,
-            Stanislava Suchardy a Bernarda Otty Seelinga.
-          </p>
-          <p class="p">
-            Dnes v domě sídlí pobočka banky a galerie. V klenutém suterénu
-            je náš sál.
-          </p>
-          <p class="note">
-            Taneční studio Takt je nezávislý nájemce prostoru. Není součástí
-            banky, která v domě sídlí, ani s ní není nijak propojeno.
-          </p>
-        </div>
-        <figure>
-          <img src="../assets/img/facade-portrait.webp" alt="Fasáda Paláce Rytířská" width="1200" height="1531">
-        </figure>
-      </div>
-    </div>
-  </section>
 </main>
 
 <footer class="f">
   <div class="wrap f__in">
     <div>
-      <a class="mk" href="#" aria-label="Taneční studio Takt"><b>TAKT</b><span>Rytířská 29</span></a>
+      <a class="mk" href="#" aria-label="Taneční studio Takt"><b>TAKT</b><span>Praha</span></a>
       <p class="p" style="margin-top:14px;font-size:.88rem">
-        Klenutý sál k pronájmu po hodinách v Paláci Rytířská.
+        Taneční sál v Praze k pronájmu po hodinách.
         Domov pro taneční školy, lektory a komunity.
       </p>
     </div>
@@ -513,18 +500,19 @@ footer.f { position: relative; z-index: 1; border-top: 1px solid var(--ink); }
     <div>
       <h4 class="tag">Kde nás najdete</h4>
       <address>
-        Rytířská 536/29<br>110 00 Praha 1 — Staré Město<br>
+        Karolíny Světlé 301/8<br>110 00 Praha 1<br>
         rezervace@studiotakt.cz<br>+420 XXX XXX XXX
       </address>
     </div>
   </div>
   <div class="wrap f__base">
     <p>© 2026 Taneční studio Takt</p>
-    <p>Nezávislý nájemce prostoru v Paláci Rytířská</p>
+    
   </div>
 </footer>
 
 <script src="../assets/js/rozvrh.js"></script>
+<script src="../assets/js/rotator.js"></script>
 <script>
 /* The hero is data, so it has to be real data — same engine as the built site. */
 (function () {
