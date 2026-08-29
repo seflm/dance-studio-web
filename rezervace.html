@@ -4,112 +4,104 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rezervace sálu — Taneční studio Takt, Praha</title>
-<meta name="description" content="Rezervujte taneční sál v Praze po hodinách. Rozvrh volných hodin, ceník a semestrální rezervace pro taneční školy.">
-<meta name="theme-color" content="#101317">
-<meta property="og:title" content="Rezervace sálu — Taneční studio Takt">
-<meta property="og:description" content="Rezervujte taneční sál v Praze po hodinách. Rozvrh volných hodin, ceník a semestrální rezervace pro taneční školy.">
+<meta name="description" content="Rezervujte taneční sál v Praze po hodinách. Rozvrh volných hodin, ceník a semestrální sazba pro taneční školy.">
+<meta name="theme-color" content="#171009">
+<meta property="og:title" content="Rezervace sálu — Taneční studio Takt, Praha">
+<meta property="og:description" content="Rezervujte taneční sál v Praze po hodinách. Rozvrh volných hodin, ceník a semestrální sazba pro taneční školy.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="cs_CZ">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%23171009%22/%3E%3Ctext x=%2216%22 y=%2223%22 font-family=%22Georgia,serif%22 font-size=%2219%22 fill=%22%23d9a248%22 text-anchor=%22middle%22%3ET%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Instrument+Sans:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/takt.css">
 </head>
 <body>
 <a class="skip" href="#main">Přeskočit na obsah</a>
 
-<div class="rail" aria-hidden="true"><span>Taneční studio Takt · Praha</span></div>
-
-<header class="hdr">
-  <div class="wrap hdr__in">
-    <a class="mark" href="index.html" aria-label="Taneční studio Takt — domů">
-      <span class="mark__txt">Taneční<br>studio</span>
-      <span class="mark__no">Takt</span>
-    </a>
-    <nav class="nav" aria-label="Hlavní navigace">
-      <a href="prostory.html">Sály</a>
-      <a href="rezervace.html" aria-current="page">Rozvrh a ceny</a>
-      <a href="partneri.html">Partneři</a>
-      <a href="kontakt.html">Kontakt</a>
-    </nav>
-    <a class="btn btn--solid" href="rezervace.html">Rezervovat <span class="btn__arw">→</span></a>
-    <button class="burger" type="button" aria-expanded="false" aria-controls="sheet" aria-label="Menu"><i></i></button>
-  </div>
-</header>
-
-<nav class="sheet" id="sheet" data-open="false" aria-label="Mobilní navigace">
-      <a href="prostory.html">Sály</a>
-      <a href="rezervace.html" aria-current="page">Rozvrh a ceny</a>
-      <a href="partneri.html">Partneři</a>
-      <a href="kontakt.html">Kontakt</a>
-</nav>
+<div class="top--solid">
+  <header class="top">
+    <div class="wrap top__in">
+      <a class="mk" href="index.html" aria-label="Taneční studio Takt">
+        <b>Studio Takt</b>
+        <span>Taneční sál · Praha</span>
+      </a>
+      <nav aria-label="Hlavní navigace">
+        <a href="index.html#filozofie">Filozofie</a>
+        <a href="prostory.html">Sály</a>
+        <a href="rezervace.html" aria-current="page">Rezervace</a>
+        <a href="partneri.html">Partneři</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
+      <a class="btn btn--gl" href="rezervace.html">Rezervovat</a>
+    </div>
+  </header>
+</div>
 
 <main id="main">
-
-  <section class="wrap phead">
-    <span class="eyebrow">Rezervace</span>
-    <h1 class="display h1 mt-s">Vyberte hodiny, my je podržíme.</h1>
-    <p class="lede">
-      Rozvrh ukazuje sedm dní dopředu, přepínat můžete o týden. Vyberte sál,
-      klikněte na volné hodiny a doplňte, kdo lekci povede.
-    </p>
-    <p class="mock mt-m">
-      <span aria-hidden="true">◆</span>
-      <span><b>Ukázka rezervačního systému.</b> Formulář nikam neodesílá data
-      a obsazené hodiny jsou vygenerované. Slouží k předvedení průběhu rezervace.</span>
-    </p>
+  <section class="phead">
+    <div class="wrap">
+      <span class="tag tag--l">Rezervace</span>
+      <h1 class="d h1">Vyberte hodiny, <em>my je podržíme.</em></h1>
+      <p class="lede">
+        Rozvrh ukazuje sedm dní dopředu a přepínat můžete o týden. Vyberte sál,
+        klikněte na volné hodiny a doplňte, kdo lekci povede.
+      </p>
+      <p class="mock">
+        <span aria-hidden="true">◆</span>
+        <span><b>Ukázka rezervačního systému.</b> Formulář nikam neodesílá data
+        a obsazené hodiny jsou vygenerované. Slouží k předvedení průběhu rezervace.</span>
+      </p>
+    </div>
   </section>
 
-  <!-- 1 — which hall -->
-  <section class="wrap band--s">
-    <div class="shead">
-      <div class="shead__top"><span class="eyebrow">01 — Sál</span><hr></div>
+  <section class="plain">
+    <div class="wrap">
+      <span class="tag seq">01 — Sál</span>
+      <div class="picker">
+        <label class="picker__opt">
+          <input type="radio" name="hall" value="velky" checked>
+          <span class="picker__bd">
+            <span class="picker__nm">Velký sál</span>
+            <span class="picker__mt">122 m² · až 30 tanečníků</span>
+            <span class="picker__pr">od 590 Kč / h</span>
+          </span>
+        </label>
+        <label class="picker__opt">
+          <input type="radio" name="hall" value="maly">
+          <span class="picker__bd">
+            <span class="picker__nm">Malý sál</span>
+            <span class="picker__mt">20 m² · až 4 osoby</span>
+            <span class="picker__pr">od 290 Kč / h</span>
+          </span>
+        </label>
+        <label class="picker__opt">
+          <input type="radio" name="hall" value="oba">
+          <span class="picker__bd">
+            <span class="picker__nm">Oba sály</span>
+            <span class="picker__mt">142 m² · workshopy</span>
+            <span class="picker__pr">od 820 Kč / h</span>
+          </span>
+        </label>
+      </div>
+      <p style="margin-top:16px;font-size:.86rem;color:#8a7c68">
+        Sály můžete kombinovat — vybrané hodiny se sčítají napříč sály.
+      </p>
     </div>
-    <div class="picker">
-      <label class="picker__opt">
-        <input type="radio" name="hall" value="velky" checked>
-        <span class="picker__bd">
-          <span class="picker__nm">Velký sál</span>
-          <span class="picker__mt">122 m² · až 30 tanečníků</span>
-          <span class="picker__pr">od 590 Kč / h</span>
-        </span>
-      </label>
-      <label class="picker__opt">
-        <input type="radio" name="hall" value="maly">
-        <span class="picker__bd">
-          <span class="picker__nm">Malý sál</span>
-          <span class="picker__mt">20 m² · až 4 osoby</span>
-          <span class="picker__pr">od 290 Kč / h</span>
-        </span>
-      </label>
-      <label class="picker__opt">
-        <input type="radio" name="hall" value="oba">
-        <span class="picker__bd">
-          <span class="picker__nm">Oba sály</span>
-          <span class="picker__mt">142 m² · workshopy</span>
-          <span class="picker__pr">od 820 Kč / h</span>
-        </span>
-      </label>
-    </div>
-    <p class="mt-s label">Sály můžete kombinovat — vybrané hodiny se sčítají napříč sály.</p>
   </section>
 
-  <!-- 2 — the ledger -->
-  <section class="wrap band--s" id="hodiny">
-    <div class="shead">
-      <div class="shead__top"><span class="eyebrow">02 — Hodiny</span><hr></div>
+  <section class="plain" id="hodiny" style="padding-top:0">
+    <div class="wrap">
+      <span class="tag seq">02 — Hodiny</span>
+      <div class="ledger" data-rozvrh></div>
     </div>
-    <div class="ledger" data-rozvrh></div>
   </section>
 
-  <!-- 3 — details, with the receipt alongside -->
-  <section class="wrap band band--ruled" id="detaily" data-stage="form">
-    <div class="split split--wide" style="align-items:start">
+  <section class="plain" id="detaily" data-stage="form" style="padding-top:0">
+    <div class="wrap two two--f">
       <div>
-        <div class="shead">
-          <div class="shead__top"><span class="eyebrow">03 — Kdo a proč</span><hr></div>
-          <h2 class="display h2">Detaily rezervace</h2>
-        </div>
+        <span class="tag seq">03 — Kdo a proč</span>
+        <h2 class="d h2" style="margin-bottom:28px">Detaily rezervace</h2>
 
         <form class="form" id="bookform" novalidate>
           <div class="form__row form__row--2">
@@ -138,7 +130,7 @@
             <span>Kdo lekci povede <em>*</em></span>
             <input type="text" name="teacher" required placeholder="Jméno lektora">
             <small>Lekci vede váš lektor. U každé rezervace potřebujeme vědět,
-              kdo za ni v sále odpovídá — může to být i vy sami.</small>
+              kdo za ni v sále odpovídá — klidně to můžete být vy sami.</small>
           </label>
 
           <div class="form__row form__row--2">
@@ -178,9 +170,15 @@
             </label>
           </div>
 
+          <label class="check">
+            <input type="checkbox" name="record">
+            <span>Nahrát lekci na video — kamery se spustí a zastaví s vaší rezervací.
+              Odkaz dostanete jen vy. <a href="index.html#zaznam">Jak záznam funguje</a></span>
+          </label>
+
           <label class="field">
             <span>Poznámka</span>
-            <textarea name="note" placeholder="Potřebujete zrcadla, jiné rozestavění, přístup dřív?"></textarea>
+            <textarea name="note" placeholder="Potřebujete jiné rozestavění nebo přístup dřív?"></textarea>
           </label>
 
           <label class="check">
@@ -190,81 +188,82 @@
 
           <p class="err" data-err role="alert"></p>
 
-          <div class="hero__acts" style="margin-top:8px">
-            <button class="btn btn--solid" type="submit">Odeslat rezervaci <span class="btn__arw">→</span></button>
-            <button class="btn btn--quiet" type="button" data-clear>Zrušit výběr hodin</button>
+          <div class="acts acts--l" style="margin-top:4px">
+            <button class="btn" type="submit">Odeslat rezervaci</button>
+            <button class="btn btn--o" type="button" data-clear>Zrušit výběr hodin</button>
           </div>
         </form>
       </div>
 
       <aside class="summary" aria-label="Souhrn rezervace">
-        <div class="summary__hd"><span class="label">Vaše rezervace</span></div>
+        <div class="summary__hd"><span class="tag">Vaše rezervace</span></div>
         <div class="summary__bd" data-lines></div>
         <div class="summary__ft" data-totals hidden>
-          <div class="total"><span class="total__k">Hodin celkem</span><span class="total__v num" data-t-hours>0 h</span></div>
-          <div class="total"><span class="total__k">Sazba</span><span class="total__v num" style="font-size:.94rem" data-t-rate>—</span></div>
-          <div class="total total--sum"><span class="total__k">Celkem</span><span class="total__v num" data-t-sum>0 Kč</span></div>
-          <p class="label mt-s" style="line-height:1.6">Ceny včetně DPH. Storno bezplatně do 48 hodin před termínem.</p>
+          <div class="total"><span class="total__k">Hodin celkem</span><span class="total__v" data-t-hours>0 h</span></div>
+          <div class="total"><span class="total__k">Sazba</span><span class="total__v" style="font-size:.94rem" data-t-rate>—</span></div>
+          <div class="total total--sum"><span class="total__k">Celkem</span><span class="total__v" data-t-sum>0 Kč</span></div>
+          <p style="margin-top:14px;font-size:.76rem;line-height:1.6;color:#8a7c68">
+            Ceny včetně DPH. Storno bezplatně do 48 hodin před termínem.
+          </p>
         </div>
       </aside>
     </div>
   </section>
 
-  <!-- confirmation, swapped in on submit -->
-  <section class="wrap band band--ruled" data-stage="done" hidden>
-    <article class="receipt">
-      <header class="receipt__hd">
-        <span class="eyebrow">Předběžná rezervace přijata</span>
-        <span class="receipt__ref" data-r-ref></span>
-      </header>
-      <div class="receipt__bd">
-        <h2 class="display h2">Hodiny jsou pro vás zablokované.</h2>
-        <p class="lede mt-s">
-          Ozveme se do dvanácti hodin na e-mail, který jste zadali,
-          a potvrdíme termín. Do té doby jsou hodiny jen vaše.
-        </p>
+  <section class="plain" data-stage="done" hidden style="padding-top:0">
+    <div class="wrap">
+      <article class="receipt">
+        <header class="receipt__hd">
+          <span class="tag">Předběžná rezervace přijata</span>
+          <span class="receipt__ref" data-r-ref></span>
+        </header>
+        <div class="receipt__bd">
+          <h2 class="d h2">Hodiny jsou <span class="hl">pro vás zablokované.</span></h2>
+          <p class="lede" style="margin-top:16px">
+            Ozveme se do dvanácti hodin na e-mail, který jste zadali,
+            a potvrdíme termín. Do té doby jsou hodiny jen vaše.
+          </p>
 
-        <dl class="kv">
-          <div><dt>Sál</dt><dd data-r-hall></dd></div>
-          <div><dt>Termíny</dt><dd data-r-when></dd></div>
-          <div><dt>Opakování</dt><dd data-r-repeat></dd></div>
-          <div><dt>Hodin celkem</dt><dd data-r-hours></dd></div>
-          <div><dt>Lekci povede</dt><dd data-r-teacher></dd></div>
-          <div><dt>Účel</dt><dd data-r-purpose></dd></div>
-          <div><dt>Cena celkem</dt><dd data-r-sum></dd></div>
-        </dl>
+          <dl class="kv">
+            <div><dt>Sál</dt><dd data-r-hall></dd></div>
+            <div><dt>Termíny</dt><dd data-r-when></dd></div>
+            <div><dt>Opakování</dt><dd data-r-repeat></dd></div>
+            <div><dt>Hodin celkem</dt><dd data-r-hours></dd></div>
+            <div><dt>Lekci povede</dt><dd data-r-teacher></dd></div>
+            <div><dt>Účel</dt><dd data-r-purpose></dd></div>
+            <div><dt>Záznam</dt><dd data-r-record></dd></div>
+            <div><dt>Cena celkem</dt><dd data-r-sum></dd></div>
+          </dl>
 
-        <ol class="next">
-          <li>Potvrdíme termín e-mailem, u dlouhodobých rezervací přiložíme smlouvu na jednu stránku.</li>
-          <li>Pošleme adresu a přístupový kód ke vchodu. Platí patnáct minut před vaší hodinou a patnáct po ní.</li>
-          <li>Platba předem převodem, partnerským školám fakturujeme souhrnně na konci měsíce.</li>
-        </ol>
+          <ol class="next">
+            <li>Potvrdíme termín e-mailem, u dlouhodobých rezervací přiložíme smlouvu na jednu stránku.</li>
+            <li>Pošleme adresu a přístupový kód ke vchodu. Platí patnáct minut před vaší hodinou a patnáct po ní.</li>
+            <li>Platba předem převodem, partnerským školám fakturujeme souhrnně na konci měsíce.</li>
+          </ol>
 
-        <p class="mock mt-l">
-          <span aria-hidden="true">◆</span>
-          <span><b>Ukázka.</b> Žádný e-mail se neodeslal a rezervace nikde neexistuje.</span>
-        </p>
+          <p class="mock">
+            <span aria-hidden="true">◆</span>
+            <span><b>Ukázka.</b> Žádný e-mail se neodeslal a rezervace nikde neexistuje.</span>
+          </p>
 
-        <div class="hero__acts">
-          <button class="btn btn--quiet" type="button" data-again>Nová rezervace</button>
-          <a class="btn btn--quiet" href="index.html">Zpět na úvod</a>
+          <div class="acts acts--l">
+            <button class="btn btn--o" type="button" data-again>Nová rezervace</button>
+            <a class="btn btn--o" href="index.html">Zpět na úvod</a>
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </div>
   </section>
 
-  <!-- tariff + rules -->
-  <section class="band band--ruled band--raised" id="pravidla">
-    <div class="wrap split split--wide">
+  <section class="night" id="pravidla">
+    <div class="wrap two two--t">
       <div>
-        <div class="shead">
-          <div class="shead__top"><span class="eyebrow">Ceník a pravidla</span><hr></div>
-          <h2 class="display h2">Cena za hodinu, nic navíc.</h2>
-        </div>
-        <div class="prose">
-          <p>Žádné členství, žádný poplatek za rezervaci, žádná přirážka za ozvučení.</p>
-        </div>
-        <ul class="route mt-m">
+        <span class="tag tag--l">Ceník a pravidla</span>
+        <h2 class="d h2" style="margin-top:12px">Cena za hodinu, <span class="hl">nic navíc.</span></h2>
+        <p class="p" style="margin-top:18px">
+          Žádné členství, žádný poplatek za rezervaci, žádná přirážka za ozvučení.
+        </p>
+        <ul class="route" style="margin-top:26px">
           <li><dt>Minimum</dt><dd>1 hodina</dd></li>
           <li><dt>Provoz</dt><dd>denně 7:00–22:00<small>Po 22:00 sál nepůjčujeme — v domě se pracuje i bydlí.</small></dd></li>
           <li><dt>Storno</dt><dd>bezplatně do 48 hodin<small>Později hodinu účtujeme, ale zkusíme ji nabídnout dál.</small></dd></li>
@@ -275,8 +274,8 @@
       </div>
 
       <div>
-        <table class="tariff">
-          <caption class="label">Kč za hodinu, včetně DPH</caption>
+        <table class="t">
+          <caption class="tag tag--l" style="text-align:left;padding-bottom:10px">Kč za hodinu, včetně DPH</caption>
           <thead>
             <tr>
               <th scope="col">Sál</th>
@@ -286,228 +285,62 @@
             </tr>
           </thead>
           <tbody>
-            <tr><th scope="row">Velký sál<small>122 m²</small></th><td>590</td><td>790</td><td class="is-best">640</td></tr>
-            <tr><th scope="row">Malý sál<small>20 m²</small></th><td>290</td><td>390</td><td class="is-best">320</td></tr>
-            <tr><th scope="row">Oba sály<small>142 m²</small></th><td>820</td><td>1 090</td><td class="is-best">890</td></tr>
+            <tr><th scope="row">Velký sál<small>122 m²</small></th><td>590</td><td>790</td><td class="best">640</td></tr>
+            <tr><th scope="row">Malý sál<small>20 m²</small></th><td>290</td><td>390</td><td class="best">320</td></tr>
+            <tr><th scope="row">Oba sály<small>142 m²</small></th><td>820</td><td>1 090</td><td class="best">890</td></tr>
           </tbody>
         </table>
-        <div class="stamp">
-          <b>Poznámka k cenám</b>
-          Ceny jsou orientační a slouží k předvedení rezervace.
-          Závaznou nabídku posíláme e-mailem.
-        </div>
+        <p class="note" style="margin-top:26px">
+          <b>Poznámka k cenám.</b> Ceny jsou orientační a slouží k předvedení
+          rezervace. Závaznou nabídku posíláme e-mailem.
+        </p>
       </div>
     </div>
   </section>
 
 </main>
 
-<footer class="ftr">
-  <div class="wrap ftr__grid">
+<footer class="f">
+  <div class="wrap f__in">
     <div>
-      <a class="mark" href="index.html" aria-label="Taneční studio Takt">
-        <span class="mark__txt">Taneční<br>studio</span>
-        <span class="mark__no">Takt</span>
-      </a>
-      <p class="prose mt-m" style="font-size:.88rem">
+      <a class="mk" href="index.html" aria-label="Taneční studio Takt"><b>Studio Takt</b><span>Taneční sál · Praha</span></a>
+      <p style="margin-top:16px;font-size:.9rem">
         Taneční sál v Praze k pronájmu po hodinách.
         Domov pro taneční školy, lektory a komunity.
       </p>
     </div>
     <div>
-      <h4 class="label">Studio</h4>
+      <h4>Studio</h4>
       <ul>
         <li><a href="prostory.html">Sály a vybavení</a></li>
-        <li><a href="rezervace.html">Rozvrh a ceny</a></li>
+        <li><a href="rezervace.html">Rezervace a ceník</a></li>
+        <li><a href="index.html#zaznam">Záznam lekce</a></li>
         <li><a href="partneri.html">Partneři</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
       </ul>
     </div>
     <div>
-      <h4 class="label">Pro školy</h4>
+      <h4>Pro školy</h4>
       <ul>
         <li><a href="partneri.html">Podmínky partnerství</a></li>
-        <li><a href="rezervace.html">Semestrální rezervace</a></li>
+        <li><a href="rezervace.html">Semestrální sazba</a></li>
         <li><a href="kontakt.html">Prohlídka sálu</a></li>
       </ul>
     </div>
     <div>
-      <h4 class="label">Kde nás najdete</h4>
+      <h4>Kde nás najdete</h4>
       <address>
-        Karolíny Světlé 301/8<br>
-        110 00 Praha 1<br><br>
-        <a href="mailto:rezervace@studiotakt.cz">rezervace@studiotakt.cz</a><br>
-        +420 XXX XXX XXX
+        Praha 1 — centrum<br>3 minuty pěšky od metra<br><br>
+        rezervace@studiotakt.cz<br>+420 XXX XXX XXX
       </address>
     </div>
   </div>
-  <div class="wrap ftr__base">
+  <div class="wrap f__base">
     <p>© 2026 Taneční studio Takt</p>
   </div>
 </footer>
 
 <script src="assets/js/rozvrh.js"></script>
-<script src="assets/js/site.js"></script>
-<script>
-/* Rezervace — wires the shared ledger to the form and the receipt.
-   Nothing leaves the browser; the confirmation is rendered locally. */
-(function () {
-  var R = window.Rozvrh;
-  var root = document.querySelector("[data-rozvrh]");
-  if (!R || !root) return;
-
-  var grid    = R.create(root, { hall: "velky" });
-  var form    = document.getElementById("bookform");
-  var lines   = document.querySelector("[data-lines]");
-  var totals  = document.querySelector("[data-totals]");
-  var errBox  = document.querySelector("[data-err]");
-  var repeat  = document.querySelector("[data-repeat]");
-  var rToggle = document.querySelector("[data-repeat-toggle]");
-  var weeksEl = document.querySelector("[data-weeks]");
-  var stageForm = document.querySelector('[data-stage="form"]');
-  var stageDone = document.querySelector('[data-stage="done"]');
-
-  var HALLS = R.STUDIO.halls;
-  var TERM_FROM = 10;   // weeks at which the semester rate applies
-
-  document.querySelectorAll('input[name="hall"]').forEach(function (el) {
-    el.addEventListener("change", function () { grid.setHall(el.value); });
-  });
-
-  rToggle.addEventListener("change", function () {
-    repeat.dataset.on = String(rToggle.checked);
-    paint();
-  });
-  weeksEl.addEventListener("change", paint);
-
-  function weeks() { return rToggle.checked ? Number(weeksEl.value) : 1; }
-  function useTerm() { return rToggle.checked && weeks() >= TERM_FROM; }
-
-  /* One place decides money: per-week price, then multiplied by weeks. The
-     semester rate replaces peak/off-peak entirely once it applies. */
-  function costing() {
-    var s = grid.summary();
-    var w = weeks(), term = useTerm();
-    var perWeek = 0;
-    s.blocks.forEach(function (b) {
-      perWeek += term ? HALLS[b.hall].price.term * b.hours : b.price;
-    });
-    return {
-      blocks: s.blocks,
-      hoursWeek: s.hours,
-      hoursTotal: s.hours * w,
-      weeks: w,
-      term: term,
-      perWeek: perWeek,
-      total: perWeek * w
-    };
-  }
-
-  function paint() {
-    var c = costing();
-
-    if (!c.blocks.length) {
-      lines.innerHTML = '<p class="summary__empty">Zatím jste nevybrali žádné hodiny. ' +
-                        'Klikněte na volná pole v <a class="tlink" href="#hodiny">rozvrhu</a>.</p>';
-      totals.hidden = true;
-      return;
-    }
-
-    lines.innerHTML = c.blocks.map(function (b) {
-      var price = c.term ? HALLS[b.hall].price.term * b.hours : b.price;
-      var tariff;
-      if (c.term) {
-        tariff = "<b>semestrální</b> " + HALLS[b.hall].price.term + " Kč/h";
-      } else if (b.peakHours && b.offHours) {
-        // straddles 16:00 — name both tariffs instead of averaging them
-        tariff = b.offHours + " h mimo špičku + " + b.peakHours + " h špička";
-      } else if (b.peakHours) {
-        tariff = "špička " + HALLS[b.hall].price.peak + " Kč/h";
-      } else {
-        tariff = "mimo špičku " + HALLS[b.hall].price.off + " Kč/h";
-      }
-      return '<div class="line">' +
-        '<div class="line__top">' +
-          '<span class="line__d">' + b.dateLabel + '</span>' +
-          '<span class="line__p">' + R.czk(price) + '</span>' +
-        '</div>' +
-        '<div class="line__m">' + R.hhmm(b.from) + "–" + R.hhmm(b.to) +
-          " · " + b.hallName + " · " + b.hours + " h · " + tariff +
-        '</div>' +
-      '</div>';
-    }).join("");
-
-    totals.hidden = false;
-    document.querySelector("[data-t-hours]").textContent =
-      c.hoursTotal + " h" + (c.weeks > 1 ? " (" + c.hoursWeek + " h × " + c.weeks + ")" : "");
-    document.querySelector("[data-t-rate]").textContent =
-      c.term ? "semestrální" : "běžná";
-    document.querySelector("[data-t-sum]").textContent = R.czk(c.total);
-  }
-
-  grid.on(paint);
-  paint();
-
-  document.querySelector("[data-clear]").addEventListener("click", function () {
-    grid.clear();
-    paint();
-  });
-
-  /* a stable-looking reference, derived from the booking rather than random */
-  function reference(c, email) {
-    var seed = email + "|" + c.blocks.map(function (b) { return b.date + b.from; }).join(",");
-    var h = 0;
-    for (var i = 0; i < seed.length; i++) { h = (h * 31 + seed.charCodeAt(i)) >>> 0; }
-    var d = new Date();
-    return "R29-" + String(d.getDate()).padStart(2, "0") +
-           String(d.getMonth() + 1).padStart(2, "0") + "-" +
-           String(h % 10000).padStart(4, "0");
-  }
-
-  form.addEventListener("submit", function (ev) {
-    ev.preventDefault();
-    var c = costing();
-    errBox.textContent = "";
-
-    if (!c.blocks.length) {
-      errBox.textContent = "Vyberte nejdřív alespoň jednu hodinu v rozvrhu.";
-      document.getElementById("hodiny").scrollIntoView({ block: "start" });
-      return;
-    }
-    if (!form.reportValidity()) return;
-
-    var f = new FormData(form);
-    var halls = c.blocks.map(function (b) { return b.hallName; })
-                        .filter(function (v, i, a) { return a.indexOf(v) === i; });
-
-    document.querySelector("[data-r-ref]").textContent = reference(c, String(f.get("email")));
-    document.querySelector("[data-r-hall]").textContent = halls.join(" + ");
-    document.querySelector("[data-r-when]").innerHTML = c.blocks.map(function (b) {
-      return b.dateLabel + ", " + R.hhmm(b.from) + "–" + R.hhmm(b.to);
-    }).join("<br>");
-    document.querySelector("[data-r-repeat]").textContent =
-      c.weeks > 1 ? c.weeks + "× týdně, stejný čas" : "jednorázově";
-    document.querySelector("[data-r-hours]").textContent =
-      c.hoursTotal + " h" + (c.term ? " · semestrální sazba" : "");
-    document.querySelector("[data-r-teacher]").textContent = f.get("teacher") || "—";
-    document.querySelector("[data-r-purpose]").textContent = f.get("purpose") || "—";
-    document.querySelector("[data-r-sum]").textContent = R.czk(c.total);
-
-    stageForm.hidden = true;
-    stageDone.hidden = false;
-    stageDone.scrollIntoView({ block: "start" });
-  });
-
-  document.querySelector("[data-again]").addEventListener("click", function () {
-    stageDone.hidden = true;
-    stageForm.hidden = false;
-    form.reset();
-    repeat.dataset.on = "false";
-    grid.clear();
-    paint();
-    document.getElementById("hodiny").scrollIntoView({ block: "start" });
-  });
-})();
-</script>
+<script src="assets/js/takt.js"></script>
+<script src="assets/js/rezervace.js"></script>
 </body>
 </html>

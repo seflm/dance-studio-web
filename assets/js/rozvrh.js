@@ -16,10 +16,10 @@
      tables printed on the pages are plain HTML so they still read with
      JavaScript off, which means the rates appear in two places. If you change
      a rate here, also change it in:
-       · index.html      — table.tariff
-       · rezervace.html  — table.tariff and the "od … Kč / h" lines in .picker
-       · prostory.html   — none
-       · mockupy/*.html  — each variant carries its own copy of the table
+       · index.html      — table.t in #cenik
+       · rezervace.html  — table.t in #pravidla, and the "od … Kč / h" lines
+                           in .picker
+       · partneri.html   — the "640 Kč/h místo 790 Kč/h" line in the terms
      ---------------------------------------------------------------------- */
   var STUDIO = {
     openFrom: 7,          // first bookable hour
@@ -197,10 +197,9 @@
   };
 
   Rozvrh.prototype.build = function () {
-    var t = this.opts.compact ? "" : "";
     this.root.innerHTML =
       '<div class="ledger__hd">' +
-        '<span class="label" data-r="title">Rozvrh</span>' +
+        '<span class="tag" data-r="title">Rozvrh</span>' +
         '<div class="ledger__nav">' +
           '<button type="button" data-r="prev" aria-label="Předchozí týden">‹</button>' +
           '<span class="ledger__wk" data-r="week" aria-live="polite"></span>' +
@@ -215,9 +214,9 @@
           '<li><i class="swatch swatch--held"></i>Vaše hodiny</li>' +
         '</ul>' +
         '<div class="tally">' +
-          '<span class="label">Vybráno</span>' +
-          '<span class="tally__n num" data-r="hours">0 h</span>' +
-          '<span class="tally__n num tally__n--brass" data-r="sum">0 Kč</span>' +
+          '<span class="tag">Vybráno</span>' +
+          '<span class="tally__n" data-r="hours">0 h</span>' +
+          '<span class="tally__n tally__n--accent" data-r="sum">0 Kč</span>' +
         '</div>' +
       '</div>';
 
