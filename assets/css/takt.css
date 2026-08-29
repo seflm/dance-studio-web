@@ -104,7 +104,9 @@ ul, ol { padding: 0; list-style: none; }
   background: var(--night);
   padding: 168px 0 clamp(44px, 6vw, 84px);
 }
-@media (min-width: 900px) { .hero { min-height: 100svh; } }
+/* the photograph is the hero; it gets the whole viewport on every screen,
+   with the content anchored to the bottom so the room shows above it */
+.hero { min-height: 100svh; }
 .hero__bg { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
 .hero__bg img {
   position: absolute;
@@ -119,9 +121,11 @@ ul, ol { padding: 0; list-style: none; }
 @media (prefers-reduced-motion: reduce) { .hero__bg img { transition: none; } }
 .hero__bg::after {
   content: ""; position: absolute; inset: 0;
+  /* two scrims: one lifting the text off the floor, one shading the left
+     column the headline sits in. Both kept as light as the cream type allows */
   background:
-    linear-gradient(to top, var(--night) 4%, rgba(23,16,9,.52) 40%, rgba(23,16,9,.2) 100%),
-    linear-gradient(100deg, rgba(23,16,9,.72) 6%, rgba(23,16,9,.3) 46%, transparent 78%);
+    linear-gradient(to top, var(--night) 2%, rgba(23,16,9,.42) 38%, rgba(23,16,9,.08) 100%),
+    linear-gradient(100deg, rgba(23,16,9,.58) 4%, rgba(23,16,9,.2) 44%, transparent 74%);
 }
 .hero__in { padding-bottom: clamp(30px, 5vw, 66px); color: var(--cream); }
 .hero .tag { display: block; margin-bottom: 18px; }
@@ -686,6 +690,47 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
 .night .person p { color: rgba(244,237,225,.8); }
 
 /* ==========================================================================
+   The finder, folded away — every width where it would stack
+   Open and stacked it is a cream slab 350–407px tall, covering the very
+   photograph the hero is built around. Collapsed it states what it would
+   search for and unfolds on a tap. Above 880px it is a single 77px row and
+   none of this applies.
+   ========================================================================== */
+@media (max-width: 879px) {
+  .finder { grid-template-columns: 1fr 1fr; padding: 8px; }
+  .finder__sum {
+    display: grid; grid-template-columns: 1fr auto; align-items: center;
+    grid-column: 1 / -1; gap: 2px 12px;
+    padding: 13px 16px; border: 0; border-radius: calc(var(--r) - 8px);
+    background: none; font: inherit; text-align: left; cursor: pointer;
+  }
+  .finder__sum:hover { background: #f0e8da; }
+  /* explicit placement: auto-flow put the chevron in the label's cell */
+  .finder__sum-l {
+    grid-area: 1 / 1;
+    font-size: .75rem; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--tung-ink);
+  }
+  .finder__sum-v { grid-area: 2 / 1; font-size: .96rem; font-weight: 500; color: var(--night); }
+  .finder__sum-c {
+    grid-area: 1 / 2 / 3 / 3; justify-self: end;
+    font-size: 1.25rem; line-height: 1; color: var(--tung-ink);
+    transition: transform .3s var(--ease);
+  }
+  .finder[data-open="true"] .finder__sum-c { transform: rotate(180deg); }
+  .finder[data-open="false"] .fld { display: none; }
+  .finder[data-open="true"] .finder__sum { border-bottom: 1px solid var(--cream2); border-radius: 0; margin-bottom: 2px; }
+
+  .finder .fld:nth-of-type(1), .finder .fld:nth-of-type(2),
+  .finder .fld:nth-of-type(3) { grid-column: 1 / -1; }
+  .fld { border-right: 1px solid var(--cream2); border-bottom: 1px solid var(--cream2); }
+  .finder .fld:nth-of-type(1), .finder .fld:nth-of-type(2),
+  .finder .fld:nth-of-type(3), .finder .fld:nth-of-type(5) { border-right: 0; }
+  .finder .btn { grid-column: 1 / -1; }
+  .fresult { grid-column: 1 / -1; }
+}
+
+/* ==========================================================================
    PHONE
    Three things are wrong on a small screen by default here: the uppercase
    micro-labels fall under 12px, the tap targets are text-height, and the
@@ -776,45 +821,11 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
   .feat b { font-size: 1.02rem; }
   .feat span { margin-top: 3px; font-size: .72rem; line-height: 1.35; }
 
-  /* --- the finder, folded away ------------------------------------------
-     Open, five fields are 407px of an 844px screen — a cream slab covering
-     the photograph the hero is built around. Collapsed it states what it
-     would search for and opens on a tap. */
-  .finder { grid-template-columns: 1fr 1fr; padding: 8px; }
-  .finder__sum {
-    display: grid; grid-template-columns: 1fr auto; align-items: center;
-    grid-column: 1 / -1; gap: 2px 12px;
-    padding: 13px 16px; border: 0; border-radius: calc(var(--r) - 8px);
-    background: none; font: inherit; text-align: left; cursor: pointer;
-  }
-  .finder__sum:hover { background: #f0e8da; }
-  /* explicit placement: auto-flow put the chevron in the label's cell */
-  .finder__sum-l {
-    grid-area: 1 / 1;
-    font-size: .75rem; font-weight: 600; letter-spacing: .14em;
-    text-transform: uppercase; color: var(--tung-ink);
-  }
-  .finder__sum-v { grid-area: 2 / 1; font-size: .96rem; font-weight: 500; color: var(--night); }
-  .finder__sum-c {
-    grid-area: 1 / 2 / 3 / 3; justify-self: end;
-    font-size: 1.25rem; line-height: 1; color: var(--tung-ink);
-    transition: transform .3s var(--ease);
-  }
-  .finder[data-open="true"] .finder__sum-c { transform: rotate(180deg); }
-  .finder[data-open="false"] .fld { display: none; }
-  .finder[data-open="true"] .finder__sum { border-bottom: 1px solid var(--cream2); border-radius: 0; margin-bottom: 2px; }
-
-  .finder .fld:nth-of-type(1), .finder .fld:nth-of-type(2),
-  .finder .fld:nth-of-type(3) { grid-column: 1 / -1; }
-  .fld { border-right: 1px solid var(--cream2); border-bottom: 1px solid var(--cream2); }
-  .finder .fld:nth-of-type(1), .finder .fld:nth-of-type(2),
-  .finder .fld:nth-of-type(3), .finder .fld:nth-of-type(5) { border-right: 0; }
-  .finder .btn { grid-column: 1 / -1; }
-  .fresult { grid-column: 1 / -1; }
-
   /* with the slab gone there is room for the photograph to be a photograph */
-  .hero { padding-bottom: 26px; }
-  .hero__bg::after { background: linear-gradient(to top, var(--night) 2%, rgba(23,16,9,.62) 30%, rgba(23,16,9,.28) 62%, rgba(23,16,9,.42) 100%); }
+  .hero { padding-bottom: 30px; }
+  /* content sits in the bottom two thirds, so only that needs holding down;
+     above it the room is left alone apart from a touch under the header */
+  .hero__bg::after { background: linear-gradient(to top, rgba(23,16,9,.9) 0%, rgba(23,16,9,.6) 22%, rgba(23,16,9,.34) 48%, rgba(23,16,9,.06) 74%, rgba(23,16,9,.24) 100%); }
   .hero__in { padding-bottom: clamp(18px, 4vw, 30px); }
   .hero__lede { margin-top: 14px; }
 
