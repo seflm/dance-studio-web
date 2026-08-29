@@ -223,3 +223,20 @@
   });
   go(2);
 })();
+
+/* The sticky mobile header has no fixed height — it wraps differently by
+   width and by font — so anything that has to sit under it (anchor offsets,
+   the schedule's day row) reads it from here rather than guessing. */
+(function () {
+  // subpages wrap the bar in .top--solid; the homepage bar is the header
+  // itself, floating over the hero
+  var bar = document.querySelector(".top--solid") || document.querySelector(".top");
+  if (!bar) return;
+  function measure() {
+    document.documentElement.style.setProperty("--top-h", bar.offsetHeight + "px");
+  }
+  measure();
+  window.addEventListener("resize", measure);
+  if (window.ResizeObserver) new ResizeObserver(measure).observe(bar);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+})();

@@ -283,6 +283,12 @@ table.t tbody th { font-family: var(--ff-d); font-size: 1.14rem; font-weight: 50
 table.t tbody th small { display: block; font-family: var(--ff-b); font-size: .76rem; color: #9a8b76; }
 table.t td { font-variant-numeric: tabular-nums; font-size: 1rem; color: var(--night); }
 table.t .best { color: var(--tung-ink); font-weight: 600; }
+/* the tariff windows, restated for the phone layout that hides the table head */
+.t-legend { display: none; margin-top: 16px; font-size: .82rem; line-height: 1.7; color: #8a7c68; }
+.night .t-legend { color: rgba(244,237,225,.6); }
+.t-legend b { font-weight: 600; color: var(--tung-ink); }
+.night .t-legend b { color: var(--tung); }
+
 
 /* steps */
 .steps { display: grid; gap: clamp(18px,2.4vw,30px); margin-top: clamp(30px,4vw,48px); }
@@ -676,3 +682,162 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
 .night .person__nm { color: var(--cream); }
 .night .person__rl { color: var(--tung); }
 .night .person p { color: rgba(244,237,225,.8); }
+
+/* ==========================================================================
+   PHONE
+   Three things are wrong on a small screen by default here: the uppercase
+   micro-labels fall under 12px, the tap targets are text-height, and the
+   page is long enough that the only way to book scrolls away at the top.
+   Everything below fixes one of those three.
+   ========================================================================== */
+@media (max-width: 719px) {
+
+  /* --- legibility: nothing uppercase drops below 12px ---------------------- */
+  .tag, .fld > span, .field > span, .route dt, .facts dt, .person__rl,
+  .f h4, .total__k, .pslide__facts dt, .cal__dn, .grid__day, .slot__lbl,
+  .receipt__hd .tag, .picker__pr { font-size: .75rem; letter-spacing: .14em; }
+  .mk span { font-size: .72rem; letter-spacing: .2em; }
+  /* the sticky bar is 13% of the screen; the strapline is the part of it
+     that carries no information once you are already on the site */
+  .top--solid .mk span { display: none; }
+  .grid__hr, .cal__h { font-size: .74rem; }
+  .cal__dd { font-size: 1.3rem; }
+  .cell__tag, .legend li, .hall__mt, .field small, .route dd small { font-size: .8rem; }
+  .line__m, .f__base, .fresult { font-size: .82rem; }
+
+  /* --- tap targets: 44px is the floor for anything you can press ---------- */
+  /* short words like "Sály" leave a narrow target, so the padding lives
+     inside the gap rather than beside it. Five items just fit at 390; below
+     that the row scrolls, and the fade says so. */
+  .top nav {
+    gap: 2px;
+    -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 24px), transparent);
+            mask-image: linear-gradient(90deg, #000 calc(100% - 24px), transparent);
+  }
+  .top nav a { display: flex; align-items: center; min-height: 44px; padding-inline: 6px; font-size: .83rem; }
+  .mk { min-height: 44px; align-content: center; }
+  .f li { display: flex; }
+  .f li a { display: flex; align-items: center; min-height: 40px; }
+  .fld { padding: 12px 16px; }
+  .fld select, .fld input { min-height: 34px; }
+  .band-logos li { min-height: 96px; }
+  .band-logos a { display: grid; place-items: center; width: 100%; min-height: 56px; }
+  .check input { width: 24px; height: 24px; margin-top: 1px; }
+  .check input:checked::after { font-size: .9rem; }
+  .ledger__nav button { width: 44px; height: 44px; }
+  .btn { padding: 15px 26px; }
+  .peek__btn, .peek__ask { display: inline-flex; align-items: center; min-height: 44px; }
+  .slot { padding-block: 6px; }
+
+  /* --- the header follows you down, so booking is always one tap away ----- */
+  .top--solid { position: sticky; top: 0; z-index: 40; }
+  /* the homepage bar floats over the hero photograph and is not in the flow,
+     so it cannot be made sticky — fixed gives the same result, and the hero
+     already reserves the space above the fold */
+  .hero > .top {
+    position: fixed; inset: 0 0 auto; z-index: 40;
+    padding-block: 8px;
+    background: var(--night);
+    border-bottom: 1px solid rgba(244,237,225,.12);
+  }
+  .hero > .top .mk span { display: none; }
+  .hero > .top .mk b { font-size: 1.45rem; }
+  .hero > .top .top__in { gap: 8px 12px; }
+  .hero > .top .btn { padding: 11px 18px; font-size: .8rem; }
+  /* …which means anchored sections must clear it, and the ledger's day names
+     have to ride just underneath or you lose track of which column is which */
+  [id] { scroll-margin-top: calc(var(--top-h, 108px) + 12px); }
+  /* a clipping ancestor kills position:sticky, so the ledger stops clipping
+     on mobile; the rounded corners move to the header and footer strips */
+  .ledger { overflow: visible; }
+  .ledger__hd { border-radius: var(--r) var(--r) 0 0; }
+  .ledger__ft { border-radius: 0 0 var(--r) var(--r); }
+  .grid__day, .grid__corner {
+    position: sticky; top: var(--top-h, 108px); z-index: 3;
+    background: var(--cream);
+  }
+  .grid__day[data-today="true"] { background: #f3e7d3; }
+  .top--solid .top { padding-block: 8px; }
+  .top--solid .mk b { font-size: 1.45rem; }
+  .top--solid .top__in { gap: 8px 12px; }
+  .top--solid .btn { padding: 11px 18px; font-size: .8rem; }
+
+  /* --- vertical budget: the page is long, so the chrome gets out of the way */
+  section { padding-block: clamp(40px, 11vw, 60px); }
+  .hero { padding-top: calc(var(--top-h, 106px) + 34px); }
+  .h1 { font-size: clamp(2rem, 8.5vw, 2.6rem); }
+  .h2 { font-size: clamp(1.75rem, 7vw, 2.2rem); }
+
+  /* the three facts are short — a row of three reads faster than three bands */
+  .feats { grid-template-columns: repeat(3, 1fr); }
+  .feat { padding: 18px 8px; }
+  .feat b { font-size: 1.02rem; }
+  .feat span { margin-top: 3px; font-size: .72rem; line-height: 1.35; }
+
+  /* "Od" and "Do" belong on one line; five stacked rows push the fold away */
+  .finder { grid-template-columns: 1fr 1fr; }
+  .finder .fld:nth-of-type(1), .finder .fld:nth-of-type(2),
+  .finder .fld:nth-of-type(3) { grid-column: 1 / -1; }
+  .fld { border-right: 1px solid var(--cream2); border-bottom: 1px solid var(--cream2); }
+  .finder .fld:nth-of-type(1), .finder .fld:nth-of-type(2),
+  .finder .fld:nth-of-type(3), .finder .fld:nth-of-type(5) { border-right: 0; }
+  .finder .btn { grid-column: 1 / -1; }
+  .fresult { grid-column: 1 / -1; }
+
+  /* portraits at 4:5 cost a screen and a half for two people */
+  .person img { aspect-ratio: 4/3.4; }
+  .team { gap: 30px; }
+
+  /* --- the tariff stops being a table and becomes three price cards ------- */
+  table.t, table.t tbody, table.t tr, table.t th, table.t td { display: block; }
+  table.t thead { display: none; }
+  table.t { margin-top: 22px; }
+  table.t tbody tr {
+    padding: 16px 0; border-bottom: 1px solid var(--cream2);
+    display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 2px 14px;
+  }
+  .night table.t tbody tr { border-bottom-color: rgba(244,237,225,.14); }
+  table.t tbody th { grid-column: 1 / -1; padding: 0 0 8px; border: 0; text-align: left; }
+  table.t tbody td {
+    padding: 5px 0; border: 0; text-align: right;
+    display: grid; grid-template-columns: 1fr auto; gap: 14px;
+  }
+  table.t tbody td::before {
+    content: attr(data-l); text-align: left;
+    font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--tung-ink);
+  }
+  .night table.t tbody td::before { color: var(--tung); }
+  .t-legend { display: block; }
+  table.t tbody td:nth-child(2) { grid-column: 1 / -1; }
+  table.t tbody td:nth-child(3), table.t tbody td:nth-child(4) { grid-column: 1 / -1; }
+
+  /* --- forms and the receipt --------------------------------------------- */
+  .kv > div { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; }
+  .kv dd { text-align: right; }
+  .receipt__ref { margin-left: 0; }
+  .summary { margin-top: 26px; }
+}
+
+/* --- mobile booking dock --------------------------------------------------
+   On a phone the ledger and the summary panel are a screen and a half apart,
+   so picking hours gives you no feedback and no way forward. This rides along
+   the bottom once something is held, and stands down when the summary itself
+   is on screen. Desktop keeps the sticky summary column and never sees it. */
+.dock {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+  display: none; align-items: center; gap: 14px;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  background: var(--night);
+  border-top: 1px solid rgba(217,162,72,.4);
+  box-shadow: 0 -14px 34px -18px rgba(23,16,9,.8);
+  transform: translateY(110%);
+  transition: transform .28s var(--ease);
+}
+.dock[data-on="true"] { transform: translateY(0); }
+.dock__n { display: grid; gap: 1px; margin-right: auto; min-width: 0; }
+.dock__h { font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--tung); }
+.dock__v { font-family: var(--ff-d); font-size: 1.3rem; line-height: 1.1; color: var(--cream); font-variant-numeric: tabular-nums; }
+.dock .btn { flex: 0 0 auto; padding: 13px 20px; }
+@media (max-width: 979px) { .dock { display: flex; } body.has-dock { padding-bottom: 88px; } }
+@media (prefers-reduced-motion: reduce) { .dock { transition: none; } }

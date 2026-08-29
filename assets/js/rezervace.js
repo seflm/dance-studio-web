@@ -54,6 +54,7 @@
 
   function paint() {
     var c = costing();
+    if (typeof showDock === "function") showDock();
 
     if (!c.blocks.length) {
       lines.innerHTML = '<p class="summary__empty">Zatím jste nevybrali žádné hodiny. ' +
@@ -103,6 +104,45 @@
       if (sel.options[i].value === saved) { sel.selectedIndex = i; return; }
     }
   })();
+
+  /* --- mobile dock -------------------------------------------------------
+     Mirrors the summary totals along the bottom of the phone screen, and
+     gets out of the way as soon as the real summary scrolls into view. */
+  var dock = document.createElement("div");
+  dock.className = "dock";
+  dock.dataset.on = "false";
+  dock.innerHTML =
+    '<span class="dock__n">' +
+      '<span class="dock__h">Vybráno</span>' +
+      '<span class="dock__v" data-d-sum>0 Kč</span>' +
+    '</span>' +
+    '<button class="btn btn--l" type="button" data-d-go>Vyplnit údaje</button>';
+  document.body.appendChild(dock);
+
+  var dockSum = dock.querySelector("[data-d-sum]");
+  dock.querySelector("[data-d-go]").addEventListener("click", function () {
+    document.getElementById("detaily").scrollIntoView({ block: "start" });
+    var first = form.querySelector('input[name="name"]');
+    if (first) first.focus({ preventScroll: true });
+  });
+
+  var summaryOnScreen = false;
+  if (window.IntersectionObserver) {
+    new IntersectionObserver(function (es) {
+      summaryOnScreen = es[0].isIntersecting;
+      showDock();
+    }, { rootMargin: "-90px 0px -90px 0px" }).observe(stageForm);
+  }
+
+  function showDock() {
+    var c = costing();
+    var live = Boolean(c.blocks.length) && !stageForm.hidden;
+    var on = live && !summaryOnScreen;
+    dock.dataset.on = String(on);
+    // a class rather than :has(), so the spacer works in older browsers too
+    document.body.classList.toggle("has-dock", on);
+    dockSum.textContent = c.hoursTotal + " h · " + R.czk(c.total);
+  }
 
   grid.on(paint);
   paint();
