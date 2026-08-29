@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Varianta E — Ateliér · Taneční studio 29</title>
+<title>Varianta E — Ateliér · Taneční studio Takt</title>
 <meta name="description" content="Návrh E: editoriální, prostorný a povýšený — butikový hotel potkává uměleckou akademii. Taneční sál k pronájmu po hodinách v centru Prahy.">
 <meta name="theme-color" content="#1A1817">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,8 +22,13 @@
   --taupe-dp: #d5cabb;
   --espresso: #1a1817;
   --espresso-2:#26221f;
-  --gold:     #c5a880;
-  --gold-lit: #dcc4a0;
+    /* The accent needs two values. On the light grounds the old #c5a880 sat at
+     1.7:1 against the taupe — effectively invisible. This one clears 3:1
+     everywhere and 4.7:1 on the cream. The bright original is kept for the
+     dark bands, where contrast was never the problem. */
+  --gold:        #8f6b2e;
+  --gold-bright: #c5a880;
+  --gold-lit:    #dcc4a0;
   --ink-soft: #4a443e;
   --ink-mute: #8a8177;
 
@@ -85,6 +90,8 @@ section { padding-block: var(--band); }
 .lede { font-size: clamp(1.04rem, .55vw + .92rem, 1.26rem); line-height: 1.7; max-width: 46ch; }
 .p { max-width: 54ch; }
 .p + .p { margin-top: 1.15em; }
+/* every dark container swaps the accent back to the bright gold */
+.on-dark, .hdr, .ftr, .ribbon, .dock { --gold: var(--gold-bright); }
 .on-dark { color: rgba(253, 251, 247, .74); }
 .on-dark .d, .on-dark .h1, .on-dark .h2, .on-dark .h3 { color: var(--cream); }
 
@@ -103,8 +110,11 @@ section { padding-block: var(--band); }
   font-weight: 500;
   letter-spacing: .16em;
   text-transform: uppercase;
-  cursor: pointer;
+    cursor: pointer;
   overflow: hidden;
+  /* without its own stacking context the z-index:-1 fill below slips behind
+     the section's layers, so the label turns dark over a dark ground */
+  isolation: isolate;
   transition: color .45s var(--ease-o), border-color .45s var(--ease-o);
 }
 .btn::before {
@@ -206,8 +216,8 @@ section { padding-block: var(--band); }
   position: relative;
   display: grid;
   align-items: end;
-  min-height: min(100svh, 940px);
-  padding-block: 190px clamp(60px, 8vw, 120px);
+    min-height: 100svh;
+  padding-block: 190px clamp(48px, 6vw, 88px);
   background: var(--espresso);
   isolation: isolate;
   overflow: hidden;
@@ -235,19 +245,7 @@ section { padding-block: var(--band); }
 .hero__lede { margin-top: clamp(24px, 3vw, 36px); }
 .hero__acts { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; margin-top: clamp(32px, 4vw, 48px); }
 
-.hero__foot {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 8px 20px;
-  margin-top: clamp(34px, 4.5vw, 60px);
-  padding-top: 22px;
-  border-top: 1px solid rgba(197,168,128,.38);
-  font-size: .82rem;
-  letter-spacing: .04em;
-}
-.hero__foot b { font-weight: 500; color: var(--gold-lit); }
-.hero__foot .sep { color: rgba(253,251,247,.3); }
+
 
 .rise { opacity: 0; transform: translateY(18px); animation: rise .95s var(--ease-o) forwards; }
 .rise--1 { animation-delay: .08s; }
@@ -261,15 +259,15 @@ section { padding-block: var(--band); }
 
 /* --- reservation bar: the one thing you can touch before scrolling ------- */
 .resbar {
+  --gold: #8f6b2e;               /* a cream card sitting inside a dark band */
   position: relative;
   z-index: 5;
-  width: min(100% - var(--gut) * 2, var(--wrap));
-  margin: 0 auto calc(clamp(46px, 6vw, 76px) * -1);
+  margin-top: clamp(34px, 4.5vw, 56px);
   display: grid;
   gap: 1px;
   padding: 8px;
   background: var(--cream);
-  box-shadow: 0 30px 70px -26px rgba(26,24,23,.62);
+  box-shadow: 0 30px 70px -26px rgba(26,24,23,.5);
 }
 @media (min-width: 940px) { .resbar { grid-template-columns: 1.25fr 1fr .8fr .8fr auto; align-items: center; } }
 .fld { display: grid; gap: 2px; padding: 12px 20px; border-right: 1px solid var(--taupe); }
@@ -304,6 +302,34 @@ section { padding-block: var(--band); }
 .resbar__out[hidden] { display: none; }
 .resbar__out b { font-weight: 600; color: #8a6a3a; }
 .resbar__out.is-no { background: #f0e3da; }
+
+/* a quiet way to see the whole week without leaving the hero */
+.peek { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; margin-top: 16px; }
+.peek__btn {
+  border: 0; background: none; padding: 0;
+  font-family: var(--ff-b);
+  font-size: .74rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold-lit); cursor: pointer;
+}
+.peek__btn:hover { color: var(--cream); }
+.peek__btn span { display: inline-block; margin-left: 8px; transition: transform .4s var(--ease-o); }
+.peek__btn[aria-expanded="true"] span { transform: rotate(180deg); }
+.peek__hint { font-size: .74rem; color: rgba(253,251,247,.55); }
+
+.cal { --gold: #8f6b2e; display: none; margin-top: 12px; padding: 8px; background: var(--cream); }
+.cal[data-open="true"] { display: block; }
+.cal__row { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; }
+.cal__d {
+  display: grid; gap: 5px; justify-items: center;
+  padding: 16px 4px;
+  border: 0; background: none; font: inherit; cursor: pointer;
+  transition: background .35s var(--ease-o);
+}
+.cal__d:hover, .cal__d:focus-visible { background: var(--taupe); outline: none; }
+.cal__dn { font-size: .58rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-mute); }
+.cal__dd { font-family: var(--ff-d); font-size: 1.45rem; line-height: 1; color: var(--espresso); }
+.cal__h { font-size: .68rem; color: var(--gold); white-space: nowrap; }
+.cal__h[data-full="true"] { color: var(--ink-mute); }
 
 /* --- philosophy ---------------------------------------------------------- */
 .philo { background: var(--taupe); }
@@ -487,8 +513,8 @@ section { padding-block: var(--band); }
 
 <header class="hdr">
   <div class="wrap hdr__in">
-    <a class="mk" href="#" aria-label="Taneční studio 29">
-      <b>Studio 29</b>
+    <a class="mk" href="#" aria-label="Taneční studio Takt">
+      <b>Studio Takt</b>
       <span>Taneční sál · Praha</span>
     </a>
     <nav class="nav" aria-label="Hlavní navigace">
@@ -518,18 +544,12 @@ section { padding-block: var(--band); }
         122 m² tanečního parketu v centru Prahy. Prostor pro taneční školy,
         lektory a komunity, které chtějí mít kde růst.
       </p>
-      <div class="hero__acts rise rise--4">
+            <div class="hero__acts rise rise--4">
         <a class="btn" href="#filozofie">Poznat studio <span class="btn__arw" aria-hidden="true">→</span></a>
         <a class="ln ln--gold" href="#saly">Prohlédnout sály</a>
       </div>
-      <p class="hero__foot rise rise--5" data-live>
-        <span>Načítám volné hodiny…</span>
-      </p>
-    </div>
-  </section>
 
-  <!-- the reservation bar, straddling the hero's edge -->
-  <form class="resbar rise rise--6" id="rezervace" data-res>
+      <form class="resbar rise rise--5" id="rezervace" data-res>
     <label class="fld">
       <span>Sál</span>
       <select name="hall" data-f-hall>
@@ -546,18 +566,25 @@ section { padding-block: var(--band); }
       <span>Od</span>
       <select name="from" data-f-from></select>
     </label>
-    <label class="fld">
-      <span>Hodin</span>
-      <select name="len" data-f-len>
-        <option value="1">1 hodina</option>
-        <option value="2" selected>2 hodiny</option>
-        <option value="3">3 hodiny</option>
-        <option value="4">4 hodiny</option>
-      </select>
-    </label>
-    <button class="btn" type="submit">Najít termín</button>
-    <p class="resbar__out" data-res-out hidden role="status"></p>
-  </form>
+        <label class="fld">
+          <span>Do</span>
+          <select name="to" data-f-to></select>
+        </label>
+        <button class="btn" type="submit">Zkontrolovat dostupnost</button>
+        <p class="resbar__out" data-res-out hidden role="status"></p>
+      </form>
+
+      <div class="peek rise rise--6">
+        <button class="peek__btn" type="button" data-peek aria-expanded="false" aria-controls="kalendar">
+          Zobrazit celý rozvrh <span aria-hidden="true">⌄</span>
+        </button>
+        <span class="peek__hint" data-peek-hint></span>
+      </div>
+      <div class="cal" id="kalendar" data-cal data-open="false">
+        <div class="cal__row" data-cal-row></div>
+      </div>
+    </div>
+  </section>
 
   <!-- PHILOSOPHY -->
   <section class="philo" id="filozofie">
@@ -672,8 +699,8 @@ section { padding-block: var(--band); }
   <!-- PARTNERS — carousel, its own logo row as the navigation -->
   <section id="partneri" style="background:var(--taupe)">
     <div class="wrap">
-      <span class="eyebrow rv">S kým pracujeme</span>
-      <h2 class="d h2 rv" style="margin-top:16px;max-width:15ch">Školy, <em>které u nás učí.</em></h2>
+            <span class="eyebrow rv" style="text-align:center">S kým pracujeme</span>
+      <h2 class="d h2 rv" style="margin-top:16px;max-width:15ch;margin-inline:auto;text-align:center">Školy, <em>které u nás učí.</em></h2>
 
       <div class="car rv" data-car aria-roledescription="carousel" aria-label="Partnerské školy">
         <div class="car__view">
@@ -729,7 +756,7 @@ section { padding-block: var(--band); }
 <footer class="ftr">
   <div class="wrap ftr__grid">
     <div>
-      <a class="mk" href="#" aria-label="Taneční studio 29"><b>Studio 29</b><span>Taneční sál · Praha</span></a>
+      <a class="mk" href="#" aria-label="Taneční studio Takt"><b>Studio Takt</b><span>Taneční sál · Praha</span></a>
       <p style="margin-top:20px;font-size:.9rem;max-width:34ch">
         Taneční sál v centru Prahy k pronájmu po hodinách.
         Domov pro taneční školy, lektory a komunity.
@@ -755,12 +782,12 @@ section { padding-block: var(--band); }
       <h4>Kde nás najdete</h4>
       <address>
         Karolíny Světlé 301/8<br>110 00 Praha 1<br>
-        rezervace@studio29.cz<br>+420 XXX XXX XXX
+        rezervace@studiotakt.cz<br>+420 XXX XXX XXX
       </address>
     </div>
   </div>
   <div class="wrap ftr__base">
-    <p>© 2026 Taneční studio 29</p>
+    <p>© 2026 Taneční studio Takt</p>
     <p>Nezávislý nájemce prostoru</p>
   </div>
 </footer>
@@ -781,16 +808,11 @@ section { padding-block: var(--band); }
   var freeWeek = R.outlook("velky", 7).reduce(function (s, d) { return s + d.free; }, 0);
   var next = R.nextFreeBlock("velky", 7);
 
-  var live = document.querySelector("[data-live]");
-  if (live) {
-    live.innerHTML =
-      (next ? "Velký sál — nejbližší volno <b>" + next.when + " " +
-              R.hhmm(next.from) + "–" + R.hhmm(next.to) + "</b>"
-            : "Velký sál — napište si o termín") +
-      '<span class="sep" aria-hidden="true">/</span>' +
-      "nejbližších sedm dní <b>" + freeWeek + " volných hodin</b>" +
-      '<span class="sep" aria-hidden="true">/</span>' +
-      "provoz 7:00–22:00";
+    var hint = document.querySelector("[data-peek-hint]");
+  if (hint) {
+    hint.textContent = next
+      ? "Nejbližší volno " + next.when + " " + R.hhmm(next.from) + "–" + R.hhmm(next.to)
+      : freeWeek + " volných hodin v nejbližších sedmi dnech";
   }
   var dockTxt = document.querySelector("[data-dock-txt]");
   if (dockTxt) {
@@ -812,16 +834,30 @@ section { padding-block: var(--band); }
     var hallEl = form.querySelector("[data-f-hall]");
     var dateEl = form.querySelector("[data-f-date]");
     var fromEl = form.querySelector("[data-f-from]");
-    var lenEl  = form.querySelector("[data-f-len]");
+        var toEl   = form.querySelector("[data-f-to]");
     var out    = form.querySelector("[data-res-out]");
     var today  = new Date();
 
-    for (var h = OPEN; h < CLOSE; h++) {
+        for (var h = OPEN; h < CLOSE; h++) {
       var o = document.createElement("option");
       o.value = h; o.textContent = R.hhmm(h);
       if (h === 19) o.selected = true;      // the hour every school asks for first
       fromEl.appendChild(o);
     }
+    /* "Do" is an end time, not a count of hours, so it tracks "Od" */
+    function fillTo(keep) {
+      var start = Number(fromEl.value);
+      var want = keep === undefined ? start + 2 : keep;
+      toEl.innerHTML = "";
+      for (var t = start + 1; t <= CLOSE; t++) {
+        var op = document.createElement("option");
+        op.value = t; op.textContent = R.hhmm(t);
+        toEl.appendChild(op);
+      }
+      toEl.value = String(Math.min(Math.max(want, start + 1), CLOSE));
+    }
+    fillTo();
+    fromEl.addEventListener("change", function () { fillTo(); });
     for (var i = 0; i < 21; i++) {
       var dd = R.addDays(today, i);
       var op = document.createElement("option");
@@ -836,7 +872,7 @@ section { padding-block: var(--band); }
       var hall = hallEl.value;
       var date = new Date(dateEl.value + "T00:00:00");
       if (isNaN(date)) return;
-      var from = Number(fromEl.value), len = Number(lenEl.value);
+            var from = Number(fromEl.value), len = Number(toEl.value) - from;
       var occ = R.occupancyOn(hall, date);
       var name = R.STUDIO.halls[hall].name;
 
@@ -872,6 +908,41 @@ section { padding-block: var(--band); }
       }
       out.innerHTML = "<b>" + name + " je volný</b> " + R.longDate(date) + ", " +
         R.hhmm(from) + "–" + R.hhmm(from + len) + " · " + R.czk(price);
+    });
+  }
+
+  /* --- the week at a glance, folded under the bar ------------------------ */
+  var peekBtn = document.querySelector("[data-peek]");
+  var cal = document.querySelector("[data-cal]");
+  if (peekBtn && cal) {
+    var row = cal.querySelector("[data-cal-row]");
+    var days = R.outlook("velky", 7);
+    row.innerHTML = days.map(function (d) {
+      var full = d.free === 0;
+      return '<button class="cal__d" type="button" data-date="' + d.iso + '">' +
+        '<span class="cal__dn">' + (d.today ? "Dnes" : d.day) + '</span>' +
+        '<span class="cal__dd">' + d.dayNum.replace(/\.$/, "") + '</span>' +
+        '<span class="cal__h" data-full="' + full + '">' +
+          (full ? "obsazeno" : d.free + " h volných") + '</span>' +
+      '</button>';
+    }).join("");
+
+    peekBtn.addEventListener("click", function () {
+      var open = cal.dataset.open !== "true";
+      cal.dataset.open = String(open);
+      peekBtn.setAttribute("aria-expanded", String(open));
+    });
+
+    /* picking a day fills the bar in and folds the week away again */
+    row.addEventListener("click", function (ev) {
+      var el = ev.target.closest("[data-date]");
+      if (!el) return;
+      var sel = document.querySelector("[data-f-date]");
+      if (sel) sel.value = el.dataset.date;
+      cal.dataset.open = "false";
+      peekBtn.setAttribute("aria-expanded", "false");
+      var out = document.querySelector("[data-res-out]");
+      if (out) out.hidden = true;
     });
   }
 
@@ -920,7 +991,6 @@ section { padding-block: var(--band); }
         inner =
           '<div class="pcard__logo"><img src="' + s.logo + '" alt="Logo Simply the West" width="749" height="300"></div>' +
           '<span class="eyebrow">' + s.eyebrow + '</span>' +
-          '<h3 class="d h3">' + s.title + '</h3>' +
           '<p class="p">' + s.body + '</p>' +
           '<dl class="pcard__facts">' + s.facts.map(function (f) {
             return '<div><dt>' + f[0] + '</dt><dd>' + f[1] + '</dd></div>';

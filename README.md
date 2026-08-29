@@ -1,4 +1,4 @@
-# Taneční studio 29 — web
+# Taneční studio Takt — web
 
 Statický web pro **pronájem tanečního sálu** v Paláci Rytířská,
 Rytířská 536/29, Praha 1 — Staré Město.
@@ -83,8 +83,15 @@ a v hero sekci počítá s krátkou video smyčkou místo fotografie.
 ani konkrétní adresu, mají sekci *Filozofie* místo dřívějšího „kdo jsme“,
 a partnerské školy v nich běží jako **kolotoč**, jehož navigací je řada log.
 Simply the West je uprostřed, zbývající místa jsou volná a říkají to.
-Návrhy A, B a C zatím zůstávají v původní podobě — adresu i klenbu
-zmiňují dál.
+Hero sekce u obou vyplní celou výšku okna a rezervační lišta je uvnitř ní;
+u varianty E se pod lištou dá rozbalit týdenní rozvrh. Návrhy A, B a C
+zatím zůstávají v původní podobě — adresu i klenbu zmiňují dál.
+
+**Kontrast akcentů.** Zlatá `#C5A880` (E) a `#D9A248` (D) měly na světlém
+podkladu poměr kolem 2 : 1, což je pod hranicí čitelnosti. Na světlých
+pásech je teď `#8F6B2E`, resp. `#8A6A3A` (nad 4 : 1); na tmavých pásech
+zůstává původní jasná zlatá, kde kontrast problém nebyl. Stejně se opravily
+číslice ve variantě B.
 
 Rozvrhový modul, ceník i texty jsou nezávislé na vzhledu — dají se přenést do
 kterékoli varianty.
@@ -141,7 +148,7 @@ Web se ukazuje bance, takže tohle je potřeba mít oddělené.
 
 | Co | Kde | Pozn. |
 |---|---|---|
-| Název „Taneční studio 29“ | všude | rozhodnutí ještě nepadlo |
+| Název „Taneční studio Takt“ | všude | **návrh** — „Studio 29“ bylo obsazené; ověřte doménu a ochrannou známku |
 | Adresa „Karolíny Světlé 301/8“ | zápatí D a E | **zástupná** — skutečnou adresu na přání neuvádíme |
 | Ceny 590 / 790 / 640 Kč atd. | ceníkové tabulky, `rozvrh.js` | orientační, na webu označené jako orientační |
 | Světlá výška 3,4 m | `prostory.html`, `index.html` | odhad z fotky |
@@ -149,7 +156,7 @@ Web se ukazuje bance, takže tohle je potřeba mít oddělené.
 | Kapacity 30 / 4 osoby | více míst | odhad |
 | Provoz 7:00–22:00 | více míst | odhad |
 | Storno 48 h, potvrzení do 12 h, vstup na kód | více míst | navržená pravidla |
-| `rezervace@studio29.cz`, `+420 XXX XXX XXX` | zápatí, `kontakt.html` | zástupné |
+| `rezervace@studiotakt.cz`, `+420 XXX XXX XXX` | zápatí, `kontakt.html` | zástupné |
 | Doba chůze od Můstku / tramvají | `kontakt.html` | odhad |
 
 Na webu je to přiznané dvěma způsoby: poznámka **„Sál otevíráme po dokončení
@@ -160,7 +167,7 @@ kontaktního formuláře a mapy.
 
 ## Právní / etické poznámky
 
-- V zápatí a u sekce o domě je uvedeno, že **Studio 29 je nezávislý nájemce
+- V zápatí a u sekce o domě je uvedeno, že **Studio Takt je nezávislý nájemce
   a s bankou sídlící v domě není nijak propojeno.** Nechte to tam — fotka
   fasády nese vytesaný nápis a logo banky ve výloze.
 - Fotografie mají **odstřižené vodoznaky inzertního serveru**. Pro veřejný web
@@ -180,7 +187,7 @@ kontaktního formuláře a mapy.
 2. **Ceny** — hlavní zdroj je `STUDIO.halls` v `assets/js/rozvrh.js`; tabulky
    v HTML jsou zvlášť, aby fungovaly i bez JavaScriptu. Seznam všech míst
    je v komentáři nad `STUDIO`.
-3. **Kontakty** — `rezervace@studio29.cz` a `+420 XXX XXX XXX` v zápatí všech
+3. **Kontakty** — `rezervace@studiotakt.cz` a `+420 XXX XXX XXX` v zápatí všech
    stránek a v `kontakt.html`.
 4. **Mapa** — `kontakt.html` má zástupný plánek. Vložení mapy třetí strany
    znamená načítání z cizího serveru a řešení cookies.

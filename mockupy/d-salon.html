@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Varianta D — Salon · Taneční studio 29</title>
+<title>Varianta D — Salon · Taneční studio Takt</title>
 <meta name="description" content="Návrh D: večerní teplá paleta, celoplošná fotografie a plovoucí vyhledávač termínů. Taneční sál k pronájmu po hodinách v centru Prahy.">
 <meta name="theme-color" content="#171009">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,9 @@
   --cream:  #f4ede1;
   --cream2: #eae0cf;
   --tung:   #d9a248;   /* the track lights in the photograph */
-  --tung-d: #b5822f;
+    --tung-d: #b5822f;
+  /* on the cream bands #b5822f sat near 2:1; this clears 4.2:1 */
+  --tung-ink: #8a6a3a;
   --dim:    #a08e78;
   --body:   #4a4034;
 
@@ -53,10 +55,13 @@ ul, ol { padding: 0; list-style: none; }
 .wrap { width: min(100% - var(--gut)*2, 1200px); margin-inline: auto; }
 .d { font-family: var(--ff-d); font-weight: 400; font-optical-sizing: auto; line-height: 1.1; letter-spacing: -.012em; text-wrap: balance; }
 .d em { font-style: italic; }
+/* the accent word, upright — italics are kept for the hero alone */
+.d .hl { color: var(--tung-ink); }
+.night .d .hl, .close .d .hl { color: var(--tung); }
 .h1 { font-size: clamp(2.5rem, 6vw, 4.9rem); line-height: 1.02; }
 .h2 { font-size: clamp(1.95rem, 3.6vw, 3.1rem); }
 .h3 { font-size: 1.36rem; line-height: 1.18; }
-.tag { font-size: .7rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--tung-d); }
+.tag { font-size: .7rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--tung-ink); }
 .tag--l { color: var(--tung); }
 .lede { font-size: clamp(1.02rem, .5vw + .9rem, 1.2rem); color: var(--body); max-width: 56ch; }
 .p { color: var(--body); max-width: 58ch; }
@@ -98,7 +103,15 @@ ul, ol { padding: 0; list-style: none; }
 @media (min-width: 940px) { .top .btn { margin-left: 0; } }
 
 /* HERO */
-.hero { position: relative; isolation: isolate; background: var(--night); padding: 168px 0 0; }
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-content: end;
+  background: var(--night);
+  padding: 168px 0 clamp(44px, 6vw, 84px);
+}
+@media (min-width: 900px) { .hero { min-height: 100svh; } }
 .hero__bg { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
 .hero__bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 44%; }
 .hero__bg::after {
@@ -117,7 +130,7 @@ ul, ol { padding: 0; list-style: none; }
 .finder {
   position: relative;
   z-index: 2;
-  margin: clamp(28px, 4vw, 46px) auto calc(clamp(28px, 4vw, 46px) * -1 - 18px);
+    margin: clamp(30px, 4vw, 48px) auto 0;
   width: min(100% - var(--gut)*2, 1200px);
   display: grid;
   gap: 1px;
@@ -130,7 +143,7 @@ ul, ol { padding: 0; list-style: none; }
 .fld { display: grid; gap: 3px; padding: 10px 16px; border-right: 1px solid var(--cream2); }
 @media (max-width: 879px) { .fld { border-right: 0; border-bottom: 1px solid var(--cream2); } }
 .finder .fld:nth-last-of-type(1) { border-right: 0; border-bottom: 0; }
-.fld > span { font-size: .62rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--tung-d); }
+.fld > span { font-size: .62rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--tung-ink); }
 .fld select, .fld input {
   appearance: none;
   width: 100%;
@@ -156,7 +169,7 @@ ul, ol { padding: 0; list-style: none; }
   font-size: .92rem;
 }
 .fresult[hidden] { display: none; }
-.fresult b { color: var(--tung-d); }
+.fresult b { color: var(--tung-ink); }
 .fresult--no { background: #f3e2d8; }
 .fresult--no b { color: #a64a2e; }
 
@@ -201,12 +214,12 @@ section.night .p, section.night .lede { color: rgba(244,237,225,.8); }
 table.t { width: 100%; border-collapse: collapse; margin-top: clamp(26px,3vw,40px); }
 table.t th, table.t td { padding: 15px 10px; border-bottom: 1px solid var(--cream2); text-align: right; }
 table.t th:first-child, table.t td:first-child { text-align: left; padding-left: 0; }
-table.t thead th { font-size: .68rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--tung-d); vertical-align: bottom; }
+table.t thead th { font-size: .68rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--tung-ink); vertical-align: bottom; }
 table.t thead th small { display: block; font-weight: 400; letter-spacing: .02em; text-transform: none; color: #9a8b76; }
 table.t tbody th { font-family: var(--ff-d); font-size: 1.14rem; font-weight: 500; color: var(--night); }
 table.t tbody th small { display: block; font-family: var(--ff-b); font-size: .76rem; color: #9a8b76; }
 table.t td { font-variant-numeric: tabular-nums; font-size: 1rem; color: var(--night); }
-table.t .best { color: var(--tung-d); font-weight: 600; }
+table.t .best { color: var(--tung-ink); font-weight: 600; }
 
 /* steps */
 .steps { display: grid; gap: clamp(18px,2.4vw,30px); margin-top: clamp(30px,4vw,48px); }
@@ -319,8 +332,8 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
 
   <header class="top">
     <div class="wrap top__in">
-      <a class="mk" href="#" aria-label="Taneční studio 29">
-        <b>Studio 29</b>
+      <a class="mk" href="#" aria-label="Taneční studio Takt">
+        <b>Studio Takt</b>
         <span>Taneční sál · Praha</span>
       </a>
       <nav aria-label="Hlavní navigace">
@@ -377,13 +390,13 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
 </section>
 
 <main>
-  <section class="pad-t0">
+  <section>
     <div class="wrap">
       <ul class="feats">
         <li class="feat"><b>122 m²</b><span>velký sál bez sloupů</span></li>
         <li class="feat"><b>20 m²</b><span>malý sál na soukromé lekce</span></li>
-        <li class="feat"><b>7:00–22:00</b><span>denně, patnáct hodin provozu</span></li>
-        <li class="feat"><b>3 minuty</b><span>od metra Můstek</span></li>
+        
+        <li class="feat"><b>3 minuty</b><span>od metra Florenc</span></li>
       </ul>
     </div>
   </section>
@@ -395,7 +408,7 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
       </figure>
       <div>
         <span class="tag tag--l">Filozofie</span>
-        <h2 class="d h2" style="margin-top:12px">Prostor, který <em>unese víc než tanec.</em></h2>
+        <h2 class="d h2" style="margin-top:12px">Prostor, který <span class="hl">unese víc než tanec.</span></h2>
         <p class="p" style="margin-top:18px">
           Otevřeli jsme sál pro tanec — a rychle se ukázalo, že místo, kde se dá
           volně hýbat a přitom slyšet vlastní hudbu, je v centru Prahy vzácnější,
@@ -419,7 +432,7 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
           <li><span>Malá vystoupení a party</span></li>
         </ul>
         <div class="acts acts--l">
-          <a class="btn btn--l" href="#partneri">Chci u vás učit</a>
+          <a class="btn btn--l" href="#partneri">Mám zájem</a>
         </div>
       </div>
     </div>
@@ -428,7 +441,7 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
   <section id="saly">
     <div class="wrap">
       <span class="tag">Sály</span>
-      <h2 class="d h2" style="margin-top:12px">Dva prostory, <em>jedno místo.</em></h2>
+      <h2 class="d h2" style="margin-top:12px">Dva prostory, <span class="hl">jedno místo.</span></h2>
       <div class="halls">
         <article class="hall">
           <img src="../assets/img/hall-portrait.webp" alt="Velký sál — souvislý parket bez sloupů" width="1100" height="1386">
@@ -456,12 +469,12 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
   <section id="jak" class="night" style="padding-top:0">
     <div class="wrap">
       <span class="tag tag--l">Jak to funguje</span>
-      <h2 class="d h2" style="margin-top:12px">Od kliknutí <em>do sálu.</em></h2>
+      <h2 class="d h2" style="margin-top:12px">Od kliknutí <span class="hl">do sálu.</span></h2>
       <ol class="steps">
         <li class="step"><b>01</b><h3 class="d h3">Vyberete hodiny</h3><p>V rozvrhu kliknete na volné bloky. Minimum je jedna hodina.</p></li>
         <li class="step"><b>02</b><h3 class="d h3">Potvrdíme do 12 hodin</h3><p>Ozveme se e-mailem, u dlouhodobých rezervací přiložíme smlouvu.</p></li>
         <li class="step"><b>03</b><h3 class="d h3">Dostanete kód</h3><p>Samostatný vstup z ulice. Kód platí jen ve vašich hodinách.</p></li>
-        <li class="step"><b>04</b><h3 class="d h3">Platíte odebrané hodiny</h3><p>Předem převodem, partnerským školám souhrnně na konci měsíce.</p></li>
+        <li class="step"><b>04</b><h3 class="d h3">Platíte odebrané hodiny</h3><p>Předem převodem, partnerským školám souhrnně na začátku měsíce.</p></li>
       </ol>
     </div>
   </section>
@@ -469,7 +482,7 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
   <section id="cenik">
     <div class="wrap">
       <span class="tag">Ceník</span>
-      <h2 class="d h2" style="margin-top:12px">Cena za hodinu, <em>nic navíc.</em></h2>
+      <h2 class="d h2" style="margin-top:12px">Cena za hodinu, <span class="hl">nic navíc.</span></h2>
       
       <table class="t">
         <thead>
@@ -493,7 +506,7 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
   <section id="partneri" class="night">
     <div class="wrap">
       <span class="tag tag--l">S kým pracujeme</span>
-      <h2 class="d h2" style="margin-top:12px">Školy, <em>které u nás učí.</em></h2>
+      <h2 class="d h2" style="margin-top:12px">Školy, <span class="hl">které u nás učí.</span></h2>
       <div class="car" data-car aria-roledescription="carousel" aria-label="Partnerské školy">
         <div class="car__view"><div class="car__track" data-car-track></div></div>
         <ul class="slots" data-car-nav></ul>
@@ -505,7 +518,7 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
     <img src="../assets/img/hall-floor.webp" alt="" width="1400" height="681">
     <div class="wrap">
       <span class="tag tag--l">Centrum Prahy</span>
-      <h2 class="d h2" style="margin-top:12px">Přijďte si sál <em>osobně projít.</em></h2>
+      <h2 class="d h2" style="margin-top:12px">Přijďte si sál <span class="hl">osobně projít.</span></h2>
       <p class="lede">
         Ukážeme prostor, podlahu i vstup. Trvá to dvacet minut
         a nic vás to nezavazuje.
@@ -521,7 +534,7 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
 <footer class="f">
   <div class="wrap f__in">
     <div>
-      <a class="mk" href="#" aria-label="Taneční studio 29"><b>Studio 29</b><span>Taneční sál · Praha</span></a>
+      <a class="mk" href="#" aria-label="Taneční studio Takt"><b>Studio Takt</b><span>Taneční sál · Praha</span></a>
       <p style="margin-top:16px;font-size:.9rem">
         Taneční sál v centru Prahy k pronájmu po hodinách.
         Domov pro taneční školy, lektory a komunity.
@@ -547,12 +560,12 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
       <h4>Kde nás najdete</h4>
       <address>
         Karolíny Světlé 301/8<br>110 00 Praha 1<br>
-        rezervace@studio29.cz<br>+420 XXX XXX XXX
+        rezervace@studiotakt.cz<br>+420 XXX XXX XXX
       </address>
     </div>
   </div>
   <div class="wrap f__base">
-    <p>© 2026 Taneční studio 29</p>
+    <p>© 2026 Taneční studio Takt</p>
     <p>Nezávislý nájemce prostoru</p>
   </div>
 </footer>
