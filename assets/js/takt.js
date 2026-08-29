@@ -8,6 +8,7 @@
   var hallEl = form.querySelector("[data-f-hall]");
   var dateEl = form.querySelector("[data-f-date]");
   var fromEl = form.querySelector("[data-f-from]");
+  var purpEl = form.querySelector("[data-f-purpose]");
     var toEl   = form.querySelector("[data-f-to]");
   var out    = document.querySelector("[data-result]");
 
@@ -89,8 +90,13 @@
       return;
     }
 
-          out.innerHTML = "<b>" + name + " je volný</b> " + R.longDate(date) + ", " +
-        R.hhmm(from) + "–" + R.hhmm(from + len) + " · " + R.czk(price);
+    if (purpEl) {
+      // remember it for the booking form; a failed write is not worth an error
+      try { window.localStorage.setItem("takt.purpose", purpEl.value); } catch (e) {}
+    }
+    out.innerHTML = "<b>" + name + " je volný</b> " + R.longDate(date) + ", " +
+      R.hhmm(from) + "–" + R.hhmm(from + len) + " · " + R.czk(price) +
+      (purpEl ? " · " + purpEl.value.toLowerCase() : "");
   });
 
     /* three views of the same hall, crossfading */

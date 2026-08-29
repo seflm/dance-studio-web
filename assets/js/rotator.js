@@ -7,7 +7,7 @@
 (function (global) {
   "use strict";
 
-  var WORDS = ["tanec", "zkoušky", "workshopy", "komunitu", "focení", "setkání"];
+  var WORDS = ["tanec", "zkoušky", "workshopy", "networking", "komunitu", "focení", "setkání"];
     var HOLD = 1100;   // how long each word stays
   var FADE = 190;    // must match the CSS transition
 

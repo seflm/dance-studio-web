@@ -94,6 +94,16 @@
     document.querySelector("[data-t-sum]").textContent = R.czk(c.total);
   }
 
+  /* the hero finder may have already asked what this is for */
+  (function () {
+    var sel = form.querySelector('select[name="purpose"]'), saved;
+    try { saved = window.localStorage.getItem("takt.purpose"); } catch (e) { return; }
+    if (!sel || !saved) return;
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value === saved) { sel.selectedIndex = i; return; }
+    }
+  })();
+
   grid.on(paint);
   paint();
 
@@ -140,8 +150,6 @@
       c.hoursTotal + " h" + (c.term ? " · semestrální sazba" : "");
     document.querySelector("[data-r-teacher]").textContent = f.get("teacher") || "—";
     document.querySelector("[data-r-purpose]").textContent = f.get("purpose") || "—";
-    document.querySelector("[data-r-record]").textContent =
-      f.get("record") ? "ano — kamery se spustí s rezervací" : "ne";
     document.querySelector("[data-r-sum]").textContent = R.czk(c.total);
 
     stageForm.hidden = true;

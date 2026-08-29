@@ -60,6 +60,18 @@
       </select>
     </label>
     <label class="fld">
+      <span>Účel použití</span>
+      <select name="purpose" data-f-purpose>
+        <option>Pravidelný kurz</option>
+        <option>Jednorázový workshop</option>
+        <option>Soukromá lekce</option>
+        <option>Vlastní trénink</option>
+        <option>Zkouška na vystoupení</option>
+        <option>Focení nebo video</option>
+        <option>Firemní nebo komunitní setkání</option>
+      </select>
+    </label>
+    <label class="fld">
       <span>Datum</span>
       <select name="date" data-f-date></select>
     </label>
@@ -103,18 +115,12 @@
         <img src="assets/img/hall-lide.webp" alt="Sál během večerního setkání — lidé u stolků pod bodovými světly" width="1500" height="1125">
       </figure>
       <div>
-        <span class="tag tag--l">Filozofie</span>
-        <h2 class="d h2" style="margin-top:12px">Prostor, který <span class="hl">unese víc než tanec.</span></h2>
+        <h2 class="d h2">Naše filozofie</h2>
         <p class="p" style="margin-top:18px">
           Nejvíc nás baví, když kolem pravidelného termínu vznikne parta. Lidé,
-          kteří by se jinak nepotkali, se najednou vidí každý týden ve stejnou
-          hodinu — a po pár měsících spolu chodí i jinam. Tomu chceme dávat
-          prostor: tanec je záminka, spojovat lidi je smysl.
-        </p>
-        <p class="p">
-          Chodí k nám taneční školy s pravidelnými kurzy, páry na soukromé lekce
-          i soubory před vystoupením. Stejně dobře prostor funguje pro workshopy,
-          focení, firemní večery nebo setkání komunit, které jinde nemají kam.
+          kteří by se jinak nepotkali, se vidí každý týden ve stejnou hodinu —
+          a po pár měsících spolu chodí i jinam. Tanec je záminka, spojovat
+          lidi je smysl.
         </p>
         <p class="p">
           Nepřidělujeme sálu jediné použití. Dáváme mu podlahu, světlo, zvuk
@@ -137,34 +143,32 @@
 
   <section id="kdo">
     <div class="wrap">
-      <div class="two two--t">
-        <div>
-          <span class="tag">Kdo za tím stojí</span>
-          <h2 class="d h2" style="margin-top:12px">Dva lidé, kteří sál <span class="hl">sami používají.</span></h2>
-          <p class="p" style="margin-top:18px">
-            Jeden přišel od tance, druhý od lidí kolem něj. Studio zakládáme
-            proto, že jsme oba roky chodili po cizích sálech a věděli jsme dost
-            přesně, co v nich chybělo: rovná podlaha, slušný zvuk, termín, na
-            který se dá spolehnout, a někdo, kdo na dotaz odpoví ještě týž den.
-          </p>
-          <p class="p">
-            Sál provozujeme sami a jsme na místě. Není to franšíza ani vedlejší
-            činnost správcovské firmy — je to prostor, do kterého sami chodíme.
-          </p>
-        </div>
-
-        <div>
-          <ul class="route">
-            <li><dt>Provoz</dt><dd>vlastní, ne přes správce<small>Rezervace, klíče i údržbu řešíme sami.</small></dd></li>
-            <li><dt>Odpověď</dt><dd>do dvanácti hodin<small>Na dotaz k termínu i k sazbě, včetně víkendu.</small></dd></li>
-            <li><dt>Kontakt</dt><dd>jeden člověk<small>Ne rotující recepce. Víte, komu voláte.</small></dd></li>
-            <li><dt>Provozní doba</dt><dd>denně 7:00–22:00<small>Po 22:00 sál nepůjčujeme — v domě se pracuje i bydlí.</small></dd></li>
-            <li><dt>Sousedství</dt><dd>bereme vážně<small>Zvuk držíme uvnitř, úklid po každé hodině, konec včas.</small></dd></li>
-          </ul>
-        </div>
-      </div>
+      <h2 class="d h2">Kdo jsme</h2>
+      <p class="lede" style="margin-top:18px">
+        Jeden přišel od tance, druhý od lidí kolem něj. Sál provozujeme sami
+        a jsme na místě — roky jsme chodili po cizích sálech a víme dost
+        přesně, co v nich chybělo.
+      </p>
 
       <div class="team">
+        <article class="person">
+          <figure>
+            <img src="assets/img/team-marek.webp"
+                 alt="Marek na terase, opřený o zídku" width="900" height="1125" loading="lazy">
+          </figure>
+          <h3 class="person__nm">Marek</h3>
+          <p class="person__rl">Provoz a komunita</p>
+          <p>
+            Přišel z IT, kde strávil roky u obrazovky a s lidmi mluvit skoro
+            neuměl. Rozhodl se, že to chce změnit — a změnil. Dnes ho nejvíc
+            baví přesně to, co mu dřív šlo nejhůř: potkávat lidi, chodit po
+            komunitách a pomáhat jim růst.
+          </p>
+          <p>
+            Nejvíc ze všeho v těch tanečních. Odsud je celý nápad na studio:
+            místo, kde komunity vznikají, potkávají se a mají kam chodit.
+          </p>
+        </article>
         <article class="person">
           <figure>
             <img src="assets/img/team-jirka.webp"
@@ -185,40 +189,20 @@
             potřebuje.
           </p>
         </article>
-
-        <article class="person">
-          <figure>
-            <img src="assets/img/team-marek.webp"
-                 alt="Marek na terase, opřený o zídku" width="900" height="1125" loading="lazy">
-          </figure>
-          <h3 class="person__nm">Marek</h3>
-          <p class="person__rl">Provoz a komunita</p>
-          <p>
-            Přišel z IT, kde strávil roky u obrazovky a s lidmi mluvit skoro
-            neuměl. Rozhodl se, že to chce změnit — a změnil. Dnes ho nejvíc
-            baví přesně to, co mu dřív šlo nejhůř: potkávat lidi, chodit po
-            komunitách a pomáhat jim růst.
-          </p>
-          <p>
-            Nejvíc ze všeho v těch tanečních. Odsud je celý nápad na studio:
-            místo, kde komunity vznikají, potkávají se a mají kam chodit.
-          </p>
-        </article>
       </div>
     </div>
   </section>
 
   <section id="saly">
     <div class="wrap">
-      <span class="tag">Sály</span>
-      <h2 class="d h2" style="margin-top:12px">Dva prostory, <span class="hl">jedno místo.</span></h2>
+      <h2 class="d h2">Sály</h2>
       <div class="halls">
         <article class="hall">
           <img src="assets/img/hall-velky.webp" alt="Velký sál — souvislý parket bez sloupů" width="1100" height="1386">
           <div class="hall__bd">
             <h3 class="d h3">Velký sál</h3>
             <p>Souvislý parket bez jediného sloupu, světlá výška 3,4 m, mobilní zrcadlová stěna a bodová světla na liště.</p>
-            <p class="hall__mt"><span>122 m²</span><span>30 tanečníků v páru</span><span>od 590 Kč/h</span></p>
+            <p class="hall__mt"><span>122 m²</span><span>světlá výška 3,4 m</span><span>30 tanečníků v páru</span><span>vinylová podlaha na roštu</span><span>zrcadla 6 m, mobilní</span><span>2× aktivní monitor · BT, jack, XLR</span><span>rekuperace</span><span>od 590 Kč/h</span></p>
           </div>
         </article>
         <article class="hall">
@@ -226,7 +210,7 @@
           <div class="hall__bd">
             <h3 class="d h3">Malý sál</h3>
             <p>Soukromé lekce, příprava na svatbu, individuální trénink.</p>
-            <p class="hall__mt"><span>20 m²</span><span>4 osoby</span><span>od 290 Kč/h</span></p>
+            <p class="hall__mt"><span>20 m²</span><span>4 osoby</span><span>pevné zrcadlo 3 m</span><span>stejná podlaha</span><span>ozvučení přes Bluetooth</span><span>sdílená šatna</span><span>od 290 Kč/h</span></p>
           </div>
         </article>
       </div>
@@ -238,8 +222,7 @@
 
   <section id="jak" class="night">
     <div class="wrap">
-      <span class="tag tag--l">Jak to funguje</span>
-      <h2 class="d h2" style="margin-top:12px">Od kliknutí <span class="hl">do sálu.</span></h2>
+      <h2 class="d h2">Jak to funguje?</h2>
       <ol class="steps">
         <li class="step"><b>01</b><h3 class="d h3">Vyberete hodiny</h3><p>V rozvrhu kliknete na volné bloky. Minimum je jedna hodina.</p></li>
         <li class="step"><b>02</b><h3 class="d h3">Rezervaci potvrdíme</h3><p>Ozveme se e-mailem, u dlouhodobých rezervací přiložíme smlouvu.</p></li>
@@ -250,7 +233,9 @@
   </section>
 
     <!-- opt-in recording -->
-  <section id="zaznam">
+  <!-- Skryto na přání do rozhodnutí o službě. Až se zapne, sundat "hidden",
+       vrátit checkbox „Nahrát lekci na video“ v p_rez.py a odkaz v zápatí. -->
+  <section id="zaznam" hidden>
     <div class="wrap two two--r">
       <figure class="shot">
         <img src="assets/img/hall-empty.webp" alt="Sál připravený k natáčení — zrcadlová stěna a bodové osvětlení" width="1920" height="1080" loading="lazy">
@@ -272,10 +257,9 @@
     </div>
   </section>
 
-  <section id="cenik">
+  <section id="cenik" class="tight">
     <div class="wrap">
-      <span class="tag">Ceník</span>
-      <h2 class="d h2" style="margin-top:12px">Cena za hodinu, <span class="hl">nic navíc.</span></h2>
+      <h2 class="d h2">Ceník</h2>
       
       <table class="t">
         <thead>
@@ -298,8 +282,7 @@
 
   <section id="partneri" class="night">
     <div class="wrap">
-      <span class="tag tag--l" style="display:block;text-align:center">S kým pracujeme</span>
-      <h2 class="d h2" style="margin-top:12px;text-align:center">Školy, <span class="hl">které u nás učí.</span></h2>
+      <h2 class="d h2" style="text-align:center">Školy, které u nás učí.</h2>
       <div class="car" data-car aria-roledescription="carousel" aria-label="Partnerské školy">
         <div class="car__view"><div class="car__track" data-car-track></div></div>
         <ul class="slots" data-car-nav></ul>
@@ -308,10 +291,8 @@
   </section>
 
   <section class="cta">
-    
     <div class="wrap">
-      
-      <h2 class="d h2" style="margin-top:12px">Přijďte si sál <span class="hl">osobně projít.</span></h2>
+      <h2 class="d h2">Přijďte si sál <span class="hl">osobně projít.</span></h2>
       <p class="lede">
         Ukážeme prostor, podlahu i vstup. Trvá to dvacet minut
         a nic vás to nezavazuje.
@@ -338,7 +319,7 @@
       <ul>
         <li><a href="prostory.html">Sály a vybavení</a></li>
         <li><a href="rezervace.html">Rezervace a ceník</a></li>
-        <li><a href="index.html#zaznam">Záznam lekce</a></li>
+        <li><a href="index.html#jak">Jak to funguje</a></li>
         <li><a href="partneri.html">Partneři</a></li>
       </ul>
     </div>

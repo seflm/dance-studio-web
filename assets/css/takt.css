@@ -142,7 +142,7 @@ ul, ol { padding: 0; list-style: none; }
   background: var(--cream);
   box-shadow: 0 26px 60px -22px rgba(23,16,9,.62);
 }
-@media (min-width: 880px) { .finder { grid-template-columns: 1.1fr 1fr .8fr .8fr auto; align-items: center; } }
+@media (min-width: 880px) { .finder { grid-template-columns: 1fr 1.05fr .9fr .7fr .7fr auto; align-items: center; } }
 .fld { display: grid; gap: 3px; padding: 10px 16px; border-right: 1px solid var(--cream2); }
 @media (max-width: 879px) { .fld { border-right: 0; border-bottom: 1px solid var(--cream2); } }
 .finder .fld:nth-last-of-type(1) { border-right: 0; border-bottom: 0; }
@@ -238,6 +238,8 @@ ul, ol { padding: 0; list-style: none; }
 .feat span { display: block; margin-top: 5px; font-size: .86rem; color: var(--dim); color: #8a7c68; }
 
 section { padding: clamp(56px, 7vw, 104px) 0; }
+section.tight { padding-block: clamp(38px, 4.4vw, 66px); }
+[hidden] { display: none !important; }
 section.night { background: var(--night); color: rgba(244,237,225,.82); }
 section.night .d, section.night .h2, section.night .h3, section.night b { color: var(--cream); }
 section.night .p, section.night .lede { color: rgba(244,237,225,.8); }
@@ -254,12 +256,16 @@ section.night .p, section.night .lede { color: rgba(244,237,225,.8); }
 @media (min-width: 780px) { .halls { grid-template-columns: 1.5fr 1fr; } }
 .hall { position: relative; border-radius: var(--r); overflow: hidden; isolation: isolate; min-height: 340px; display: flex; align-items: flex-end; }
 .hall img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
-.hall::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(23,16,9,.92) 4%, rgba(23,16,9,.35) 52%, transparent 88%); }
+/* the caption block grew when the specs went in, so the scrim has to reach
+   further up the frame or the hall name lands on bare ceiling */
+.hall::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(23,16,9,.94) 0%, rgba(23,16,9,.86) 44%, rgba(23,16,9,.5) 72%, rgba(23,16,9,.12) 100%); }
 .hall:hover img { transform: scale(1.04); }
 .hall__bd { padding: clamp(20px, 2.6vw, 30px); color: var(--cream); }
 .hall__bd .h3 { color: var(--cream); }
 .hall__bd p { margin-top: 8px; font-size: .9rem; color: rgba(244,237,225,.78); max-width: 42ch; }
-.hall__mt { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 14px; font-size: .78rem; color: var(--tung); }
+.hall__mt { display: flex; flex-wrap: wrap; gap: 5px 18px; margin-top: 14px; font-size: .76rem; color: var(--tung); }
+/* no interpuncts: the row wraps, and a separator pseudo-element strands a
+   stray dot at the start of every continuation line */
 
 /* the studio's own line, set as a pull quote — not a fabricated review */
 .quote { text-align: center; }
@@ -341,9 +347,8 @@ table.t .best { color: var(--tung-ink); font-weight: 600; }
 .note { margin-top: 22px; padding: 14px 16px; border-radius: 10px; background: rgba(217,162,72,.1); border: 1px solid rgba(217,162,72,.3); font-size: .86rem; }
 
 /* cta */
-.cta { position: relative; isolation: isolate; text-align: center; overflow: hidden; }
-.cta img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
-.cta::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(rgba(23,16,9,.86), rgba(23,16,9,.94)); }
+.cta { position: relative; isolation: isolate; text-align: center; overflow: hidden; background: var(--night); }
+.cta img { display: none; }
 .cta .h2, .cta .lede { color: var(--cream); }
 .cta .lede { margin: 16px auto 0; }
 .acts { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 30px; }
