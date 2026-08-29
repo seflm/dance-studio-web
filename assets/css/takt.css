@@ -613,7 +613,6 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
 .facts dd { font-size: .94rem; color: var(--night); }
 .night .facts dt { color: var(--tung); }
 .night .facts dd { color: var(--cream); }
-.free { font-size: .68rem; letter-spacing: .13em; text-transform: uppercase; text-align: center; line-height: 1.7; color: #a2947e; }
 
 /* --- the light-band components, restated for night bands ------------------ */
 /* the tariff, the form and the summary all assume cream underneath; when a

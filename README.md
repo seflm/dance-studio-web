@@ -142,6 +142,7 @@ Web se ukazuje majiteli prostoru, takže tohle je potřeba mít oddělené.
 | Název „Taneční studio Takt“ | všude | **návrh** — „Studio 29“ bylo obsazené; ověřte doménu a ochrannou známku |
 | Role „Tanec a program“ / „Provoz a komunita“ | `index.html#kdo` | **náš návrh**, jak si práci rozdělit — přepište, jestli to máte jinak |
 | Sliby o provozu | `index.html#kdo` | „Provozujeme sami“, „odpověď do dvanácti hodin“, „jeden kontaktní člověk“, „zvuk držíme uvnitř, úklid po každé hodině“ jsou **závazky, ne fakta**. Majiteli prostoru se čtou jako slib — potvrďte, že je chcete držet. |
+| Loga Puls, Krok, Rytmus, Vlna | kolotoč na `index.html#partneri`, pás na `partneri.html` | **vymyšlené školy** — zástupná loga, dokud nebudou skutečné partnerské školy. Skutečná je jen Simply the West. |
 | Automatický záznam lekce | `index.html#zaznam`, checkbox v rezervaci | **navržená služba**, zatím neexistuje — kamery, opt-in u rezervace, mazání po 30 dnech |
 | Ceny 590 / 790 / 640 Kč atd. | ceníkové tabulky, `rozvrh.js` | orientační, na webu označené jako orientační |
 | Světlá výška 3,4 m | `prostory.html`, `index.html` | odhad z vizualizace |
@@ -163,11 +164,11 @@ přesnou adresu posíláme s potvrzením rezervace.
 
 ## Právní / etické poznámky
 
-- **Žádné vymyšlené partnerské školy.** Dřívější kolotoč s logy Puls, Krok,
-  Rytmus a Vlna je pryč — byly to neexistující školy a web s nimi tvrdil
-  majiteli prostoru něco, co není pravda. Teď je uvedená jedna skutečná
-  škola (Simply the West) a volná kapacita je popsaná jako volná:
-  „Volné místo pro školu“, „místo pro další školy je volné“.
+- **Loga Puls, Krok, Rytmus a Vlna jsou vymyšlené školy.** Kolotoč na
+  úvodní stránce i pás na `partneri.html` je ukazují jako pět partnerů,
+  ačkoli existuje jen Simply the West (uprostřed). Je to vědomé rozhodnutí
+  — sekce má ukázat, jak bude vypadat, až budou školy doplněné. Než web
+  půjde ven veřejně, vyměňte je za skutečná loga.
 - Sekce o historii domu i věta o nezávislém nájemci jsou z webu pryč. Kdyby
   se adresa někdy zveřejnila, vraťte i upozornění, že studio s bankou
   sídlící v domě nijak nesouvisí.

@@ -145,3 +145,75 @@
     });
   }
 })();
+
+
+/* Partner carousel — one real school in the middle, the open places say so.
+   The logo row doubles as the navigation. */
+(function () {
+  var MARK = '<svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true">' +
+    '<circle cx="26" cy="26" r="25" stroke="currentColor"/>' +
+    '<path d="M26 17v18M17 26h18" stroke="currentColor"/></svg>';
+  var SMALL = '<svg width="26" height="26" viewBox="0 0 52 52" fill="none" aria-hidden="true">' +
+    '<circle cx="26" cy="26" r="25" stroke="currentColor" stroke-width="2"/>' +
+    '<path d="M26 17v18M17 26h18" stroke="currentColor" stroke-width="2"/></svg>';
+
+  var SLIDES = [
+    { nav: "Puls", title: "Puls", logo: "assets/img/partners/puls.svg",
+      body: "Taneční studio zaměřené na latinskoamerické tance a sociální večery. Kurzy pro dospělé a pravidelné páteční party." },
+    { nav: "Krok", title: "Krok", logo: "assets/img/partners/krok.svg",
+      body: "Škola společenského tance pro dospělé — od úplných základů po pokročilé, s důrazem na vedení a držení." },
+    { nav: "Simply the West", title: "Simply the West", logo: "assets/img/partner-simplythewest-mono.png",
+      body: "Taneční škola Jiřího Švarce a Miriam Zedníčkové, zaměřená na West Coast Swing — moderní párový tanec postavený na improvizaci a vedení. Kurzy od úplných začátečníků po pokročilé, workshopy s hostujícími lektory a pravidelné taneční party. Jirka zároveň patří k lidem, kteří studio zakládají — podmínky proto platí pro všechny školy stejně.",
+      link: "https://www.simplythewest.cz/", linkLabel: "simplythewest.cz ↗" },
+    { nav: "Rytmus", title: "Rytmus", logo: "assets/img/partners/rytmus.svg",
+      body: "Kurzy pro děti a mládež — moderna, street a základy jevištního pohybu. Vystoupení dvakrát ročně." },
+    { nav: "Vlna", title: "Vlna", logo: "assets/img/partners/vlna.svg",
+      body: "Contemporary a improvizace. Otevřené hodiny, na které se nemusíte hlásit dopředu, a víkendové intenzivy." }
+  ];
+
+  var car = document.querySelector("[data-car]");
+  if (!car) return;
+  var track = car.querySelector("[data-car-track]");
+  var nav = car.querySelector("[data-car-nav]");
+
+  track.innerHTML = SLIDES.map(function (s, i) {
+        var inner =
+      '<div class="pslide__logo"><img src="' + s.logo + '" alt="Logo ' + s.title + '" width="300" height="120" loading="lazy"></div>' +
+      '<span class="tag tag--l">Partnerská škola</span>' +
+      '<p>' + s.body + '</p>' +
+      (s.link
+        ? '<p><a class="btn btn--gl" href="' + s.link + '" target="_blank" rel="noopener">' + s.linkLabel + '</a></p>'
+        : '<p><a class="btn btn--gl" href="#finder">Zjistit víc</a></p>');
+    return '<div class="car__slide" role="group" aria-roledescription="slide" aria-label="' +
+           (i + 1) + ' z ' + SLIDES.length + '"><div class="pslide">' + inner + '</div></div>';
+  }).join("");
+
+    nav.innerHTML = SLIDES.map(function (s, i) {
+    var fig = '<span class="slot__fig"><img src="' + s.logo + '" alt="" width="300" height="120" loading="lazy"></span>';
+    return '<li><button class="slot" type="button" data-go="' + i + '">' + fig +
+      '<span class="slot__rule" aria-hidden="true"></span>' +
+      '<span class="slot__lbl">' + s.nav + '</span></button></li>';
+  }).join("");
+
+  var slides = track.querySelectorAll(".car__slide");
+  var dots = nav.querySelectorAll(".slot");
+
+  function go(i) {
+    var n = SLIDES.length;
+    i = (i % n + n) % n;
+    track.style.transform = "translateX(" + (-i * 100) + "%)";
+    slides.forEach(function (el, k) {
+      el.setAttribute("aria-hidden", String(k !== i));
+      el.querySelectorAll("a").forEach(function (a) { a.tabIndex = k === i ? 0 : -1; });
+    });
+    dots.forEach(function (el, k) { el.setAttribute("aria-current", String(k === i)); });
+  }
+  dots.forEach(function (el, i) { el.addEventListener("click", function () { go(i); }); });
+  nav.addEventListener("keydown", function (e) {
+    var cur = [].indexOf.call(dots, document.activeElement);
+    if (cur < 0) return;
+    if (e.key === "ArrowRight") { e.preventDefault(); var n1 = (cur + 1) % dots.length; dots[n1].focus(); go(n1); }
+    if (e.key === "ArrowLeft")  { e.preventDefault(); var n2 = (cur - 1 + dots.length) % dots.length; dots[n2].focus(); go(n2); }
+  });
+  go(2);
+})();
