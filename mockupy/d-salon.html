@@ -58,7 +58,7 @@ ul, ol { padding: 0; list-style: none; }
 /* the accent word, upright — italics are kept for the hero alone */
 .d .hl { color: var(--tung-ink); }
 .night .d .hl, .close .d .hl { color: var(--tung); }
-.h1 { font-size: clamp(2.5rem, 6vw, 4.9rem); line-height: 1.02; }
+.h1 { font-size: clamp(2.2rem, 5vw, 4.1rem); line-height: 1.04; }
 .h2 { font-size: clamp(1.95rem, 3.6vw, 3.1rem); }
 .h3 { font-size: 1.36rem; line-height: 1.18; }
 .tag { font-size: .7rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--tung-ink); }
@@ -113,12 +113,22 @@ ul, ol { padding: 0; list-style: none; }
 }
 @media (min-width: 900px) { .hero { min-height: 100svh; } }
 .hero__bg { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
-.hero__bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 44%; }
+.hero__bg img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 46%;
+  opacity: 0;
+  transition: opacity 1.6s var(--ease);
+}
+.hero__bg img[data-on="true"] { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .hero__bg img { transition: none; } }
 .hero__bg::after {
   content: ""; position: absolute; inset: 0;
   background:
-    linear-gradient(to top, var(--night) 6%, rgba(23,16,9,.6) 42%, rgba(23,16,9,.28) 100%),
-    radial-gradient(80% 60% at 62% 46%, rgba(217,162,72,.2), transparent 70%);
+    linear-gradient(to top, var(--night) 4%, rgba(23,16,9,.52) 40%, rgba(23,16,9,.2) 100%),
+    linear-gradient(100deg, rgba(23,16,9,.72) 6%, rgba(23,16,9,.3) 46%, transparent 78%);
 }
 .hero__in { padding-bottom: clamp(30px, 5vw, 66px); color: var(--cream); }
 .hero .tag { display: block; margin-bottom: 18px; }
@@ -189,7 +199,17 @@ ul, ol { padding: 0; list-style: none; }
 .peek__btn:hover { color: var(--cream); }
 .peek__btn span { display: inline-block; margin-left: 8px; transition: transform .4s var(--ease); }
 .peek__btn[aria-expanded="true"] span { transform: rotate(180deg); }
-.peek__hint { font-size: .76rem; color: rgba(244,237,225,.55); }
+.peek__ask {
+  margin-left: auto;
+  font-size: .76rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+  color: rgba(244,237,225,.72);
+  border-bottom: 1px solid rgba(244,237,225,.28);
+  padding-bottom: 2px;
+  transition: color .3s var(--ease), border-color .3s var(--ease);
+}
+.peek__ask:hover { color: var(--cream); border-bottom-color: var(--tung); }
+.peek__ask span { display: inline-block; margin-left: 6px; transition: transform .3s var(--ease); }
+.peek__ask:hover span { transform: translateX(3px); }
 
 .cal {
   position: relative; z-index: 2;
@@ -225,7 +245,7 @@ section { padding: clamp(56px, 7vw, 104px) 0; }
 section.night { background: var(--night); color: rgba(244,237,225,.82); }
 section.night .d, section.night .h2, section.night .h3, section.night b { color: var(--cream); }
 section.night .p, section.night .lede { color: rgba(244,237,225,.8); }
-.pad-t0 { padding-top: clamp(64px, 8vw, 116px); }
+.band-tight { padding-block: clamp(30px, 4vw, 54px); }
 
 .two { display: grid; gap: clamp(28px, 4vw, 64px); align-items: center; }
 @media (min-width: 900px) { .two { grid-template-columns: 1fr 1fr; } }
@@ -273,9 +293,14 @@ table.t .best { color: var(--tung-ink); font-weight: 600; }
 
 /* partners */
 /* what the sál is used for, as a ruled index */
-.uses { margin-top: clamp(22px, 3vw, 32px); max-width: 34rem; border-top: 1px solid rgba(244,237,225,.14); }
-.uses li { display: flex; gap: 12px; padding: 11px 0; border-bottom: 1px solid rgba(244,237,225,.14); font-size: .92rem; color: rgba(244,237,225,.82); }
-.uses li::before { content: "—"; color: var(--tung); }
+/* the list is used on both the dark and the cream bands, so it defaults to
+   the light ground and the night sections override it */
+.uses { margin-top: clamp(22px, 3vw, 32px); max-width: 34rem; border-top: 1px solid var(--cream2); }
+.uses li { display: flex; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--cream2); font-size: .92rem; color: var(--body); }
+.uses li::before { content: "—"; color: var(--tung-ink); }
+.night .uses { border-top-color: rgba(244,237,225,.14); }
+.night .uses li { border-bottom-color: rgba(244,237,225,.14); color: rgba(244,237,225,.82); }
+.night .uses li::before { color: var(--tung); }
 
 /* partner carousel — the logo row is its navigation */
 .car { margin-top: clamp(34px, 4vw, 56px); }
@@ -380,8 +405,10 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
 </nav>
 
 <section class="hero">
-  <div class="hero__bg" aria-hidden="true">
-    <img src="../assets/img/hall-hero.webp" alt="" width="1590" height="960">
+  <div class="hero__bg" data-slides aria-hidden="true">
+    <img src="../assets/img/hall-empty.webp" alt="" width="1920" height="1080" data-on="true">
+    <img src="../assets/img/hall-party.webp" alt="" width="1920" height="1080" loading="lazy">
+    <img src="../assets/img/hall-networking.webp" alt="" width="1920" height="1080" loading="lazy">
   </div>
 
   <header class="top">
@@ -441,7 +468,7 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
     <button class="peek__btn" type="button" data-peek aria-expanded="false" aria-controls="kalendar">
       Zobrazit celý rozvrh <span aria-hidden="true">⌄</span>
     </button>
-    <span class="peek__hint" data-peek-hint></span>
+    <a class="peek__ask" href="#partneri">Chci individuální nabídku <span aria-hidden="true">→</span></a>
   </div>
   <div class="cal" id="kalendar" data-cal data-open="false">
     <div class="cal__row" data-cal-row></div>
@@ -449,7 +476,7 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
 </section>
 
 <main>
-  <section>
+  <section class="band-tight">
     <div class="wrap">
       <ul class="feats">
         <li class="feat"><b>122 m²</b><span>velký sál bez sloupů</span></li>
@@ -532,10 +559,33 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
       <h2 class="d h2" style="margin-top:12px">Od kliknutí <span class="hl">do sálu.</span></h2>
       <ol class="steps">
         <li class="step"><b>01</b><h3 class="d h3">Vyberete hodiny</h3><p>V rozvrhu kliknete na volné bloky. Minimum je jedna hodina.</p></li>
-        <li class="step"><b>02</b><h3 class="d h3">Potvrdíme do 12 hodin</h3><p>Ozveme se e-mailem, u dlouhodobých rezervací přiložíme smlouvu.</p></li>
+        <li class="step"><b>02</b><h3 class="d h3">Rezervaci potvrdíme</h3><p>Ozveme se e-mailem, u dlouhodobých rezervací přiložíme smlouvu.</p></li>
         <li class="step"><b>03</b><h3 class="d h3">Dostanete kód</h3><p>Samostatný vstup z ulice. Kód platí jen ve vašich hodinách.</p></li>
         <li class="step"><b>04</b><h3 class="d h3">Platíte odebrané hodiny</h3><p>Předem převodem, partnerským školám souhrnně na začátku měsíce.</p></li>
       </ol>
+    </div>
+  </section>
+
+    <!-- opt-in recording -->
+  <section id="zaznam">
+    <div class="wrap two two--r">
+      <figure class="shot">
+        <img src="../assets/img/hall-empty.webp" alt="Sál připravený k natáčení — zrcadlová stěna a bodové osvětlení" width="1920" height="1080" loading="lazy">
+      </figure>
+      <div>
+        <span class="tag">Záznam</span>
+        <h2 class="d h2" style="margin-top:12px">Nahrajeme vám lekci, <span class="hl">když si řeknete.</span></h2>
+        <p class="p" style="margin-top:18px">V sále jsou kamery a standardně jsou vypnuté. Když si u rezervace
+          zaškrtnete <strong>Záznam</strong>, spustí se samy s vaší hodinou
+          a s ní i skončí — nikdo nic neobsluhuje. Odkaz na video přijde do
+          hodiny po skončení.</p>
+        <ul class="uses">
+          <li><span>Zapíná se jen na vyžádání — bez zaškrtnutí se nenahrává nic</span></li>
+          <li><span>Začíná a končí přesně s vaší rezervací</span></li>
+          <li><span>Odkaz dostanete jen vy, po 30 dnech mažeme</span></li>
+          <li><span>Účastníky informuje lektor, ceduli ke vchodu dodáme</span></li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -559,18 +609,14 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
           <tr><th>Oba sály<small>142 m²</small></th><td>820 Kč</td><td>1 090 Kč</td><td class="best">890 Kč</td></tr>
         </tbody>
       </table>
-      <p class="note">Ceny jsou orientační, včetně DPH. Storno bezplatně do 48 hodin před termínem.</p>
+      
     </div>
   </section>
 
   <section id="partneri" class="night">
     <div class="wrap">
-      <span class="tag tag--l">S kým pracujeme</span>
-      <h2 class="d h2" style="margin-top:12px">Školy, <span class="hl">které u nás učí.</span></h2>
-      <p class="note" style="text-align:center;max-width:60ch;margin-inline:auto">
-        <b>Ukázka.</b> Kromě Simply the West jsou loga zástupná — ukazují, jak
-        bude sekce vypadat s pěti partnerskými školami.
-      </p>
+      <span class="tag tag--l" style="text-align:center">S kým pracujeme</span>
+      <h2 class="d h2" style="margin-top:12px;text-align:center">Školy, <span class="hl">které u nás učí.</span></h2>
       <div class="car" data-car aria-roledescription="carousel" aria-label="Partnerské školy">
         <div class="car__view"><div class="car__track" data-car-track></div></div>
         <ul class="slots" data-car-nav></ul>
@@ -579,7 +625,7 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
   </section>
 
   <section class="cta">
-    <img src="../assets/img/hall-floor.webp" alt="" width="1400" height="681">
+    
     <div class="wrap">
       
       <h2 class="d h2" style="margin-top:12px">Přijďte si sál <span class="hl">osobně projít.</span></h2>
@@ -731,6 +777,21 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
           out.innerHTML = "<b>" + name + " je volný</b> " + R.longDate(date) + ", " +
         R.hhmm(from) + "–" + R.hhmm(from + len) + " · " + R.czk(price);
   });
+
+    /* three views of the same hall, crossfading */
+  (function () {
+    var wrap = document.querySelector("[data-slides]");
+    if (!wrap) return;
+    var imgs = wrap.querySelectorAll("img");
+    if (imgs.length < 2) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var i = 0;
+    setInterval(function () {
+      imgs[i].removeAttribute("data-on");
+      i = (i + 1) % imgs.length;
+      imgs[i].setAttribute("data-on", "true");
+    }, 5000);
+  })();
 
   /* the week at a glance, folded under the bar */
   var peekBtn = document.querySelector("[data-peek]");

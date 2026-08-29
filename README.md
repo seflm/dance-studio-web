@@ -82,8 +82,8 @@ a v hero sekci počítá s krátkou video smyčkou místo fotografie.
 **Společné pro všechny návrhy** po poslední revizi:
 
 - Titulek je **„Prostory pro …“** a poslední slovo se střídá (tanec, zkoušky,
-  workshopy, komunitu, focení, setkání). Animaci obstarává
-  `assets/js/rotator.js`; při `prefers-reduced-motion` se nehýbe.
+  workshopy, komunitu, focení, setkání) přibližně po sekundě. Animaci
+  obstarává `assets/js/rotator.js`; při `prefers-reduced-motion` se nehýbe.
 - **Žádná konkrétní adresa ani zmínka o klenbě.** Web mluví o Praze, ne
   o ulici. Sekce o historii domu jsou pryč ze všech variant, stejně jako
   věta o nezávislém nájemci.
@@ -143,15 +143,19 @@ Web se ukazuje bance, takže tohle je potřeba mít oddělené.
 - Plochy sálů 122 m² a 20 m² — ze zadání.
 - **Simply the West**: taneční škola Jiřího Švarce a Miriam Zedníčkové,
   West Coast Swing, Praha. Logo je z `context/`.
-- Fotografie sálu i fasády jsou skutečné, z inzerátu na prodej/pronájem
-  prostoru.
+- Fotografie sálu jsou skutečné, z inzerátu na pronájem prostoru.
+- **Tři obrázky v hero sekci návrhu D** (`hall-empty`, `hall-party`,
+  `hall-networking`) jsou **vizualizace** dokončeného sálu, ne fotky
+  současného stavu. Střídají se po pěti sekundách. Ostatní návrhy zatím
+  používají původní fotografii z inzerátu.
 
 **Vymyšlené — potřebuje potvrdit nebo přepsat**
 
 | Co | Kde | Pozn. |
 |---|---|---|
 | Název „Taneční studio Takt“ | všude | **návrh** — „Studio 29“ bylo obsazené; ověřte doménu a ochrannou známku |
-| Loga Puls, Krok, Rytmus, Vlna | kolotoč partnerů v D a E | **vymyšlené školy** — ukazují jen, jak bude sekce vypadat plná. Na stránce je to napsané. |
+| Loga Puls, Krok, Rytmus, Vlna | kolotoč partnerů v D a E | **vymyšlené školy.** Poznámka „Ukázka“ byla na přání ze stránky odstraněna, takže sekce teď vypadá jako pět skutečných partnerů. Než web někomu ukážete, vyměňte je za pravá loga, nebo poznámku vraťte. |
+| Automatický záznam lekce | sekce *Záznam* v návrhu D | **navržená služba**, zatím neexistuje — kamery, opt-in u rezervace, mazání po 30 dnech |
 | Adresa „Karolíny Světlé 301/8“ | zápatí všech stránek, `kontakt.html` | **zástupná** — skutečnou adresu na přání neuvádíme |
 | Ceny 590 / 790 / 640 Kč atd. | ceníkové tabulky, `rozvrh.js` | orientační, na webu označené jako orientační |
 | Světlá výška 3,4 m | `prostory.html`, `index.html` | odhad z fotky |

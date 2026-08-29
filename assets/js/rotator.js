@@ -8,8 +8,8 @@
   "use strict";
 
   var WORDS = ["tanec", "zkoušky", "workshopy", "komunitu", "focení", "setkání"];
-  var HOLD = 2200;   // how long each word stays
-  var FADE = 380;    // must match the CSS transition
+    var HOLD = 1100;   // how long each word stays
+  var FADE = 190;    // must match the CSS transition
 
   function init(el, words) {
     words = words || WORDS;
