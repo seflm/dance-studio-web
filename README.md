@@ -118,6 +118,14 @@ Web se ukazuje majiteli prostoru, takže tohle je potřeba mít oddělené.
 - Plochy sálů 122 m² a 20 m² — ze zadání.
 - **Simply the West**: taneční škola Jiřího Švarce a Miriam Zedníčkové,
   West Coast Swing, Praha. Logo je z `context/`.
+- **Jirka a Marek** v sekci *Kdo za tím stojí* — fotky i medailonky jsou
+  od vás. Jirka tančí dvanáct let, těžiště má ve West Coast Swingu
+  a s Miriam vede Simply the West; Marek přišel z IT a dnes se věnuje
+  komunitám kolem tance. Na Jirkově fotce je Miriam zády ke kameře.
+- **Jirka je zároveň spoluzakladatel studia i partnerské školy.** Web to
+  říká na obou místech (`index.html#kdo`, `index.html#partneri`,
+  `partneri.html`) spolu s větou, že podmínky platí pro všechny školy
+  stejně. Nevyhazujte to — vypadalo by to, že se vztah zamlčuje.
 - Obrázky sálu (`hall-empty`, `hall-party`, `hall-networking` a výřezy
   `hall-velky`, `hall-detail`, `hall-lide`) jsou **vizualizace dokončeného
   sálu**, ne fotky současného stavu. V hero sekci se tři z nich střídají
@@ -132,7 +140,8 @@ Web se ukazuje majiteli prostoru, takže tohle je potřeba mít oddělené.
 | Co | Kde | Pozn. |
 |---|---|---|
 | Název „Taneční studio Takt“ | všude | **návrh** — „Studio 29“ bylo obsazené; ověřte doménu a ochrannou známku |
-| Sekce *Kdo za tím stojí* | `index.html#kdo` | Rámec je napsaný, **jména a role chybí schválně** — je tam žlutě orámovaný blok „Doplnit před odesláním“. Odstraňte ho až spolu s doplněním jmen a fotky. Věty „provozujeme sami“, „odpověď do dvanácti hodin“, „jeden kontaktní člověk“ jsou **sliby, ne fakta** — potvrďte je, nebo přepište. |
+| Role „Tanec a program“ / „Provoz a komunita“ | `index.html#kdo` | **náš návrh**, jak si práci rozdělit — přepište, jestli to máte jinak |
+| Sliby o provozu | `index.html#kdo` | „Provozujeme sami“, „odpověď do dvanácti hodin“, „jeden kontaktní člověk“, „zvuk držíme uvnitř, úklid po každé hodině“ jsou **závazky, ne fakta**. Majiteli prostoru se čtou jako slib — potvrďte, že je chcete držet. |
 | Automatický záznam lekce | `index.html#zaznam`, checkbox v rezervaci | **navržená služba**, zatím neexistuje — kamery, opt-in u rezervace, mazání po 30 dnech |
 | Ceny 590 / 790 / 640 Kč atd. | ceníkové tabulky, `rozvrh.js` | orientační, na webu označené jako orientační |
 | Světlá výška 3,4 m | `prostory.html`, `index.html` | odhad z vizualizace |
@@ -173,8 +182,8 @@ přesnou adresu posíláme s potvrzením rezervace.
 
 ## Co změnit nejdřív
 
-1. **Sekce *Kdo za tím stojí*** — doplnit jména, role a fotku a smazat
-   blok `.todo` z `index.html`.
+1. **Příjmení a role** v sekci *Kdo za tím stojí* — teď jsou tam jen
+   křestní jména a role jsou náš odhad.
 2. **Název studia** — je v `<title>`, v hlavičce (`.mk`), v zápatí a v textech.
 3. **Ceny** — hlavní zdroj je `STUDIO.halls` v `assets/js/rozvrh.js`; tabulky
    v HTML jsou zvlášť, aby fungovaly i bez JavaScriptu. Seznam všech míst
