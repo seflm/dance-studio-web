@@ -50,7 +50,12 @@
   </div>
 
   <!-- the one thing you can touch before you scroll -->
-  <form class="finder" id="finder" data-finder>
+  <form class="finder" id="finder" data-finder data-open="false">
+    <button class="finder__sum" type="button" data-finder-toggle aria-expanded="false">
+      <span class="finder__sum-l">Najít volný termín</span>
+      <span class="finder__sum-v" data-finder-summary></span>
+      <span class="finder__sum-c" aria-hidden="true">⌄</span>
+    </button>
     <label class="fld">
       <span>Sál</span>
       <select name="hall" data-f-hall>

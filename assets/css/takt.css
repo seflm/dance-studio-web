@@ -161,6 +161,8 @@ ul, ol { padding: 0; list-style: none; }
 }
 .fld select:focus, .fld input:focus { outline: none; }
 .finder .btn { justify-content: center; margin: 4px; }
+/* the phone-only trigger for the finder; see the phone block for the rest */
+.finder__sum { display: none; }
 
 .fresult {
   grid-column: 1 / -1;
@@ -774,8 +776,34 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
   .feat b { font-size: 1.02rem; }
   .feat span { margin-top: 3px; font-size: .72rem; line-height: 1.35; }
 
-  /* "Od" and "Do" belong on one line; five stacked rows push the fold away */
-  .finder { grid-template-columns: 1fr 1fr; }
+  /* --- the finder, folded away ------------------------------------------
+     Open, five fields are 407px of an 844px screen — a cream slab covering
+     the photograph the hero is built around. Collapsed it states what it
+     would search for and opens on a tap. */
+  .finder { grid-template-columns: 1fr 1fr; padding: 8px; }
+  .finder__sum {
+    display: grid; grid-template-columns: 1fr auto; align-items: center;
+    grid-column: 1 / -1; gap: 2px 12px;
+    padding: 13px 16px; border: 0; border-radius: calc(var(--r) - 8px);
+    background: none; font: inherit; text-align: left; cursor: pointer;
+  }
+  .finder__sum:hover { background: #f0e8da; }
+  /* explicit placement: auto-flow put the chevron in the label's cell */
+  .finder__sum-l {
+    grid-area: 1 / 1;
+    font-size: .75rem; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--tung-ink);
+  }
+  .finder__sum-v { grid-area: 2 / 1; font-size: .96rem; font-weight: 500; color: var(--night); }
+  .finder__sum-c {
+    grid-area: 1 / 2 / 3 / 3; justify-self: end;
+    font-size: 1.25rem; line-height: 1; color: var(--tung-ink);
+    transition: transform .3s var(--ease);
+  }
+  .finder[data-open="true"] .finder__sum-c { transform: rotate(180deg); }
+  .finder[data-open="false"] .fld { display: none; }
+  .finder[data-open="true"] .finder__sum { border-bottom: 1px solid var(--cream2); border-radius: 0; margin-bottom: 2px; }
+
   .finder .fld:nth-of-type(1), .finder .fld:nth-of-type(2),
   .finder .fld:nth-of-type(3) { grid-column: 1 / -1; }
   .fld { border-right: 1px solid var(--cream2); border-bottom: 1px solid var(--cream2); }
@@ -783,6 +811,12 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
   .finder .fld:nth-of-type(3), .finder .fld:nth-of-type(5) { border-right: 0; }
   .finder .btn { grid-column: 1 / -1; }
   .fresult { grid-column: 1 / -1; }
+
+  /* with the slab gone there is room for the photograph to be a photograph */
+  .hero { padding-bottom: 26px; }
+  .hero__bg::after { background: linear-gradient(to top, var(--night) 2%, rgba(23,16,9,.62) 30%, rgba(23,16,9,.28) 62%, rgba(23,16,9,.42) 100%); }
+  .hero__in { padding-bottom: clamp(18px, 4vw, 30px); }
+  .hero__lede { margin-top: 14px; }
 
   /* portraits at 4:5 cost a screen and a half for two people */
   .person img { aspect-ratio: 4/3.4; }

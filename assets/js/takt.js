@@ -31,6 +31,41 @@
     dateEl.appendChild(opt);
   }
 
+  /* --- the phone trigger --------------------------------------------------
+     The finder is a cream panel the height of half a phone screen, so on
+     small viewports it starts folded and says what it would look for. CSS
+     decides whether the trigger is on screen at all; this only keeps its
+     label truthful and toggles the state. */
+  var toggle  = form.querySelector("[data-finder-toggle]");
+  var summary = form.querySelector("[data-finder-summary]");
+
+  function retitle() {
+    if (!summary) return;
+    var d = dateEl.options[dateEl.selectedIndex];
+    // the chip has one line to work with, so "Dnes 29. 8." loses its date
+    var when = d ? d.textContent : "";
+    if (/^(Dnes|Zítra)/.test(when)) when = when.split(" ")[0];
+    summary.textContent =
+      hallEl.options[hallEl.selectedIndex].text.split(" — ")[0] + " · " +
+      when.toLowerCase() + " " +
+      R.hhmm(Number(fromEl.value)) + "–" + R.hhmm(Number(toEl.value));
+  }
+
+  if (toggle) {
+    toggle.addEventListener("click", function () {
+      var open = form.dataset.open !== "true";
+      form.dataset.open = String(open);
+      toggle.setAttribute("aria-expanded", String(open));
+      if (open) {
+        hallEl.focus({ preventScroll: true });
+        // opened from the fold, the panel runs off the bottom; bring it up
+        form.scrollIntoView({ block: "end", behavior:
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      }
+    });
+    form.addEventListener("change", retitle);
+  }
+
   /* "Do" is an end time, not a count of hours, so it tracks "Od" */
   function fillTo() {
     var start = Number(fromEl.value), want = start + 2;
@@ -43,7 +78,8 @@
     toEl.value = String(Math.min(Math.max(want, start + 1), CLOSE));
   }
   fillTo();
-  fromEl.addEventListener("change", fillTo);
+  retitle();
+  fromEl.addEventListener("change", function () { fillTo(); retitle(); });
 
   form.addEventListener("submit", function (ev) {
     ev.preventDefault();
