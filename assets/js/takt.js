@@ -158,6 +158,8 @@
 
     var id = wrap.dataset.video;
     if (!id || calm) return;
+    var from = Number(wrap.dataset.from) || 0;
+    var to   = Number(wrap.dataset.to)   || 0;
 
     var frame = document.createElement("iframe");
     frame.className = "hero__vid";
@@ -169,7 +171,17 @@
     frame.src = "https://www.youtube-nocookie.com/embed/" + id +
       "?autoplay=1&mute=1&loop=1&playlist=" + id +
       "&controls=0&disablekb=1&fs=0&modestbranding=1&rel=0&playsinline=1" +
-      "&iv_load_policy=3&enablejsapi=1&origin=" + encodeURIComponent(location.origin);
+      "&iv_load_policy=3&enablejsapi=1" +
+      (from ? "&start=" + from : "") + (to ? "&end=" + to : "") +
+      "&origin=" + encodeURIComponent(location.origin);
+
+    function send(func, args) {
+      try {
+        frame.contentWindow.postMessage(JSON.stringify({
+          event: "command", func: func, args: args || []
+        }), "*");
+      } catch (err) { /* cross-origin refusal just means no video */ }
+    }
 
     /* The stills only step aside once the player says it is PLAYING. The load
        event is no good on its own — it fires for a blocked or errored frame
@@ -181,17 +193,42 @@
       settled = true;
       wrap.dataset.playing = "true";
     }
+
+    /* Looping a section of a video is not something the embed parameters do
+       reliably: `end` stops playback, and the loop-via-playlist trick restarts
+       at zero as often as it honours `start`. So the window is enforced here —
+       infoDelivery carries currentTime, and we seek back when it runs past. */
+    var seeking = false;
     window.addEventListener("message", function (e) {
       if (!/youtube(-nocookie)?\.com$/.test(e.origin.replace(/^https?:\/\/(www\.)?/, ""))) return;
       var d = e.data;
       if (typeof d === "string") { try { d = JSON.parse(d); } catch (err) { return; } }
-      if (!d || !d.info) return;
-      if (d.info.playerState === 1 || d.info.playerState === 3) reveal();
+      if (!d) return;
+
+      var info = d.info || {};
+      if (info.playerState === 1 || info.playerState === 3) reveal();
+      // 0 = ended, which is what `end` produces; go back to the top of the cut
+      if (info.playerState === 0 && to) {
+        seeking = false;
+        send("seekTo", [from, true]);
+        send("playVideo");
+        return;                 // the currentTime check below would repeat it
+      }
+
+      if (!to || typeof info.currentTime !== "number") return;
+      if (info.currentTime >= to - 0.4 || info.currentTime < from - 1) {
+        if (seeking) return;
+        seeking = true;
+        send("seekTo", [from, true]);
+        send("playVideo");
+        setTimeout(function () { seeking = false; }, 900);
+      }
     });
+
     frame.addEventListener("load", function () {
       try {
         frame.contentWindow.postMessage(JSON.stringify({ event: "listening", id: 1 }), "*");
-      } catch (err) { /* cross-origin refusal just means no video */ }
+      } catch (err) { /* as above */ }
     });
     // if nothing is playing by now it never will be; the photographs stay
     setTimeout(function () { if (!settled) settled = true; }, 6000);
