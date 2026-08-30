@@ -45,10 +45,12 @@
     // the chip has one line to work with, so "Dnes 29. 8." loses its date
     var when = d ? d.textContent : "";
     if (/^(Dnes|Zítra)/.test(when)) when = when.split(" ")[0];
+    // every slot is a whole hour, so ":00" is six characters of nothing —
+    // and at 320px the chip has about 195 to work with
     summary.textContent =
       hallEl.options[hallEl.selectedIndex].text.split(" — ")[0] + " · " +
       when.toLowerCase() + " " +
-      R.hhmm(Number(fromEl.value)) + "–" + R.hhmm(Number(toEl.value));
+      Number(fromEl.value) + "–" + Number(toEl.value) + " h";
   }
 
   if (toggle) {
