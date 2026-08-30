@@ -91,6 +91,9 @@ Co funguje doopravdy:
 - klikání volných hodin, souvislé bloky se slučují („Čt 19:00–21:00“)
 - **správný výpočet ceny** včetně přechodu mezi tarify — blok 15:00–18:00
   se počítá jako 1 h mimo špičku + 2 h ve špičce
+- ceny jsou provázané se sály: karty na úvodní stránce, `prostory.html`
+  i obě ceníkové tabulky ukazují stejné sazby a odkazují na sebe navzájem
+  (`prostory.html#velky`, `#maly`, `#oba`)
 - **semestrální sazba** se zapne od 10 týdnů opakování a přepíše
   špičku i mimo špičku
 - volba **záznamu lekce**, která se propíše do potvrzení
@@ -144,7 +147,7 @@ Web se ukazuje majiteli prostoru, takže tohle je potřeba mít oddělené.
 | Sliby o provozu | `index.html#kdo` | „Provozujeme sami“, „odpověď do dvanácti hodin“, „jeden kontaktní člověk“, „zvuk držíme uvnitř, úklid po každé hodině“ jsou **závazky, ne fakta**. Majiteli prostoru se čtou jako slib — potvrďte, že je chcete držet. |
 | Loga Puls, Krok, Rytmus, Vlna | kolotoč na `index.html#partneri`, pás na `partneri.html` | **vymyšlené školy** — zástupná loga, dokud nebudou skutečné partnerské školy. Skutečná je jen Simply the West. |
 | Automatický záznam lekce | `index.html#zaznam`, checkbox v rezervaci | **navržená služba**, zatím neexistuje — kamery, opt-in u rezervace, mazání po 30 dnech |
-| Ceny 590 / 790 / 640 Kč atd. | ceníkové tabulky, `rozvrh.js` | orientační, na webu označené jako orientační |
+| Ceny 590 / 790 / 640 Kč atd. | karty sálů na úvodní stránce, `prostory.html`, obě ceníkové tabulky, `rozvrh.js` | orientační. **Jsou teď na pěti místech** — při změně projděte komentář nad `STUDIO` v `rozvrh.js` |
 | Světlá výška 3,4 m | `prostory.html`, `index.html` | odhad z vizualizace |
 | Podlaha, zrcadla, ozvučení, rekuperace, šatna | `prostory.html` | popis odpovídá *projektu*, ne současnému stavu |
 | Kapacity 30 / 4 osoby | více míst | odhad |
@@ -153,8 +156,10 @@ Web se ukazuje majiteli prostoru, takže tohle je potřeba mít oddělené.
 | `rezervace@studiotakt.cz`, `+420 XXX XXX XXX` | zápatí, `kontakt.html` | zástupné |
 | „3 minuty pěšky od metra“ | zápatí, `kontakt.html` | odhad |
 
-Na webu je to přiznané: rámečky **„Ukázka“** u rezervace, kontaktního
-formuláře a mapy.
+**Na webu už to přiznané není.** Rámečky „Ukázka“ u rezervace, kontaktního
+formuláře a mapy byly na přání odstraněné — web se má číst jako hotový web,
+ne jako prototyp. Tenhle soubor je proto jediné místo, kde je rozdíl mezi
+skutečností a návrhem zapsaný. Než web půjde ven, projděte tabulku výš.
 
 **Adresa se na webu neuvádí.** Skutečné umístění zůstává mimo web na vaše
 přání — stránky mluví jen o „Praze 1, centru“ a `kontakt.html` říká, že

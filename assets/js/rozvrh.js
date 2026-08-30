@@ -16,7 +16,9 @@
      tables printed on the pages are plain HTML so they still read with
      JavaScript off, which means the rates appear in two places. If you change
      a rate here, also change it in:
-       · index.html      — table.t in #cenik
+       · index.html      — table.t in #cenik, and .hall__pr on both cards
+                           in #saly
+       · prostory.html   — .hall__pr under each room (#velky, #maly, #oba)
        · rezervace.html  — table.t in #pravidla, and the "od … Kč / h" lines
                            in .picker
        · partneri.html   — the "640 Kč/h místo 790 Kč/h" line in the terms

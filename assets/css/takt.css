@@ -266,19 +266,36 @@ section.night .p, section.night .lede { color: rgba(244,237,225,.8); }
 .shot { border-radius: var(--r); overflow: hidden; }
 .shot img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
 
-/* hall cards, soft-cornered with the caption laid over the photograph */
-.halls { display: grid; gap: clamp(16px, 2vw, 26px); margin-top: clamp(30px, 4vw, 48px); }
-@media (min-width: 780px) { .halls { grid-template-columns: 1.5fr 1fr; } }
-.hall { position: relative; border-radius: var(--r); overflow: hidden; isolation: isolate; min-height: 340px; display: flex; align-items: flex-end; }
-.hall img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
-/* the caption block grew when the specs went in, so the scrim has to reach
-   further up the frame or the hall name lands on bare ceiling */
-.hall::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(23,16,9,.94) 0%, rgba(23,16,9,.86) 44%, rgba(23,16,9,.5) 72%, rgba(23,16,9,.12) 100%); }
-.hall:hover img { transform: scale(1.04); }
-.hall__bd { padding: clamp(20px, 2.6vw, 30px); color: var(--cream); }
-.hall__bd .h3 { color: var(--cream); }
-.hall__bd p { margin-top: 8px; font-size: .9rem; color: rgba(244,237,225,.78); max-width: 42ch; }
-.hall__mt { display: flex; flex-wrap: wrap; gap: 5px 18px; margin-top: 14px; font-size: .76rem; color: var(--tung); }
+/* hall cards: photograph on top, everything readable underneath it. The specs
+   used to sit over the image and there was too much of them to stay legible. */
+.halls { display: grid; gap: clamp(18px, 2.4vw, 30px); margin-top: clamp(30px, 4vw, 48px); }
+@media (min-width: 780px) { .halls { grid-template-columns: 1fr 1fr; } }
+.hall {
+  display: grid; grid-template-rows: auto 1fr;
+  border: 1px solid var(--cream2); border-radius: var(--r); overflow: hidden;
+  background: var(--cream);
+}
+.hall__ph { display: block; overflow: hidden; background: var(--night); }
+.hall img { width: 100%; aspect-ratio: 16/10; object-fit: cover; transition: transform 1s var(--ease); }
+.hall__ph:hover img { transform: scale(1.04); }
+.hall__bd { display: grid; align-content: start; padding: clamp(20px, 2.4vw, 28px); }
+.hall__bd .h3 a { color: var(--night); }
+.hall__bd .h3 a:hover { color: var(--tung-ink); }
+.hall__bd p { margin-top: 9px; font-size: .92rem; color: var(--body); max-width: 44ch; }
+.hall__mt { display: flex; flex-wrap: wrap; gap: 5px 18px; margin-top: 14px; font-size: .78rem; color: var(--tung-ink); }
+
+/* the price belongs with the room, not only in a table three sections away */
+.hall__pr { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--cream2); }
+.hall__pr > div { display: grid; gap: 2px; }
+.hall__pr dt { font-size: .62rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #8a7c68; }
+.hall__pr dd { font-size: 1rem; font-variant-numeric: tabular-nums; color: var(--night); }
+.hall__pr dd.best { color: var(--tung-ink); font-weight: 600; }
+.hall__go { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 20px; font-size: .88rem; }
+.hall__go a { white-space: nowrap; }
+.night .hall__pr { border-top-color: rgba(244,237,225,.14); }
+.night .hall__pr dt { color: rgba(244,237,225,.55); }
+.night .hall__pr dd { color: var(--cream); }
+.night .hall__pr dd.best { color: var(--tung); }
 /* no interpuncts: the row wraps, and a separator pseudo-element strands a
    stray dot at the start of every continuation line */
 
@@ -296,6 +313,10 @@ table.t thead th { font-size: .68rem; font-weight: 600; letter-spacing: .12em; t
 table.t thead th small { display: block; font-weight: 400; letter-spacing: .02em; text-transform: none; color: #9a8b76; }
 table.t tbody th { font-family: var(--ff-d); font-size: 1.14rem; font-weight: 500; color: var(--night); }
 table.t tbody th small { display: block; font-family: var(--ff-b); font-size: .76rem; color: #9a8b76; }
+table.t tbody th a { border-bottom: 1px solid rgba(138,106,58,.35); }
+table.t tbody th a:hover { color: var(--tung-ink); border-bottom-color: currentColor; }
+.night table.t tbody th a { border-bottom-color: rgba(217,162,72,.4); }
+.night table.t tbody th a:hover { color: var(--tung); }
 table.t td { font-variant-numeric: tabular-nums; font-size: 1rem; color: var(--night); }
 table.t .best { color: var(--tung-ink); font-weight: 600; }
 /* the tariff windows, restated for the phone layout that hides the table head */
@@ -607,13 +628,6 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
 .tlink { color: var(--tung-ink); border-bottom: 1px solid currentColor; }
 .night .tlink { color: var(--tung); }
 
-/* the "this is a mock-up" aside — honest, not shouty */
-.mock { display: flex; gap: 11px; align-items: flex-start; max-width: 60ch; margin-top: clamp(20px, 2.6vw, 30px); padding: 14px 16px; border-radius: 10px; background: rgba(217,162,72,.12); border: 1px solid rgba(217,162,72,.34); font-size: .86rem; color: var(--body); }
-.mock b { color: var(--night); }
-.mock > span:first-child { color: var(--tung-ink); }
-.night .mock, .phead .mock { color: rgba(244,237,225,.82); }
-.night .mock b, .phead .mock b { color: var(--cream); }
-.night .mock > span:first-child, .phead .mock > span:first-child { color: var(--tung); }
 
 /* contact cards */
 .cards { display: grid; gap: clamp(14px, 2vw, 22px); margin-top: clamp(28px, 3.5vw, 44px); }
@@ -689,6 +703,13 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
 @media (min-width: 720px) { .team { grid-template-columns: 1fr 1fr; } }
 .person figure { margin: 0; border-radius: var(--r); overflow: hidden; background: var(--cream2); }
 .person img { width: 100%; aspect-ratio: 4/5; object-fit: cover; transition: transform 1.1s var(--ease); }
+/* At full column width the two portraits were 580×725 and the section ran to
+   1.6 screens on a laptop — a lot of room for pictures that only need to put
+   a face to a name. Square, and no wider than a bio card. */
+@media (min-width: 720px) {
+  .person figure { max-width: 300px; }
+  .person img { aspect-ratio: 1; object-position: 50% 22%; }
+}
 .person:hover img { transform: scale(1.03); }
 .person__nm { margin-top: 20px; font-family: var(--ff-d); font-size: 1.7rem; font-weight: 500; line-height: 1.1; color: var(--night); }
 .person__rl { margin-top: 5px; font-size: .62rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--tung-ink); }
