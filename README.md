@@ -95,8 +95,8 @@ společný: `assets/img/og.jpg`, 1200×630.
 
 `index.html` navíc nese strukturovaná data (JSON-LD, `LocalBusiness` +
 `EventVenue`): název, popis, otevírací doba 7:00–22:00, ceny obou sálů
-a vybavení. **Adresa je jen `Praha 1, CZ`, bez ulice** — stejně jako na
-webu. E-mail ani telefon ve strukturovaných datech nejsou, protože jsou
+a vybavení. **Adresa je jen `Praha, CZ`, bez ulice i městské části** —
+stejně jako na webu. E-mail ani telefon ve strukturovaných datech nejsou, protože jsou
 zatím zástupné; až budou skutečné, doplňte do JSON-LD `email`
 a `telephone`. Ceny v JSON-LD jsou **šesté místo**, kde jsou napsané —
 při změně cen ho projděte také.
@@ -190,8 +190,16 @@ ne jako prototyp. Tenhle soubor je proto jediné místo, kde je rozdíl mezi
 skutečností a návrhem zapsaný. Než web půjde ven, projděte tabulku výš.
 
 **Adresa se na webu neuvádí.** Skutečné umístění zůstává mimo web na vaše
-přání — stránky mluví jen o „Praze 1, centru“ a `kontakt.html` říká, že
-přesnou adresu posíláme s potvrzením rezervace.
+přání — stránky mluví jen o „centru Prahy“ a o osmi minutách od metra
+Florenc; `kontakt.html` říká, že přesnou adresu posíláme s potvrzením
+rezervace.
+
+**Městská část se neuvádí vůbec.** Web dřív uváděl „Praha 1 — centrum“.
+To číslo pochází z původního zadání (Palác Rytířská, Staré Město), které
+se neslučuje s pozdější informací „osm minut od metra Florenc“ — Rytířská
+je od Florence asi 1,6 km a nejblíž je jí Můstek. Než se potvrdí, kde sál
+opravdu je, uvádí web jen „centrum Prahy“ a stanici. Doplňujte městskou
+část až s jistotou; je to údaj, který si pronajímatel ověří na první pokus.
 
 ---
 
