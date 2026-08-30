@@ -45,7 +45,7 @@ assets/js/rotator.js    střídání posledního slova v titulku
 assets/js/rezervace.js  rezervační formulář, souhrn a potvrzení
 assets/js/kontakt.js    kontaktní formulář
 assets/img/             vizualizace sálu a loga
-assets/video/hero.mp4   podkres hero sekce (černobílý, bez zvuku, 8,7 MB)
+assets/video/hero.mp4   podkres hero sekce (černobílý, bez zvuku, 18 MB)
 assets/videos/          zdrojové video, ze kterého se hero.mp4 kóduje
 
 context/                zadání — fotky z inzerátu, referenční návrhy,
@@ -152,7 +152,7 @@ Web se ukazuje majiteli prostoru, takže tohle je potřeba mít oddělené.
 | Sliby o provozu | `index.html#kdo` | „Provozujeme sami“, „odpověď do dvanácti hodin“, „jeden kontaktní člověk“, „zvuk držíme uvnitř, úklid po každé hodině“ jsou **závazky, ne fakta**. Majiteli prostoru se čtou jako slib — potvrďte, že je chcete držet. |
 | Loga Puls, Krok, Rytmus, Vlna | kolotoč na `index.html#partneri`, pás na `partneri.html` | **vymyšlené školy** — zástupná loga, dokud nebudou skutečné partnerské školy. Skutečná je jen Simply the West. |
 | Automatický záznam lekce | `index.html#zaznam` (skryté) | **navržená služba**, zatím neexistuje |
-| Video na pozadí hero sekce | `assets/video/hero.mp4`, atribut `data-video` na `.hero__bg` | **cizí video**, staženo z YouTube pro testovací web — před spuštěním ho nahraďte vlastním záběrem. Soubor je už sestříhaný na úsek 0:20–2:20, takže se cyklí sám; postup kódování je v `assets/video/README.md`. Fotky pod ním zůstávají: když soubor chybí, nejde dekódovat, prohlížeč odmítne autoplay nebo má návštěvník zapnuté šetření dat, hero ukáže je. |
+| Video na pozadí hero sekce | `assets/video/hero.mp4`, atribut `data-video` na `.hero__bg` | **cizí video**, staženo z YouTube pro testovací web — před spuštěním ho nahraďte vlastním záběrem. Soubor je už sestříhaný na úsek 0:20–2:20, takže se cyklí sám; postup kódování je v `assets/video/README.md`. Načítá se až po `window.load`, takže na rychlost stránky nemá vliv. Fotky pod ním zůstávají: když soubor chybí, nejde dekódovat, prohlížeč odmítne autoplay nebo má návštěvník zapnuté šetření dat, hero ukáže je. |
 | Kapacita 40–50 lidí, výška 3 m, sestava 4.4, vzduchotechnika | `prostory.html#velky` | podle vašeho zadání ze srpna 2026 |
 | Ceny 590 / 790 / 640 Kč atd. | karty sálů na úvodní stránce, `prostory.html`, obě ceníkové tabulky, `rozvrh.js` | orientační. **Jsou teď na pěti místech** — při změně projděte komentář nad `STUDIO` v `rozvrh.js` |
 | Světlá výška 3,4 m | `prostory.html`, `index.html` | odhad z vizualizace |

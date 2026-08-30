@@ -164,50 +164,65 @@
     var from = Number(wrap.dataset.from) || 0;
     var to   = Number(wrap.dataset.to)   || 0;
 
-    var v = document.createElement("video");
-    v.className = "hero__vid";
-    /* One file, H.264. A VP9 WebM was measured alongside it and came out
-       larger at every quality level, so it would have cost repo weight and
-       a second encode for nothing. H.264 also plays everywhere. */
-    v.src = src;
-    v.muted = true;              // the property, not just the attribute:
-    v.defaultMuted = true;       // Safari checks this one before autoplaying
-    v.loop = !to;                // with a window we do the looping ourselves
-    v.autoplay = true;
-    v.playsInline = true;
-    v.preload = "auto";   // only reached after load, so it never races the page
-    v.setAttribute("tabindex", "-1");
-    v.setAttribute("aria-hidden", "true");
-    v.disablePictureInPicture = true;
-
-    /* The photographs hold the hero until the video is genuinely running, so
-       a missing file, a decode error or a refused autoplay all end up in the
-       same harmless place: the stills stay. */
-    function reveal() { wrap.dataset.playing = "true"; }
-    function fallBack() { delete wrap.dataset.playing; }
-    v.addEventListener("playing", reveal);
-    v.addEventListener("stalled", fallBack);
-    v.addEventListener("error", fallBack);
-
-    /* Loop a section rather than the whole file. If you hand me a clip that is
-       already trimmed, drop data-from/data-to and the element loops natively. */
-    if (from) {
-      v.addEventListener("loadedmetadata", function () {
-        if (v.duration > from) { try { v.currentTime = from; } catch (e) {} }
-      });
-    }
-    if (to) {
-      v.addEventListener("timeupdate", function () {
-        if (v.currentTime >= to || v.currentTime < from - 1) {
-          try { v.currentTime = from; } catch (e) {}
-          if (v.paused) v.play().catch(function () {});
-        }
-      });
+    /* The video is the heaviest thing on the site and the least urgent — the
+       hero already looks finished without it. So nothing is requested until
+       the page has finished loading, and then only once the browser says it
+       is idle. Until then the photographs are doing the job. */
+    function later(fn) {
+      var go = function () {
+        if (window.requestIdleCallback) requestIdleCallback(fn, { timeout: 2500 });
+        else setTimeout(fn, 300);
+      };
+      if (document.readyState === "complete") go();
+      else window.addEventListener("load", go, { once: true });
     }
 
-    wrap.appendChild(v);
-    var started = v.play();
-    if (started && started.catch) started.catch(fallBack);
+    /* Everything below runs inside later(). Assigning .src is what starts the
+       download — an element built early would fetch early even while detached
+       from the document, which is exactly what we are trying to avoid. */
+    later(function () {
+      var v = document.createElement("video");
+      v.className = "hero__vid";
+      v.muted = true;              // the property, not just the attribute:
+      v.defaultMuted = true;       // Safari checks this one before autoplaying
+      v.loop = !to;                // with a window we do the looping ourselves
+      v.autoplay = true;
+      v.playsInline = true;
+      v.preload = "auto";
+      v.setAttribute("tabindex", "-1");
+      v.setAttribute("aria-hidden", "true");
+      v.disablePictureInPicture = true;
+
+      /* The photographs hold the hero until the video is genuinely running, so
+         a missing file, a decode error or a refused autoplay all end up in the
+         same harmless place: the stills stay. */
+      function reveal() { wrap.dataset.playing = "true"; }
+      function fallBack() { delete wrap.dataset.playing; }
+      v.addEventListener("playing", reveal);
+      v.addEventListener("stalled", fallBack);
+      v.addEventListener("error", fallBack);
+
+      /* Loop a section rather than the whole file. Hand me a clip that is
+         already trimmed, drop data-from/data-to, and it loops natively. */
+      if (from) {
+        v.addEventListener("loadedmetadata", function () {
+          if (v.duration > from) { try { v.currentTime = from; } catch (e) {} }
+        });
+      }
+      if (to) {
+        v.addEventListener("timeupdate", function () {
+          if (v.currentTime >= to || v.currentTime < from - 1) {
+            try { v.currentTime = from; } catch (e) {}
+            if (v.paused) v.play().catch(function () {});
+          }
+        });
+      }
+
+      v.src = src;                 // the fetch starts here, and not before
+      wrap.appendChild(v);
+      var started = v.play();
+      if (started && started.catch) started.catch(fallBack);
+    });
   })();
 
   /* the week at a glance, folded under the bar */
