@@ -156,88 +156,52 @@
       }, 5000);
     }
 
-    var id = wrap.dataset.video;
-    if (!id || calm) return;
+    var src = wrap.dataset.video;
+    if (!src || calm) return;
     var from = Number(wrap.dataset.from) || 0;
     var to   = Number(wrap.dataset.to)   || 0;
 
-    var frame = document.createElement("iframe");
-    frame.className = "hero__vid";
-    frame.title = "Záběry ze sálu";
-    frame.allow = "autoplay; encrypted-media";
-    frame.setAttribute("tabindex", "-1");
-    frame.setAttribute("aria-hidden", "true");
-    // nocookie host: the rest of the site loads nothing that tracks
-    frame.src = "https://www.youtube-nocookie.com/embed/" + id +
-      "?autoplay=1&mute=1&loop=1&playlist=" + id +
-      "&controls=0&disablekb=1&fs=0&modestbranding=1&rel=0&playsinline=1" +
-      "&iv_load_policy=3&enablejsapi=1" +
-      (from ? "&start=" + from : "") + (to ? "&end=" + to : "") +
-      "&origin=" + encodeURIComponent(location.origin);
+    var v = document.createElement("video");
+    v.className = "hero__vid";
+    v.src = src;
+    v.muted = true;              // the property, not just the attribute:
+    v.defaultMuted = true;       // Safari checks this one before autoplaying
+    v.loop = !to;                // with a window we do the looping ourselves
+    v.autoplay = true;
+    v.playsInline = true;
+    v.preload = "auto";
+    v.setAttribute("tabindex", "-1");
+    v.setAttribute("aria-hidden", "true");
+    v.disablePictureInPicture = true;
 
-    function send(func, args) {
-      try {
-        frame.contentWindow.postMessage(JSON.stringify({
-          event: "command", func: func, args: args || []
-        }), "*");
-      } catch (err) { /* cross-origin refusal just means no video */ }
+    /* The photographs hold the hero until the video is genuinely running, so
+       a missing file, a decode error or a refused autoplay all end up in the
+       same harmless place: the stills stay. */
+    function reveal() { wrap.dataset.playing = "true"; }
+    function fallBack() { delete wrap.dataset.playing; }
+    v.addEventListener("playing", reveal);
+    v.addEventListener("error", fallBack);
+    v.addEventListener("stalled", fallBack);
+
+    /* Loop a section rather than the whole file. If you hand me a clip that is
+       already trimmed, drop data-from/data-to and the element loops natively. */
+    if (from) {
+      v.addEventListener("loadedmetadata", function () {
+        if (v.duration > from) { try { v.currentTime = from; } catch (e) {} }
+      });
+    }
+    if (to) {
+      v.addEventListener("timeupdate", function () {
+        if (v.currentTime >= to || v.currentTime < from - 1) {
+          try { v.currentTime = from; } catch (e) {}
+          if (v.paused) v.play().catch(function () {});
+        }
+      });
     }
 
-    /* The stills only step aside once the player says it is PLAYING. The load
-       event is no good on its own — it fires for a blocked or errored frame
-       too, and fading the photographs out then leaves the hero empty. This
-       talks to the embed directly rather than pulling in YouTube's API. */
-    /* Cropping cannot hide YouTube's furniture, because the big play button
-       and the spinner sit in the middle of the frame. So the player is not
-       shown at all until it has been genuinely playing for a couple of
-       seconds — by which time the overlay has gone. The photographs hold the
-       hero until then, which is what they are there for. */
-    var SETTLE = 2.5;                       // seconds of confirmed playback
-    var shown = false;
-    function reveal() {
-      if (shown) return;
-      shown = true;
-      wrap.dataset.playing = "true";
-    }
-
-    /* Looping a section of a video is not something the embed parameters do
-       reliably: `end` stops playback, and the loop-via-playlist trick restarts
-       at zero as often as it honours `start`. So the window is enforced here —
-       infoDelivery carries currentTime, and we seek back when it runs past. */
-    var seeking = false;
-    window.addEventListener("message", function (e) {
-      if (!/youtube(-nocookie)?\.com$/.test(e.origin.replace(/^https?:\/\/(www\.)?/, ""))) return;
-      var d = e.data;
-      if (typeof d === "string") { try { d = JSON.parse(d); } catch (err) { return; } }
-      if (!d) return;
-
-      var info = d.info || {};
-      if (info.playerState === 1 && typeof info.currentTime === "number" &&
-          info.currentTime >= from + SETTLE) reveal();
-      // 0 = ended, which is what `end` produces; go back to the top of the cut
-      if (info.playerState === 0 && to) {
-        seeking = false;
-        send("seekTo", [from, true]);
-        send("playVideo");
-        return;                 // the currentTime check below would repeat it
-      }
-
-      if (!to || typeof info.currentTime !== "number") return;
-      if (info.currentTime >= to - 0.4 || info.currentTime < from - 1) {
-        if (seeking) return;
-        seeking = true;
-        send("seekTo", [from, true]);
-        send("playVideo");
-        setTimeout(function () { seeking = false; }, 900);
-      }
-    });
-
-    frame.addEventListener("load", function () {
-      try {
-        frame.contentWindow.postMessage(JSON.stringify({ event: "listening", id: 1 }), "*");
-      } catch (err) { /* as above */ }
-    });
-    wrap.appendChild(frame);
+    wrap.appendChild(v);
+    var started = v.play();
+    if (started && started.catch) started.catch(fallBack);
   })();
 
   /* the week at a glance, folded under the bar */
