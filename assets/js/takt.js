@@ -187,10 +187,16 @@
        event is no good on its own — it fires for a blocked or errored frame
        too, and fading the photographs out then leaves the hero empty. This
        talks to the embed directly rather than pulling in YouTube's API. */
-    var settled = false;
+    /* Cropping cannot hide YouTube's furniture, because the big play button
+       and the spinner sit in the middle of the frame. So the player is not
+       shown at all until it has been genuinely playing for a couple of
+       seconds — by which time the overlay has gone. The photographs hold the
+       hero until then, which is what they are there for. */
+    var SETTLE = 2.5;                       // seconds of confirmed playback
+    var shown = false;
     function reveal() {
-      if (settled) return;
-      settled = true;
+      if (shown) return;
+      shown = true;
       wrap.dataset.playing = "true";
     }
 
@@ -206,7 +212,8 @@
       if (!d) return;
 
       var info = d.info || {};
-      if (info.playerState === 1 || info.playerState === 3) reveal();
+      if (info.playerState === 1 && typeof info.currentTime === "number" &&
+          info.currentTime >= from + SETTLE) reveal();
       // 0 = ended, which is what `end` produces; go back to the top of the cut
       if (info.playerState === 0 && to) {
         seeking = false;
@@ -230,9 +237,6 @@
         frame.contentWindow.postMessage(JSON.stringify({ event: "listening", id: 1 }), "*");
       } catch (err) { /* as above */ }
     });
-    // if nothing is playing by now it never will be; the photographs stay
-    setTimeout(function () { if (!settled) settled = true; }, 6000);
-
     wrap.appendChild(frame);
   })();
 
