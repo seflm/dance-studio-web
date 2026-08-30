@@ -270,29 +270,64 @@
   // itself, floating over the hero
   var bar = document.querySelector(".top--solid") || document.querySelector(".top");
   if (!bar) return;
-  var row = bar.querySelector(".top__row");
   function measure() {
     document.documentElement.style.setProperty("--top-h", bar.offsetHeight + "px");
-    // how far down the bar the solid part reaches, so the veil can start there
-    if (row) {
-      var h = row.getBoundingClientRect().bottom - bar.getBoundingClientRect().top;
-      document.documentElement.style.setProperty("--row-h", Math.round(h) + "px");
-    }
   }
   measure();
   window.addEventListener("resize", measure);
   if (window.ResizeObserver) new ResizeObserver(measure).observe(bar);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
 
-  /* On the homepage the bar floats over the photograph and the nav row is only
-     veiled, which stops working the moment cream sections scroll under it. */
-  var hero = document.querySelector(".hero");
-  if (hero && bar.parentElement === hero) {
-    var stick = function () {
-      bar.dataset.stuck = String(window.scrollY > hero.offsetHeight - bar.offsetHeight - 8);
-    };
-    stick();
-    window.addEventListener("scroll", stick, { passive: true });
-    window.addEventListener("resize", stick);
+})();
+
+/* The mobile menu. The panel is the same <nav> the desktop bar uses, so there
+   is one set of links in the document; CSS decides whether it is a row or a
+   drawer. Everything here is state and focus: the styling knows nothing. */
+(function () {
+  var burger = document.querySelector("[data-menu]");
+  var menu   = document.getElementById("menu");
+  var scrim  = document.querySelector("[data-scrim]");
+  if (!burger || !menu) return;
+
+  var closer = menu.querySelector("[data-menu-close]");
+  var open = false;
+
+  function setOpen(next) {
+    open = next;
+    menu.dataset.open = String(next);
+    burger.setAttribute("aria-expanded", String(next));
+    burger.setAttribute("aria-label", next ? "Zavřít menu" : "Otevřít menu");
+    if (scrim) scrim.dataset.open = String(next);
+    document.body.classList.toggle("menu-open", next);
+    // focus lands inside the panel on open and comes back to the burger after
+    if (next) { (closer || menu.querySelector("a")).focus(); }
+    else if (document.activeElement && menu.contains(document.activeElement)) { burger.focus(); }
   }
+
+  burger.addEventListener("click", function () { setOpen(!open); });
+  if (closer) closer.addEventListener("click", function () { setOpen(false); });
+  if (scrim)  scrim.addEventListener("click", function () { setOpen(false); });
+
+  // a link inside the drawer navigates; same-page anchors need it closed first
+  menu.addEventListener("click", function (e) {
+    if (e.target.closest("a")) setOpen(false);
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (!open) return;
+    if (e.key === "Escape") { e.preventDefault(); setOpen(false); return; }
+    if (e.key !== "Tab") return;
+    // keep Tab inside the panel while it covers the page
+    var f = menu.querySelectorAll("a[href], button:not([disabled])");
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  // dragging the window past the breakpoint must not strand the open state
+  var wide = window.matchMedia("(min-width: 940px)");
+  var onWide = function (m) { if (m.matches && open) setOpen(false); };
+  if (wide.addEventListener) wide.addEventListener("change", onWide);
+  else if (wide.addListener) wide.addListener(onWide);
 })();

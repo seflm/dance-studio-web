@@ -29,16 +29,30 @@
           <b>Studio Takt</b>
           <span>Taneční sál · Praha</span>
         </a>
-        <a class="btn btn--gl" href="rezervace.html">Rezervovat</a>
+        <div class="top__acts">
+          <a class="btn btn--gl" href="rezervace.html">Rezervovat</a>
+          <button class="burger" type="button" data-menu aria-expanded="false" aria-controls="menu" aria-label="Otevřít menu">
+            <svg width="18" height="14" viewBox="0 0 18 14" fill="none" aria-hidden="true"><path d="M1 1h16M1 7h16M1 13h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </button>
+        </div>
       </div>
-      <nav aria-label="Hlavní navigace">
+      <nav class="menu" id="menu" aria-label="Hlavní navigace">
+        <button class="menu__x" type="button" data-menu-close aria-label="Zavřít menu">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </button>
         <a href="index.html" aria-current="page">Domů</a>
         <a href="prostory.html">Sály</a>
         <a href="rezervace.html">Rezervace</a>
         <a href="partneri.html">Partneři</a>
         <a href="kontakt.html">Kontakt</a>
+        <p class="menu__ft">
+          <a href="mailto:rezervace@studiotakt.cz">rezervace@studiotakt.cz</a>
+          <span>+420 XXX XXX XXX</span>
+          <span>Praha 1 — centrum</span>
+        </p>
       </nav>
     </div>
+    <div class="scrim" data-scrim></div>
   </header>
 
   <div class="wrap hero__in">
