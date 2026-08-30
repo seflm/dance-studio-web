@@ -89,20 +89,23 @@ Co funguje doopravdy:
 - rozvrh na 12 týdnů dopředu, posun po oknech; okno má 7 dní na desktopu,
   5 na tabletu, 3 na telefonu
 - klikání volných hodin, souvislé bloky se slučují („Čt 19:00–21:00“)
-- **správný výpočet ceny** včetně přechodu mezi tarify — blok 15:00–18:00
-  se počítá jako 1 h mimo špičku + 2 h ve špičce
+- rozvrh kreslí **sloupec na sál a den**; „Oba sály" tedy znamená dva
+  sloupce pod každým datem, ne třetí tarif. Přepínač nad rozvrhem je filtr —
+  vybírá, které sály se kreslí.
 - ceny jsou provázané se sály: karty na úvodní stránce, `prostory.html`
   i obě ceníkové tabulky ukazují stejné sazby a odkazují na sebe navzájem
   (`prostory.html#velky`, `#maly`, `#oba`)
-- **semestrální sazba** se zapne od 10 týdnů opakování a přepíše
-  špičku i mimo špičku
-- volba **záznamu lekce**, která se propíše do potvrzení
-- validace formuláře a potvrzení s referenčním číslem
-- výběr hodin **se přenáší mezi stránkami** — co vyberete na úvodní stránce,
-  najdete v rezervačním formuláři (`localStorage`)
+- **správný výpočet ceny** včetně přechodu mezi tarify — blok 15:00–18:00
+  se počítá jako 1 h mimo špičku + 2 h ve špičce
+- výběr účelu z vyhledávače v hero sekci se přenese do formuláře
+  (`localStorage`)
 
 Co je jen ukázka:
 
+- **formulář rezervace je záměrně vypnutý** (`<fieldset disabled>`) a panel
+  vedle něj nabízí přihlášení, které nikam nevede. Stránka ukazuje, na co se
+  rezervace ptá, ale netváří se, že ji přijme. Až bude systém skutečný,
+  stačí sundat `disabled` a vrátit odesílací logiku.
 - **obsazené hodiny jsou vygenerované** deterministicky z data, takže se mezi
   načteními nemění, ale s realitou nemají nic společného
 - **nic se nikam neposílá** — žádný e-mail, žádný server, žádná databáze
@@ -146,12 +149,13 @@ Web se ukazuje majiteli prostoru, takže tohle je potřeba mít oddělené.
 | Role „Tanec a program“ / „Provoz a komunita“ | `index.html#kdo` | **náš návrh**, jak si práci rozdělit — přepište, jestli to máte jinak |
 | Sliby o provozu | `index.html#kdo` | „Provozujeme sami“, „odpověď do dvanácti hodin“, „jeden kontaktní člověk“, „zvuk držíme uvnitř, úklid po každé hodině“ jsou **závazky, ne fakta**. Majiteli prostoru se čtou jako slib — potvrďte, že je chcete držet. |
 | Loga Puls, Krok, Rytmus, Vlna | kolotoč na `index.html#partneri`, pás na `partneri.html` | **vymyšlené školy** — zástupná loga, dokud nebudou skutečné partnerské školy. Skutečná je jen Simply the West. |
-| Automatický záznam lekce | `index.html#zaznam`, checkbox v rezervaci | **navržená služba**, zatím neexistuje — kamery, opt-in u rezervace, mazání po 30 dnech |
+| Automatický záznam lekce | `index.html#zaznam` (skryté) | **navržená služba**, zatím neexistuje |
+| Video na pozadí hero sekce | `index.html`, `data-video` na `.hero__bg` | **cizí video z YouTube** (`-9wDcHE7H54`). Pro veřejný web potřebujete práva k němu, nebo natočit vlastní. Vkládá se přes `youtube-nocookie.com`, ale pořád to je požadavek na cizí server. Fotky pod ním zůstávají — když se video nespustí, hero není prázdné. Vypnete odebráním atributu `data-video`. |
+| Kapacita 40–50 lidí, výška 3 m, sestava 4.4, vzduchotechnika | `prostory.html#velky` | podle vašeho zadání ze srpna 2026 |
 | Ceny 590 / 790 / 640 Kč atd. | karty sálů na úvodní stránce, `prostory.html`, obě ceníkové tabulky, `rozvrh.js` | orientační. **Jsou teď na pěti místech** — při změně projděte komentář nad `STUDIO` v `rozvrh.js` |
 | Světlá výška 3,4 m | `prostory.html`, `index.html` | odhad z vizualizace |
 | Podlaha, zrcadla, ozvučení, rekuperace, šatna | `prostory.html` | popis odpovídá *projektu*, ne současnému stavu |
-| Kapacity 30 / 4 osoby | více míst | odhad |
-| Provoz 7:00–22:00 | více míst | odhad |
+| Provoz 7:00–22:00 | `rozvrh.js`, zápatí | odhad |
 | Storno 48 h, potvrzení do 12 h, vstup na kód | více míst | navržená pravidla |
 | `rezervace@studiotakt.cz`, `+420 XXX XXX XXX` | zápatí, `kontakt.html` | zástupné |
 | „3 minuty pěšky od metra“ | zápatí, `kontakt.html` | odhad |

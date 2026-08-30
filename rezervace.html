@@ -57,11 +57,11 @@
 <main id="main">
   <section class="phead">
     <div class="wrap">
-      <span class="tag tag--l">Rezervace</span>
-      <h1 class="d h1">Vyberte hodiny, <em>my je podržíme.</em></h1>
+      <h1 class="d h1">Rezervace</h1>
       <p class="lede">
-        Rozvrh ukazuje sedm dní dopředu a přepínat můžete o týden. Vyberte sál,
-        klikněte na volné hodiny a doplňte, kdo lekci povede.
+        Rozvrh je živý — obsazené hodiny v něm vidíte dřív, než se nás na ně
+        zeptáte. Minimum je jedna hodina, storno bezplatně do 48 hodin
+        a pravidelné termíny držíme na celý semestr.
       </p>
 
     </div>
@@ -72,7 +72,7 @@
       <span class="tag seq">01 — Sál</span>
       <div class="picker">
         <label class="picker__opt">
-          <input type="radio" name="hall" value="velky" checked>
+          <input type="radio" name="hall" value="velky">
           <span class="picker__bd">
             <span class="picker__nm">Velký sál</span>
             <span class="picker__mt">122 m² · až 30 tanečníků</span>
@@ -88,7 +88,7 @@
           </span>
         </label>
         <label class="picker__opt">
-          <input type="radio" name="hall" value="oba">
+          <input type="radio" name="hall" value="oba" checked>
           <span class="picker__bd">
             <span class="picker__nm">Oba sály</span>
             <span class="picker__mt">142 m² · workshopy</span>
@@ -96,9 +96,6 @@
           </span>
         </label>
       </div>
-      <p style="margin-top:16px;font-size:.86rem;color:#8a7c68">
-        Sály můžete kombinovat — vybrané hodiny se sčítají napříč sály.
-      </p>
     </div>
   </section>
 
@@ -116,6 +113,7 @@
         <h2 class="d h2" style="margin-bottom:28px">Detaily rezervace</h2>
 
         <form class="form" id="bookform" novalidate>
+          <fieldset disabled>
           <div class="form__row form__row--2">
             <label class="field">
               <span>Jméno a příjmení <em>*</em></span>
@@ -204,86 +202,46 @@
 
           <div class="acts acts--l" style="margin-top:4px">
             <button class="btn" type="submit">Odeslat rezervaci</button>
-            <button class="btn btn--o" type="button" data-clear>Zrušit výběr hodin</button>
           </div>
+          </fieldset>
         </form>
       </div>
 
-      <aside class="summary" aria-label="Souhrn rezervace">
+      <aside class="summary" aria-label="Vaše rezervace">
         <div class="summary__hd"><span class="tag">Vaše rezervace</span></div>
-        <div class="summary__bd" data-lines></div>
-        <div class="summary__ft" data-totals hidden>
-          <div class="total"><span class="total__k">Hodin celkem</span><span class="total__v" data-t-hours>0 h</span></div>
-          <div class="total"><span class="total__k">Sazba</span><span class="total__v" style="font-size:.94rem" data-t-rate>—</span></div>
-          <div class="total total--sum"><span class="total__k">Celkem</span><span class="total__v" data-t-sum>0 Kč</span></div>
-          <p style="margin-top:14px;font-size:.76rem;line-height:1.6;color:#8a7c68">
-            Ceny včetně DPH. Storno bezplatně do 48 hodin před termínem.
+        <div class="summary__bd">
+          <p class="signin">
+            Přehled svých rezervací, faktur a držených termínů najdete
+            po přihlášení.
+          </p>
+          <div class="acts acts--l" style="margin-bottom:22px">
+            <button class="btn" type="button" disabled>Přihlásit se</button>
+          </div>
+          <p class="signin signin--x">
+            Účet zakládáme po první potvrzené rezervaci — přístup pošleme
+            e-mailem spolu s potvrzením termínu.
           </p>
         </div>
       </aside>
     </div>
   </section>
 
-  <section class="plain" data-stage="done" hidden style="padding-top:0">
-    <div class="wrap">
-      <article class="receipt">
-        <header class="receipt__hd">
-          <span class="tag">Předběžná rezervace přijata</span>
-          <span class="receipt__ref" data-r-ref></span>
-        </header>
-        <div class="receipt__bd">
-          <h2 class="d h2">Hodiny jsou <span class="hl">pro vás zablokované.</span></h2>
-          <p class="lede" style="margin-top:16px">
-            Ozveme se do dvanácti hodin na e-mail, který jste zadali,
-            a potvrdíme termín. Do té doby jsou hodiny jen vaše.
-          </p>
-
-          <dl class="kv">
-            <div><dt>Sál</dt><dd data-r-hall></dd></div>
-            <div><dt>Termíny</dt><dd data-r-when></dd></div>
-            <div><dt>Opakování</dt><dd data-r-repeat></dd></div>
-            <div><dt>Hodin celkem</dt><dd data-r-hours></dd></div>
-            <div><dt>Lekci povede</dt><dd data-r-teacher></dd></div>
-            <div><dt>Účel</dt><dd data-r-purpose></dd></div>
-            <div><dt>Cena celkem</dt><dd data-r-sum></dd></div>
-          </dl>
-
-          <ol class="next">
-            <li>Potvrdíme termín e-mailem, u dlouhodobých rezervací přiložíme smlouvu na jednu stránku.</li>
-            <li>Pošleme adresu a přístupový kód ke vchodu. Platí patnáct minut před vaší hodinou a patnáct po ní.</li>
-            <li>Platba předem převodem, partnerským školám fakturujeme souhrnně na konci měsíce.</li>
-          </ol>
-
-          <div class="acts acts--l">
-            <button class="btn btn--o" type="button" data-again>Nová rezervace</button>
-            <a class="btn btn--o" href="index.html">Zpět na úvod</a>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
   <section class="night" id="pravidla">
     <div class="wrap two two--t">
       <div>
-        <span class="tag tag--l">Ceník a pravidla</span>
-        <h2 class="d h2" style="margin-top:12px">Cena za hodinu, <span class="hl">nic navíc.</span></h2>
+        <h2 class="d h2">Cena</h2>
         <p class="p" style="margin-top:18px">
-          Žádné členství, žádný poplatek za rezervaci, žádná přirážka za ozvučení.
+          Na semestrální kurzy, celodenní pronájem, komerční focení nebo akci
+          mimo běžný provoz připravíme nabídku na míru.
         </p>
-        <ul class="route" style="margin-top:26px">
-          <li><dt>Minimum</dt><dd>1 hodina</dd></li>
-          <li><dt>Provoz</dt><dd>denně 7:00–22:00<small>Po 22:00 sál nepůjčujeme — v domě se pracuje i bydlí.</small></dd></li>
-          <li><dt>Storno</dt><dd>bezplatně do 48 hodin<small>Později hodinu účtujeme, ale zkusíme ji nabídnout dál.</small></dd></li>
-          <li><dt>Obuv</dt><dd>čistá taneční obuv, přezutí na místě</dd></li>
-          <li><dt>Lektor</dt><dd>váš<small>Lekci vede váš člověk, obsah je celý ve vaší režii.</small></dd></li>
-          <li><dt>Komerční focení</dt><dd>zvláštní tarif — napište nám</dd></li>
-        </ul>
+        <div class="acts acts--l" style="margin-top:24px">
+          <a class="btn btn--l" href="kontakt.html">Chci individuální nabídku</a>
+        </div>
       </div>
 
       <div>
         <table class="t">
-          <caption class="tag tag--l" style="text-align:left;padding-bottom:10px">Kč za hodinu, včetně DPH</caption>
+          <caption class="vh">Ceník podle sálu a tarifu</caption>
           <thead>
             <tr>
               <th scope="col">Sál</th>
@@ -293,18 +251,17 @@
             </tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><a href="prostory.html#velky">Velký sál</a><small>122 m²</small></th><td data-l="Mimo špičku">590</td><td data-l="Špička">790</td><td data-l="Semestr" class="best">640</td></tr>
-            <tr><th scope="row"><a href="prostory.html#maly">Malý sál</a><small>20 m²</small></th><td data-l="Mimo špičku">290</td><td data-l="Špička">390</td><td data-l="Semestr" class="best">320</td></tr>
-            <tr><th scope="row"><a href="prostory.html#oba">Oba sály</a><small>142 m²</small></th><td data-l="Mimo špičku">820</td><td data-l="Špička">1 090</td><td data-l="Semestr" class="best">890</td></tr>
+            <tr><th scope="row"><a href="prostory.html#velky">Velký sál</a><small>122 m²</small></th><td data-l="Mimo špičku">590 Kč</td><td data-l="Špička">790 Kč</td><td data-l="Semestr" class="best">640 Kč</td></tr>
+            <tr><th scope="row"><a href="prostory.html#maly">Malý sál</a><small>20 m²</small></th><td data-l="Mimo špičku">290 Kč</td><td data-l="Špička">390 Kč</td><td data-l="Semestr" class="best">320 Kč</td></tr>
+            <tr><th scope="row"><a href="prostory.html#oba">Oba sály</a><small>142 m²</small></th><td data-l="Mimo špičku">820 Kč</td><td data-l="Špička">1 090 Kč</td><td data-l="Semestr" class="best">890 Kč</td></tr>
           </tbody>
         </table>
         <p class="t-legend">
           <b>Mimo špičku</b> po–pá 7–16 a celý víkend · <b>Špička</b> po–pá 16–22 ·
           <b>Semestr</b> od 10 týdnů opakování
         </p>
-        <p class="note" style="margin-top:26px">
-          <b>Dlouhodobě a jinak.</b> Na semestrální kurzy, celodenní pronájem
-          nebo komerční focení připravíme nabídku na míru — napište nám.
+        <p class="t-legend" style="display:block">
+          Ceny za hodinu, včetně DPH. Storno bezplatně do 48 hodin před termínem.
         </p>
       </div>
     </div>

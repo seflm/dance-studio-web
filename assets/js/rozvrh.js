@@ -27,9 +27,9 @@
     openFrom: 7,          // first bookable hour
     openTo: 22,           // last hour ends here
     halls: {
-      velky: { id: "velky", name: "Velký sál", area: "122 m²", cap: 30,
+      velky: { id: "velky", name: "Velký sál", shortName: "Velký", area: "122 m²", cap: 30,
                price: { off: 590, peak: 790, term: 640 } },
-      maly:  { id: "maly",  name: "Malý sál",  area: "20 m²",  cap: 4,
+      maly:  { id: "maly",  name: "Malý sál",  shortName: "Malý",  area: "20 m²",  cap: 4,
                price: { off: 290, peak: 390, term: 320 } },
       oba:   { id: "oba",   name: "Oba sály",  area: "142 m²", cap: 34,
                price: { off: 820, peak: 1090, term: 890 } }
@@ -47,11 +47,11 @@
   // puts a real school's name in a slot it has not actually booked.
   var USES = {
     // weekends belong to workshops and intensives, which run for hours
-    weekend: ["Workshop", "Workshop", "Intenzivní kurz", "Zkouška", "Focení"],
+    weekend: ["Workshop", "Workshop", "Intenziv", "Zkouška", "Focení"],
     // weekday evenings are the term-course peak every school competes for
-    evening: ["Kurz", "Kurz", "Kurz", "Soukromá lekce", "Trénink"],
+    evening: ["Kurz", "Kurz", "Kurz", "Lekce", "Trénink"],
     // weekday daytime is rehearsals and one-to-ones
-    day:     ["Trénink", "Zkouška", "Soukromá lekce", "Focení"]
+    day:     ["Trénink", "Zkouška", "Lekce", "Focení"]
   };
 
   var STORE_KEY = "ts29.hold.v1";
@@ -274,6 +274,13 @@
     this.render();
   };
 
+  /* The grid shows a column per hall per day. "Oba sály" therefore means two
+     columns rather than a third price band, so one calendar answers "is
+     anything free on Thursday" without switching views. */
+  Rozvrh.prototype.shown = function () {
+    return this.hall === "oba" ? ["velky", "maly"] : [this.hall];
+  };
+
   Rozvrh.prototype.render = function () {
     var now = new Date();
     this.days = dayCount();
@@ -287,52 +294,71 @@
     this.el.week.textContent = spanLabel(first, n);
     this.el.prev.disabled = this.dayOffset === 0;
     this.el.next.disabled = this.dayOffset >= this.maxOffset();
+    var halls = this.shown();
+    var hn = halls.length;
+    this.el.grid.dataset.halls = String(hn);
     this.el.grid.style.gridTemplateColumns =
-      "var(--grid-hr, 62px) repeat(" + n + ", minmax(0, 1fr))";
-    if (this.el.title) {
-      this.el.title.textContent = "Rozvrh — " + STUDIO.halls[this.hall].name;
-    }
+      "var(--grid-hr, 62px) repeat(" + (n * hn) + ", minmax(0, 1fr))";
+    if (this.el.title) this.el.title.textContent = "Rozvrh";
 
     var days = [];
     for (var i = 0; i < n; i++) days.push(addDays(first, i));
 
-    var occ = days.map(function (d) { return dayOccupancy(this.hall, d); }, this);
+    // occupancy is per hall per day, so it is a two-level lookup now
+    var occ = days.map(function (d) {
+      return halls.map(function (id) { return dayOccupancy(id, d); });
+    });
 
-    var html = '<div class="grid__corner"></div>';
+    var html = '<div class="grid__corner"' + (hn > 1 ? ' style="grid-row: span 2"' : '') + '></div>';
     days.forEach(function (d) {
       var isToday = iso(d) === todayIso;
-      html += '<div class="grid__day" role="columnheader" data-today="' + isToday + '">' +
+      html += '<div class="grid__day" role="columnheader" data-today="' + isToday + '"' +
+              (hn > 1 ? ' style="grid-column: span ' + hn + '"' : '') + '>' +
               (isToday ? "Dnes" : DAYS[(d.getDay() + 6) % 7]) +
               '<b>' + d.getDate() + '.' + (d.getMonth() + 1) + '.</b></div>';
     });
+    if (hn > 1) {
+      days.forEach(function (d) {
+        halls.forEach(function (id) {
+          html += '<div class="grid__hall" data-today="' + (iso(d) === todayIso) + '">' +
+                  STUDIO.halls[id].shortName + '</div>';
+        });
+      });
+    }
 
     for (var h = STUDIO.openFrom; h < STUDIO.openTo; h++) {
       html += '<div class="grid__hr">' + String(h).padStart(2, "0") + ':00</div>';
       for (var c = 0; c < n; c++) {
         var d = days[c];
         var dIso = iso(d);
-        var state, tag = "", use = occ[c][h];
         var past = d < startOfDay(now) || (dIso === todayIso && h <= now.getHours());
+        for (var q = 0; q < hn; q++) {
+          var hallId = halls[q];
+          var state, tag = "", use = occ[c][q][h];
 
-        if (held[this.hall + "|" + dIso + "|" + h]) { state = "held"; }
-        else if (past)  { state = "past"; }
-        else if (use)   { state = "taken"; tag = use; }
-        else            { state = "free"; }
+          if (held[hallId + "|" + dIso + "|" + h]) { state = "held"; }
+          else if (past)  { state = "past"; }
+          else if (use)   { state = "taken"; tag = use; }
+          else            { state = "free"; }
 
-        var clickable = state === "free" || state === "held";
-        html += '<' + (clickable ? "button" : "div") + ' class="cell"' +
-                ' data-state="' + state + '"' +
-                ' data-col="' + (c + 1) + '"' +
-                ' data-last="' + (c === n - 1) + '"' +
-                (clickable ? ' type="button" data-hour="' + h + '" data-date="' + dIso + '"' : "") +
-                ' role="gridcell"' +
-                ' aria-label="' + longDate(d) + ", " + String(h).padStart(2, "0") + ":00 – " +
-                  String(h + 1).padStart(2, "0") + ":00, " +
-                  (state === "free" ? "volno, " + czk(hourPrice(this.hall, d, h))
-                   : state === "held" ? "vybráno"
-                   : state === "taken" ? "obsazeno" : "nedostupné") + '">' +
-                (tag ? '<span class="cell__tag">' + tag + "</span>" : "") +
-                '</' + (clickable ? "button" : "div") + '>';
+          var clickable = state === "free" || state === "held";
+          html += '<' + (clickable ? "button" : "div") + ' class="cell"' +
+                  ' data-state="' + state + '"' +
+                  ' data-col="' + (c + 1) + '"' +
+                  ' data-last="' + (c === n - 1 && q === hn - 1) + '"' +
+                  ' data-edge="' + (q === hn - 1) + '"' +
+                  (clickable ? ' type="button" data-hour="' + h + '" data-date="' + dIso +
+                               '" data-hall="' + hallId + '"' : "") +
+                  ' role="gridcell"' +
+                  ' aria-label="' + STUDIO.halls[hallId].name + ", " + longDate(d) + ", " +
+                    String(h).padStart(2, "0") + ":00 – " +
+                    String(h + 1).padStart(2, "0") + ":00, " +
+                    (state === "free" ? "volno, " + czk(hourPrice(hallId, d, h))
+                     : state === "held" ? "vybráno"
+                     : state === "taken" ? "obsazeno" : "nedostupné") + '">' +
+                  (tag ? '<span class="cell__tag">' + tag + "</span>" : "") +
+                  '</' + (clickable ? "button" : "div") + '>';
+        }
       }
     }
 
@@ -343,7 +369,7 @@
   Rozvrh.prototype.toggle = function (cell) {
     var date = cell.dataset.date;
     var hour = Number(cell.dataset.hour);
-    var entry = { hall: this.hall, date: date, hour: hour };
+    var entry = { hall: cell.dataset.hall || this.hall, date: date, hour: hour };
     var key = holdKey(entry);
     var i = -1;
     this.hold.forEach(function (h, n) { if (holdKey(h) === key) i = n; });

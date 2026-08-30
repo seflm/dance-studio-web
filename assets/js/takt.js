@@ -137,19 +137,66 @@
       (purpEl ? " · " + purpEl.value.toLowerCase() : "");
   });
 
-    /* three views of the same hall, crossfading */
+  /* The hero background: three stills that crossfade, with a muted YouTube
+     loop laid over them once it is actually playing. The stills stay beneath
+     so the hero is never blank — autoplay is refused often enough on mobile,
+     and the embed is skipped entirely for reduced motion. */
   (function () {
     var wrap = document.querySelector("[data-slides]");
     if (!wrap) return;
+    var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     var imgs = wrap.querySelectorAll("img");
-    if (imgs.length < 2) return;
-    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    var i = 0;
-    setInterval(function () {
-      imgs[i].removeAttribute("data-on");
-      i = (i + 1) % imgs.length;
-      imgs[i].setAttribute("data-on", "true");
-    }, 5000);
+    if (imgs.length > 1 && !calm) {
+      var i = 0;
+      setInterval(function () {
+        imgs[i].removeAttribute("data-on");
+        i = (i + 1) % imgs.length;
+        imgs[i].setAttribute("data-on", "true");
+      }, 5000);
+    }
+
+    var id = wrap.dataset.video;
+    if (!id || calm) return;
+
+    var frame = document.createElement("iframe");
+    frame.className = "hero__vid";
+    frame.title = "Záběry ze sálu";
+    frame.allow = "autoplay; encrypted-media";
+    frame.setAttribute("tabindex", "-1");
+    frame.setAttribute("aria-hidden", "true");
+    // nocookie host: the rest of the site loads nothing that tracks
+    frame.src = "https://www.youtube-nocookie.com/embed/" + id +
+      "?autoplay=1&mute=1&loop=1&playlist=" + id +
+      "&controls=0&disablekb=1&fs=0&modestbranding=1&rel=0&playsinline=1" +
+      "&iv_load_policy=3&enablejsapi=1&origin=" + encodeURIComponent(location.origin);
+
+    /* The stills only step aside once the player says it is PLAYING. The load
+       event is no good on its own — it fires for a blocked or errored frame
+       too, and fading the photographs out then leaves the hero empty. This
+       talks to the embed directly rather than pulling in YouTube's API. */
+    var settled = false;
+    function reveal() {
+      if (settled) return;
+      settled = true;
+      wrap.dataset.playing = "true";
+    }
+    window.addEventListener("message", function (e) {
+      if (!/youtube(-nocookie)?\.com$/.test(e.origin.replace(/^https?:\/\/(www\.)?/, ""))) return;
+      var d = e.data;
+      if (typeof d === "string") { try { d = JSON.parse(d); } catch (err) { return; } }
+      if (!d || !d.info) return;
+      if (d.info.playerState === 1 || d.info.playerState === 3) reveal();
+    });
+    frame.addEventListener("load", function () {
+      try {
+        frame.contentWindow.postMessage(JSON.stringify({ event: "listening", id: 1 }), "*");
+      } catch (err) { /* cross-origin refusal just means no video */ }
+    });
+    // if nothing is playing by now it never will be; the photographs stay
+    setTimeout(function () { if (!settled) settled = true; }, 6000);
+
+    wrap.appendChild(frame);
   })();
 
   /* the week at a glance, folded under the bar */
@@ -207,7 +254,7 @@
     { nav: "Krok", title: "Krok", logo: "assets/img/partners/krok.svg",
       body: "Škola společenského tance pro dospělé — od úplných základů po pokročilé, s důrazem na vedení a držení." },
     { nav: "Simply the West", title: "Simply the West", logo: "assets/img/partner-simplythewest-mono.png",
-      body: "Taneční škola Jiřího Švarce a Miriam Zedníčkové, zaměřená na West Coast Swing — moderní párový tanec postavený na improvizaci a vedení. Kurzy od úplných začátečníků po pokročilé, workshopy s hostujícími lektory a pravidelné taneční party. Jirka zároveň patří k lidem, kteří studio zakládají — podmínky proto platí pro všechny školy stejně.",
+      body: "Taneční škola Jiřího Švarce a Miriam Zedníčkové, zaměřená na West Coast Swing — moderní párový tanec postavený na improvizaci a vedení. Kurzy od úplných začátečníků po pokročilé, workshopy s hostujícími lektory a pravidelné taneční party.",
       link: "https://www.simplythewest.cz/", linkLabel: "simplythewest.cz ↗" },
     { nav: "Rytmus", title: "Rytmus", logo: "assets/img/partners/rytmus.svg",
       body: "Kurzy pro děti a mládež — moderna, street a základy jevištního pohybu. Vystoupení dvakrát ročně." },

@@ -330,10 +330,18 @@ table.t .best { color: var(--tung-ink); font-weight: 600; }
 .steps { display: grid; gap: clamp(18px,2.4vw,30px); margin-top: clamp(30px,4vw,48px); }
 @media (min-width: 660px)  { .steps { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1020px) { .steps { grid-template-columns: repeat(4, 1fr); } }
-.step { padding: 26px 22px; border-radius: var(--r); background: rgba(244,237,225,.06); border: 1px solid rgba(244,237,225,.12); }
-.step b { display: block; font-family: var(--ff-d); font-size: 1.6rem; color: var(--tung); }
-.step h3 { margin-top: 8px; }
-.step p { margin-top: 8px; font-size: .88rem; color: rgba(244,237,225,.72); }
+.step {
+  display: grid; grid-template-columns: auto 1fr; align-items: start; gap: 4px 14px;
+  padding: 20px 20px; border-radius: var(--r);
+  background: rgba(244,237,225,.06); border: 1px solid rgba(244,237,225,.12);
+}
+.step b { font-family: var(--ff-d); font-size: 1.5rem; line-height: 1.05; color: var(--tung); }
+.step p { margin-top: 6px; font-size: .88rem; color: rgba(244,237,225,.72); }
+/* without a number the card is just a heading and a line — centre it */
+.steps--mid .step { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 0; padding: 24px 20px; }
+.steps--mid .step p { max-width: 30ch; }
+/* one column of wide cards reads better on a phone than four short ones */
+@media (max-width: 659px) { .steps { gap: 12px; } .step { padding: 16px 18px; } }
 
 /* partners */
 /* what the sál is used for, as a ruled index */
@@ -524,7 +532,10 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
 .cell[data-state="past"] { background: #e4dccd; cursor: not-allowed; }
 .cell[data-state="held"] { background: var(--tung); cursor: pointer; }
 .cell[data-state="held"]::before { content: "✓"; position: absolute; inset: 0; display: grid; place-items: center; font-size: .78rem; color: var(--night); }
-.cell__tag { position: absolute; inset: 0; display: none; align-items: center; padding-inline: 7px; font-size: .6rem; letter-spacing: .03em; color: var(--tung-ink); white-space: nowrap; overflow: hidden; }
+.cell__tag { position: absolute; inset: 0; display: none; align-items: center; padding-inline: 7px; font-size: .6rem; letter-spacing: .03em; color: var(--tung-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* two columns per day leaves too little room to name what is in them */
+.grid[data-halls="2"] .cell__tag { padding-inline: 4px; font-size: .56rem; }
+@media (max-width: 1279px) { .grid[data-halls="2"] .cell__tag { display: none; } }
 @media (min-width: 1080px) { .cell__tag { display: flex; } }
 
 .ledger__ft { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; padding: 14px 18px; border-top: 1px solid var(--cream2); }
@@ -643,7 +654,7 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
 @media (min-width: 860px) { .pcard { grid-template-columns: 300px 1fr; } }
 /* the partner mark is a white knockout: on cream it needs inverting inside a
    panel, on a night band it stands on its own with no box and no filter */
-.pcard__logo { display: grid; place-items: center; padding: 40px 30px; border: 1px solid var(--cream2); border-radius: var(--r); background: var(--cream); }
+.pcard__logo { display: grid; place-items: center; padding: 20px 0; }
 .pcard__logo img { max-height: 96px; width: auto; filter: invert(1); opacity: .84; }
 .night .pcard__logo { padding: 0; border: 0; background: none; }
 .night .pcard__logo img { filter: none; opacity: .95; max-height: 112px; }
@@ -696,7 +707,9 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
   font-size: .86rem; font-weight: 600;
   transition: transform .18s var(--ease);
 }
-.skip:focus { transform: translateY(0); }
+/* :focus-visible, not :focus — a hash jump to #main used to pop it into
+   view for mouse users. Keyboard users still get it. */
+.skip:focus-visible { transform: translateY(0); }
 
 /* --- the two people behind the studio ------------------------------------ */
 .team { display: grid; gap: clamp(24px, 3vw, 40px); margin-top: clamp(34px, 4vw, 56px); }
@@ -812,7 +825,14 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
   /* --- legibility: nothing uppercase drops below 12px ---------------------- */
   .tag, .fld > span, .field > span, .route dt, .facts dt, .person__rl,
   .f h4, .total__k, .pslide__facts dt, .cal__dn, .grid__day, .slot__lbl,
-  .receipt__hd .tag, .picker__pr { font-size: .75rem; letter-spacing: .14em; }
+  .receipt__hd .tag, .picker__pr, .hall__pr dt { font-size: .75rem; letter-spacing: .14em; }
+
+  /* the room links are navigation, not words inside a sentence — they get a
+     real target rather than the height of their own text */
+  .hall__go a, .hall__bd .h3 a, table.t tbody th a {
+    display: inline-flex; align-items: center; min-height: 44px;
+  }
+  .hall__go { gap: 0 22px; margin-top: 10px; }
   .mk span { font-size: .72rem; letter-spacing: .2em; }
   /* the sticky bar is 13% of the screen; the strapline is the part of it
      that carries no information once you are already on the site */
@@ -968,7 +988,8 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
     position: sticky; top: var(--top-h, 64px); z-index: 3;
     background: var(--cream);
   }
-  .grid__day[data-today="true"] { background: #f3e7d3; }
+  .grid__hall { position: sticky; top: calc(var(--top-h, 64px) + 38px); z-index: 3; background: var(--cream); }
+  .grid__day[data-today="true"], .grid__hall[data-today="true"] { background: #f3e7d3; }
 
 
   .burger {
@@ -1039,3 +1060,79 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
   /* the page behind the drawer must not scroll under it */
   body.menu-open { overflow: hidden; }
 }
+
+/* on a phone the five nav logos wrap into an untidy block, and the one real
+   school ends up buried in it — it gets its own line above the others */
+@media (max-width: 719px) {
+  .slots { gap: 16px 22px; }
+  .slots li:nth-child(3) { order: -1; flex-basis: 100%; display: flex; justify-content: center; }
+  .slots li:nth-child(3) .slot__fig { height: 46px; }
+  .slots li:nth-child(3) .slot__fig img { max-height: 40px; }
+}
+
+/* --- the schedule, with a column per hall --------------------------------
+   "Oba sály" draws two columns under each date, so the day heading spans them
+   and a second strip names which is which. */
+.grid__hall {
+  padding: 5px 4px 7px; text-align: center;
+  font-size: .58rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  color: #8a7c68; white-space: nowrap;
+  border-right: 1px solid var(--cream2); border-bottom: 1px solid var(--cream2);
+}
+.grid__hall[data-today="true"] { background: #f3e7d3; }
+.grid[data-halls="2"] .cell[data-edge="false"] { border-right: 1px dotted #ded2bd; }
+.grid[data-halls="2"] .grid__hall:nth-of-type(even) { border-right-color: #ded2bd; }
+/* this block sits after the phone rules, so the phone size belongs here */
+@media (max-width: 719px) { .grid__hall { font-size: .72rem; letter-spacing: .03em; padding-inline: 2px; } }
+
+/* --- the sign-in panel and the disabled booking form ----------------------
+   The form shows what a booking asks for; it does not take one. Disabled
+   controls keep their labels readable rather than greying out to nothing. */
+.signin { padding: 20px 0 18px; font-size: .92rem; color: var(--body); }
+.signin--x { padding-top: 0; font-size: .82rem; color: #8a7c68; }
+.summary .acts { margin-top: 0; }
+
+.form fieldset { margin: 0; padding: 0; border: 0; display: grid; gap: 18px; }
+.form fieldset:disabled { opacity: 1; }
+.field input:disabled, .field select:disabled, .field textarea:disabled {
+  background: #f2ebdd; color: #6b6053; cursor: not-allowed; -webkit-text-fill-color: #6b6053;
+}
+.check input:disabled { background: #f2ebdd; cursor: not-allowed; }
+.check input:disabled + span, .form fieldset:disabled .field small { color: #8a7c68; }
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+.btn:disabled:hover { background: var(--night); border-color: var(--night); }
+.night .btn:disabled:hover { background: var(--cream); border-color: var(--cream); }
+
+/* the radio outline was square on a rounded card */
+.picker__opt input:focus-visible + .picker__bd { outline: none; box-shadow: inset 0 0 0 2px var(--tung); }
+.picker__opt:first-child .picker__bd { border-radius: var(--r) 0 0 var(--r); }
+.picker__opt:last-child .picker__bd { border-radius: 0 var(--r) var(--r) 0; }
+@media (max-width: 699px) {
+  .picker__opt:first-child .picker__bd { border-radius: var(--r) var(--r) 0 0; }
+  .picker__opt:last-child .picker__bd { border-radius: 0 0 var(--r) var(--r); }
+}
+
+/* a cream section that still reads as its own band */
+section.ruled { border-top: 1px solid var(--cream2); border-bottom: 1px solid var(--cream2); }
+/* the two rooms, small, where the page talks about taking both */
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(10px, 1.4vw, 16px); }
+.pair figure { margin: 0; }
+.pair img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 10px; }
+.pair figcaption { margin-top: 8px; font-size: .76rem; color: #8a7c68; }
+
+/* --- hero video ----------------------------------------------------------
+   Black and white, sized to cover rather than fit (YouTube always gives back
+   16:9, so it is scaled up and centred), and behind the same scrim as the
+   stills. It fades in only once it reports playing; the photographs stay
+   underneath, so a blocked autoplay costs nothing. */
+.hero__vid {
+  position: absolute; top: 50%; left: 50%; z-index: -3;
+  width: 100vw; height: 56.25vw; min-height: 100%; min-width: 177.78vh;
+  transform: translate(-50%, -50%);
+  border: 0; pointer-events: none;
+  filter: grayscale(1) contrast(1.06) brightness(.86);
+  opacity: 0; transition: opacity 1.4s var(--ease);
+}
+.hero__bg[data-playing="true"] .hero__vid { opacity: 1; }
+.hero__bg[data-playing="true"] img { opacity: 0; transition: opacity 1.4s var(--ease); }
+@media (prefers-reduced-motion: reduce) { .hero__vid { display: none; } }
