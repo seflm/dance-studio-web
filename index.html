@@ -24,18 +24,20 @@
 
   <header class="top">
     <div class="wrap top__in">
-      <a class="mk" href="index.html" aria-label="Taneční studio Takt">
-        <b>Studio Takt</b>
-        <span>Taneční sál · Praha</span>
-      </a>
+      <div class="top__row">
+        <a class="mk" href="index.html" aria-label="Taneční studio Takt">
+          <b>Studio Takt</b>
+          <span>Taneční sál · Praha</span>
+        </a>
+        <a class="btn btn--gl" href="rezervace.html">Rezervovat</a>
+      </div>
       <nav aria-label="Hlavní navigace">
-        <a href="#filozofie" aria-current="page">Filozofie</a>
+        <a href="index.html" aria-current="page">Domů</a>
         <a href="prostory.html">Sály</a>
         <a href="rezervace.html">Rezervace</a>
         <a href="partneri.html">Partneři</a>
         <a href="kontakt.html">Kontakt</a>
       </nav>
-      <a class="btn btn--gl" href="rezervace.html">Rezervovat</a>
     </div>
   </header>
 
@@ -54,7 +56,7 @@
     <button class="finder__sum" type="button" data-finder-toggle aria-expanded="false">
       <span class="finder__sum-l">Najít volný termín</span>
       <span class="finder__sum-v" data-finder-summary></span>
-      <span class="finder__sum-c" aria-hidden="true">⌄</span>
+      <svg class="finder__sum-c" viewBox="0 0 16 16" width="15" height="15" fill="none" aria-hidden="true"><path d="M3.5 6 8 10.5 12.5 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
     <label class="fld">
       <span>Sál</span>
@@ -90,7 +92,7 @@
     </label>
     <button class="btn finder__go" type="submit">
       <span class="finder__go-t">Zkontrolovat dostupnost</span>
-      <span class="finder__go-a" aria-hidden="true">→</span>
+      <svg class="finder__go-a" viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true"><path d="M3.5 10h13M11 4.5l5.5 5.5L11 15.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
     <p class="fresult" data-result hidden role="status"></p>
   </form>

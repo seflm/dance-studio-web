@@ -270,11 +270,29 @@
   // itself, floating over the hero
   var bar = document.querySelector(".top--solid") || document.querySelector(".top");
   if (!bar) return;
+  var row = bar.querySelector(".top__row");
   function measure() {
     document.documentElement.style.setProperty("--top-h", bar.offsetHeight + "px");
+    // how far down the bar the solid part reaches, so the veil can start there
+    if (row) {
+      var h = row.getBoundingClientRect().bottom - bar.getBoundingClientRect().top;
+      document.documentElement.style.setProperty("--row-h", Math.round(h) + "px");
+    }
   }
   measure();
   window.addEventListener("resize", measure);
   if (window.ResizeObserver) new ResizeObserver(measure).observe(bar);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+
+  /* On the homepage the bar floats over the photograph and the nav row is only
+     veiled, which stops working the moment cream sections scroll under it. */
+  var hero = document.querySelector(".hero");
+  if (hero && bar.parentElement === hero) {
+    var stick = function () {
+      bar.dataset.stuck = String(window.scrollY > hero.offsetHeight - bar.offsetHeight - 8);
+    };
+    stick();
+    window.addEventListener("scroll", stick, { passive: true });
+    window.addEventListener("resize", stick);
+  }
 })();
