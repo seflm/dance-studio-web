@@ -1,23 +1,9 @@
-/* Contact form — validates, then renders the confirmation locally. No network. */
+/* The contact form shows what we ask for; it does not take submissions yet.
+   The submit button is disabled in the markup, but a form can still be sent
+   by pressing Enter in a text field, which would reload the page with the
+   answers in the query string. This stops that. */
 (function () {
   var form = document.getElementById("contactform");
-  var sent = document.querySelector("[data-sent]");
-  if (!form || !sent) return;
-
-  form.addEventListener("submit", function (ev) {
-    ev.preventDefault();
-    if (!form.reportValidity()) return;
-    document.querySelector("[data-sent-mail]").textContent =
-      new FormData(form).get("email");
-    form.hidden = true;
-    sent.hidden = false;
-    sent.scrollIntoView({ block: "center" });
-  });
-
-  document.querySelector("[data-sent-again]").addEventListener("click", function () {
-    form.reset();
-    sent.hidden = true;
-    form.hidden = false;
-    form.scrollIntoView({ block: "center" });
-  });
+  if (!form) return;
+  form.addEventListener("submit", function (ev) { ev.preventDefault(); });
 })();

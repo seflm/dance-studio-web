@@ -159,8 +159,8 @@ Web se ukazuje majiteli prostoru, takže tohle je potřeba mít oddělené.
 | Podlaha, zrcadla, ozvučení, rekuperace, šatna | `prostory.html` | popis odpovídá *projektu*, ne současnému stavu |
 | Provoz 7:00–22:00 | `rozvrh.js`, zápatí | odhad |
 | Storno 48 h, potvrzení do 12 h, vstup na kód | více míst | navržená pravidla |
-| `rezervace@studiotakt.cz`, `+420 XXX XXX XXX` | zápatí, `kontakt.html` | zástupné |
-| „3 minuty pěšky od metra“ | zápatí, `kontakt.html` | odhad |
+| `xxxxx@xxxxx.cz`, `+420 XXX XXX XXX` | zápatí, mobilní menu, `kontakt.html` | zástupné — e-mail je schválně vyplněný jako placeholder, ne jako funkční adresa, a není to odkaz |
+| „8 minut pěšky od metra Florenc“ | zápatí, `index.html`, `kontakt.html` | od vás |
 
 **Na webu už to přiznané není.** Rámečky „Ukázka“ u rezervace, kontaktního
 formuláře a mapy byly na přání odstraněné — web se má číst jako hotový web,

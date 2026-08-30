@@ -1138,3 +1138,11 @@ section.ruled { border-top: 1px solid var(--cream2); border-bottom: 1px solid va
 .hero__bg[data-playing="true"] .hero__vid { opacity: 1; }
 .hero__bg[data-playing="true"] img { opacity: 0; transition: opacity 1.4s var(--ease); }
 @media (prefers-reduced-motion: reduce) { .hero__vid { display: none; } }
+
+/* --- Kdo jsme, centred ---------------------------------------------------
+   Heading, intro and both columns line up on a single centre axis; the
+   portrait is capped at 300px so it needs its own auto margins to sit on it. */
+#kdo { text-align: center; }
+#kdo .lede { margin-inline: auto; }
+#kdo .person figure { margin-inline: auto; }
+#kdo .person p { margin-inline: auto; max-width: 46ch; }
