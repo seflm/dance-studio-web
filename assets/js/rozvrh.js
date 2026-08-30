@@ -22,6 +22,7 @@
        · rezervace.html  — table.t in #pravidla, and the "od … Kč / h" lines
                            in .picker
        · partneri.html   — the "640 Kč/h místo 790 Kč/h" line in the terms
+       · index.html      — the JSON-LD "makesOffer" block in <head>
      ---------------------------------------------------------------------- */
   var STUDIO = {
     openFrom: 7,          // first bookable hour

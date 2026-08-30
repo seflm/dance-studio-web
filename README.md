@@ -45,8 +45,12 @@ assets/js/rotator.js    střídání posledního slova v titulku
 assets/js/rezervace.js  rezervační formulář, souhrn a potvrzení
 assets/js/kontakt.js    kontaktní formulář
 assets/img/             vizualizace sálu a loga
+assets/img/og.jpg       náhled pro sdílení (1200×630, Open Graph)
 assets/video/hero.mp4   podkres hero sekce (černobílý, bez zvuku, 18 MB)
 assets/videos/          zdrojové video, ze kterého se hero.mp4 kóduje
+
+robots.txt              povoluje indexaci, ukazuje na sitemapu
+sitemap.xml             seznam pěti stránek pro vyhledávače
 
 context/                zadání — fotky z inzerátu, referenční návrhy,
                         logo partnera
@@ -56,14 +60,11 @@ context/                zadání — fotky z inzerátu, referenční návrhy,
 
 ## Vzhled
 
-Jeden návrh, **Salon**: noční hnědá `#171009`, krém `#F4EDE1`, wolframová
+Paleta: noční hnědá `#171009`, krém `#F4EDE1`, wolframová
 zlatá `#D9A248`; písma Newsreader (serif s pravou kurzívou) a Instrument
 Sans. Nosný prvek je **plovoucí lišta „najít termín“** hned v hero sekci —
 první věc, na kterou se dá na webu sáhnout — a pod ní rozbalitelný
 týdenní rozvrh.
-
-Vývoj prošel pěti variantami (Trezor, Sgraffito, Provoz, Salon, Ateliér);
-zbylé čtyři jsou v historii gitu, na webu z nich nic nezůstalo.
 
 Poznámky ke vzhledu, které je dobré neporušit:
 
@@ -78,6 +79,27 @@ Poznámky ke vzhledu, které je dobré neporušit:
   jasná zlatá, kde kontrast problém nebyl. Světlé komponenty (ceníková
   tabulka, formulář, potvrzení) mají v `takt.css` vlastní `.night` variantu —
   bez ní na tmavém pásu zmizí.
+
+---
+
+## SEO a sdílení
+
+Kanonická doména je **`studiotakt.cz`** (soubor `CNAME`). Na ní stojí
+`<link rel="canonical">`, `og:url` i `sitemap.xml` — kdyby se doména
+změnila, přepište ji na všech třech místech (v substránkách ji generuje
+skript, v `index.html` je psáná ručně).
+
+Každá stránka má vlastní `title`, `description`, kanonický odkaz a sadu
+Open Graph / Twitter meta tagů. Náhledový obrázek je pro všechny stránky
+společný: `assets/img/og.jpg`, 1200×630.
+
+`index.html` navíc nese strukturovaná data (JSON-LD, `LocalBusiness` +
+`EventVenue`): název, popis, otevírací doba 7:00–22:00, ceny obou sálů
+a vybavení. **Adresa je jen `Praha 1, CZ`, bez ulice** — stejně jako na
+webu. E-mail ani telefon ve strukturovaných datech nejsou, protože jsou
+zatím zástupné; až budou skutečné, doplňte do JSON-LD `email`
+a `telephone`. Ceny v JSON-LD jsou **šesté místo**, kde jsou napsané —
+při změně cen ho projděte také.
 
 ---
 
@@ -154,7 +176,7 @@ Web se ukazuje majiteli prostoru, takže tohle je potřeba mít oddělené.
 | Automatický záznam lekce | `index.html#zaznam` (skryté) | **navržená služba**, zatím neexistuje |
 | Video na pozadí hero sekce | `assets/video/hero.mp4`, atribut `data-video` na `.hero__bg` | **cizí video**, staženo z YouTube pro testovací web — před spuštěním ho nahraďte vlastním záběrem. Soubor je už sestříhaný na úsek 0:20–2:20, takže se cyklí sám; postup kódování je v `assets/video/README.md`. Načítá se až po `window.load`, takže na rychlost stránky nemá vliv. Fotky pod ním zůstávají: když soubor chybí, nejde dekódovat, prohlížeč odmítne autoplay nebo má návštěvník zapnuté šetření dat, hero ukáže je. |
 | Kapacita 40–50 lidí, výška 3 m, sestava 4.4, vzduchotechnika | `prostory.html#velky` | podle vašeho zadání ze srpna 2026 |
-| Ceny 590 / 790 / 640 Kč atd. | karty sálů na úvodní stránce, `prostory.html`, obě ceníkové tabulky, `rozvrh.js` | orientační. **Jsou teď na pěti místech** — při změně projděte komentář nad `STUDIO` v `rozvrh.js` |
+| Ceny 590 / 790 / 640 Kč atd. | karty sálů na úvodní stránce, `prostory.html`, obě ceníkové tabulky, `rozvrh.js`, JSON-LD v `index.html` | orientační. **Jsou teď na šesti místech** — při změně projděte komentář nad `STUDIO` v `rozvrh.js` |
 | Světlá výška 3,4 m | `prostory.html`, `index.html` | odhad z vizualizace |
 | Podlaha, zrcadla, ozvučení, rekuperace, šatna | `prostory.html` | popis odpovídá *projektu*, ne současnému stavu |
 | Provoz 7:00–22:00 | `rozvrh.js`, zápatí | odhad |
