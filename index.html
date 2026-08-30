@@ -16,10 +16,10 @@
 <a class="skip" href="#main">Přeskočit na obsah</a>
 
 <section class="hero">
-  <!-- data-video: a file under assets/video/. Until it exists the hero shows
-       the three stills, which is also the fallback when autoplay is refused. -->
-  <div class="hero__bg" data-slides data-video="assets/video/hero.mp4"
-       data-from="20" data-to="140" aria-hidden="true">
+  <!-- The clip is already cut to the 0:20–2:20 window, so it loops natively
+       and needs no data-from/data-to. The three stills below stay as the
+       fallback: missing file, undecodable file, or refused autoplay. -->
+  <div class="hero__bg" data-slides data-video="assets/video/hero.mp4" aria-hidden="true">
     <img src="assets/img/hall-empty.webp" alt="" width="1920" height="1080" data-on="true">
     <img src="assets/img/hall-party.webp" alt="" width="1920" height="1080" loading="lazy">
     <img src="assets/img/hall-networking.webp" alt="" width="1920" height="1080" loading="lazy">

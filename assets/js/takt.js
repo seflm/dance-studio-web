@@ -158,18 +158,24 @@
 
     var src = wrap.dataset.video;
     if (!src || calm) return;
+    // a background flourish is not worth someone's data allowance
+    var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (conn && (conn.saveData || /^([23]g|slow-2g)$/.test(conn.effectiveType || ""))) return;
     var from = Number(wrap.dataset.from) || 0;
     var to   = Number(wrap.dataset.to)   || 0;
 
     var v = document.createElement("video");
     v.className = "hero__vid";
+    /* One file, H.264. A VP9 WebM was measured alongside it and came out
+       larger at every quality level, so it would have cost repo weight and
+       a second encode for nothing. H.264 also plays everywhere. */
     v.src = src;
     v.muted = true;              // the property, not just the attribute:
     v.defaultMuted = true;       // Safari checks this one before autoplaying
     v.loop = !to;                // with a window we do the looping ourselves
     v.autoplay = true;
     v.playsInline = true;
-    v.preload = "auto";
+    v.preload = "auto";   // only reached after load, so it never races the page
     v.setAttribute("tabindex", "-1");
     v.setAttribute("aria-hidden", "true");
     v.disablePictureInPicture = true;
@@ -180,8 +186,8 @@
     function reveal() { wrap.dataset.playing = "true"; }
     function fallBack() { delete wrap.dataset.playing; }
     v.addEventListener("playing", reveal);
-    v.addEventListener("error", fallBack);
     v.addEventListener("stalled", fallBack);
+    v.addEventListener("error", fallBack);
 
     /* Loop a section rather than the whole file. If you hand me a clip that is
        already trimmed, drop data-from/data-to and the element loops natively. */
