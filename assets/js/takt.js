@@ -226,41 +226,6 @@
   })();
 
   /* the week at a glance, folded under the bar */
-  var peekBtn = document.querySelector("[data-peek]");
-  var cal = document.querySelector("[data-cal]");
-  if (peekBtn && cal) {
-    var calRow = cal.querySelector("[data-cal-row]");
-    var days = R.outlook("velky", 7);
-    var nextFree = R.nextFreeBlock("velky", 7);
-    var hint = document.querySelector("[data-peek-hint]");
-    if (hint) {
-      hint.textContent = nextFree
-        ? "Nejbližší volno " + nextFree.when + " " + R.hhmm(nextFree.from) + "–" + R.hhmm(nextFree.to)
-        : days.reduce(function (a, d) { return a + d.free; }, 0) + " volných hodin tento týden";
-    }
-    calRow.innerHTML = days.map(function (d) {
-      var full = d.free === 0;
-      return '<button class="cal__d" type="button" data-date="' + d.iso + '">' +
-        '<span class="cal__dn">' + (d.today ? "Dnes" : d.day) + '</span>' +
-        '<span class="cal__dd">' + d.dayNum.replace(/\.$/, "") + '</span>' +
-        '<span class="cal__h" data-full="' + full + '">' +
-          (full ? "obsazeno" : d.free + " h volných") + '</span>' +
-      '</button>';
-    }).join("");
-    peekBtn.addEventListener("click", function () {
-      var open = cal.dataset.open !== "true";
-      cal.dataset.open = String(open);
-      peekBtn.setAttribute("aria-expanded", String(open));
-    });
-    calRow.addEventListener("click", function (ev) {
-      var el = ev.target.closest("[data-date]");
-      if (!el) return;
-      dateEl.value = el.dataset.date;
-      cal.dataset.open = "false";
-      peekBtn.setAttribute("aria-expanded", "false");
-      out.hidden = true;
-    });
-  }
 })();
 
 

@@ -55,7 +55,7 @@ faq.html                časté dotazy — rozbalovací řádky
 
 assets/css/takt.css     jeden stylesheet pro celý web
 assets/js/rozvrh.js     rozvrhový modul — obsazenost, ceny, výběr hodin
-assets/js/takt.js       vyhledávač termínu v hero sekci a týdenní náhled
+assets/js/takt.js       vyhledávač termínu v hero sekci, menu, karusel
 assets/js/rotator.js    střídání posledního slova v titulku
 assets/js/rezervace.js  rezervační formulář, souhrn a potvrzení
 assets/js/kontakt.js    kontaktní formulář
@@ -78,8 +78,9 @@ context/                zadání — fotky z inzerátu, referenční návrhy,
 Paleta: noční hnědá `#171009`, krém `#F4EDE1`, wolframová
 zlatá `#D9A248`; písma Newsreader (serif s pravou kurzívou) a Instrument
 Sans. Nosný prvek je **plovoucí lišta „najít termín“** hned v hero sekci —
-první věc, na kterou se dá na webu sáhnout — a pod ní rozbalitelný
-týdenní rozvrh.
+první věc, na kterou se dá na webu sáhnout. Pod ní jsou dva odkazy: na celý
+rozvrh a na kontaktní formulář. (Rozbalovací týdenní pásek pod lištou byl
+odstraněný — odkaz vede rovnou do rozvrhu, takže pásek neměl co otevírat.)
 
 Poznámky ke vzhledu, které je dobré neporušit:
 
@@ -96,12 +97,24 @@ Poznámky ke vzhledu, které je dobré neporušit:
   při `prefers-reduced-motion` se nevlní.
 - **FAQ je `<details>`/`<summary>`**, žádný JavaScript — otevírá se i bez něj
   a klávesnice ho umí sama.
+- **Na parketu bez odpružení nejmenujeme styly, které odpružení potřebují.**
+  Balet, contemporary, hip hop a cokoli postavené na skocích a floorworku
+  nepatří do rotátoru v titulku ani do rozsypu v „Co se v sále dá dělat“.
+- **Slovník tlačítek má čtyři položky:** *Rezervovat* (→ `rezervace.html`),
+  *Napsat nám* (→ `kontakt.html#dotaz`), *Domluvit prohlídku* a *Stát se
+  partnerem*. Nepřidávejte pátou variantu na to samé — web měl v jednu chvíli
+  sedm různých názvů pro dvě akce.
+- **Na mobilu je v liště jen značka a hamburger.** Tlačítko *Rezervovat*
+  (`.top__cta`) je skryté, aby se vešel podtitul značky; v menu je hned první.
+  Hamburger je jen glyf — bez rámečku a bez podkladu.
+- **`#jak` je `.flow`, ne `.steps`** — vlasová linka s tečkou a velká číslice,
+  žádné karty.
 - Na krémovém pásu je tlačítko `.btn` (tmavé). `.btn--l` je krémové, tedy
   jen pro noční pásy — na krému zmizí.
 
 - Titulek je **„Prostory pro …“** a poslední slovo se střídá po 1,6 s.
   Slova jsou tance a to, co se na parketu děje (tanec, salsu, bachatu, swing,
-  lindy hop, kizombu, tango, hip hop, balet, kurzy, workshopy, party) —
+  lindy hop, kizombu, zouk, tango, kurzy, workshopy, party) —
   **žádné netaneční využití**. „tanec“ je vždy první, zbytek se při každém
   načtení zamíchá. Slova se drží krátká záměrně: kontejner animuje šířku
   podle slova a dlouhé slovo rozdýchává celý řádek. Animaci obstarává
@@ -146,7 +159,7 @@ cenou „od 290 Kč / hodina“.
 
 Co funguje doopravdy:
 
-- výběr sálu (velký 122 m² / malý 20 m² / oba)
+- výběr sálu (velký 168 m² / malý 20 m² / oba)
 - rozvrh na 12 týdnů dopředu, posun po oknech; okno má 7 dní na desktopu,
   5 na tabletu, 3 na telefonu
 - klikání volných hodin, souvislé bloky se slučují („Čt 19:00–21:00“)
@@ -189,7 +202,7 @@ Web se ukazuje majiteli prostoru, takže tohle je potřeba mít oddělené.
 
 **Doložitelné a pravdivé**
 
-- Plochy sálů 122 m² a 20 m² — ze zadání.
+- Plochy sálů 168 m² a 20 m², dohromady 188 m² — ze zadání.
 - **Simply the West**: taneční škola Jiřího Švarce a Miriam Zedníčkové,
   West Coast Swing, Praha. Logo je z `context/`.
 - **Jirka a Marek** v sekci *Kdo za tím stojí* — fotky i medailonky jsou

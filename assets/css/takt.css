@@ -136,6 +136,7 @@ ul, ol { padding: 0; list-style: none; }
 .hero .h1 { color: var(--cream); max-width: 20ch; }
 .hero .h1 em { color: var(--tung); }
 .hero__lede { margin-top: 22px; color: rgba(244,237,225,.84); max-width: 50ch; }
+.hero__lede-b { display: block; }
 
 /* the signature: a floating availability bar, warm-white on the photograph */
 .finder {
@@ -205,8 +206,8 @@ ul, ol { padding: 0; list-style: none; }
   color: var(--tung); cursor: pointer;
 }
 .peek__btn:hover { color: var(--cream); }
-.peek__btn span { display: inline-block; margin-left: 8px; transition: transform .4s var(--ease); }
-.peek__btn[aria-expanded="true"] span { transform: rotate(180deg); }
+.peek__btn span { display: inline-block; margin-left: 8px; transition: transform .3s var(--ease); }
+.peek__btn:hover span { transform: translateX(3px); }
 .peek__ask {
   /* pushed to the far edge only when both fit on one line; wrapped it should
      sit under the other link, not float off to the right */
@@ -222,28 +223,6 @@ ul, ol { padding: 0; list-style: none; }
 .peek__ask span { display: inline-block; margin-left: 6px; transition: transform .3s var(--ease); }
 .peek__ask:hover span { transform: translateX(3px); }
 
-.cal {
-  position: relative; z-index: 2;
-  display: none;
-  width: min(100% - var(--gut)*2, 1200px);
-  margin: 12px auto 0;
-  padding: 8px;
-  border-radius: var(--r);
-  background: var(--cream);
-}
-.cal[data-open="true"] { display: block; }
-.cal__row { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; }
-.cal__d {
-  display: grid; gap: 5px; justify-items: center;
-  padding: 16px 4px; border: 0; background: none; font: inherit; cursor: pointer;
-  border-radius: 8px;
-  transition: background .35s var(--ease);
-}
-.cal__d:hover, .cal__d:focus-visible { background: var(--cream2); outline: none; }
-.cal__dn { font-size: .58rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #8a7c68; }
-.cal__dd { font-family: var(--ff-d); font-size: 1.45rem; line-height: 1; color: var(--night); }
-.cal__h { font-size: .68rem; color: var(--tung-ink); white-space: nowrap; }
-.cal__h[data-full="true"] { color: #a89a86; }
 
 /* trust row on cream */
 .feats { display: grid; gap: 1px; background: var(--cream2); border-radius: var(--r); overflow: hidden; }
@@ -327,21 +306,6 @@ table.t .best { color: var(--tung-ink); font-weight: 600; }
 
 
 /* steps */
-.steps { display: grid; gap: clamp(18px,2.4vw,30px); margin-top: clamp(30px,4vw,48px); }
-@media (min-width: 660px)  { .steps { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1020px) { .steps { grid-template-columns: repeat(4, 1fr); } }
-.step {
-  display: grid; grid-template-columns: auto 1fr; align-items: start; gap: 4px 14px;
-  padding: 20px 20px; border-radius: var(--r);
-  background: rgba(244,237,225,.06); border: 1px solid rgba(244,237,225,.12);
-}
-.step b { font-family: var(--ff-d); font-size: 1.5rem; line-height: 1.05; color: var(--tung); }
-.step p { margin-top: 6px; font-size: .88rem; color: rgba(244,237,225,.72); }
-/* without a number the card is just a heading and a line — centre it */
-.steps--mid .step { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 0; padding: 24px 20px; }
-.steps--mid .step p { max-width: 30ch; }
-/* one column of wide cards reads better on a phone than four short ones */
-@media (max-width: 659px) { .steps { gap: 12px; } .step { padding: 16px 18px; } }
 
 /* partners */
 /* what the sál is used for, as a ruled index */
@@ -642,6 +606,9 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
 .seq--lg { font-size: clamp(1.05rem, 1.4vw, 1.35rem); letter-spacing: .1em; margin-bottom: 20px; }
 .tlink { color: var(--tung-ink); border-bottom: 1px solid currentColor; }
 .night .tlink { color: var(--tung); }
+/* the hero sits on a photograph, so it needs the light accent too */
+.hero .tlink { color: var(--tung); }
+.hero .tlink:hover { color: var(--cream); }
 
 
 /* contact cards */
@@ -832,7 +799,7 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
 
   /* --- legibility: nothing uppercase drops below 12px ---------------------- */
   .tag, .fld > span, .field > span, .route dt, .facts dt, .person__rl,
-  .f h3, .total__k, .pslide__facts dt, .cal__dn, .grid__day, .slot__lbl,
+  .f h3, .total__k, .pslide__facts dt, .grid__day, .slot__lbl,
   .receipt__hd .tag, .picker__pr, .hall__pr dt { font-size: .75rem; letter-spacing: .14em; }
 
   /* the room links are navigation, not words inside a sentence — they get a
@@ -844,9 +811,6 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
   .mk span { font-size: .72rem; letter-spacing: .2em; }
   /* the sticky bar is 13% of the screen; the strapline is the part of it
      that carries no information once you are already on the site */
-  .top--solid .mk span { display: none; }
-  .grid__hr, .cal__h { font-size: .74rem; }
-  .cal__dd { font-size: 1.3rem; }
   .cell__tag, .legend li, .hall__mt, .field small, .route dd small { font-size: .8rem; }
   .line__m, .f__base, .fresult { font-size: .82rem; }
 
@@ -971,7 +935,6 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
     background: var(--night);
     border-bottom: 1px solid rgba(244,237,225,.12);
   }
-  .hero > .top .mk span, .top--solid .mk span { display: none; }
   .hero > .top .mk b, .top--solid .mk b { font-size: 1.45rem; }
   .hero > .top .top__in, .top--solid .top__in { gap: 4px 12px; }
   .hero > .top .btn, .top--solid .btn { padding: 11px 18px; font-size: .8rem; }
@@ -1000,15 +963,21 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
   .grid__day[data-today="true"], .grid__hall[data-today="true"] { background: #f3e7d3; }
 
 
+  /* the glyph alone — no box, no outline */
   .burger {
     display: grid; place-items: center;
     width: 44px; height: 44px; flex: 0 0 auto;
-    padding: 0; border: 1px solid rgba(244,237,225,.32); border-radius: 11px;
-    background: rgba(244,237,225,.08); color: var(--cream);
+    padding: 0; border: 0; border-radius: 0;
+    background: none; color: var(--cream);
     cursor: pointer;
-    transition: background .2s var(--ease), border-color .2s var(--ease);
+    transition: color .2s var(--ease), opacity .2s var(--ease);
   }
-  .burger:hover, .burger[aria-expanded="true"] { background: var(--cream); border-color: var(--cream); color: var(--night); }
+  .burger:hover, .burger[aria-expanded="true"] { color: var(--tung); background: none; }
+  .burger:active { opacity: .6; }
+
+  /* the menu already leads with Rezervovat, so the bar does not need it —
+     and without it the mark keeps its second line */
+  .top__cta { display: none; }
 
   .top .menu {
     position: fixed; top: 0; right: 0; bottom: 0; z-index: 60;
@@ -1228,3 +1197,29 @@ section.ruled { border-top: 1px solid var(--cream2); border-bottom: 1px solid va
 .night .qa__i::before, .night .qa__i::after { background: var(--tung); }
 .night .qa__a p { color: rgba(244,237,225,.8); }
 .night .qa__a a { color: var(--tung); border-bottom-color: rgba(217,162,72,.4); }
+
+/* ==========================================================================
+   Jak to funguje — three steps as a sequence, not three boxes. A hairline per
+   step with a dot sitting on it reads as progress across the row; the numeral
+   carries the weight so the cards are not needed to hold anything together.
+   ========================================================================== */
+.flow { display: grid; gap: clamp(30px, 3.6vw, 54px); margin-top: clamp(36px, 4.6vw, 64px); }
+@media (min-width: 760px) { .flow { grid-template-columns: repeat(3, 1fr); } }
+.flow__s { position: relative; padding-top: 26px; border-top: 1px solid var(--cream2); }
+.flow__s::before {
+  content: ""; position: absolute; top: -5px; left: 0;
+  width: 9px; height: 9px; border-radius: 50%; background: var(--tung-ink);
+}
+.flow__n {
+  display: block; font-family: var(--ff-d); font-weight: 400;
+  font-size: clamp(2.3rem, 3.8vw, 3.2rem); line-height: 1;
+  letter-spacing: -.02em; color: var(--tung-ink);
+}
+.flow__s h3 { margin-top: 12px; color: var(--night); }
+.flow__s p { margin-top: 8px; font-size: .93rem; color: var(--body); max-width: 36ch; }
+
+.night .flow__s { border-top-color: rgba(244,237,225,.2); }
+.night .flow__s::before { background: var(--tung); }
+.night .flow__n { color: var(--tung); }
+.night .flow__s h3 { color: var(--cream); }
+.night .flow__s p { color: rgba(244,237,225,.72); }

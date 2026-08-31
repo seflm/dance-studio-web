@@ -4,6 +4,10 @@
    happen on a dance floor. Non-dance uses of the hall live in lists and in
    the booking dropdown, never in the headline.
 
+   Only styles the floor can honestly host: the parquet sits on a solid base
+   with no spring, so ballet, contemporary, hip hop and anything else built on
+   jumps and floorwork stays off this list — and off the rest of the site.
+
    "tanec" is always shown first — it is the one word that has to land — and
    the rest are shuffled per page load, so a returning visitor sees a
    different handful. Words are kept short on purpose: the container animates
@@ -14,7 +18,7 @@
   "use strict";
 
   var WORDS = ["tanec", "salsu", "bachatu", "swing", "lindy hop", "kizombu",
-               "tango", "hip hop", "balet", "kurzy", "workshopy", "party"];
+               "zouk", "tango", "kurzy", "workshopy", "party"];
   var HOLD = 1600;   // how long each word stays
   var FADE = 190;    // must match the CSS transition
 

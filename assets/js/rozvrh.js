@@ -28,11 +28,11 @@
     openFrom: 7,          // first bookable hour
     openTo: 22,           // last hour ends here
     halls: {
-      velky: { id: "velky", name: "Velký sál", shortName: "Velký", area: "122 m²", cap: 50,
+      velky: { id: "velky", name: "Velký sál", shortName: "Velký", area: "168 m²", cap: 50,
                price: { off: 590, peak: 790, term: 640 } },
       maly:  { id: "maly",  name: "Malý sál",  shortName: "Malý",  area: "20 m²",  cap: 4,
                price: { off: 290, peak: 390, term: 320 } },
-      oba:   { id: "oba",   name: "Oba sály",  area: "142 m²", cap: 54,
+      oba:   { id: "oba",   name: "Oba sály",  area: "188 m²", cap: 54,
                price: { off: 820, peak: 1090, term: 890 } }
     },
     // the evening tariff — weekday evenings, when every dance school wants
