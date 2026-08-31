@@ -84,6 +84,17 @@ odstraněný – odkaz vede rovnou do rozvrhu, takže pásek neměl co otevírat
 
 Poznámky ke vzhledu, které je dobré neporušit:
 
+- **Nahoře je upozornění, že jde o ukázkový web** (`.demo`, na všech šesti
+  stránkách hned za odkazem „Přeskočit na obsah"). Je připnuté (`fixed`),
+  protože na telefonu je hlavičková lišta na úvodní stránce taky `fixed`
+  a jinak by upozornění překryla. Proto má `body` `padding-top` a všechno,
+  co se pod lištu připíná (`.top--solid`, `.hero > .top`, sticky řádky
+  rozvrhu, `scroll-margin-top` u `[id]`), počítá i s `--demo-h`.
+  Skutečnou výšku měří `takt.js` stejně jako `--top-h`; v CSS je záložních
+  32 px. Pod 400 px se vedlejší věta skrývá (`.demo__x`), aby upozornění
+  zůstalo na jednom řádku. Až studio otevře a kontakty budou skutečné,
+  smažte `<p class="demo">` z šesti stránek a blok `.demo` z `takt.css`.
+
 - **Hlavičky podstránek (`.phead`) jsou krémové**, ne noční. Tmavý pruh nad
   nimi je lišta s navigací; od dalšího krémového pásu hlavičku odděluje
   vlasová linka. Kdo tam vrátí `--night`, musí vrátit i barvy `h1`, `em`

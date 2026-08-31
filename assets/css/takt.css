@@ -20,6 +20,7 @@
   --ff-d: "Newsreader", Georgia, serif;
   --ff-b: "Instrument Sans", system-ui, sans-serif;
 
+  --demo-h: 32px;   /* refined from the real element by takt.js */
   --r:  14px;
   --gut: clamp(20px, 5vw, 60px);
   --ease: cubic-bezier(.22,.61,.36,1);
@@ -27,6 +28,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 body {
   margin: 0;
+  padding-top: var(--demo-h, 0px);
   background: var(--cream);
   color: var(--body);
   font-family: var(--ff-b);
@@ -110,7 +112,7 @@ ul, ol { padding: 0; list-style: none; }
 }
 /* the photograph is the hero; it gets the whole viewport on every screen,
    with the content anchored to the bottom so the room shows above it */
-.hero { min-height: 100svh; }
+.hero { min-height: calc(100svh - var(--demo-h, 0px)); }
 .hero__bg { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
 .hero__bg img {
   position: absolute;
@@ -929,12 +931,12 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
   .mk { min-height: 44px; align-content: center; }
   .mk b { line-height: 1.2; }
 
-  .top--solid { position: sticky; top: 0; z-index: 40; }
+  .top--solid { position: sticky; top: var(--demo-h, 0px); z-index: 40; }
   /* the homepage bar floats over the hero and is not in the flow, so it
      cannot be sticky - fixed gives the same result, and the hero already
      reserves the space above the fold */
   .hero > .top {
-    position: fixed; inset: 0 0 auto; z-index: 40;
+    position: fixed; inset: var(--demo-h, 0px) 0 auto; z-index: 40;
     padding-block: 8px;
     background: var(--night);
     border-bottom: 1px solid rgba(244,237,225,.12);
@@ -953,17 +955,17 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
 
   /* a fixed bar means anchored sections must clear it, and the schedule's day
      names have to ride just underneath or you lose track of the columns */
-  [id] { scroll-margin-top: calc(var(--top-h, 64px) + 12px); }
+  [id] { scroll-margin-top: calc(var(--top-h, 64px) + var(--demo-h, 0px) + 12px); }
   /* a clipping ancestor kills position:sticky, so the ledger stops clipping
      here; the rounded corners move to the header and footer strips */
   .ledger { overflow: visible; }
   .ledger__hd { border-radius: var(--r) var(--r) 0 0; }
   .ledger__ft { border-radius: 0 0 var(--r) var(--r); }
   .grid__day, .grid__corner {
-    position: sticky; top: var(--top-h, 64px); z-index: 3;
+    position: sticky; top: calc(var(--top-h, 64px) + var(--demo-h, 0px)); z-index: 3;
     background: var(--cream);
   }
-  .grid__hall { position: sticky; top: calc(var(--top-h, 64px) + 38px); z-index: 3; background: var(--cream); }
+  .grid__hall { position: sticky; top: calc(var(--top-h, 64px) + var(--demo-h, 0px) + 38px); z-index: 3; background: var(--cream); }
   .grid__day[data-today="true"], .grid__hall[data-today="true"] { background: #f3e7d3; }
 
 
@@ -1233,3 +1235,26 @@ section.ruled { border-top: 1px solid var(--cream2); border-bottom: 1px solid va
 #saly > .wrap > .h2,
 #saly > .wrap > .p { text-align: center; }
 #saly > .wrap > .p { margin-inline: auto; }
+
+/* ==========================================================================
+   Demo notice - the site is shown before the studio exists, and the contacts,
+   the schedule and four of the five partner logos are placeholders. Kept
+   deliberately quiet: a hairline strip in the site's own night, not a coloured
+   banner. It scrolls away and never covers anything. Its height is measured
+   into --demo-h so the hero can stay one viewport tall (see takt.js).
+   ========================================================================== */
+.demo {
+  position: fixed; inset: 0 0 auto; z-index: 45;
+  background: #100b06;
+  color: #8d7f6c;
+  border-bottom: 1px solid rgba(244,237,225,.09);
+  padding: 7px var(--gut);
+  text-align: center;
+  font-size: .72rem;
+  letter-spacing: .05em;
+  line-height: 1.45;
+}
+@media (max-width: 420px) { .demo { font-size: .67rem; letter-spacing: .03em; padding-inline: 14px; } }
+/* the narrowest phones keep the notice to one line by dropping the qualifier */
+@media (max-width: 400px) { .demo__x { display: none; } }
+@media print { .demo { display: none; } }

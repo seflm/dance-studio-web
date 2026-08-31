@@ -308,12 +308,22 @@
   // itself, floating over the hero
   var bar = document.querySelector(".top--solid") || document.querySelector(".top");
   if (!bar) return;
+  // the demo notice sits above everything and can wrap on a narrow screen, so
+  // the hero subtracts a measured height rather than a guessed one
+  var demo = document.querySelector(".demo");
   function measure() {
     document.documentElement.style.setProperty("--top-h", bar.offsetHeight + "px");
+    if (demo) {
+      document.documentElement.style.setProperty("--demo-h", demo.offsetHeight + "px");
+    }
   }
   measure();
   window.addEventListener("resize", measure);
-  if (window.ResizeObserver) new ResizeObserver(measure).observe(bar);
+  if (window.ResizeObserver) {
+    var ro = new ResizeObserver(measure);
+    ro.observe(bar);
+    if (demo) ro.observe(demo);
+  }
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
 
 })();
