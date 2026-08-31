@@ -111,7 +111,11 @@ ul, ol { padding: 0; list-style: none; }
   display: grid;
   align-content: end;
   background: var(--night);
-  padding: 168px 0 clamp(44px, 6vw, 84px);
+  /* the block sits at the bottom of the hero, so this padding is what holds
+     the headline, the finder and the two links up off the fold. Tightened
+     from 84px so all three sit a little lower on a desktop screen; below
+     720px a separate rule takes over and is unchanged. */
+  padding: 168px 0 clamp(44px, 4.2vw, 60px);
 }
 /* the photograph is the hero; it gets the whole viewport on every screen,
    with the content anchored to the bottom so the room shows above it */
