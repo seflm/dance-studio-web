@@ -43,7 +43,7 @@ ul, ol { padding: 0; list-style: none; }
 .wrap { width: min(100% - var(--gut)*2, 1200px); margin-inline: auto; }
 .d { font-family: var(--ff-d); font-weight: 400; font-optical-sizing: auto; line-height: 1.1; letter-spacing: -.012em; text-wrap: balance; }
 .d em { font-style: italic; }
-/* the accent word, upright — italics are kept for the hero alone */
+/* the accent word, upright - italics are kept for the hero alone */
 .d .hl { color: var(--tung-ink); }
 .night .d .hl, .close .d .hl, .cta .d .hl { color: var(--tung); }
 .h1 { font-size: clamp(2.2rem, 5vw, 4.1rem); line-height: 1.04; }
@@ -90,7 +90,7 @@ ul, ol { padding: 0; list-style: none; }
 .top__acts { display: contents; }
 .burger, .menu__x, .scrim, .menu__ft { display: none; }
 /* with .top__row and .top__acts dissolved the flex children arrive as mark,
-   button, nav — so the desktop row has to be ordered explicitly */
+   button, nav - so the desktop row has to be ordered explicitly */
 @media (min-width: 940px) { .top nav { order: 2; margin-left: auto; gap: clamp(16px, 2vw, 30px); }
                             .top .mk { order: 1; }
                             .top .btn { order: 3; } }
@@ -278,7 +278,7 @@ section.night .p, section.night .lede { color: rgba(244,237,225,.8); }
 /* no interpuncts: the row wraps, and a separator pseudo-element strands a
    stray dot at the start of every continuation line */
 
-/* the studio's own line, set as a pull quote — not a fabricated review */
+/* the studio's own line, set as a pull quote - not a fabricated review */
 .quote { text-align: center; }
 .quote blockquote { margin: 0 auto; max-width: 24ch; }
 .quote .d { font-size: clamp(1.9rem, 4vw, 3.2rem); }
@@ -313,12 +313,12 @@ table.t .best { color: var(--tung-ink); font-weight: 600; }
    the light ground and the night sections override it */
 .uses { margin-top: clamp(22px, 3vw, 32px); max-width: 34rem; border-top: 1px solid var(--cream2); }
 .uses li { display: flex; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--cream2); font-size: .92rem; color: var(--body); }
-.uses li::before { content: "—"; color: var(--tung-ink); }
+.uses li::before { content: "·"; color: var(--tung-ink); }
 .night .uses { border-top-color: rgba(244,237,225,.14); }
 .night .uses li { border-bottom-color: rgba(244,237,225,.14); color: rgba(244,237,225,.82); }
 .night .uses li::before { color: var(--tung); }
 
-/* partner carousel — the logo row is its navigation */
+/* partner carousel - the logo row is its navigation */
 .car { margin-top: clamp(34px, 4vw, 56px); }
 .car__view { overflow: hidden; }
 .car__track { display: flex; transition: transform .8s var(--ease); }
@@ -392,7 +392,7 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
 @media (prefers-reduced-motion: reduce) { .rot, .rot__w { transition: none; } }
 
 /* ==========================================================================
-   Subpages — the same evening palette, without a full-bleed hero
+   Subpages - the same evening palette, without a full-bleed hero
    ========================================================================== */
 .top--solid { background: var(--night); border-bottom: 1px solid rgba(244,237,225,.12); }
 /* on the hero the bar floats over the photograph; on a subpage it is a real
@@ -448,7 +448,7 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
 .band-logos a:hover img { opacity: 1; }
 
 /* ==========================================================================
-   Booking — the hour ledger and the form
+   Booking - the hour ledger and the form
    ========================================================================== */
 .picker { display: grid; gap: 1px; background: var(--cream2); border-radius: var(--r); overflow: hidden; }
 @media (min-width: 700px) { .picker { grid-template-columns: repeat(3, 1fr); } }
@@ -620,7 +620,7 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
 .card a { color: var(--tung-ink); border-bottom: 1px solid rgba(138,106,58,.35); }
 .card a:hover { border-bottom-color: currentColor; }
 
-/* the partner masthead — one school, given room */
+/* the partner masthead - one school, given room */
 .pcard { display: grid; gap: clamp(24px, 3.4vw, 48px); align-items: center; }
 @media (min-width: 860px) { .pcard { grid-template-columns: 300px 1fr; } }
 /* the partner mark is a white knockout: on cream it needs inverting inside a
@@ -678,7 +678,7 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
   font-size: .86rem; font-weight: 600;
   transition: transform .18s var(--ease);
 }
-/* :focus-visible, not :focus — a hash jump to #main used to pop it into
+/* :focus-visible, not :focus - a hash jump to #main used to pop it into
    view for mouse users. Keyboard users still get it. */
 .skip:focus-visible { transform: translateY(0); }
 
@@ -692,7 +692,7 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
 .person figure { margin: 0; border-radius: var(--r); overflow: hidden; background: var(--cream2); }
 .person img { width: 100%; aspect-ratio: 4/5; object-fit: cover; transition: transform 1.1s var(--ease); }
 /* At full column width the two portraits were 580×725 and the section ran to
-   1.6 screens on a laptop — a lot of room for pictures that only need to put
+   1.6 screens on a laptop - a lot of room for pictures that only need to put
    a face to a name. Square, and no wider than a bio card. */
 @media (min-width: 720px) {
   .person figure { max-width: 300px; }
@@ -708,7 +708,7 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
 .night .person p { color: rgba(244,237,225,.8); }
 
 /* ==========================================================================
-   The finder, folded away — every width where it would stack
+   The finder, folded away - every width where it would stack
    Open and stacked it is a cream slab 350–407px tall, covering the very
    photograph the hero is built around. Collapsed it states what it would
    search for and unfolds on a tap. Above 880px it is a single 77px row and
@@ -760,7 +760,7 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
   }
   .finder[data-open="false"] .finder__sum-c { grid-area: auto; margin-right: auto; }
 
-  /* a rounded square, matching the card it sits inside — not a disc */
+  /* a rounded square, matching the card it sits inside - not a disc */
   .finder[data-open="false"] .finder__go {
     grid-column: 2; width: 46px; height: 46px; padding: 0; margin: 0;
     border-radius: 9px; justify-content: center; gap: 0;
@@ -802,7 +802,7 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
   .f h3, .total__k, .pslide__facts dt, .grid__day, .slot__lbl,
   .receipt__hd .tag, .picker__pr, .hall__pr dt { font-size: .75rem; letter-spacing: .14em; }
 
-  /* the room links are navigation, not words inside a sentence — they get a
+  /* the room links are navigation, not words inside a sentence - they get a
      real target rather than the height of their own text */
   .hall__go a, .hall__bd .h3 a, table.t tbody th a {
     display: inline-flex; align-items: center; min-height: 44px;
@@ -834,7 +834,7 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
   .h1 { font-size: clamp(2rem, 8.5vw, 2.6rem); }
   .h2 { font-size: clamp(1.75rem, 7vw, 2.2rem); }
 
-  /* the three facts are short — a row of three reads faster than three bands */
+  /* the three facts are short - a row of three reads faster than three bands */
   .feats { grid-template-columns: repeat(3, 1fr); }
   .feat { padding: 18px 8px; }
   .feat b { font-size: 1.02rem; }
@@ -909,7 +909,7 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
 /* ==========================================================================
    MOBILE MENU
    Below 940px the links live in a drawer behind the burger. The nav element
-   is the same one the desktop bar uses — it just becomes a fixed panel — so
+   is the same one the desktop bar uses - it just becomes a fixed panel - so
    there is one set of links in the document and no duplicate landmark.
    ========================================================================== */
 @media (max-width: 939px) {
@@ -927,7 +927,7 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
 
   .top--solid { position: sticky; top: 0; z-index: 40; }
   /* the homepage bar floats over the hero and is not in the flow, so it
-     cannot be sticky — fixed gives the same result, and the hero already
+     cannot be sticky - fixed gives the same result, and the hero already
      reserves the space above the fold */
   .hero > .top {
     position: fixed; inset: 0 0 auto; z-index: 40;
@@ -963,7 +963,7 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
   .grid__day[data-today="true"], .grid__hall[data-today="true"] { background: #f3e7d3; }
 
 
-  /* the glyph alone — no box, no outline */
+  /* the glyph alone - no box, no outline */
   .burger {
     display: grid; place-items: center;
     width: 44px; height: 44px; flex: 0 0 auto;
@@ -975,7 +975,7 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
   .burger:hover, .burger[aria-expanded="true"] { color: var(--tung); background: none; }
   .burger:active { opacity: .6; }
 
-  /* the menu already leads with Rezervovat, so the bar does not need it —
+  /* the menu already leads with Rezervovat, so the bar does not need it -
      and without it the mark keeps its second line */
   .top__cta { display: none; }
 
@@ -1039,7 +1039,7 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
 }
 
 /* on a phone the five nav logos wrap into an untidy block, and the one real
-   school ends up buried in it — it gets its own line above the others */
+   school ends up buried in it - it gets its own line above the others */
 @media (max-width: 719px) {
   .slots { gap: 16px 22px; }
   .slots li:nth-child(3) { order: -1; flex-basis: 100%; display: flex; justify-content: center; }
@@ -1104,7 +1104,7 @@ section.ruled { border-top: 1px solid var(--cream2); border-bottom: 1px solid va
    underneath, so a blocked autoplay costs nothing. */
 .hero__vid {
   /* A plain video element, so there is no player furniture to hide and no
-     overscale needed — object-fit does the covering. */
+     overscale needed - object-fit does the covering. */
   position: absolute; inset: 0; z-index: -3;
   width: 100%; height: 100%; object-fit: cover;
   border: 0; pointer-events: none;
@@ -1125,7 +1125,7 @@ section.ruled { border-top: 1px solid var(--cream2); border-bottom: 1px solid va
 #kdo .person p { margin-inline: auto; max-width: 46ch; }
 
 /* ==========================================================================
-   What the hall is for — a scatter rather than a grid of cards. Dances carry
+   What the hall is for - a scatter rather than a grid of cards. Dances carry
    the size; the activity types and the non-dance uses sit smaller behind
    them, so the section reads dance-first at a glance.
    Scatter comes from per-item --r/--y set in the markup, on top of a wrapping
@@ -1163,7 +1163,7 @@ section.ruled { border-top: 1px solid var(--cream2); border-bottom: 1px solid va
 }
 
 /* ==========================================================================
-   FAQ — one line per question, answer folded away. <details>/<summary> does
+   FAQ - one line per question, answer folded away. <details>/<summary> does
    the work, so it opens with JavaScript off and keyboards get it for free.
    ========================================================================== */
 .qas { max-width: 82ch; margin-top: clamp(26px, 3.4vw, 44px); border-top: 1px solid var(--cream2); }
@@ -1199,7 +1199,7 @@ section.ruled { border-top: 1px solid var(--cream2); border-bottom: 1px solid va
 .night .qa__a a { color: var(--tung); border-bottom-color: rgba(217,162,72,.4); }
 
 /* ==========================================================================
-   Jak to funguje — three steps as a sequence, not three boxes. A hairline per
+   Jak to funguje - three steps as a sequence, not three boxes. A hairline per
    step with a dot sitting on it reads as progress across the row; the numeral
    carries the weight so the cards are not needed to hold anything together.
    ========================================================================== */

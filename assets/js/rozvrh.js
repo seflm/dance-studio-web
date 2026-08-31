@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Rozvrh — availability ledger for Taneční studio 29
+   Rozvrh - availability ledger for Taneční studio 29
    The product is time in a room, so the schedule is the interface, not a
    widget bolted onto one. The homepage grid and the booking page share this
    engine and the same held-hours store, so a selection made on the homepage
@@ -16,13 +16,13 @@
      tables printed on the pages are plain HTML so they still read with
      JavaScript off, which means the rates appear in two places. If you change
      a rate here, also change it in:
-       · index.html      — .hall__pr on both cards in #saly (the full table
+       · index.html      - .hall__pr on both cards in #saly (the full table
                            now lives only on rezervace.html)
-       · prostory.html   — .hall__pr under each room (#velky, #maly, #oba)
-       · rezervace.html  — table.t in #cenik, and the "od … Kč / h" lines
+       · prostory.html   - .hall__pr under each room (#velky, #maly, #oba)
+       · rezervace.html  - table.t in #cenik, and the "od … Kč / h" lines
                            in .picker
-       · partneri.html   — the "640 Kč/h místo 790 Kč/h" line in the terms
-       · index.html      — the JSON-LD "makesOffer" block in <head>
+       · partneri.html   - the "640 Kč/h místo 790 Kč/h" line in the terms
+       · index.html      - the JSON-LD "makesOffer" block in <head>
      ---------------------------------------------------------------------- */
   var STUDIO = {
     openFrom: 7,          // first bookable hour
@@ -35,7 +35,7 @@
       oba:   { id: "oba",   name: "Oba sály",  area: "188 m²", cap: 54,
                price: { off: 820, peak: 1090, term: 890 } }
     },
-    // the evening tariff — weekday evenings, when every dance school wants
+    // the evening tariff - weekday evenings, when every dance school wants
     // the room. Called "Večerní tarif" on the pages; "peak" only in here.
     peakFrom: 16,
     minHours: 1,
@@ -94,7 +94,7 @@
     return (h >>> 0) / 4294967296;         // 0 .. 1
   }
 
-  /* Build one day's occupancy as contiguous blocks — a school books 90 or 120
+  /* Build one day's occupancy as contiguous blocks - a school books 90 or 120
      minutes in a row, never scattered single hours. */
   function dayOccupancy(hallId, date) {
     var key = hallId + "|" + iso(date);
@@ -103,7 +103,7 @@
     var out = {};
     var h = STUDIO.openFrom;
     var taken = 0;
-    // a real day holds two long weekend workshops, or three weekday bookings —
+    // a real day holds two long weekend workshops, or three weekday bookings -
     // not a wall of hatching
     var maxBlocks = weekend ? 2 : 3;
     var lastUse = null;
@@ -168,7 +168,7 @@
 
   function writeHold(list) {
     try { global.localStorage.setItem(STORE_KEY, JSON.stringify(list)); }
-    catch (e) { /* private mode — the selection just does not persist */ }
+    catch (e) { /* private mode - the selection just does not persist */ }
   }
 
   function holdKey(h) { return h.hall + "|" + h.date + "|" + h.hour; }
@@ -395,7 +395,7 @@
     this.emit();
   };
 
-  /* Group held hours into contiguous runs per day — the way a person reads
+  /* Group held hours into contiguous runs per day - the way a person reads
      their own booking ("Tuesday 19:00–21:00", not "19:00, 20:00"). */
   Rozvrh.prototype.summary = function () {
     var byDay = {};
@@ -500,7 +500,7 @@
     return n;
   }
 
-  /* The next seven days with their free-hour counts — enough for a design that
+  /* The next seven days with their free-hour counts - enough for a design that
      wants to show availability without drawing the whole ledger. */
   function outlook(hallId, days) {
     var out = [];

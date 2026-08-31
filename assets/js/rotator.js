@@ -1,14 +1,14 @@
 /* ==========================================================================
-   Headline word rotator — "Prostory pro [tanec / salsu / swing …]"
+   Headline word rotator - "Prostory pro [tanec / salsu / swing …]"
    This is a dance studio first, so the words are dances and the things that
    happen on a dance floor. Non-dance uses of the hall live in lists and in
    the booking dropdown, never in the headline.
 
    Only styles the floor can honestly host: the parquet sits on a solid base
    with no spring, so ballet, contemporary, hip hop and anything else built on
-   jumps and floorwork stays off this list — and off the rest of the site.
+   jumps and floorwork stays off this list - and off the rest of the site.
 
-   "tanec" is always shown first — it is the one word that has to land — and
+   "tanec" is always shown first - it is the one word that has to land - and
    the rest are shuffled per page load, so a returning visitor sees a
    different handful. Words are kept short on purpose: the container animates
    its width to fit each one, and a long word makes the whole line breathe
@@ -38,7 +38,7 @@
     if (!word) return;
 
     // An off-screen twin, used only to measure the next word. It lives on
-    // <body>, not inside the heading — otherwise its text would show up in the
+    // <body>, not inside the heading - otherwise its text would show up in the
     // heading's textContent and in anything that reads the page as a string.
     var ghost = document.createElement("span");
     ghost.setAttribute("aria-hidden", "true");

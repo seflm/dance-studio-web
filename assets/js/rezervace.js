@@ -1,4 +1,4 @@
-/* Rezervace — the schedule is live; the form below it shows what booking asks
+/* Rezervace - the schedule is live; the form below it shows what booking asks
    for without pretending to submit anything. Nothing here talks to a server. */
 (function () {
   var R = window.Rozvrh;
@@ -8,13 +8,13 @@
   var grid = R.create(root, { hall: "oba" });
 
   /* The picker chooses which halls the calendar draws, not which one you are
-     booking — a cell carries its own hall, so "Oba sály" is two columns. */
+     booking - a cell carries its own hall, so "Oba sály" is two columns. */
   document.querySelectorAll('input[name="hall"]').forEach(function (el) {
     el.addEventListener("change", function () { grid.setHall(el.value); });
   });
 
   /* The ledger already totals the selection in its own footer, but by the time
-     you are filling in the form that total has scrolled away — so mirror it
+     you are filling in the form that total has scrolled away - so mirror it
      next to the button that commits to it. */
   var hoursEl = document.querySelector("[data-price-hours]");
   var sumEl = document.querySelector("[data-price-sum]");

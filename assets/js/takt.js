@@ -45,10 +45,10 @@
     // the chip has one line to work with, so "Dnes 29. 8." loses its date
     var when = d ? d.textContent : "";
     if (/^(Dnes|Zítra)/.test(when)) when = when.split(" ")[0];
-    // every slot is a whole hour, so ":00" is six characters of nothing —
+    // every slot is a whole hour, so ":00" is six characters of nothing -
     // and at 320px the chip has about 195 to work with
     summary.textContent =
-      hallEl.options[hallEl.selectedIndex].text.split(" — ")[0] + " · " +
+      hallEl.options[hallEl.selectedIndex].text.split(" - ")[0] + " · " +
       when.toLowerCase() + " " +
       Number(fromEl.value) + "–" + Number(toEl.value) + " h";
   }
@@ -111,7 +111,7 @@
       return;
     }
     if (clash) {
-      // offer the run closest to what was asked for, in either direction —
+      // offer the run closest to what was asked for, in either direction -
       // someone who wanted 19:00 will usually take 17:00
       var alt = null, bestGap = Infinity;
       for (var s = OPEN; s + len <= CLOSE; s++) {
@@ -124,7 +124,7 @@
       out.innerHTML = "<b>V ten čas je obsazeno</b> (od " + clash + "). " +
         (alt !== null
           ? name + " je volný " + R.hhmm(alt) + "–" + R.hhmm(alt + len) + "."
-          : "Ten den už " + len + " h v řadě nenajdeme — zkuste jiný.");
+          : "Ten den už " + len + " h v řadě nenajdeme - zkuste jiný.");
       return;
     }
 
@@ -139,7 +139,7 @@
 
   /* The hero background: three stills that crossfade, with a muted YouTube
      loop laid over them once it is actually playing. The stills stay beneath
-     so the hero is never blank — autoplay is refused often enough on mobile,
+     so the hero is never blank - autoplay is refused often enough on mobile,
      and the embed is skipped entirely for reduced motion. */
   (function () {
     var wrap = document.querySelector("[data-slides]");
@@ -164,7 +164,7 @@
     var from = Number(wrap.dataset.from) || 0;
     var to   = Number(wrap.dataset.to)   || 0;
 
-    /* The video is the heaviest thing on the site and the least urgent — the
+    /* The video is the heaviest thing on the site and the least urgent - the
        hero already looks finished without it. So nothing is requested until
        the page has finished loading, and then only once the browser says it
        is idle. Until then the photographs are doing the job. */
@@ -178,7 +178,7 @@
     }
 
     /* Everything below runs inside later(). Assigning .src is what starts the
-       download — an element built early would fetch early even while detached
+       download - an element built early would fetch early even while detached
        from the document, which is exactly what we are trying to avoid. */
     later(function () {
       var v = document.createElement("video");
@@ -229,7 +229,7 @@
 })();
 
 
-/* Partner carousel — one real school in the middle, the open places say so.
+/* Partner carousel - one real school in the middle, the open places say so.
    The logo row doubles as the navigation. */
 (function () {
   var MARK = '<svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true">' +
@@ -243,12 +243,12 @@
     { nav: "Puls", title: "Puls", logo: "assets/img/partners/puls.svg",
       body: "Taneční studio zaměřené na latinskoamerické tance a sociální večery. Kurzy pro dospělé a pravidelné páteční party." },
     { nav: "Krok", title: "Krok", logo: "assets/img/partners/krok.svg",
-      body: "Škola společenského tance pro dospělé — od úplných základů po pokročilé, s důrazem na vedení a držení." },
+      body: "Škola společenského tance pro dospělé - od úplných základů po pokročilé, s důrazem na vedení a držení." },
     { nav: "Simply the West", title: "Simply the West", logo: "assets/img/partner-simplythewest-mono.png",
-      body: "Taneční škola Jiřího Švarce a Miriam Zedníčkové, zaměřená na West Coast Swing — moderní párový tanec postavený na improvizaci a vedení. Kurzy od úplných začátečníků po pokročilé, workshopy s hostujícími lektory a pravidelné taneční party.",
+      body: "Taneční škola Jiřího Švarce a Miriam Zedníčkové, zaměřená na West Coast Swing - moderní párový tanec postavený na improvizaci a vedení. Kurzy od úplných začátečníků po pokročilé, workshopy s hostujícími lektory a pravidelné taneční party.",
       link: "https://www.simplythewest.cz/", linkLabel: "simplythewest.cz ↗" },
     { nav: "Rytmus", title: "Rytmus", logo: "assets/img/partners/rytmus.svg",
-      body: "Kurzy pro děti a mládež — moderna, street a základy jevištního pohybu. Vystoupení dvakrát ročně." },
+      body: "Kurzy pro děti a mládež - moderna, street a základy jevištního pohybu. Vystoupení dvakrát ročně." },
     { nav: "Vlna", title: "Vlna", logo: "assets/img/partners/vlna.svg",
       body: "Contemporary a improvizace. Otevřené hodiny, na které se nemusíte hlásit dopředu, a víkendové intenzivy." }
   ];
@@ -300,8 +300,8 @@
   go(2);
 })();
 
-/* The sticky mobile header has no fixed height — it wraps differently by
-   width and by font — so anything that has to sit under it (anchor offsets,
+/* The sticky mobile header has no fixed height - it wraps differently by
+   width and by font - so anything that has to sit under it (anchor offsets,
    the schedule's day row) reads it from here rather than guessing. */
 (function () {
   // subpages wrap the bar in .top--solid; the homepage bar is the header
