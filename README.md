@@ -12,6 +12,20 @@ Texty jsou psané **pozitivně** — web nikde netvrdí, čím studio *není*.
 Kdyby se copy dál rozšiřovalo, držte se téhle linky: prostor, komunita,
 „sál patří tomu, kdo v něm právě učí“.
 
+Pravidla, která drží texty krátké (a bez kterých se web zase nafoukne):
+
+1. Odstavec má nejvýš dvě věty.
+2. Každá věta obsahuje něco ověřitelného — číslo, věc v místnosti, čas, jméno.
+3. Věta, která by stejně tak platila o jakémkoli jiném sále v Praze, jde pryč.
+4. Žádné „Věříme, že…“, „Chceme, aby…“, „Smyslem je…“.
+5. Řekni to jednou. Když fakt stojí na jedné stránce, ostatní na něj odkážou.
+
+**Tanec je na prvním místě.** Focení, firemní akce a networking se v sále
+dělat dají, ale nepatří do nadpisu, do hero sekce ani do animace v titulku —
+jen do seznamů a do roletky u rezervace. Seznamy jsou dvojí: buď jmenují
+konkrétní tance (a netaneční využití zmíní na konci), nebo jmenují druhy
+akcí (kurz, workshop, party, focení) a pak už další tance nevypisují.
+
 ---
 
 ## Jak si to otevřít
@@ -68,9 +82,13 @@ týdenní rozvrh.
 
 Poznámky ke vzhledu, které je dobré neporušit:
 
-- Titulek je **„Prostory pro …“** a poslední slovo se střídá (tanec, zkoušky,
-  workshopy, komunitu, focení, setkání) přibližně po sekundě. Animaci
-  obstarává `assets/js/rotator.js`; při `prefers-reduced-motion` se nehýbe.
+- Titulek je **„Prostory pro …“** a poslední slovo se střídá po 1,6 s.
+  Slova jsou tance a to, co se na parketu děje (tanec, salsu, bachatu, swing,
+  lindy hop, kizombu, tango, hip hop, balet, kurzy, workshopy, party) —
+  **žádné netaneční využití**. „tanec“ je vždy první, zbytek se při každém
+  načtení zamíchá. Slova se drží krátká záměrně: kontejner animuje šířku
+  podle slova a dlouhé slovo rozdýchává celý řádek. Animaci obstarává
+  `assets/js/rotator.js`; při `prefers-reduced-motion` se nehýbe.
 - **Žádná konkrétní adresa ani zmínka o klenbě.** Web mluví o Praze, ne
   o ulici.
 - **Kontrast akcentů.** Zlatá `#D9A248` měla na krémovém podkladu poměr
@@ -94,12 +112,14 @@ Open Graph / Twitter meta tagů. Náhledový obrázek je pro všechny stránky
 společný: `assets/img/og.jpg`, 1200×630.
 
 `index.html` navíc nese strukturovaná data (JSON-LD, `LocalBusiness` +
-`EventVenue`): název, popis, otevírací doba 7:00–22:00, ceny obou sálů
+`EventVenue`): název, popis, otevírací doba 7:00–2:00, ceny obou sálů
 a vybavení. **Adresa je jen `Praha, CZ`, bez ulice i městské části** —
 stejně jako na webu. E-mail ani telefon ve strukturovaných datech nejsou, protože jsou
 zatím zástupné; až budou skutečné, doplňte do JSON-LD `email`
-a `telephone`. Ceny v JSON-LD jsou **šesté místo**, kde jsou napsané —
-při změně cen ho projděte také.
+a `telephone`. Ceny v JSON-LD jsou **páté místo**, kde jsou napsané —
+při změně cen ho projděte také. Plná ceníková tabulka je po revizi obsahu
+už jen na `rezervace.html#cenik`; úvodní stránka na ni odkazuje jedinou
+cenou „od 290 Kč / hodina“.
 
 ---
 
@@ -120,16 +140,23 @@ Co funguje doopravdy:
   i obě ceníkové tabulky ukazují stejné sazby a odkazují na sebe navzájem
   (`prostory.html#velky`, `#maly`, `#oba`)
 - **správný výpočet ceny** včetně přechodu mezi tarify — blok 15:00–18:00
-  se počítá jako 1 h mimo špičku + 2 h ve špičce
+  se počítá jako 1 h v denním tarifu + 2 h ve večerním. Součet se ukazuje
+  v patičce rozvrhu a ještě jednou u odesílacího tlačítka, aby ho člověk
+  viděl ve chvíli, kdy se rozhoduje
 - výběr účelu z vyhledávače v hero sekci se přenese do formuláře
   (`localStorage`)
 
 Co je jen ukázka:
 
-- **formulář rezervace je záměrně vypnutý** (`<fieldset disabled>`) a panel
-  vedle něj nabízí přihlášení, které nikam nevede. Stránka ukazuje, na co se
-  rezervace ptá, ale netváří se, že ji přijme. Až bude systém skutečný,
-  stačí sundat `disabled` a vrátit odesílací logiku.
+- **formulář rezervace je záměrně vypnutý** (`<fieldset disabled>`).
+  Stránka ukazuje, na co se rezervace ptá, ale netváří se, že ji přijme.
+  Až bude systém skutečný, stačí sundat `disabled` a vrátit odesílací logiku.
+  Přihlašovací panel vedle formuláře je odstraněný — viděli ho jen lidé,
+  kteří účet z definice ještě nemají.
+- **rozvrh nabízí hodiny do 22:00**, i když sál je k dispozici do 2:00.
+  Pozdější hodiny se zatím řeší poznámkou u rezervace; až bude systém
+  skutečný, posuňte `STUDIO.openTo` v `assets/js/rozvrh.js` a ošetřete
+  hodiny po půlnoci (patří k předchozímu dni).
 - **obsazené hodiny jsou vygenerované** deterministicky z data, takže se mezi
   načteními nemění, ale s realitou nemají nic společného
 - **nic se nikam neposílá** — žádný e-mail, žádný server, žádná databáze

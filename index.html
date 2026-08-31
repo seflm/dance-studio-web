@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Taneční studio Takt — taneční sál k pronájmu v Praze</title>
-<meta name="description" content="Taneční sál 122 m² k pronájmu po hodinách v centru Prahy. Parket, ozvučení a zrcadla pro kurzy, zkoušky, workshopy i setkání.">
+<meta name="description" content="Taneční sál 122 m² k pronájmu po hodinách v centru Prahy. Parket, zrcadla, ozvučení. Prostory pro taneční školy a lektory, individuální trénink, focení i firemní akce.">
 <meta name="theme-color" content="#171009">
 <link rel="canonical" href="https://studiotakt.cz/">
 <meta property="og:site_name" content="Taneční studio Takt">
 <meta property="og:title" content="Taneční studio Takt — taneční sál k pronájmu v Praze">
-<meta property="og:description" content="Taneční sál 122 m² k pronájmu po hodinách v centru Prahy. Parket, ozvučení a zrcadla pro kurzy, zkoušky, workshopy i setkání.">
+<meta property="og:description" content="Taneční sál 122 m² k pronájmu po hodinách v centru Prahy. Parket, zrcadla, ozvučení. Prostory pro taneční školy a lektory, individuální trénink, focení i firemní akce.">
 <meta property="og:url" content="https://studiotakt.cz/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="cs_CZ">
@@ -19,7 +19,7 @@
 <meta property="og:image:alt" content="Velký sál Tanečního studia Takt — dřevěný parket a bodová světla">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Taneční studio Takt — taneční sál k pronájmu v Praze">
-<meta name="twitter:description" content="Taneční sál 122 m² k pronájmu po hodinách v centru Prahy. Parket, ozvučení a zrcadla pro kurzy, zkoušky, workshopy i setkání.">
+<meta name="twitter:description" content="Taneční sál 122 m² k pronájmu po hodinách v centru Prahy. Parket, zrcadla, ozvučení. Prostory pro taneční školy a lektory, individuální trénink, focení i firemní akce.">
 <meta name="twitter:image" content="https://studiotakt.cz/assets/img/og.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%23171009%22/%3E%3Ctext x=%2216%22 y=%2223%22 font-family=%22Georgia,serif%22 font-size=%2219%22 fill=%22%23d9a248%22 text-anchor=%22middle%22%3ET%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,7 +37,7 @@
   "name": "Taneční studio Takt",
   "url": "https://studiotakt.cz/",
   "image": "https://studiotakt.cz/assets/img/og.jpg",
-  "description": "Taneční sál 122 m² k pronájmu po hodinách v centru Prahy. Parket, ozvučení a zrcadla pro kurzy, zkoušky, workshopy i setkání.",
+  "description": "Taneční sál 122 m² k pronájmu po hodinách v centru Prahy. Parket, zrcadla, ozvučení. Prostory pro taneční školy a lektory, individuální trénink, focení i firemní akce.",
   "inLanguage": "cs",
   "address": {
     "@type": "PostalAddress",
@@ -66,7 +66,7 @@
         "Sunday"
       ],
       "opens": "07:00",
-      "closes": "22:00"
+      "closes": "02:00"
     }
   ],
   "amenityFeature": [
@@ -92,6 +92,16 @@
     },
     {
       "@type": "LocationFeatureSpecification",
+      "name": "Klimatizace",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Wi-Fi",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
       "name": "Samostatný vstup na kód",
       "value": true
     }
@@ -109,7 +119,7 @@
           "@type": "City",
           "name": "Praha"
         },
-        "description": "122 m², kapacita 40–50 lidí"
+        "description": "122 m², kapacita až 50 lidí"
       },
       "priceSpecification": {
         "@type": "UnitPriceSpecification",
@@ -121,7 +131,7 @@
           "value": 1,
           "unitCode": "HUR"
         },
-        "description": "cena za hodinu mimo špičku"
+        "description": "cena za hodinu v denním tarifu"
       }
     },
     {
@@ -148,7 +158,7 @@
           "value": 1,
           "unitCode": "HUR"
         },
-        "description": "cena za hodinu mimo špičku"
+        "description": "cena za hodinu v denním tarifu"
       }
     },
     {
@@ -175,7 +185,7 @@
           "value": 1,
           "unitCode": "HUR"
         },
-        "description": "cena za hodinu mimo špičku"
+        "description": "cena za hodinu v denním tarifu"
       }
     }
   ]
@@ -187,12 +197,15 @@
 
 <section class="hero">
   <!-- The clip is already cut to the 0:20–2:20 window, so it loops natively
-       and needs no data-from/data-to. The three stills below stay as the
-       fallback: missing file, undecodable file, or refused autoplay. -->
+       and needs no data-from/data-to. The stills below stay as the fallback:
+       missing file, undecodable file, or refused autoplay.
+       TODO: hero.mp4 and both stills still show an empty hall. This is a dance
+       studio, so the clip wants dancing in it — a class in a closed hold beats
+       any amount of copy. The party and networking stills were removed rather
+       than replaced, because nothing in assets/img shows anyone dancing yet. -->
   <div class="hero__bg" data-slides data-video="assets/video/hero.mp4" aria-hidden="true">
     <img src="assets/img/hall-empty.webp" alt="" width="1920" height="1080" data-on="true">
-    <img src="assets/img/hall-party.webp" alt="" width="1920" height="1080" loading="lazy">
-    <img src="assets/img/hall-networking.webp" alt="" width="1920" height="1080" loading="lazy">
+    <img src="assets/img/hall-velky.webp" alt="" width="1100" height="1386" loading="lazy">
   </div>
 
   <header class="top">
@@ -215,8 +228,9 @@
         </button>
         <a href="index.html" aria-current="page">Domů</a>
         <a href="prostory.html">Sály</a>
-        <a href="rezervace.html">Rezervace</a>
+        <a href="rezervace.html">Ceník a rezervace</a>
         <a href="partneri.html">Partneři</a>
+        <a href="faq.html">Časté dotazy</a>
         <a href="kontakt.html">Kontakt</a>
         <p class="menu__ft">
           <span>xxxxx@xxxxx.cz</span>
@@ -229,12 +243,10 @@
   </header>
 
   <div class="wrap hero__in">
-    <span class="tag tag--l">Taneční sál k pronájmu · Praha</span>
     <h1 class="d h1">Prostory pro <span class="rot" data-rot><span class="rot__w" data-rot-word>tanec</span></span></h1>
     <p class="lede hero__lede">
-      122 m² tanečního parketu v Praze. Prostor pro taneční školy,
-      lektory a komunity — přinesete lidi a program, my dodáme sál,
-      ve kterém se dobře tančí.
+      Dva sály v centru Prahy k pronájmu po hodinách. Velký 122 m² na kurzy
+      a workshopy, malý na soukromé lekce — od 290 Kč za hodinu.
     </p>
   </div>
 
@@ -254,15 +266,16 @@
       </select>
     </label>
     <label class="fld">
-      <span>Účel použití</span>
+      <span>Na co</span>
       <select name="purpose" data-f-purpose>
         <option>Pravidelný kurz</option>
-        <option>Jednorázový workshop</option>
+        <option>Workshop</option>
         <option>Soukromá lekce</option>
         <option>Vlastní trénink</option>
         <option>Zkouška na vystoupení</option>
-        <option>Focení nebo video</option>
-        <option>Firemní nebo komunitní setkání</option>
+        <option>Party nebo jam</option>
+        <option>Focení a video</option>
+        <option>Firemní nebo komunitní akce</option>
       </select>
     </label>
     <label class="fld">
@@ -278,7 +291,7 @@
       <select name="to" data-f-to></select>
     </label>
     <button class="btn finder__go" type="submit">
-      <span class="finder__go-t">Zkontrolovat dostupnost</span>
+      <span class="finder__go-t">Ukázat rozvrh</span>
       <svg class="finder__go-a" viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true"><path d="M3.5 10h13M11 4.5l5.5 5.5L11 15.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
     <p class="fresult" data-result hidden role="status"></p>
@@ -299,42 +312,28 @@
   <section class="band-tight">
     <div class="wrap">
       <ul class="feats">
-        <li class="feat"><b>122 m²</b><span>velký sál bez sloupů</span></li>
+        <li class="feat"><b>122 m²</b><span>velký sál na kurzy a workshopy</span></li>
         <li class="feat"><b>20 m²</b><span>malý sál na soukromé lekce</span></li>
         <li class="feat"><b>8 minut</b><span>od metra Florenc</span></li>
       </ul>
     </div>
   </section>
 
-  <section class="night" id="filozofie">
-    <div class="wrap two two--r">
-      <figure class="shot">
-        <img src="assets/img/hall-lide.webp" alt="Sál během večerního setkání — lidé u stolků pod bodovými světly" width="1500" height="1125">
-      </figure>
-      <div>
-        <h2 class="d h2">Naše filozofie</h2>
-        <p class="p" style="margin-top:18px">
-          Věříme, že pravidelný termín ve stejném sále dělá víc než jen hodinu
-          tance. Kolem něj vzniká okruh lidí, kteří by se jinak nepotkali —
-          scházejí se každý týden, po několika měsících spolu chodí i jinam
-          a po roce tvoří komunitu, která má kam patřit.
-        </p>
-        <p class="p">
-          Tomu chceme dávat prostor. Tanec je záminka; smyslem je, aby se lidé
-          potkávali, bavili se spolu a měli se kam vracet. Sál je od toho, aby
-          se v něm dobře trávil čas.
-        </p>
-        <ul class="uses">
-          <li><span>Taneční kurzy a lekce</span></li>
-          <li><span>Zkoušky a příprava na vystoupení</span></li>
-          <li><span>Workshopy a intenzivy</span></li>
-          <li><span>Focení a video</span></li>
-          <li><span>Firemní a komunitní setkání</span></li>
-          <li><span>Malá vystoupení a party</span></li>
-        </ul>
-        <div class="acts acts--l">
-          <a class="btn btn--l" href="kontakt.html">Mám zájem</a>
-        </div>
+  <section class="night" id="vyuziti">
+    <div class="wrap">
+      <h2 class="d h2">Co se v sále dá dělat</h2>
+      <ol class="steps steps--mid">
+        <li class="step"><h3 class="d h3">Pravidelný kurz</h3><p>Salsa, bachata, swing, tango, hip hop i balet. Stejný den
+          a čas každý týden, termín držíme na celý semestr.</p></li>
+        <li class="step"><h3 class="d h3">Workshop nebo intenziv</h3><p>Host na celý den, nebo dvě skupiny vedle sebe.
+          Oba sály se dají vzít jako jeden celek.</p></li>
+        <li class="step"><h3 class="d h3">Zkoušky a vlastní trénink</h3><p>Malý sál na soukromé lekce a přípravu na svatbu,
+          velký na zkoušku před vystoupením.</p></li>
+        <li class="step"><h3 class="d h3">Party, focení a firemní akce</h3><p>Až padesát lidí, světla po sekcích
+          a hudba bez časového omezení.</p></li>
+      </ol>
+      <div class="acts acts--l">
+        <a class="btn btn--l" href="kontakt.html">Mám zájem</a>
       </div>
     </div>
   </section>
@@ -343,9 +342,14 @@
     <div class="wrap">
       <h2 class="d h2">Kdo jsme</h2>
       <p class="lede" style="margin-top:18px">
-        Jeden přišel od tance, druhý od lidí kolem něj. Sál provozujeme sami
-        a jsme na místě — roky jsme chodili po cizích sálech a víme dost
-        přesně, co v nich chybělo.
+        Roky jsme chodili po cizích sálech a víme dost přesně, co v nich
+        chybělo. Jeden přišel od tance, druhý od lidí kolem něj — sál
+        provozujeme sami a jsme na místě.
+      </p>
+
+      <p class="p" style="margin-top:16px">
+        Sál stavíme na tanec. To nejlepší, co se v něm může stát, je, že se
+        sem lidi budou vracet i mimo lekce.
       </p>
 
       <div class="team">
@@ -358,13 +362,13 @@
           <p class="person__rl">Provoz a komunita</p>
           <p>
             Přišel z IT, kde strávil roky u obrazovky a s lidmi mluvit skoro
-            neuměl. Rozhodl se, že to chce změnit — a změnil. Dnes ho nejvíc
-            baví přesně to, co mu dřív šlo nejhůř: potkávat lidi, chodit po
-            komunitách a pomáhat jim růst.
+            neuměl. Šel to změnit přes tanec — a chytlo ho to tak, že dnes ho
+            nejvíc baví přesně to, co mu dřív šlo nejhůř: potkávat lidi
+            a chodit po tanečních komunitách.
           </p>
           <p>
-            Nejvíc ze všeho v těch tanečních. Odsud je celý nápad na studio:
-            místo, kde komunity vznikají, potkávají se a mají kam chodit.
+            Odsud je celý nápad na studio. Řeší provoz a rezervace — když
+            napíšete, odpovídá on.
           </p>
         </article>
         <article class="person">
@@ -375,16 +379,13 @@
           <h3 class="person__nm">Jirka</h3>
           <p class="person__rl">Tanec a program</p>
           <p>
-            Tančí dvanáct let a nejvíc ho chytil West Coast Swing — párový tanec,
-            kde se nic nepředcvičuje a všechno se vede a odpovídá. Nemá naučenou
-            choreografii, takže dva lidé musí spolu opravdu mluvit.
+            Tančí dvanáct let a nejvíc ho chytil West Coast Swing.
           </p>
           <p>
             S Miriam spolu založili v Praze školu
             <a class="tlink" href="partneri.html">Simply the West</a>, kde WCS učí
-            od úplných začátečníků. Je to zároveň první škola, která bude
-            v našem sále učit — takže víme z první ruky, co škola od sálu
-            potřebuje.
+            od úplných začátečníků. Je to zároveň první škola, která v našem
+            sále učí — takže víme z první ruky, co škola od sálu potřebuje.
           </p>
         </article>
       </div>
@@ -397,16 +398,16 @@
       <div class="halls">
         <article class="hall">
           <a class="hall__ph" href="prostory.html#velky" aria-label="Velký sál — podrobnosti">
-            <img src="assets/img/hall-velky.webp" alt="Velký sál — souvislý parket bez sloupů" width="1100" height="1386">
+            <img src="assets/img/hall-velky.webp" alt="Velký sál — souvislý parket a zrcadlová stěna" width="1100" height="1386">
           </a>
           <div class="hall__bd">
             <h3 class="d h3"><a href="prostory.html#velky">Velký sál</a></h3>
-            <p>Souvislý parket bez jediného sloupu, světlá výška 3,4 m, mobilní
-               zrcadlová stěna a bodová světla na liště.</p>
-            <p class="hall__mt"><span>122 m²</span><span>30 tanečníků v páru</span><span>zrcadla 6 m</span></p>
+            <p>Souvislý parket, světlá výška 3 m, pevná zrcadlová stěna
+               a bodová světla na liště.</p>
+            <p class="hall__mt"><span>122 m²</span><span>až 50 lidí</span><span>zrcadlová stěna</span></p>
             <dl class="hall__pr">
-              <div><dt>Mimo špičku</dt><dd>590 Kč/h</dd></div>
-              <div><dt>Špička</dt><dd>790 Kč/h</dd></div>
+              <div><dt>Denní tarif</dt><dd>590 Kč/h</dd></div>
+              <div><dt>Večerní tarif</dt><dd>790 Kč/h</dd></div>
               <div><dt>Semestr</dt><dd class="best">640 Kč/h</dd></div>
             </dl>
             <p class="hall__go">
@@ -418,16 +419,16 @@
 
         <article class="hall">
           <a class="hall__ph" href="prostory.html#maly" aria-label="Malý sál — podrobnosti">
-            <img src="assets/img/hall-detail.webp" alt="Detail podlahy a nepřímého osvětlení — stejné materiály jako v malém sále" width="1100" height="1400">
+            <img src="assets/img/hall-detail.webp" alt="Dřevěná podlaha a nepřímé osvětlení v malém sále" width="1100" height="1400">
           </a>
           <div class="hall__bd">
             <h3 class="d h3"><a href="prostory.html#maly">Malý sál</a></h3>
             <p>Soukromé lekce, příprava na svatbu, individuální trénink.
-               Vejdou se čtyři lidé, kteří se opravdu hýbou.</p>
-            <p class="hall__mt"><span>20 m²</span><span>4 osoby</span><span>pevné zrcadlo 3 m</span></p>
+               Vejdou se 2–4 lidé, kteří se opravdu hýbou.</p>
+            <p class="hall__mt"><span>20 m²</span><span>2–4 osoby</span><span>pevné zrcadlo</span></p>
             <dl class="hall__pr">
-              <div><dt>Mimo špičku</dt><dd>290 Kč/h</dd></div>
-              <div><dt>Špička</dt><dd>390 Kč/h</dd></div>
+              <div><dt>Denní tarif</dt><dd>290 Kč/h</dd></div>
+              <div><dt>Večerní tarif</dt><dd>390 Kč/h</dd></div>
               <div><dt>Semestr</dt><dd class="best">320 Kč/h</dd></div>
             </dl>
             <p class="hall__go">
@@ -438,8 +439,8 @@
         </article>
       </div>
       <p class="p" style="margin-top:26px">
-        Sály se dají rezervovat zvlášť i dohromady — 142 m² za 820 Kč/h mimo špičku.
-        <a class="tlink" href="#cenik">Celý ceník</a>
+        Sály se dají rezervovat zvlášť i dohromady — 142 m² za 820 Kč/h v denním tarifu.
+        <a class="tlink" href="rezervace.html#cenik">Celý ceník</a>
       </p>
     </div>
   </section>
@@ -451,8 +452,12 @@
         <li class="step"><b>01</b><div><h3 class="d h3">Vyberete hodiny</h3><p>V rozvrhu kliknete na volné bloky. Minimum je jedna hodina.</p></div></li>
         <li class="step"><b>02</b><div><h3 class="d h3">Rezervaci potvrdíme</h3><p>Ozveme se e-mailem, u dlouhodobých rezervací přiložíme smlouvu.</p></div></li>
         <li class="step"><b>03</b><div><h3 class="d h3">Dostanete kód</h3><p>Samostatný vstup z ulice. Kód platí jen ve vašich hodinách.</p></div></li>
-        <li class="step"><b>04</b><div><h3 class="d h3">Platíte odebrané hodiny</h3><p>Předem převodem, partnerským školám souhrnně na začátku měsíce.</p></div></li>
       </ol>
+      <p class="p" style="margin-top:24px">
+        Do sálu se dostanete patnáct minut před svojí hodinou a patnáct po ní.
+        Storno je zdarma do 48 hodin před termínem.
+        <a class="tlink" href="faq.html">Časté dotazy</a>
+      </p>
     </div>
   </section>
 
@@ -484,27 +489,13 @@
   <section id="cenik" class="tight">
     <div class="wrap">
       <h2 class="d h2">Ceník</h2>
-      
-      <table class="t">
-        <thead>
-          <tr>
-            <th>Sál</th>
-            <th>Mimo špičku<small>po–pá 7–16, so + ne</small></th>
-            <th>Špička<small>po–pá 16–22</small></th>
-            <th>Semestr<small>10+ týdnů</small></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><th><a href="prostory.html#velky">Velký sál</a><small>122 m²</small></th><td data-l="Mimo špičku">590 Kč</td><td data-l="Špička">790 Kč</td><td data-l="Semestr" class="best">640 Kč</td></tr>
-          <tr><th><a href="prostory.html#maly">Malý sál</a><small>20 m²</small></th><td data-l="Mimo špičku">290 Kč</td><td data-l="Špička">390 Kč</td><td data-l="Semestr" class="best">320 Kč</td></tr>
-          <tr><th><a href="prostory.html#oba">Oba sály</a><small>142 m²</small></th><td data-l="Mimo špičku">820 Kč</td><td data-l="Špička">1 090 Kč</td><td data-l="Semestr" class="best">890 Kč</td></tr>
-        </tbody>
-      </table>
-      <p class="t-legend">
-        <b>Mimo špičku</b> po–pá 7–16 a celý víkend · <b>Špička</b> po–pá 16–22 ·
-        <b>Semestr</b> od 10 týdnů opakování
+      <p class="p" style="margin-top:18px">
+        Ceny jsou konečné, včetně DPH. V ceně je ozvučení, světla, šatna i úklid.
+        Minimum je jedna hodina.
       </p>
-      
+      <p class="p" style="margin-top:16px;font-size:1.35rem">
+        <a class="tlink" href="rezervace.html#cenik">od 290 Kč / hodina — celý ceník a podmínky</a>
+      </p>
     </div>
   </section>
 
@@ -537,10 +528,6 @@
   <div class="wrap f__in">
     <div>
       <a class="mk" href="index.html" aria-label="Taneční studio Takt"><b>Studio Takt</b><span>Taneční sál · Praha</span></a>
-      <p style="margin-top:16px;font-size:.9rem">
-        Taneční sál v Praze k pronájmu po hodinách.
-        Domov pro taneční školy, lektory a komunity.
-      </p>
     </div>
     <div>
       <h3>Studio</h3>
@@ -548,13 +535,13 @@
         <li><a href="prostory.html">Sály a vybavení</a></li>
         <li><a href="rezervace.html">Rezervace a ceník</a></li>
         <li><a href="index.html#jak">Jak to funguje</a></li>
+        <li><a href="faq.html">Časté dotazy</a></li>
         <li><a href="partneri.html">Partneři</a></li>
       </ul>
     </div>
     <div>
       <h3>Pro školy</h3>
       <ul>
-        <li><a href="partneri.html">Podmínky partnerství</a></li>
         <li><a href="rezervace.html">Semestrální sazba</a></li>
         <li><a href="kontakt.html">Prohlídka sálu</a></li>
       </ul>
@@ -562,7 +549,8 @@
     <div>
       <h3>Kde nás najdete</h3>
       <address>
-        Centrum Prahy<br>8 minut pěšky od metra Florenc<br><br>
+        Centrum Prahy<br>8 minut pěšky od metra Florenc<br>
+        Denně 7:00–2:00<br><br>
         xxxxx@xxxxx.cz<br>+420 XXX XXX XXX
       </address>
     </div>

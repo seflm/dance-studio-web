@@ -1,18 +1,35 @@
 /* ==========================================================================
-   Headline word rotator — "Prostory pro [tanec / zkoušky / workshopy …]"
-   The hall is not for one thing, so the headline says several. The container
-   animates its width as the word changes, otherwise the line jumps.
-   Shared by every design; each one styles .rot itself.
+   Headline word rotator — "Prostory pro [tanec / salsu / swing …]"
+   This is a dance studio first, so the words are dances and the things that
+   happen on a dance floor. Non-dance uses of the hall live in lists and in
+   the booking dropdown, never in the headline.
+
+   "tanec" is always shown first — it is the one word that has to land — and
+   the rest are shuffled per page load, so a returning visitor sees a
+   different handful. Words are kept short on purpose: the container animates
+   its width to fit each one, and a long word makes the whole line breathe
+   in and out.
    ========================================================================== */
 (function (global) {
   "use strict";
 
-  var WORDS = ["tanec", "zkoušky", "workshopy", "networking", "komunitu", "focení", "setkání"];
-    var HOLD = 1100;   // how long each word stays
+  var WORDS = ["tanec", "salsu", "bachatu", "swing", "lindy hop", "kizombu",
+               "tango", "hip hop", "balet", "kurzy", "workshopy", "party"];
+  var HOLD = 1600;   // how long each word stays
   var FADE = 190;    // must match the CSS transition
 
+  /* Fisher–Yates over everything but the first word, which stays put. */
+  function order(words) {
+    var rest = words.slice(1);
+    for (var i = rest.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = rest[i]; rest[i] = rest[j]; rest[j] = t;
+    }
+    return [words[0]].concat(rest);
+  }
+
   function init(el, words) {
-    words = words || WORDS;
+    words = order(words || WORDS);
     var word = el.querySelector("[data-rot-word]");
     if (!word) return;
 

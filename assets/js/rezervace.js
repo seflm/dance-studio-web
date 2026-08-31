@@ -13,6 +13,22 @@
     el.addEventListener("change", function () { grid.setHall(el.value); });
   });
 
+  /* The ledger already totals the selection in its own footer, but by the time
+     you are filling in the form that total has scrolled away — so mirror it
+     next to the button that commits to it. */
+  var hoursEl = document.querySelector("[data-price-hours]");
+  var sumEl = document.querySelector("[data-price-sum]");
+  if (hoursEl && sumEl) {
+    grid.on(function (s) {
+      hoursEl.textContent = s.hours + " h";
+      sumEl.textContent = czk(s.total);
+    });
+  }
+
+  function czk(n) {
+    return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " Kč";
+  }
+
   /* the hero finder may already have asked what the booking is for */
   var form = document.getElementById("bookform");
   if (form) {
