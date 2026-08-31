@@ -1223,3 +1223,9 @@ section.ruled { border-top: 1px solid var(--cream2); border-bottom: 1px solid va
 .night .flow__n { color: var(--tung); }
 .night .flow__s h3 { color: var(--cream); }
 .night .flow__s p { color: rgba(244,237,225,.72); }
+
+/* the halls section centres its own heading and its closing line; the cards
+   between them keep their left-aligned copy */
+#saly > .wrap > .h2,
+#saly > .wrap > .p { text-align: center; }
+#saly > .wrap > .p { margin-inline: auto; }
