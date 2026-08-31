@@ -18,7 +18,7 @@
   "use strict";
 
   var WORDS = ["tanec", "salsu", "bachatu", "swing", "lindy hop", "kizombu",
-               "zouk", "tango", "kurzy", "workshopy", "party"];
+               "zouk", "tango", "kurzy", "workshopy"];
   var HOLD = 1600;   // how long each word stays
   var FADE = 190;    // must match the CSS transition
 

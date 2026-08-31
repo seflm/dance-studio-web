@@ -114,7 +114,7 @@ Poznámky ke vzhledu, které je dobré neporušit:
 
 - Titulek je **„Prostory pro …“** a poslední slovo se střídá po 1,6 s.
   Slova jsou tance a to, co se na parketu děje (tanec, salsu, bachatu, swing,
-  lindy hop, kizombu, zouk, tango, kurzy, workshopy, party) –
+  lindy hop, kizombu, zouk, tango, kurzy, workshopy) –
   **žádné netaneční využití**. „tanec“ je vždy první, zbytek se při každém
   načtení zamíchá. Slova se drží krátká záměrně: kontejner animuje šířku
   podle slova a dlouhé slovo rozdýchává celý řádek. Animaci obstarává
