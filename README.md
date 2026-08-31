@@ -119,6 +119,15 @@ Poznámky ke vzhledu, které je dobré neporušit:
   načtení zamíchá. Slova se drží krátká záměrně: kontejner animuje šířku
   podle slova a dlouhé slovo rozdýchává celý řádek. Animaci obstarává
   `assets/js/rotator.js`; při `prefers-reduced-motion` se nehýbe.
+- **Titulek nikdy nemění počet řádků.** Na úzkém displeji se „Prostory pro
+  workshopy" na jeden řádek nevejde, zatímco „Prostory pro tanec" ano, takže
+  titulek při přebíhání slov poskakoval mezi jedním a dvěma řádky.
+  `fitLines()` v `rotator.js` proto změří nejdelší slovo proti skutečnému
+  nadpisu, a pokud by zlomilo řádek, přidá na `h1` třídu `rot--stack`
+  a slovo dostane vlastní řádek natrvalo. Dva stabilní řádky jsou lepší než
+  jeden poskakující. Není to media query záměrně: bod zlomu závisí na
+  načteném fontu, takže se měří znovu po `document.fonts.ready` a po každé
+  změně velikosti okna.
 - **Adresa je Rytířská 29, 110 00 Praha 1.** Je na webu veřejně: v zápatí,
   v mobilním menu, na `kontakt.html` i ve strukturovaných datech. Dopravní
   údaje k ní: metro Můstek (A, B) tři minuty pěšky, Národní třída (B) pět

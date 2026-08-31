@@ -69,6 +69,38 @@
     if (global.matchMedia && global.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (words.length < 2) return;
 
+    /* On a narrow screen "Prostory pro workshopy" no longer fits on one line
+       while "Prostory pro tanec" still does, so the heading flipped between
+       one and two lines as the word cycled. Rather than guess a breakpoint -
+       the wrap point depends on the loaded font, which a media query cannot
+       know - measure the widest word against the real heading and, if it
+       would wrap, put the word on its own line for good. Two stable lines
+       beat one line that jumps. */
+    var heading = el.parentNode;
+    var longest = words[0];
+    for (var w = 1; w < words.length; w++) {
+      if (widthOf(words[w]) > widthOf(longest)) longest = words[w];
+    }
+
+    function fitLines() {
+      if (!heading) return;
+      var keepText = word.textContent, keepWidth = el.style.width;
+      heading.classList.remove("rot--stack");
+      el.style.width = "auto";
+      word.textContent = longest;
+      var lh = parseFloat(global.getComputedStyle(heading).lineHeight);
+      var wraps = lh > 0 && heading.getBoundingClientRect().height > lh * 1.5;
+      heading.classList.toggle("rot--stack", wraps);
+      word.textContent = keepText;
+      el.style.width = keepWidth;
+    }
+    fitLines();
+    /* The first measurement runs on the fallback font, whose metrics differ
+       from Newsreader's, so measure again once the real face is in. */
+    if (document.fonts && document.fonts.ready && document.fonts.ready.then) {
+      document.fonts.ready.then(fitLines).catch(function () {});
+    }
+
     var i = 0;
     var timer = null;
 
@@ -96,7 +128,10 @@
     var rt = null;
     global.addEventListener("resize", function () {
       global.clearTimeout(rt);
-      rt = global.setTimeout(function () { el.style.width = widthOf(words[i]) + "px"; }, 150);
+      rt = global.setTimeout(function () {
+        fitLines();
+        el.style.width = widthOf(words[i]) + "px";
+      }, 150);
     });
   }
 

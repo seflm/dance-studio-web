@@ -387,6 +387,10 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
   color: var(--tung);
   transition: width .5s var(--ease);
 }
+/* set by rotator.js when the widest word would wrap the heading: the word
+   takes its own line at every width, so the heading stops changing height
+   mid-loop. See fitLines() in assets/js/rotator.js. */
+.rot--stack .rot { display: block; }
 .rot__w { display: inline-block; transition: opacity .38s var(--ease), transform .38s var(--ease); }
 .rot__w[data-out="true"] { opacity: 0; transform: translateY(-.2em); }
 @media (prefers-reduced-motion: reduce) { .rot, .rot__w { transition: none; } }
