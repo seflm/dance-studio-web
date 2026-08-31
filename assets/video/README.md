@@ -6,17 +6,17 @@
 ## Jak vzniklo
 
 Zdroj je `../videos/video_original.mp4` (1280×720, H.264, 2:59, se zvukem).
-Z něj se vyřízne úsek **0:20–2:20**, zahodí zvuk, převede do šedé a znovu
+Z něj se vyřízne úsek **0:38–2:20**, zahodí zvuk, převede do šedé a znovu
 zakóduje:
 
 ```sh
-ffmpeg -ss 20 -t 120 -i assets/videos/video_original.mp4 \
+ffmpeg -ss 38 -t 102 -i assets/videos/video_original.mp4 \
   -an -vf "format=gray,format=yuv420p" \
   -c:v libx264 -profile:v high -crf 26 -preset slow -tune film -g 50 \
   -movflags +faststart assets/video/hero.mp4
 ```
 
-Výsledek: 18,0 MB, 1253 kb/s, 2:00.
+Výsledek: 15,6 MB, 1287 kb/s, 1:42 (2550 snímků při 25 fps).
 
 ## Proč zrovna takhle
 
@@ -24,6 +24,9 @@ Výsledek: 18,0 MB, 1253 kb/s, 2:00.
   platforem a Firefox vůbec nepřehrají a hero by u nich zůstal na fotkách.
 - **Jedno video, žádný WebM.** VP9 jsme změřili vedle: při stejné kvalitě
   vyšel větší (10,5 MB proti 8,7 MB), takže by stál místo v repu za nic.
+- **Začátek na 0:38.** Prvních 38 sekund zdroje je rozjezd; na 0:38 už je
+  na parketu pár v pohybu, takže první snímek, který návštěvník uvidí (a taky
+  fotka, na kterou se video vrací, když se nestáhne), je tanec, ne prázdný sál.
 - **Šedotón přímo v souboru.** Šedá se stejně aplikuje filtrem v CSS, ale
   když se zahodí barva už při kódování, soubor je znatelně menší.
 - **Bez zvuku.** Přehrává se automaticky, takže musí být ztlumené – stopa
