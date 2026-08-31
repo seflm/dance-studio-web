@@ -45,12 +45,13 @@ spolehlivější (webfonty, relativní cesty).
 ## Struktura
 
 ```
-index.html              úvodní stránka — hero, filozofie, kdo za tím stojí,
-                        sály, jak to funguje, záznam, ceník, partneři
+index.html              úvodní stránka — hero, sály, co se v sále dá dělat,
+                        kdo za tím stojí, jak to funguje, záznam, partneři
 prostory.html           oba sály, technický popis, vybavení
 rezervace.html          ukázka rezervačního systému
 partneri.html           Simply the West + podmínky partnerství
 kontakt.html            doprava, prohlídka, kontaktní formulář
+faq.html                časté dotazy — rozbalovací řádky
 
 assets/css/takt.css     jeden stylesheet pro celý web
 assets/js/rozvrh.js     rozvrhový modul — obsazenost, ceny, výběr hodin
@@ -64,7 +65,7 @@ assets/video/hero.mp4   podkres hero sekce (černobílý, bez zvuku, 18 MB)
 assets/videos/          zdrojové video, ze kterého se hero.mp4 kóduje
 
 robots.txt              povoluje indexaci, ukazuje na sitemapu
-sitemap.xml             seznam pěti stránek pro vyhledávače
+sitemap.xml             seznam šesti stránek pro vyhledávače
 
 context/                zadání — fotky z inzerátu, referenční návrhy,
                         logo partnera
@@ -81,6 +82,22 @@ první věc, na kterou se dá na webu sáhnout — a pod ní rozbalitelný
 týdenní rozvrh.
 
 Poznámky ke vzhledu, které je dobré neporušit:
+
+- **Hlavičky podstránek (`.phead`) jsou krémové**, ne noční. Tmavý pruh nad
+  nimi je lišta s navigací; od dalšího krémového pásu hlavičku odděluje
+  vlasová linka. Kdo tam vrátí `--night`, musí vrátit i barvy `h1`, `em`
+  a `.lede`.
+- **`.cta .d .hl` je zlatá.** Na nočním pozadí měla `--tung-ink` kontrast
+  okolo 1,9 : 1 a akcentované slovo v nadpisu bylo skoro nečitelné.
+- **`.cloud`** v sekci „Co se v sále dá dělat“ je rozsyp názvů aktivit, ne
+  mřížka karet: velikost nesou tance, druhy akcí a netaneční využití sedí
+  menší za nimi. Rozsyp dělá `--r` a `--y` na každé položce v HTML nad
+  zalamujícím se flexem, takže se na telefonu přeskládá místo překrývání;
+  při `prefers-reduced-motion` se nevlní.
+- **FAQ je `<details>`/`<summary>`**, žádný JavaScript — otevírá se i bez něj
+  a klávesnice ho umí sama.
+- Na krémovém pásu je tlačítko `.btn` (tmavé). `.btn--l` je krémové, tedy
+  jen pro noční pásy — na krému zmizí.
 
 - Titulek je **„Prostory pro …“** a poslední slovo se střídá po 1,6 s.
   Slova jsou tance a to, co se na parketu děje (tanec, salsu, bachatu, swing,
@@ -277,3 +294,29 @@ opravdu je, uvádí web jen „centrum Prahy“ a stanici. Doplňujte městskou
   `prefers-reduced-motion`, odkaz „Přeskočit na obsah“.
 - Ověřeno v Chromiu na 390 / 700 / 1440 px: bez mrtvých odkazů, bez
   duplicitních `id`, bez vodorovného přetékání.
+
+---
+
+## Jedna opravená past v CSS
+
+V `takt.css` byl blok deklarací **bez selektoru** (zbytek po smazaném pravidle
+kolem patičky). Parser na něm skončí a **spolkne i pravidlo, které následuje** —
+konkrétně celé `.rot`, takže střídající se slovo v titulku bylo krémové místo
+zlaté. V konzoli se to nijak neprojeví; najdete to jen tak, že spočítáte
+složené závorky:
+
+```bash
+python3 - <<'EOF'
+d = 0
+for i, line in enumerate(open("assets/css/takt.css"), 1):
+    for ch in line:
+        if ch == "{": d += 1
+        elif ch == "}":
+            d -= 1
+            if d < 0:
+                print("přebývající } na řádku", i); d = 0
+print("konečná hloubka:", d)
+EOF
+```
+
+Konečná hloubka musí být `0` a nic dalšího se nesmí vypsat.

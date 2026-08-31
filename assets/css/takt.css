@@ -45,7 +45,7 @@ ul, ol { padding: 0; list-style: none; }
 .d em { font-style: italic; }
 /* the accent word, upright — italics are kept for the hero alone */
 .d .hl { color: var(--tung-ink); }
-.night .d .hl, .close .d .hl { color: var(--tung); }
+.night .d .hl, .close .d .hl, .cta .d .hl { color: var(--tung); }
 .h1 { font-size: clamp(2.2rem, 5vw, 4.1rem); line-height: 1.04; }
 .h2 { font-size: clamp(1.95rem, 3.6vw, 3.1rem); }
 .h3 { font-size: 1.36rem; line-height: 1.18; }
@@ -413,10 +413,6 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
 .f a:hover { color: var(--tung); }
 .f__base { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 34px; padding-top: 20px; border-top: 1px solid rgba(244,237,225,.12); font-size: .76rem; color: #7d7061; }
 
-  padding: 4px 12px; border: 1px solid transparent; border-radius: 999px;
-  font-size: .78rem; letter-spacing: .04em; text-transform: none; color: #b6a795;
-  transition: color .18s var(--ease), border-color .18s var(--ease), background .18s var(--ease);
-}
 
 /* the headline names several uses, one at a time */
 .rot {
@@ -441,10 +437,16 @@ footer.f { background: var(--night2); color: rgba(244,237,225,.72); padding: cla
 .top--solid .top { position: static; inset: auto; padding-block: 14px; }
 .top--solid .top nav a[aria-current="page"], .top nav a[aria-current="page"] { color: var(--tung); }
 
-.phead { background: var(--night); padding-block: clamp(34px, 4.5vw, 64px) clamp(46px, 6vw, 92px); }
-.phead .tag { display: block; margin-bottom: 16px; }
-.phead .h1 { color: var(--cream); max-width: 17ch; font-size: clamp(2.1rem, 4.4vw, 3.6rem); }
-.phead .lede { margin-top: 20px; color: rgba(244,237,225,.8); }
+.phead {
+  background: var(--cream);
+  padding-block: clamp(34px, 4.5vw, 64px) clamp(46px, 6vw, 92px);
+  border-bottom: 1px solid var(--cream2);
+}
+/* .tag--l is the light-on-dark accent; on cream it needs the ink variant */
+.phead .tag { display: block; margin-bottom: 16px; color: var(--tung-ink); }
+.phead .h1 { color: var(--night); max-width: 17ch; font-size: clamp(2.1rem, 4.4vw, 3.6rem); }
+.phead .h1 em { color: var(--tung-ink); }
+.phead .lede { margin-top: 20px; color: var(--body); }
 
 section.plain { padding-block: clamp(48px, 6vw, 96px); }
 
@@ -636,6 +638,8 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
 @media (min-width: 900px) { .two--t { grid-template-columns: 1fr 1.15fr; align-items: start; } }
 
 .seq { display: block; margin-bottom: 12px; }
+/* the booking page leans on its three steps, so there they carry weight */
+.seq--lg { font-size: clamp(1.05rem, 1.4vw, 1.35rem); letter-spacing: .1em; margin-bottom: 20px; }
 .tlink { color: var(--tung-ink); border-bottom: 1px solid currentColor; }
 .night .tlink { color: var(--tung); }
 
@@ -712,6 +716,10 @@ section.plain { padding-block: clamp(48px, 6vw, 96px); }
 .skip:focus-visible { transform: translateY(0); }
 
 /* --- the two people behind the studio ------------------------------------ */
+/* what a partner gets and what we expect, read against each other */
+.terms { display: grid; gap: clamp(26px, 3.4vw, 52px); margin-top: clamp(30px, 4vw, 48px); }
+@media (min-width: 820px) { .terms { grid-template-columns: 1fr 1fr; } }
+
 .team { display: grid; gap: clamp(24px, 3vw, 40px); margin-top: clamp(34px, 4vw, 56px); }
 @media (min-width: 720px) { .team { grid-template-columns: 1fr 1fr; } }
 .person figure { margin: 0; border-radius: var(--r); overflow: hidden; background: var(--cream2); }
@@ -1143,6 +1151,80 @@ section.ruled { border-top: 1px solid var(--cream2); border-bottom: 1px solid va
    Heading, intro and both columns line up on a single centre axis; the
    portrait is capped at 300px so it needs its own auto margins to sit on it. */
 #kdo { text-align: center; }
-#kdo .lede { margin-inline: auto; }
+#kdo .lede, #kdo .p { margin-inline: auto; }
 #kdo .person figure { margin-inline: auto; }
 #kdo .person p { margin-inline: auto; max-width: 46ch; }
+
+/* ==========================================================================
+   What the hall is for — a scatter rather than a grid of cards. Dances carry
+   the size; the activity types and the non-dance uses sit smaller behind
+   them, so the section reads dance-first at a glance.
+   Scatter comes from per-item --r/--y set in the markup, on top of a wrapping
+   flex row, so it still reflows on a phone instead of overlapping.
+   ========================================================================== */
+.cloud-sec { background: var(--cream); }
+.cloud-sec .h2, .cloud-sec .p { text-align: center; }
+.cloud-sec .p { margin: 16px auto 0; }
+.cloud {
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+  gap: clamp(12px, 1.8vw, 30px) clamp(16px, 2.6vw, 44px);
+  margin-top: clamp(36px, 5vw, 68px);
+  font-family: var(--ff-d); line-height: 1;
+}
+.cloud li {
+  white-space: nowrap;
+  transform: rotate(var(--r, 0deg)) translateY(var(--y, 0px));
+  animation: drift 9s var(--ease) infinite alternate;
+  animation-delay: var(--d, 0s);
+}
+.cloud .is-1 { font-size: clamp(1.85rem, 4.2vw, 3.4rem); color: var(--night); }
+.cloud .is-2 { font-size: clamp(1.25rem, 2.5vw, 2rem); color: var(--tung-ink); }
+.cloud .is-3 {
+  font-family: var(--ff-b); font-size: clamp(.72rem, 1vw, .84rem); font-weight: 600;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--dim);
+}
+@keyframes drift {
+  from { transform: rotate(var(--r, 0deg)) translateY(var(--y, 0px)); }
+  to   { transform: rotate(var(--r, 0deg)) translateY(calc(var(--y, 0px) - 9px)); }
+}
+@media (prefers-reduced-motion: reduce) { .cloud li { animation: none; } }
+@media (max-width: 620px) {
+  .cloud { gap: 10px 18px; }
+  .cloud li { transform: rotate(var(--r, 0deg)); }
+}
+
+/* ==========================================================================
+   FAQ — one line per question, answer folded away. <details>/<summary> does
+   the work, so it opens with JavaScript off and keyboards get it for free.
+   ========================================================================== */
+.qas { max-width: 82ch; margin-top: clamp(26px, 3.4vw, 44px); border-top: 1px solid var(--cream2); }
+.qa { border-bottom: 1px solid var(--cream2); }
+.qa > summary {
+  display: flex; align-items: center; gap: 20px; cursor: pointer; list-style: none;
+  padding: clamp(16px, 1.8vw, 22px) 0;
+  font-family: var(--ff-d); font-size: clamp(1.05rem, 1.5vw, 1.32rem); line-height: 1.25;
+  color: var(--night); transition: color .18s var(--ease);
+}
+.qa > summary::-webkit-details-marker { display: none; }
+.qa > summary::marker { content: ""; }
+.qa > summary:hover { color: var(--tung-ink); }
+.qa__i { position: relative; flex: none; width: 14px; height: 14px; margin-left: auto; }
+.qa__i::before, .qa__i::after {
+  content: ""; position: absolute; background: var(--tung-ink);
+  transition: transform .22s var(--ease);
+}
+.qa__i::before { top: 6px; left: 0; right: 0; height: 2px; }
+.qa__i::after  { top: 0; left: 6px; width: 2px; height: 14px; }
+.qa[open] .qa__i::after { transform: scaleY(0); }
+.qa__a { padding-bottom: clamp(16px, 1.8vw, 24px); }
+.qa__a p { max-width: 66ch; font-size: .95rem; color: var(--body); }
+.qa__a a { color: var(--tung-ink); border-bottom: 1px solid rgba(138,106,58,.35); }
+.qa__a a:hover { border-bottom-color: currentColor; }
+
+.night .qas { border-top-color: rgba(244,237,225,.14); }
+.night .qa { border-bottom-color: rgba(244,237,225,.14); }
+.night .qa > summary { color: var(--cream); }
+.night .qa > summary:hover { color: var(--tung); }
+.night .qa__i::before, .night .qa__i::after { background: var(--tung); }
+.night .qa__a p { color: rgba(244,237,225,.8); }
+.night .qa__a a { color: var(--tung); border-bottom-color: rgba(217,162,72,.4); }

@@ -70,17 +70,12 @@
   <section class="phead">
     <div class="wrap">
       <h1 class="d h1">Rezervace</h1>
-      <p class="lede">
-        Rozvrh je živý. Minimum je jedna hodina, storno bezplatně
-        do 48 hodin a pravidelné termíny držíme na celý semestr.
-      </p>
-
     </div>
   </section>
 
   <section class="plain">
     <div class="wrap">
-      <span class="tag seq">01 — Sál</span>
+      <span class="tag seq seq--lg">01 — Sál</span>
       <div class="picker">
         <label class="picker__opt">
           <input type="radio" name="hall" value="velky">
@@ -112,7 +107,7 @@
 
   <section class="plain" id="hodiny" style="padding-top:0">
     <div class="wrap">
-      <span class="tag seq">02 — Hodiny</span>
+      <span class="tag seq seq--lg">02 — Hodiny</span>
       <div class="ledger" data-rozvrh></div>
       <p class="t-legend" style="display:block;margin-top:14px">
         Sál je k dispozici denně 7:00–2:00. V rozvrhu si vyberete hodiny do 22:00,
@@ -124,7 +119,7 @@
   <section class="plain" id="detaily" data-stage="form" style="padding-top:0">
     <div class="wrap">
       <div>
-        <span class="tag seq">03 — Vaše údaje</span>
+        <span class="tag seq seq--lg">03 — Vaše údaje</span>
         <h2 class="d h2" style="margin-bottom:28px">Detaily rezervace</h2>
 
         <form class="form" id="bookform" novalidate>
@@ -227,20 +222,10 @@
   </section>
 
   <section class="night" id="cenik">
-    <div class="wrap two two--t">
+    <div class="wrap two two--f">
       <div>
-        <h2 class="d h2">Nabídka na míru</h2>
-        <p class="p" style="margin-top:18px">
-          Na semestrální kurzy, celodenní pronájem, komerční focení nebo akci
-          mimo běžný provoz připravíme nabídku na míru.
-        </p>
-        <div class="acts acts--l" style="margin-top:24px">
-          <a class="btn btn--l" href="kontakt.html">Chci individuální nabídku</a>
-        </div>
-      </div>
-
-      <div>
-        <table class="t">
+        <h2 class="d h2">Ceník</h2>
+        <table class="t" style="margin-top:26px">
           <caption class="vh">Ceník podle sálu a tarifu</caption>
           <thead>
             <tr>
@@ -262,7 +247,19 @@
         </p>
         <p class="t-legend" style="display:block">
           Ceny za hodinu, včetně DPH. Storno bezplatně do 48 hodin před termínem.
+          Minimum je jedna hodina.
         </p>
+      </div>
+
+      <div>
+        <h2 class="d h2">Individuální nabídka</h2>
+        <p class="p" style="margin-top:18px">
+          Na semestrální kurzy, celodenní pronájem, komerční focení nebo akci
+          mimo běžný provoz připravíme nabídku na míru.
+        </p>
+        <div class="acts acts--l" style="margin-top:24px">
+          <a class="btn btn--l" href="kontakt.html">Chci individuální nabídku</a>
+        </div>
       </div>
     </div>
   </section>
