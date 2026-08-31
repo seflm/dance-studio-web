@@ -91,9 +91,10 @@ Poznámky ke vzhledu, které je dobré neporušit:
   co se pod lištu připíná (`.top--solid`, `.hero > .top`, sticky řádky
   rozvrhu, `scroll-margin-top` u `[id]`), počítá i s `--demo-h`.
   Skutečnou výšku měří `takt.js` stejně jako `--top-h`; v CSS je záložních
-  32 px. Pod 400 px se vedlejší věta skrývá (`.demo__x`), aby upozornění
-  zůstalo na jednom řádku. Až studio otevře a kontakty budou skutečné,
-  smažte `<p class="demo">` z šesti stránek a blok `.demo` z `takt.css`.
+  32 px. Barva textu je `--tung`, stejná jako u odkazu „Zobrazit celý
+  rozvrh" (`.peek__btn`), a pruh nemá spodní linku. Až studio otevře
+  a kontakty budou skutečné, smažte `<p class="demo">` z šesti stránek
+  a blok `.demo` z `takt.css`.
 
 - **Hlavičky podstránek (`.phead`) jsou krémové**, ne noční. Tmavý pruh nad
   nimi je lišta s navigací; od dalšího krémového pásu hlavičku odděluje

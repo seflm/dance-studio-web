@@ -1239,15 +1239,15 @@ section.ruled { border-top: 1px solid var(--cream2); border-bottom: 1px solid va
 /* ==========================================================================
    Demo notice - the site is shown before the studio exists, and the contacts,
    the schedule and four of the five partner logos are placeholders. Kept
-   deliberately quiet: a hairline strip in the site's own night, not a coloured
-   banner. It scrolls away and never covers anything. Its height is measured
-   into --demo-h so the hero can stay one viewport tall (see takt.js).
+   quiet: one line of the site's own gold on its own night, no rule under it.
+   Pinned rather than left in the flow, because on a phone the homepage bar is
+   itself fixed at top 0 and would cover a notice that scrolled. Its height is
+   measured into --demo-h so the hero still ends at the fold (see takt.js).
    ========================================================================== */
 .demo {
   position: fixed; inset: 0 0 auto; z-index: 45;
   background: #100b06;
-  color: #8d7f6c;
-  border-bottom: 1px solid rgba(244,237,225,.09);
+  color: var(--tung);
   padding: 7px var(--gut);
   text-align: center;
   font-size: .72rem;
@@ -1255,6 +1255,4 @@ section.ruled { border-top: 1px solid var(--cream2); border-bottom: 1px solid va
   line-height: 1.45;
 }
 @media (max-width: 420px) { .demo { font-size: .67rem; letter-spacing: .03em; padding-inline: 14px; } }
-/* the narrowest phones keep the notice to one line by dropping the qualifier */
-@media (max-width: 400px) { .demo__x { display: none; } }
 @media print { .demo { display: none; } }
