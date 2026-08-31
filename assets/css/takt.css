@@ -20,7 +20,10 @@
   --ff-d: "Newsreader", Georgia, serif;
   --ff-b: "Instrument Sans", system-ui, sans-serif;
 
-  --demo-h: 32px;   /* refined from the real element by takt.js */
+  /* drives BOTH the strip's height and body's padding-top, so the two can
+     never disagree and leave a sliver of page background showing between
+     them. Change it here and both follow. */
+  --demo-h: 32px;
   --r:  14px;
   --gut: clamp(20px, 5vw, 60px);
   --ease: cubic-bezier(.22,.61,.36,1);
@@ -1239,20 +1242,26 @@ section.ruled { border-top: 1px solid var(--cream2); border-bottom: 1px solid va
 /* ==========================================================================
    Demo notice - the site is shown before the studio exists, and the contacts,
    the schedule and four of the five partner logos are placeholders. Kept
-   quiet: one line of the site's own gold on its own night, no rule under it.
+   one line of dark type on the site's own gold, no rule under it.
    Pinned rather than left in the flow, because on a phone the homepage bar is
-   itself fixed at top 0 and would cover a notice that scrolled. Its height is
-   measured into --demo-h so the hero still ends at the fold (see takt.js).
+   itself fixed at top 0 and would cover a notice that scrolled.
+
+   The height is a fixed --demo-h rather than whatever the line happens to
+   measure, and body's padding-top uses the same variable. When the two were
+   allowed to differ - a 32px fallback against a 30.69px line - the extra
+   1.3px showed the cream body background as a bright hairline under the
+   strip. One variable for both makes that impossible, with or without JS.
    ========================================================================== */
 .demo {
   position: fixed; inset: 0 0 auto; z-index: 45;
-  background: #100b06;
-  color: var(--tung);
-  padding: 7px var(--gut);
-  text-align: center;
+  height: var(--demo-h);
+  display: flex; align-items: center; justify-content: center;
+  padding-inline: var(--gut);
+  background: var(--tung);
+  color: #100b06;
   font-size: .72rem;
   letter-spacing: .05em;
-  line-height: 1.45;
+  line-height: 1.2;
 }
 @media (max-width: 420px) { .demo { font-size: .67rem; letter-spacing: .03em; padding-inline: 14px; } }
 @media print { .demo { display: none; } }

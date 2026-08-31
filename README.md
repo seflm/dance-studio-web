@@ -90,11 +90,14 @@ Poznámky ke vzhledu, které je dobré neporušit:
   a jinak by upozornění překryla. Proto má `body` `padding-top` a všechno,
   co se pod lištu připíná (`.top--solid`, `.hero > .top`, sticky řádky
   rozvrhu, `scroll-margin-top` u `[id]`), počítá i s `--demo-h`.
-  Skutečnou výšku měří `takt.js` stejně jako `--top-h`; v CSS je záložních
-  32 px. Barva textu je `--tung`, stejná jako u odkazu „Zobrazit celý
-  rozvrh" (`.peek__btn`), a pruh nemá spodní linku. Až studio otevře
-  a kontakty budou skutečné, smažte `<p class="demo">` z šesti stránek
-  a blok `.demo` z `takt.css`.
+  **Výšku pruhu i `padding-top` u `body` řídí jedna proměnná `--demo-h`
+  (32 px).** Nesmí se rozejít: když byl pruh vysoký 30,69 px a odsazení
+  32 px, prosvítal mezi nimi krémový podklad stránky jako světlá linka
+  (přesně to, co vypadalo jako „separátor" pod bannerem). Proto se výška
+  neměří v JS - měření by ten rozdíl vrátilo. Pruh je zlatý (`--tung`)
+  s tmavým textem a nemá spodní linku. Až studio otevře a kontakty budou
+  skutečné, smažte `<p class="demo">` z šesti stránek a blok `.demo`
+  z `takt.css`.
 
 - **Hlavičky podstránek (`.phead`) jsou krémové**, ne noční. Tmavý pruh nad
   nimi je lišta s navigací; od dalšího krémového pásu hlavičku odděluje

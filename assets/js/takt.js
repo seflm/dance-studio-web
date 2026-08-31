@@ -308,22 +308,16 @@
   // itself, floating over the hero
   var bar = document.querySelector(".top--solid") || document.querySelector(".top");
   if (!bar) return;
-  // the demo notice sits above everything and can wrap on a narrow screen, so
-  // the hero subtracts a measured height rather than a guessed one
-  var demo = document.querySelector(".demo");
+  /* --demo-h is deliberately NOT measured here. The demo strip sets its own
+     height from that variable and body's padding-top reads the same one, so
+     they cannot disagree; measuring would only reintroduce the mismatch that
+     showed the page background as a hairline under the strip. */
   function measure() {
     document.documentElement.style.setProperty("--top-h", bar.offsetHeight + "px");
-    if (demo) {
-      document.documentElement.style.setProperty("--demo-h", demo.offsetHeight + "px");
-    }
   }
   measure();
   window.addEventListener("resize", measure);
-  if (window.ResizeObserver) {
-    var ro = new ResizeObserver(measure);
-    ro.observe(bar);
-    if (demo) ro.observe(demo);
-  }
+  if (window.ResizeObserver) new ResizeObserver(measure).observe(bar);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
 
 })();
